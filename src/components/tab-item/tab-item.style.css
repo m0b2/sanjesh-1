@@ -1,0 +1,19 @@
+
+.tab-span {
+    width: 30vw;
+    display: flex;
+    height: 102%;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    color: rgb(214, 214, 214);
+    transition: 100ms ease-in;
+}
+
+
+.tab-item-active{
+    border-bottom: 2px black solid;
+    color: black;
+    font-weight: 500;
+
+}

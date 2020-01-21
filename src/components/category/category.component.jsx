@@ -2,12 +2,14 @@ import React from 'react';
 import './category.style.css';
 import CountUp from 'react-countup';
 import { Progress } from 'react-sweet-progress';
+import Slide from 'react-reveal/Slide';
 
 
-export default ({ title, icon, current, total }) => {
+export default ({ title, icon, current, total, index }) => {
 
 
     return (
+        <Slide right={(index%2===0)} left={(index%2!==0)}>
         <div className='category'>
             <div className='category-up-div'>
                 <img className='category-icon' src={icon} />
@@ -48,6 +50,7 @@ export default ({ title, icon, current, total }) => {
             </div>
 
         </div>
+        </Slide>
     )
 
 }

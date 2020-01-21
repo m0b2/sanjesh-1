@@ -3,7 +3,7 @@ import './footer-item.style.css';
 
 
 
-export default ({ iconClass, active, setCurrent,setPage }) => {
+export default ({ iconClass, active, setCurrent, setPage }) => {
     const current = active === iconClass ? 'active' : '';
 
     return (
