@@ -1,0 +1,25 @@
+.nav-container {
+    margin: 0 auto;
+
+}
+
+.nav-container nav {
+    float: left;
+
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+
+}
+
+header {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; */
+    background: #55d6aa;
+
+}

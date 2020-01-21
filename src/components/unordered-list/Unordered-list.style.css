@@ -1,0 +1,20 @@
+.unordered-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.unordered-list li{
+    display: inline-block;
+    margin-right: 70px;
+    padding-top: 25px;
+}
+
+.unordered-list li a{
+
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #444;
+    font-size: 14px;
+}

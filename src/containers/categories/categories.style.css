@@ -1,0 +1,11 @@
+.categories {
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    height: fit-content;
+    flex-wrap: wrap;
+    align-self: center;
+    margin-top: 24px;
+    align-self: center;
+    justify-content: center;
+}

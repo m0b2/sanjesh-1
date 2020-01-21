@@ -1,0 +1,52 @@
+.card{
+    display: flex;
+    height: 280px;
+    width: 590px;
+    background-color: #5C5BC3;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position: relative;
+    margin: 20px 60px;
+    padding: 8px;
+    float: left;
+    transition: 300ms ease-in-out;
+    align-items: center;
+    box-shadow: 10px 10 10 10;
+    
+   
+    
+}
+
+.card-image{
+    
+    position: relative;
+    max-width: 100%;
+    background-size: cover;
+}
+
+.card-text-container{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    
+}
+
+.cardspan{
+    z-index: 0;
+    width: 100%;
+    top:  0;
+    margin-top: -62px;
+    
+}
+
+
+.cardtitle{
+    color: aliceblue;
+    font-size: 56px;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'B Homa';
+}

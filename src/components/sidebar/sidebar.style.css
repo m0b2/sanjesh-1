@@ -1,0 +1,6 @@
+.mysidebar {
+    background-image: url('/navback.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+}
