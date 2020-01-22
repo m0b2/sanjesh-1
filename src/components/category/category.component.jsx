@@ -8,7 +8,7 @@ import Slide from 'react-reveal/Slide';
 const Category = ({ title, icon, current, total, index, history, location, tuchable }) => {
     const { pathname } = location;
     return (
-        <Slide right={(index % 2 === 0)} left={(index % 2 !== 0)}>
+        <Slide right={(index % 2 === 0 && tuchable)} left={(index % 2 !== 0 && tuchable)} top={!tuchable}>
 
             <div className='category'
                 onClick={() => { tuchable && history.push(`${pathname}/${index}`) }}>
