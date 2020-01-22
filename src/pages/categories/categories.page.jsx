@@ -10,8 +10,10 @@ export default () => {
 
 
     return (
-        <>
+        <div className='categories-wrapper'>
+
+
             <Categories data={[category, category2]} />
-        </>
+        </div>
     )
 }

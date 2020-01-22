@@ -8,4 +8,6 @@
     margin-top: 80px;
     align-self: center;
     justify-content: center;
+    max-width: 800px;
+    align-items: center;
 }
