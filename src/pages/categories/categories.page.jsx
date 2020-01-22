@@ -9,6 +9,8 @@ export default () => {
 
 
     return (
-        <Categories data={category} />
+        <>
+            <Categories data={category} />
+        </>
     )
 }

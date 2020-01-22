@@ -12,7 +12,7 @@ const category = ['کار', 'مسکن', 'پیشینه روابط', 'جنسی', '
 export default ({ activePage }) => {
     return (
         <div className="content-wrapper main">
-            {(activePage === 'home') ? (<div>
+            <div>
                 <div className='progresss-div'>
 
                     <NumberStatic total={30} current={12} title={'موضوعات تکمیل شده'} />
@@ -21,9 +21,8 @@ export default ({ activePage }) => {
                     <NumberStatic total={125} current={46} title={'سوالات پاسخ داده شده'} />
 
                 </div>
-            </div>) : (activePage === 'question') ? <Categories data={category} /> : null}
+            </div>
 
-            {/* <Categories data = {category}/> */}
 
 
 
