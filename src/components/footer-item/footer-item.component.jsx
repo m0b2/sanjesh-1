@@ -1,26 +1,27 @@
 import React from 'react';
 import './footer-item.style.css';
-import { Link } from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 
 
 
-export default ({ iconClass, active, setCurrent }) => {
+const Footer_Item = ({ iconClass, active, setCurrent, history }) => {
     const current = active === iconClass ? 'active' : '';
 
     return (
-        <Link to={iconClass}>
-            <div className={'footer-item' + ` ${current}`}
-                onClick={() => {
-                    setCurrent(iconClass);
-                }
-                }>
+        <div className={'footer-item' + ` ${current}`}
+            onClick={() => {
+                setCurrent(iconClass);
+                history.push('/'+iconClass);
+            }
+            }>
 
-                <span className={`footer-icon ${iconClass}-icon`}></span>
+            <span className={`footer-icon ${iconClass}-icon`}></span>
 
-            </div>
-        </Link>
-
+        </div>
     )
 }
+
+
+export default withRouter(Footer_Item);
 
 

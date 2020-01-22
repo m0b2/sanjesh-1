@@ -1,22 +1,23 @@
 import React from 'react';
 import './category.style.css';
-import CountUp from 'react-countup';
-import { Progress } from 'react-sweet-progress';
+import { withRouter } from "react-router-dom";
+
 import Slide from 'react-reveal/Slide';
 
 
-export default ({ title, icon, current, total, index }) => {
-
-
+const Category = ({ title, icon, current, total, index, history, location, tuchable }) => {
+    const { pathname } = location;
     return (
         <Slide right={(index % 2 === 0)} left={(index % 2 !== 0)}>
 
-            <div className='category'>
-                    <img className='category-icon' src={icon} />
-                    <p className='category-title' >{title}</p>
+            <div className='category'
+                onClick={() => { tuchable && history.push(`${pathname}/${index}`) }}>
+                <img className='category-icon' src={icon} />
+                <p className='category-title' >{title}</p>
 
 
             </div>
+
 
 
 
@@ -48,3 +49,5 @@ export default ({ title, icon, current, total, index }) => {
     )
 
 }
+
+export default withRouter(Category);
