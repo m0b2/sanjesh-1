@@ -21,7 +21,7 @@ export default ({ activePage }) => {
                     <NumberStatic total={125} current={46} title={'سوالات پاسخ داده شده'} />
 
                 </div>
-            </div>):(activePage === 'question')?<Categories data = {category}/>:null}
+            </div>) : (activePage === 'question') ? <Categories data={category} /> : null}
 
             {/* <Categories data = {category}/> */}
 
