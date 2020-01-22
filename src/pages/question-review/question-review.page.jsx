@@ -1,11 +1,12 @@
 import React from 'react';
 import './question-review.style.css';
-import Categories from '../../containers/categories/categories.container';
-
+import {useParams} from "react-router-dom";
 export default () => {
+
+    const {index} = useParams();
 
 
     return (
-        <Categories />
+        <h1>{index}</h1>
     )
 }
