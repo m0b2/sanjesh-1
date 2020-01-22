@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/sanjesh/static/css/main.92038205.chunk.css",
+    "main.js": "/sanjesh/static/js/main.e921a5ef.chunk.js",
+    "main.js.map": "/sanjesh/static/js/main.e921a5ef.chunk.js.map",
+    "runtime-main.js": "/sanjesh/static/js/runtime-main.687c3594.js",
+    "runtime-main.js.map": "/sanjesh/static/js/runtime-main.687c3594.js.map",
+    "static/css/2.533d620f.chunk.css": "/sanjesh/static/css/2.533d620f.chunk.css",
+    "static/js/2.71575efc.chunk.js": "/sanjesh/static/js/2.71575efc.chunk.js",
+    "static/js/2.71575efc.chunk.js.map": "/sanjesh/static/js/2.71575efc.chunk.js.map",
+    "index.html": "/sanjesh/index.html",
+    "precache-manifest.c0e14532fc961181ce3509ee5b30b310.js": "/sanjesh/precache-manifest.c0e14532fc961181ce3509ee5b30b310.js",
+    "service-worker.js": "/sanjesh/service-worker.js",
+    "static/css/2.533d620f.chunk.css.map": "/sanjesh/static/css/2.533d620f.chunk.css.map",
+    "static/css/main.92038205.chunk.css.map": "/sanjesh/static/css/main.92038205.chunk.css.map",
+    "static/js/2.71575efc.chunk.js.LICENSE": "/sanjesh/static/js/2.71575efc.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.687c3594.js",
+    "static/css/2.533d620f.chunk.css",
+    "static/js/2.71575efc.chunk.js",
+    "static/css/main.92038205.chunk.css",
+    "static/js/main.e921a5ef.chunk.js"
+  ]
+}
