@@ -3,6 +3,7 @@ import Home from './pages/home/home.page';
 import Categories from './pages/categories/categories.page';
 import Footer from './components/footer/footer.component';
 import Question_review from './pages/question-review/question-review.page';
+import Notification from './pages/notification/notification.page';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 
@@ -13,6 +14,8 @@ function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/question" component={Categories} />
         <Route exact path="/question/:index" component={Question_review} />
+        <Route exact path="/notif" component={Notification} />
+        <Route exact path="/search" component={Notification} />
 
       </Switch>
       {(window.screen.width < 421) ? <Footer /> : null}
