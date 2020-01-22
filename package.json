@@ -1,7 +1,7 @@
 {
   "name": "sanjesh",
   "version": "0.1.0",
-  "homepage": "http://m0bin.github.io/sanjesh",
+  "homepage": "https://m0bin.github.io/sanjesh/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
