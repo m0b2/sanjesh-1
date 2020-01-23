@@ -1,13 +1,12 @@
 .categories {
     display: flex;
     flex-direction: row;
-    width: 99%;
-    height: fit-content;
     flex-wrap: wrap;
     align-self: center;
-    margin-top: 80px;
+    margin-top: 48px;
     align-self: center;
     justify-content: center;
     max-width: 800px;
     align-items: center;
+    padding-bottom: 64px;
 }

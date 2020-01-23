@@ -19,9 +19,7 @@ const Categories = (props) => {
     return (
         <div className='categories'>
             <Tab />
-
             {MyCategories}
-
         </div>
     )
 

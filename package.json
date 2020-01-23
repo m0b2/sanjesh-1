@@ -1,7 +1,7 @@
 {
   "name": "sanjesh",
   "version": "0.1.0",
-  "homepage": "https://m0bin.github.io/sanjesh/",
+  "homepage": "https://m0bin.github.io/sanjesh/#/home",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -11,13 +11,15 @@
     "react": "^16.12.0",
     "react-countup": "^4.3.2",
     "react-dom": "^16.12.0",
+    "react-in-viewport": "^1.0.0-alpha.11",
     "react-redux": "^7.1.3",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-sweet-progress": "^1.1.2",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "yarn": "^1.21.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
-   "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

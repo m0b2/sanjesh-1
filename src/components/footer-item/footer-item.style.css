@@ -31,17 +31,17 @@
 
 
 .home-icon {
-    background-image: url('/home-icon.svg');
+    background-image: url('../../assets/home-icon.svg');
 }
 
 .question-icon {
-    background-image: url('/question-icon.svg');
+    background-image: url('../../assets/question-icon.svg');
 }
 
 .notif-icon {
-    background-image: url('/bell-icon.svg');
+    background-image: url('../../assets/bell-icon.svg');
 }
 
 .search-icon {
-    background-image: url('/search-icon.svg');
+    background-image: url('../../assets/search-icon.svg');
 }
