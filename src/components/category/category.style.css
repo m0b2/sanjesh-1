@@ -4,6 +4,7 @@
     width: 160px;
     height: 170px;
     justify-content: flex-start;
+    position: relative;
     /* background-color: white; */
     /* align-content: center; */
     /* border: 1px gray solid; */
@@ -23,6 +24,9 @@
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
+
+    transform-origin: 0 0;
+
 
 
 }

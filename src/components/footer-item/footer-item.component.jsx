@@ -14,8 +14,8 @@ const Footer_Item = ({ iconClass, active, setCurrent, history }) => {
                 history.push('/' + iconClass);
             }
             }>
-
             <span className={`footer-icon ${iconClass}-icon`}></span>
+
 
         </div>
     )

@@ -13,6 +13,7 @@ const Categories = (props) => {
             current={Math.floor(Math.random() * 50)}
             total={Math.floor(Math.random() * 50) + 50}
             index={index}
+            key={`category${index}`}
             tuchable
         />
     )
