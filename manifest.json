@@ -1,6 +1,6 @@
 {
-  "short_name": "Sanjesh.Love",
-  "name": "Sanjesh.Love",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
