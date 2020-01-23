@@ -2,14 +2,15 @@ import React from 'react';
 import './category.style.css';
 import { withRouter } from "react-router-dom";
 
-import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 
 const Category = ({ title, icon, current, total, index, history, location, tuchable }) => {
     const { pathname } = location;
     return (
-        <Slide right={(index % 2 === 0 && tuchable)} left={(index % 2 !== 0 && tuchable)} top={!tuchable}
-        duration={600}
+        <Fade right={(index % 2 === 0 && tuchable)} left={(index % 2 !== 0 && tuchable)} top={!tuchable}
+        distance={'100px'}
+        duration={800}
         >
 
             <div>
@@ -28,7 +29,7 @@ const Category = ({ title, icon, current, total, index, history, location, tucha
 
                 </div>
             </div>
-        </Slide>
+        </Fade>
 
     )
 
