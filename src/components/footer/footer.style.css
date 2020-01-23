@@ -10,4 +10,5 @@
     border-top: 1px rgb(209, 227, 233) solid;
     z-index: 100;
     align-items: center;
+    justify-content: center;
 }

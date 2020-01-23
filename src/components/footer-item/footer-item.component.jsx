@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer-item.style.css';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -11,7 +11,7 @@ const Footer_Item = ({ iconClass, active, setCurrent, history }) => {
         <div className={'footer-item' + ` ${current}`}
             onClick={() => {
                 setCurrent(iconClass);
-                history.push('/'+iconClass);
+                history.push('/' + iconClass);
             }
             }>
 

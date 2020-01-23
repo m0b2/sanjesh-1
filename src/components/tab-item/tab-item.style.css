@@ -8,6 +8,10 @@
     justify-self: center;
     color: rgb(214, 214, 214);
     transition: 100ms ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
 }
 
 
