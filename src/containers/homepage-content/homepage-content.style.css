@@ -7,22 +7,19 @@
     align-items: center;
     justify-content: center;
     transition: 300ms ease-out;
-    border: green 2px solid;
-    
+
 
 }
 
 .home-wrapper {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: transparent;
-    border: 5px yellow solid;
 }
 
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
-    .progresss-div {
-        
-    }
+    .progresss-div {}
 }

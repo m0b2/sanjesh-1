@@ -2,32 +2,29 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 8px;
+    background-color: transparent;
     
+    margin-right: 16px;
+    flex: 1;
     width: 220px;
     height: 252px;
-    background-color: transparent;
     box-shadow: 5px 5px 10px 10px aliceblue;
     box-sizing: content-box;
     border-radius: 5px;
     margin-left: 16px;
     z-index: 2;
     padding: 16px;
-    border: red 5px solid;
-    
+    margin-bottom: 16px;
     
 }
 
 .number-static-text {
     direction: rtl;
     display: flex;
-    position: absolute;
-    bottom: 0;
     flex-direction: row;
     justify-content: center;
     flex: 1;
     padding-bottom: 24px;
-
 
 }
 
@@ -39,6 +36,7 @@
 
 }
 
+
 .not-answered {
     font-size: x-large;
     align-self: flex-end;
@@ -46,17 +44,16 @@
 }
 
 
-.static-title {
-    position: relative;
+/* .static-title {
+    display: flex;
+    justify-self: flex-end;
     text-align: center;
     font-family: 'B Homa';
     font-size: large;
     padding-top: 16px;
-    display: inline;
-    color: purple;
 }
 
-
+ */
 
 
 
@@ -85,22 +82,43 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .number-static {
+        display: flex;
+        flex-direction: column;
         width: 100px;
-        height: 140px;
-        border: darkblue 5px solid;
+        justify-content: flex-start;
+        align-items: center;
+        height: 136px;
+        border: 1px antiquewhite solid;
+        box-shadow: 1px 1px 2px 2px aliceblue;
+        border: 2px red solid;
+
 
     }
     .static-title{
+        position: relative;
+        font-size: 12px;
+        justify-self: flex-end;
         
+        
+        align-self: center;
     }
 
     .answered {
+        font-size: 28px;
         
     }
     .not-answered {
+        font-size: 16px;
         
     
     }
+    
+.number-static-text {
+    border: 2px red solid;
+    width: 100%
+    
+
+}
 
     
 }

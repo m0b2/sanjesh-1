@@ -1,7 +1,11 @@
 import React from 'react';
 import './home.page.css';
 import HomePage from '../../containers/homepage-content/homepage-content.container'
-import Sidebar from '../../components/sidebar/sidebar.component';
+import Profile from '../../components/profile/profile.component';
+
+
+
+
 
 export default () => {
 
@@ -9,11 +13,13 @@ export default () => {
 
 
     return (
-        <div className="hold-trassnssition sidesbasr-misni">
-            <div className="wraspsper">
-                {/* <Sidebar /> */}
+        <div className="home-page-wrapper">
+            <div className="">
+            
+                <Profile />
+
                 <HomePage />
-                
+
             </div>
         </div>
     )

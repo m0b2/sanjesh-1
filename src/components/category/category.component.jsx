@@ -8,9 +8,11 @@ import Fade from 'react-reveal/Fade';
 const Category = ({ title, icon, current, total, index, history, location, tuchable }) => {
     const { pathname } = location;
     return (
+
+        
         <Fade right={(index % 2 === 0 && tuchable)} left={(index % 2 !== 0 && tuchable)} top={!tuchable}
-        distance={'100px'}
-        duration={800}
+            distance={'100px'}
+            duration={800}
         >
 
             <div>
@@ -36,3 +38,5 @@ const Category = ({ title, icon, current, total, index, history, location, tucha
 }
 
 export default withRouter(Category);
+
+

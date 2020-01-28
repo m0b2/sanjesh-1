@@ -5,9 +5,10 @@
     width: fit-content;
     min-width: 380px;
 
+
     height: 42px;
     background-color: white;
-    position: fixed;
+    position: -webkit-sticky;
     top: 0;
     border-bottom: 1px rgb(209, 227, 233) solid;
     z-index: 100;

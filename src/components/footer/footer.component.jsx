@@ -1,22 +1,48 @@
 import React from 'react';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import HomeIcon from '@material-ui/icons/Home';
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import './footer.style.css';
-import Footeritem from '../footer-item/footer-item.component';
+import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
-const Footer = ({ location }) => {
-    const [active, setActive] = React.useState(location.pathname.substring(1));
-   //   *** set active tab to current location!! ***
+const Footer = ({ location, history }) => {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(location.pathname.substring(1));
+
 
     return (
-        <div className='main-footer'>
-            <Footeritem iconClass={'home'} active={active} setCurrent={setActive} />
-            <Footeritem iconClass={'search'} active={active} setCurrent={setActive} />
-            <Footeritem iconClass={'question'} active={active} setCurrent={setActive} />
-            <Footeritem iconClass={'notif'} active={active} setCurrent={setActive} />
-        </div>
+        <BottomNavigation value={value} onChange={(event, newValue) => handleChange(event, newValue, setValue, history)}
+            className={classes.root + ' main-footer'}
+        >
+            <BottomNavigationAction label={"Home"} value="home" icon={<HomeIcon />} />
+            <BottomNavigationAction label={"Compare"} value="compare" icon={<CompareArrowsIcon />} />
+            <BottomNavigationAction label={"Questions"} value="question" icon={<HelpOutlineIcon />} />
+            <BottomNavigationAction label={"Notification"} value="notification" icon={<NotificationsIcon />} />
+        </BottomNavigation>
     )
 
 }
 
 
 export default withRouter(Footer);
+
+
+
+
+const handleChange = (event, newValue, setValue, history) => {
+    setValue(newValue);
+    history.replace(`/${newValue}`)
+
+};
+
+
+
+const useStyles = makeStyles({
+    root: {
+        fontSize: '55px'
+    },
+});
