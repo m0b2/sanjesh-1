@@ -12,7 +12,7 @@ const NumberStatic = ({ current, total, title, pathColor }) => {
   
   return (
     <div className='number-static main'>
-      <Circleprogress percent={percent} pathColor={pathColor} width={50} />
+      {/* <Circleprogress percent={percent} pathColor={pathColor} width={50} /> */}
       {/* <div className='number-static-text'>
 
         <p className='not-answered'>{total + '/'}</p>

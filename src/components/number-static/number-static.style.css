@@ -3,10 +3,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin: 8px;
-    flex: 1;
+    
     width: 220px;
     height: 252px;
-    background-color: rgb(210, 208, 233);
+    background-color: transparent;
     box-shadow: 5px 5px 10px 10px aliceblue;
     box-sizing: content-box;
     border-radius: 5px;
@@ -39,9 +39,6 @@
 
 }
 
-.main{
-    background-color: transparent;
-}
 .not-answered {
     font-size: x-large;
     align-self: flex-end;
@@ -88,7 +85,9 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .number-static {
-       
+        width: 100px;
+        height: 140px;
+        border: darkblue 5px solid;
 
     }
     .static-title{

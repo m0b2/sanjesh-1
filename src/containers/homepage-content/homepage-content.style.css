@@ -14,6 +14,7 @@
 
 .home-wrapper {
     display: flex;
+    flex-direction: row;
     background-color: transparent;
     border: 5px yellow solid;
 }
