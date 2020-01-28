@@ -1,23 +1,16 @@
 
 
-.Progress{
+.progress-container{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    float: left;
-    margin-right: 16px;
+    height: 100px;
     flex: 1;
-    align-self: flex-start;
-    padding-top: 16px;
+    border: red 5px solid;
+
 
 }
 
-.progress-title{
-    text-align: center;
-    font-family: 'B Homa';
-    font-size: x-large;
-    padding-top: 16px;
-}
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {

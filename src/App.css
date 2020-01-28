@@ -4,5 +4,6 @@
   align-items: center;
   padding-top: 16px;
   overflow: hidden;
+  direction: rtl;
 }
 

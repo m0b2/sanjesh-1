@@ -1,9 +1,12 @@
 .footer-item {
     display: flex;
     height: 34px;
-    width: 84px;
+    width: 25%;
     z-index: 3;
     transition: 200ms ease;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
 
 
 }
@@ -18,9 +21,7 @@
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: 38%;
     z-index: 3;
-
     justify-self: center;
     align-self: center;
 

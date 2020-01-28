@@ -9,12 +9,12 @@ export default () => {
 
 
     return (
-        <body className="hold-transition sidebar-mini">
-            <div className="wrapper">
-                <Sidebar />
+        <div className="hold-trassnssition sidesbasr-misni">
+            <div className="wraspsper">
+                {/* <Sidebar /> */}
                 <HomePage />
                 
             </div>
-        </body>
+        </div>
     )
 }

@@ -11,14 +11,14 @@ const category = ['کار', 'مسکن', 'پیشینه روابط', 'جنسی', '
 
 export default ({ activePage }) => {
     return (
-        <div className="content-wrapper main">
+        <div className="home-wrapper">
             <div>
                 <div className='progresss-div'>
 
-                    <NumberStatic total={30} current={12} title={'موضوعات تکمیل شده'} />
-                    <NumberStatic total={125} current={46} title={'سوالات پاسخ داده شده'} />
-                    <NumberStatic total={30} current={12} title={'موضوعات تکمیل شده'} />
-                    <NumberStatic total={125} current={46} title={'سوالات پاسخ داده شده'} />
+                    <NumberStatic total={30} current={12} pathColor={'red'} title={'موضوعات تکمیل شده'} />
+                    <NumberStatic total={125} current={46} pathColor={'blue'} title={'سوالات پاسخ داده شده'} />
+                    <NumberStatic total={30} current={12} pathColor={'green'} title={'موضوعات تکمیل شده'} />
+                    <NumberStatic total={125} current={46} pathColor={'yellow'} title={'سوالات پاسخ داده شده'} />
 
                 </div>
             </div>

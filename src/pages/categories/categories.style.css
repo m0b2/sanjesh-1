@@ -1,6 +1,6 @@
 .categories-wrapper{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     max-width: 800px;
     justify-self: center;

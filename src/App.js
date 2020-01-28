@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/question/:index" component={Question_review} />
         <Route exact path="/notif" component={Notification} />
         <Route exact path="/search" component={Notification} />
-        <Redirect to="/home" />
+        {/* <Redirect to="/home" /> */}
       </Switch>
       {window.screen.width < 421 ? <Footer /> : null}
     </div>

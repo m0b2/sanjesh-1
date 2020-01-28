@@ -7,12 +7,13 @@ import CountUp from 'react-countup';
 
 
 
-const NumberStatic = ({ current, total, title }) => {
-  const [percent, setPercent] = React.useState(0);
+const NumberStatic = ({ current, total, title, pathColor }) => {
+  const [percent, setPercent] = React.useState(Math.floor(Math.random()*100));
+  
   return (
     <div className='number-static main'>
-      <Circleprogress percent={percent} width={50} />
-      <div className='number-static-text'>
+      <Circleprogress percent={percent} pathColor={pathColor} width={50} />
+      {/* <div className='number-static-text'>
 
         <p className='not-answered'>{total + '/'}</p>
         <p className='answered'>
@@ -23,7 +24,7 @@ const NumberStatic = ({ current, total, title }) => {
             onEnd={() => setPercent(Math.floor(current / total * 100))}
           />
         </p>
-      </div>
+      </div> */}
       <p className='static-title'>{title}</p>
     </div>
   )
