@@ -1,6 +1,5 @@
 import React from 'react';
 import './profile.style.css';
-import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -20,11 +19,11 @@ const Profile = () => {
                 </svg>
             </div>
             <div className=''>
-                <Avatar
+                {/* <Avatar
                     alt="Remy Sharp"
                     src="/static/images/avatar/1.jpg"
                     className={classes.large + ' avatar'}
-                />
+                /> */}
             </div>
         </div>
     )
