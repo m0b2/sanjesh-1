@@ -7,7 +7,7 @@ import Notification from "./pages/notification/notification.page";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-// man moein
+// man amade am vay vay
 
 function App() {
   return (

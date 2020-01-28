@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 16px;
+    margin: 8px;
     flex: 1;
     width: 220px;
     height: 252px;
@@ -27,7 +27,6 @@
     justify-content: center;
     flex: 1;
     padding-bottom: 24px;
-    border: red 5px solid;
 
 
 }
@@ -51,10 +50,13 @@
 
 
 .static-title {
+    position: relative;
     text-align: center;
     font-family: 'B Homa';
     font-size: large;
     padding-top: 16px;
+    display: inline;
+    color: purple;
 }
 
 
@@ -86,26 +88,17 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .number-static {
-        width: 100px;
-        height: 136px;
-        border: 1px antiquewhite solid;
-        box-shadow: 1px 1px 2px 2px aliceblue;
+       
 
     }
     .static-title{
-        position: absolute;
-        font-size: 16px;
-        padding-bottom: 6px;
-        bottom: 0;
-        align-self: center;
+        
     }
 
     .answered {
-        font-size: 28px;
         
     }
     .not-answered {
-        font-size: 16px;
         
     
     }

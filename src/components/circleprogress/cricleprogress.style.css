@@ -5,8 +5,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 100px;
+    width: 100px;
     flex: 1;
-    border: red 5px solid;
+    border: green 5px solid;
 
 
 }
