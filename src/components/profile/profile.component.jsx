@@ -11,13 +11,7 @@ const Profile = () => {
 
     return (
         <div>
-            <div class="wave-container">
-                <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
-                    <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
-                        style={{ stroke: 'none', fill: 'slateblue' }}>
-                    </path>
-                </svg>
-            </div>
+           
             <div className=''>
                 {/* <Avatar
                     alt="Remy Sharp"

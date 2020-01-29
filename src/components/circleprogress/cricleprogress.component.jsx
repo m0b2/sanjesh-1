@@ -5,7 +5,7 @@ import "react-sweet-progress/lib/style.css";
 
 const Cricleprogress = ({ percent, width }) => {
     return (
-        <div className='Progress'>
+        
             <Progress
                 type="circle"
                 percent={percent}
@@ -14,7 +14,7 @@ const Cricleprogress = ({ percent, width }) => {
 
             />
             
-        </div>
+        
     )
 
 }

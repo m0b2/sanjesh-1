@@ -18,10 +18,10 @@ const Footer = ({ location, history }) => {
         <BottomNavigation value={value} onChange={(event, newValue) => handleChange(event, newValue, setValue, history)}
             className={classes.root + ' main-footer'}
         >
-            <BottomNavigationAction label={"Home"} value="home" icon={<HomeIcon />} />
-            <BottomNavigationAction label={"Compare"} value="compare" icon={<CompareArrowsIcon />} />
-            <BottomNavigationAction label={"Questions"} value="question" icon={<HelpOutlineIcon />} />
-            <BottomNavigationAction label={"Notification"} value="notification" icon={<NotificationsIcon />} />
+            <BottomNavigationAction label={"Home"} value="home" icon={<HomeIcon style={{ fontSize: 30 }}/>} />
+            <BottomNavigationAction label={"Compare"} value="compare" icon={<CompareArrowsIcon style={{ fontSize: 30 }}/>} />
+            <BottomNavigationAction label={"Questions"} value="question" icon={<HelpOutlineIcon style={{ fontSize: 30 }}/>} />
+            <BottomNavigationAction label={"Notification"} value="notification" icon={<NotificationsIcon style={{ fontSize: 30 }}/>} />
         </BottomNavigation>
     )
 

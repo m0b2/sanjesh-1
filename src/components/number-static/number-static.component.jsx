@@ -4,11 +4,38 @@ import Circleprogress from '../circleprogress/cricleprogress.component';
 import CountUp from 'react-countup';
 
 const NumberStatic = ({ current, total, title }) => {
-  const [percent, setPercent] = React.useState(0);
+  const [percent, setPercent] = React.useState(25);
   return (
     <div className='number-static'>
+      <div className='progress-container'>
+        <Circleprogress percent={percent} width={86} />
+      </div>
+      <div className='static-number'>
 
-      <div>
+        <div className='static-total'>{total + '/'}</div>
+        <div className='static-current'>{current}</div>
+
+      </div>
+
+
+      <div className='static-title'>
+        {title}
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* <div>
         <Circleprogress percent={percent} width={50} />
       </div>
 
@@ -26,7 +53,7 @@ const NumberStatic = ({ current, total, title }) => {
 
       <div className='static-title'>
         <p >{title}</p>
-      </div>
+      </div> */}
 
     </div>
   )

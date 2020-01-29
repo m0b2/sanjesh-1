@@ -1,0 +1,23 @@
+.icon-card-img{
+    width: 68px;
+}
+
+.icon-card-title{
+    font-family: 'B Yekan';
+    font-weight: 300;
+    padding-top: 16px;
+}
+
+
+.icon-card-number{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    font-size: xx-large;
+    font-weight: 600;
+    align-self: flex-end;
+    font-family: 'Righteous', cursive;
+}

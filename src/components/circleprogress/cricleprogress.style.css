@@ -1,10 +1,7 @@
-
-
-.Progress{
+.Progress {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    
     margin-right: 16px;
     flex: 1;
     align-self: flex-start;
@@ -12,7 +9,7 @@
 
 }
 
-.progress-title{
+.progress-title {
     text-align: center;
     font-family: 'B Homa';
     font-size: x-large;
