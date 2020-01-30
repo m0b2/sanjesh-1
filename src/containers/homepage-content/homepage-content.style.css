@@ -9,6 +9,7 @@
     transition: 300ms ease-out;
     
     
+    
 
 
 }
@@ -24,6 +25,6 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .progresss-div {
-        margin-top: 60px;
+        margin-top: 10px;
     }
 }

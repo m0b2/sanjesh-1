@@ -1,17 +1,13 @@
 import React from 'react';
+import './item.style.css';
 
-
-const Item = (props) => {
+const Item = ({ title, Icon, history, historyTopush }) => {
 
     return (
-        <li className="nav-item">
-            <a href={props.href} className={"nav-link"}>
-                <i className={props.classIcon}></i>
-                <p>{props.title}</p>
-                {props.children}
-
-            </a>
-        </li>
+        <div className="side-bar-item">
+            <Icon style={{ fontSize: 40 ,color: '#283593'}}/>
+            <p style={{ marginRight: '16px' , fontFamily:'B Yekan', fontSize:'20px' }}>{title}</p>
+        </div>
     )
 }
 

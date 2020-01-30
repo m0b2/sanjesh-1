@@ -1,0 +1,17 @@
+.menu-item {
+    width: 100%;
+    height: 50px;
+    border: 1px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-self: flex-start;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.menu-item :hover > .menu-item {
+    border: 2px green solid;
+}

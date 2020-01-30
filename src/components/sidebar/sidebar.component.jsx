@@ -2,26 +2,23 @@ import React from 'react';
 import UserPanel from '../sidebar_userHeader/userHeader';
 import Menu from '../sidebar_Menu/menu.component';
 import './sidebar.style.css';
-const Sidebar = () => {
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import HomeIcon from '@material-ui/icons/Home';
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { withRouter } from 'react-router-dom';
+const Sidebar = ({ history }) => {
 
   return (
-    <div>
-      <aside className="main-sidebar sidebar-dark-primary elevation-4 mysidebar">
-
-        <div className="sidebar" style={{ direction: 'ltr' }}>
-          <div style={{ direction: 'rtl' }}>
-            {/* Sidebar user panel (optional) */}
-            <UserPanel />
-            {/* Sidebar Menu */}
-            <Menu />
-            {/* /.sidebar-menu */}
-          </div>
-        </div>
-      </aside>
+    <div className='sidebar-container'>
+      <Menu title={'صفحه اصلی'} Icon={HomeIcon} historytoPush={'home'} history={history} />
+      <Menu title={'قیاس'} Icon={CompareArrowsIcon} historytoPush={'compare'} history={history} />
+      <Menu title={'سوالات'} Icon={HelpOutlineIcon} historytoPush={'question'} history={history} />
+      <Menu title={'اعلان'} Icon={NotificationsIcon} historytoPush={'notification'} history={history} />
     </div>
 
   )
 }
 
 
-export default Sidebar;
+export default withRouter(Sidebar);

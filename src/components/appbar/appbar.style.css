@@ -1,6 +1,6 @@
 .Appbar {
     display: flex;
-    position: fixed;
+    position: relative;
     flex-direction: row;
     top: 0;
     width: 100%;
@@ -8,6 +8,5 @@
     background-color: white;
     border: 1px rgb(209, 227, 233) solid;
     z-index: 1000;
-    
     
 }

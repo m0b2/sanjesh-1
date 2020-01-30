@@ -1,21 +1,17 @@
 .number-static {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    background-color: transparent;
-    margin-right: 8px;
-    width: 220px;
-    height: 252px;
-    box-shadow: 5px 5px 10px 10px aliceblue;
-    box-sizing: content-box;
-    border-radius: 5px;
-    margin-left: 8px;
-    z-index: 2;
-    padding: 16px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    justify-content: center;
+    width: 200px;
+    justify-content: flex-start;
     align-items: center;
+    height: 220px;
+    border: 1px antiquewhite solid;
+    box-shadow: 1px 1px 2px 2px aliceblue;
+    background-color: #fafafa;
+    margin-top: 40px;
+    padding-top: 40px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
 
 .progress-container {
@@ -43,7 +39,7 @@
 }
 
 .static-total {
-    
+
     align-self: flex-end;
 }
 
@@ -84,19 +80,19 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .number-static {
-        display: flex;
-        flex-direction: column;
-        width: 32vw;
+        width: 148px;
         justify-content: flex-start;
         align-items: center;
         height: 160px;
-        border: 1px antiquewhite solid;
-        box-shadow: 1px 1px 2px 2px aliceblue;
-        background-color: #fafafa;
+        margin: 8px;
+        
+        
+       
+
 
 
     }
 
- 
+
 
 }

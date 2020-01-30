@@ -1,6 +1,11 @@
-.mysidebar {
-    background-image: url('../../assets/navback.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
+.sidebar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 2px gray solid;
+    margin-right: 160px;
+    height: 800px;
+    width: 328px;
+    margin-top: 34px;
 }

@@ -6,6 +6,9 @@ import Fade from 'react-reveal/Fade';
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
+
+import Footer from '../footer/footer.component';
+
 const Appbar = ({ location }) => {
     let { pathname } = location;
     console.log(pathname)
@@ -14,20 +17,18 @@ const Appbar = ({ location }) => {
     return (
         <Fade top opposite >
             <div className={'Appbar'}
-            > 
+            >
                 <Avatar aria-label="recipe" className={classes.avatar}>
 
                 </Avatar>
-                
-                    <strong className={classes.strong}>{pathname}</strong>
-               
+
+                <strong className={classes.strong}>{pathname}</strong>
+
 
                 <IconButton className={classes.icon} aria-label="delete">
 
                     <ArrowBackIcon />
                 </IconButton>
-
-
             </div>
         </Fade>
     );
