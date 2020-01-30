@@ -6,7 +6,7 @@
     height: 42px;
     background-color: white;
     position: fixed;
-   
+
     border-top: 1px rgb(209, 227, 233) solid;
     z-index: 100;
     align-items: center;
@@ -23,8 +23,8 @@
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
     .main-footer {
-
-       visibility: hidden;
+       
+        visibility: hidden;
 
 
 

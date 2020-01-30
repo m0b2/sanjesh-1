@@ -14,9 +14,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 function App() {
   return (
     <div className="app">
+          {window.screen.width > 421 ? <Footer /> : null}
 
       <div className='main-app'>
-
         <Appbar />
         {/* <Sidebar/> */}
         <Switch>
