@@ -7,11 +7,14 @@
     height: 220px;
     border: 1px antiquewhite solid;
     box-shadow: 1px 1px 2px 2px aliceblue;
-    background-color: #fafafa;
+    background-color:#fafafa;
     margin-top: 40px;
     padding-top: 40px;
     margin-right: 20px;
     border-radius: 10px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
 }
 
 .progress-container {
@@ -58,7 +61,7 @@
     text-align: center;
     font-size: small;
     width: 100%;
-    font-family: 'B Yekan';
+    font-family: 'Vazir';
     padding-top: 10px;
 }
 
@@ -66,7 +69,9 @@
 
 
 /* Large desktops and laptops */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+}
 
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {}

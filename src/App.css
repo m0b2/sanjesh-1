@@ -7,6 +7,7 @@
   direction: rtl;
   height: 96vh;
   width: 99vw;
+  background-color: #fafafa;
 }
 
 .main-app {
@@ -18,6 +19,7 @@
   border-left: 1px solid rgb(238, 238, 238);
   justify-self: center;
   align-self: center;
+  background-color: white;
   
 
 }

@@ -6,19 +6,27 @@ import Question_review from "./pages/question-review/question-review.page";
 import Notification from "./pages/notification/notification.page";
 import "./App.css";
 import Appbar from './components/appbar/appbar.component';
-import ListMenu from './components/header-navigation/header-navigation.component';
+import { SidebarContext } from './context/sidebar.context';
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import Sidebar from './components/sidebar/sidebar.component';
 // man amade am vay vay
 
 function App() {
+
+
+  const [isOpen, setOpen] = React.useState({ right: false });
+  const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
+
+
   return (
     <div className="app">
-          {window.screen.width > 421 ? <Footer /> : null}
+      {window.screen.width > 421 ? <Footer /> : null}
 
       <div className='main-app'>
-        <Appbar />
-        {/* <Sidebar/> */}
+        <SidebarContext.Provider value={SidebarOpen}>
+          <Appbar />
+          <Sidebar />
+        </SidebarContext.Provider>
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/question" component={Categories} />

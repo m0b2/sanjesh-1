@@ -9,3 +9,14 @@
     width: 328px;
     margin-top: 34px;
 }
+
+
+.sidebar-avatar-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    width: 100%;
+    background-color: #ffffff;
+    height: 20%;
+}
