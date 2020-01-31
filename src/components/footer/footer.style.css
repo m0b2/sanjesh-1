@@ -23,7 +23,7 @@
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
     .main-footer {
-       
+
         visibility: hidden;
 
 
@@ -33,18 +33,43 @@
 }
 
 /* Landscape tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main-footer {
+
+        visibility: hidden;
+
+
+
+    }
+
+}
 
 /* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-footer {
+
+        visibility: hidden;
+
+
+
+    }
+}
 
 /* Landscape phones and portrait tablets */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+    .main-footer {
+
+        visibility: hidden;
+
+
+
+    }
+}
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .main-footer {
-
+        visibility: visible;
         bottom: 0;
 
 

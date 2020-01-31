@@ -1,8 +1,50 @@
-.hhh{
+.header-nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    position: fixed;
+    top: -4px;
+    right: 0;
+    background-color: white;
+    border: 1px rgb(238, 238, 238) solid;
+    height: 40px;
+    overflow: hidden;
 
-display: flex;
-margin-top: 34px;
-justify-content: space-around;
-margin-right: 68px;
+    
+}
+.header-tab-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
 
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+    .header-nav-container{
+        visibility: hidden;
+    }
 }

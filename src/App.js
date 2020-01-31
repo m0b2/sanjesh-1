@@ -9,6 +9,7 @@ import Appbar from './components/appbar/appbar.component';
 import { SidebarContext } from './context/sidebar.context';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Sidebar from './components/sidebar/sidebar.component';
+import Header from './components/header-navigation/header-navigation.component';
 // man amade am vay vay
 
 function App() {
@@ -20,12 +21,13 @@ function App() {
 
   return (
     <div className="app">
-      {window.screen.width > 421 ? <Footer /> : null}
-
+      {window.screen.width < 421 ? <Footer /> : <Header/>}
+      
       <div className='main-app'>
+      
         <SidebarContext.Provider value={SidebarOpen}>
-          <Appbar />
-          <Sidebar />
+        {window.screen.width < 421 ? <Appbar /> : null}
+        {window.screen.width < 421 ? <Sidebar /> : null}
         </SidebarContext.Provider>
         <Switch>
           <Route exact path="/home" component={Home} />

@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
 import { SidebarContext } from '../../context/sidebar.context';
-
+import Logo from '../logo/Logo.component';
 
 const Appbar = ({ location }) => {
     const { isOpen, setOpen } = React.useContext(SidebarContext);
@@ -28,10 +28,7 @@ const Appbar = ({ location }) => {
 
                 </Avatar> */}
 
-                <div style={{ direction: 'ltr', color: '#424242' }} className={classes.strong}>
-                    Sanjesh.
-                <div style={{ color: '#b71c1c' }}>Love</div>
-                </div>
+                <Logo size={20}/>
 
 
                 <IconButton className={classes.icon} aria-label="delete" 

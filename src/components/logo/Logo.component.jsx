@@ -2,12 +2,24 @@ import React from 'react';
 import './Logo.style.css';
 
 
-const Logo = () => {
+const Logo = ({size}) => {
 
     return (
-        <div className='logo-container'>
-            <h1>Sanjesh.Love</h1><h1 className='logo-love'></h1>
-        </div>)
+        <div style={{
+            direction: 'ltr',
+            color: '#424242',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingBottom: '3px',
+            marginRight: '12px',
+            fontFamily: 'Pattaya',
+            fontSize: `${size}px`
+        }} >
+            Sanjesh.
+                <div style={{ color: '#b71c1c' }}>Love</div>
+        </div>
+    )
 }
 
 

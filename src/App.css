@@ -20,6 +20,7 @@
   justify-self: center;
   align-self: center;
   background-color: white;
+  margin-top: 60px;
   
 
 }
@@ -45,7 +46,7 @@
 
   .main-app {
     width: 100%;
-
+    margin-top: 0;
 
   }
 
