@@ -22,7 +22,7 @@ const Appbar = ({ location }) => {
                 <IconButton edge="start" color="inherit" aria-label="menu"
                 onClick={() => setOpen({right:true})}
                 >
-                    <MenuIcon />
+                    <MenuIcon style={{color:'white'}}/>
                 </IconButton>
                 {/* <Avatar aria-label="recipe" className={classes.avatar}>
 
@@ -34,7 +34,7 @@ const Appbar = ({ location }) => {
                 <IconButton className={classes.icon} aria-label="delete" 
                 >
 
-                    <ArrowBackIcon />
+                    <ArrowBackIcon style={{color:'white'}}/>
                 </IconButton>
             </div>
         </Fade>
@@ -48,7 +48,8 @@ export default withRouter(Appbar);
 const useStyles = makeStyles(theme => ({
     icon: {
         position: 'absolute',
-        left: 0
+        left: 0,
+        marginTop:'6px'
     },
     strong: {
         display: 'flex',
