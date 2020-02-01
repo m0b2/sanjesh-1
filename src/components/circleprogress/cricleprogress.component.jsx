@@ -10,7 +10,8 @@ const Cricleprogress = ({ percent, width }) => {
                 type="circle"
                 percent={percent}
                 width={width}
-                style={{ alignSelf: 'center' }}
+                style={{ alignSelf: 'center', color:'red' }}
+                
 
             />
             

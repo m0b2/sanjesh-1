@@ -13,15 +13,15 @@ const Footer = ({ location, history }) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(location.pathname.substring(1));
 
-
+    const styles = { root: classes.root, label: classes.label, selected: classes.selected, iconOnly: classes.iconOnly };
     return (
         <BottomNavigation value={value} onChange={(event, newValue) => handleChange(event, newValue, setValue, history)}
             className={classes.root + ' main-footer'}
         >
-            <BottomNavigationAction label={"Home"} value="home" icon={<HomeIcon style={{ fontSize: 30 }} />} />
-            <BottomNavigationAction label={"Compare"} value="compare" icon={<CompareArrowsIcon style={{ fontSize: 30 }} />} />
-            <BottomNavigationAction label={"Questions"} value="question" icon={<HelpOutlineIcon style={{ fontSize: 30 }} />} />
-            <BottomNavigationAction label={"Notification"} value="notification" icon={<NotificationsIcon style={{ fontSize: 30 }} />} />
+            <BottomNavigationAction classes={styles} label={"صفحه‌اصلی"} value="home" icon={<HomeIcon style={{ fontSize: 30 }} />} />
+            <BottomNavigationAction classes={styles} label={"قیاس"} value="compare" icon={<CompareArrowsIcon style={{ fontSize: 30 }} />} />
+            <BottomNavigationAction classes={styles} label={"سوالات"} value="question" icon={<HelpOutlineIcon style={{ fontSize: 30 }} />} />
+            <BottomNavigationAction classes={styles} label={"اعلان ها"} value="notification" icon={<NotificationsIcon style={{ fontSize: 30 }} />} />
         </BottomNavigation>
     )
 
@@ -43,6 +43,18 @@ const handleChange = (event, newValue, setValue, history) => {
 
 const useStyles = makeStyles({
     root: {
-        fontSize: '55px'
+        height:'60px'
     },
+    label: {
+        fontFamily: 'Vazir',
+        color: '#b71c1c',
+
+    },
+    iconOnly: {
+        color:'gray'
+    },
+    selected: {
+        color: '#b71c1c',
+
+    }
 });

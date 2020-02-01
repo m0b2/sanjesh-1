@@ -7,7 +7,7 @@ const Logo = ({size}) => {
     return (
         <div style={{
             direction: 'ltr',
-            color: '#424242',
+            color: '#fafafa',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -17,7 +17,7 @@ const Logo = ({size}) => {
             fontSize: `${size}px`
         }} >
             Sanjesh.
-                <div style={{ color: '#b71c1c' }}>Love</div>
+                <div style={{ color: '#fafafa' }}>Love</div>
         </div>
     )
 }

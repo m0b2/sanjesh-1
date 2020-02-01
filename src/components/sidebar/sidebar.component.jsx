@@ -15,9 +15,8 @@ import './sidebar.style.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Avatar from "@material-ui/core/Avatar";
 import { SidebarContext } from '../../context/sidebar.context';
-
+import Avatar from '../avatar/avatar.component';
 
 
 const useStyles = makeStyles({
@@ -51,27 +50,6 @@ const useStyles = makeStyles({
 
     textAlign: 'right',
     marginLeft: '16px'
-  },
-  avatar: {
-    width: '68px',
-    height: '68px',
-    position: 'absolute',
-    right: '20px',
-    marginTop: '16px',
-    border: '2px white solid'
-  },
-  img: {
-    width: '100%',
-    height: '100%'
-  },
-  p: {
-    textAlign: 'right',
-    width: '100%',
-    position: 'absolute',
-    top: '17%',
-    right: '20px',
-    fontFamily: 'B Yekan',
-    fontSize: '22px'
   }
 });
 
@@ -136,7 +114,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem style={{ direction: 'rtl' }} key={`list-side${'sdasd'}`} className={classes.topList}>
           <ListItemIcon>
             <IconButton className={classes.iconClose} aria-label="delete"
-            onClick={() => setOpen({right:false})}
+              onClick={() => setOpen({ right: false })}
             >
               <CloseIcon />
 
@@ -147,12 +125,10 @@ export default function SwipeableTemporaryDrawer() {
         <Divider />
 
 
-        <div className='sidebar-avatar-container'>
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            <img className={classes.img} src={'https://qsf.fs.quoracdn.net/-3-images.new_grid.profile_pic_default.png-26-345032f7d91f49f2.png'} alt='avatar' />
-          </Avatar>
-          <p className={classes.p}>نام کاربری</p>
-        </div>
+        <Avatar />
+
+
+
         <Divider />
 
         {sideList('right')}

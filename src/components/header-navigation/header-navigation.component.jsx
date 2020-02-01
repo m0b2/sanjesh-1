@@ -9,6 +9,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { withRouter } from 'react-router-dom';
+import ProfileMenu from '../profile-menu/profile-menu.component';
 
 
 const menu = [
@@ -61,6 +62,9 @@ function IconLabelTabs({ history }) {
         <div className='header-nav-container'>
             <div style={{ marginBottom: '60px', position: 'absolute', right: '1%' }}>
                 <Logo size={28} />
+            </div>
+            <div style={{ marginBottom: '60px', position: 'absolute', left: '1%' }}>
+                {/* <ProfileMenu /> */}
             </div>
             <div  className='header-tab-container'>
             <Tabs
