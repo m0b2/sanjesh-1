@@ -1,0 +1,28 @@
+.compare-page-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.compare-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: none;
+    
+    
+}
+
+
+.compare-img-container img{
+    background: fixed;
+    background-repeat: no-repeat;
+   
+}

@@ -2,12 +2,12 @@ import React from 'react';
 import './Logo.style.css';
 
 
-const Logo = ({size}) => {
+const Logo = ({ size, red }) => {
 
     return (
         <div style={{
             direction: 'ltr',
-            color: '#fafafa',
+            color: (red ? '#b71c1c' : '#fafafa'),
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -17,7 +17,7 @@ const Logo = ({size}) => {
             fontSize: `${size}px`
         }} >
             Sanjesh.
-                <div style={{ color: '#fafafa' }}>Love</div>
+                <div style={{ color: (red ? '#b71c1c' : '#fafafa') }}>Love</div>
         </div>
     )
 }

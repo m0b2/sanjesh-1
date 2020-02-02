@@ -10,6 +10,7 @@ import { SidebarContext } from './context/sidebar.context';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Sidebar from './components/sidebar/sidebar.component';
 import Header from './components/header-navigation/header-navigation.component';
+import ComparePage from './pages/compare/compare.page'
 // man amade am vay vay
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/question" component={Categories} />
           <Route exact path="/question/:index" component={Question_review} />
-          <Route exact path="/compare" component={Notification} />
+          <Route exact path="/compare" component={ComparePage} />
           <Route exact path="/notification" component={Notification} />
           {/* <Redirect to="/home" /> */}
         </Switch>

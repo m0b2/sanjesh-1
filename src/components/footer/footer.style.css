@@ -17,6 +17,9 @@
 .Mui-selected svg{
     color:#b71c1c;
 }
+.Mui-selected {
+    color:#b71c1c;
+}
 
 .footer-item {
     font-size: 60px;

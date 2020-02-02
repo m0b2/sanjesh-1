@@ -61,7 +61,7 @@ function IconLabelTabs({ history }) {
     return (
         <div className='header-nav-container'>
             <div style={{ marginBottom: '60px', position: 'absolute', right: '1%' }}>
-                <Logo size={28} />
+                <Logo size={28} red/>
             </div>
             <div style={{ marginBottom: '60px', position: 'absolute', left: '1%' }}>
                 {/* <ProfileMenu /> */}

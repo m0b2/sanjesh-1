@@ -43,7 +43,8 @@ const handleChange = (event, newValue, setValue, history) => {
 
 const useStyles = makeStyles({
     root: {
-        height:'60px'
+        height:'60px',
+        color:'gray'
     },
     label: {
         fontFamily: 'Vazir',
