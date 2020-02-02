@@ -11,6 +11,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Sidebar from './components/sidebar/sidebar.component';
 import Header from './components/header-navigation/header-navigation.component';
 import ComparePage from './pages/compare/compare.page'
+import ProfileView from './pages/profile-view/profile-view.component';
 // man amade am vay vay
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/question/:index" component={Question_review} />
           <Route exact path="/compare" component={ComparePage} />
           <Route exact path="/notification" component={Notification} />
+          <Route exact path="/profile" component={ProfileView} />
           {/* <Redirect to="/home" /> */}
         </Switch>
       </div>
