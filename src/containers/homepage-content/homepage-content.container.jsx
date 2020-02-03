@@ -24,7 +24,6 @@ export default ({ activePage }) => {
                     <IconCard number={'6'} icon={talk}  title={'نیازمند مشاوره'}/>
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
-
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
