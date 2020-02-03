@@ -23,6 +23,17 @@ export default ({ activePage }) => {
                     <NumberStatic total={125} current={46} pathColor={'blue'} title={'سوالات پاسخ داده شده'} />
                     <IconCard number={'6'} icon={talk}  title={'نیازمند مشاوره'}/>
                     <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+                    <IconCard number={'4'} icon={compare}  title={'تعداد قیاس'}/>
+
 
                 </div>
             
