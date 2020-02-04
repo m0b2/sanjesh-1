@@ -21,7 +21,7 @@ const Categories = props => {
 
   return (
     <div className="categories">
-      <Tab />
+      {/* <Tab /> */}
       {MyCategories}
     </div>
   );

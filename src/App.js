@@ -12,7 +12,10 @@ import Sidebar from './components/sidebar/sidebar.component';
 import Header from './components/header-navigation/header-navigation.component';
 import ComparePage from './pages/compare/compare.page'
 import ProfileView from './pages/profile-view/profile-view.component';
+import SideList from './containers/side-list/side-list.container';
 // man amade am vay vay
+// rnpm baraye fron
+// add address font
 
 function App() {
 
@@ -23,27 +26,29 @@ function App() {
 
   return (
     <div className="app">
-      {window.screen.width < 421 ? <Footer /> : <Header/>}
-      
-      <div className='main-app'>
-      
-        <SidebarContext.Provider value={SidebarOpen}>
-        {window.screen.width < 421 ? <Appbar /> : null}
-        {window.screen.width < 421 ? <Sidebar /> : null}
-        </SidebarContext.Provider>
-        <Switch>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/question" component={Categories} />
-          <Route exact path="/question/:index" component={Question_review} />
-          <Route exact path="/compare" component={ComparePage} />
-          <Route exact path="/notification" component={Notification} />
-          <Route exact path="/profile" component={ProfileView} />
-          {/* <Redirect to="/home" /> */}
-        </Switch>
-      </div>
-      {window.screen.width < 421 ? <Footer /> : null}
-    </div>
-  );
-}
+      {window.screen.width < 421 ? <Footer /> : <Header />}
+      <div  className='main-app-and-list-wrapper'>
+      <SideList/>
+        <div className='main-app'>
 
-export default App;
+          <SidebarContext.Provider value={SidebarOpen}>
+            {window.screen.width < 421 ? <Appbar /> : null}
+            {window.screen.width < 421 ? <Sidebar /> : null}
+          </SidebarContext.Provider>
+          <Switch>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/question" component={Categories} />
+            <Route exact path="/question/:index" component={Question_review} />
+            <Route exact path="/compare" component={ComparePage} />
+            <Route exact path="/notification" component={Notification} />
+            <Route exact path="/profile" component={ProfileView} />
+            {/* <Redirect to="/home" /> */}
+          </Switch>
+        </div>
+        </div>
+        {window.screen.width < 421 ? <Footer /> : null}
+      </div>
+      );
+    }
+    
+    export default App;
