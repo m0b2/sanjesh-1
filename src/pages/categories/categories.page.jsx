@@ -1,11 +1,8 @@
 import React from "react";
 import "./categories.style.css";
 import Categories from "../../containers/categories/categories.container";
-<<<<<<< HEAD
 import { Container } from "@material-ui/core";
-=======
 import { useDispatch } from 'react-redux';
->>>>>>> d8d31a42c4f7655bebdfe7bfe4ea80d2dec8daaf
 const category = [
   "کار",
   "مسکن",
