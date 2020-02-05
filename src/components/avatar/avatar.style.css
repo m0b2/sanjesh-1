@@ -1,7 +1,8 @@
-.sidebar-avatar-container{
+.sidebar-avatar-container {
     display: flex;
-    flex-direction: column;
+
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    
+
 }

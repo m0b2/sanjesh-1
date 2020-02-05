@@ -1,6 +1,7 @@
 import React from "react";
 import "./categories.style.css";
 import Categories from "../../containers/categories/categories.container";
+import { useDispatch } from 'react-redux';
 const category = [
   "کار",
   "مسکن",
@@ -38,8 +39,33 @@ const category2 = [
   "پرسشنامه چهارم",
   "پرسشنامه پنجم"
 ];
-
+const tabs = ['فردی', 'رفتاری'];
 export default () => {
+
+
+  /**
+   * Moshakhas mikone in page be sideList niaz dare ya na!
+   */
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
+    dispatch({ type: 'ADD_SIDE_LIST' });
+
+
+    return () => dispatch({ type: 'REMOVE_SIDE_LIST' });
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="categories-wrapper">
       <Categories data={[category, category2]} />
