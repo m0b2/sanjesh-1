@@ -1,90 +1,30 @@
-// import React from "react";
-// import "./notification.style.css";
-// import Bounce from "react-reveal/Bounce";
-// const Notification = () => {
-//   return (
-//     <div className="question-review-wrapper">
-//       <br></br>
-//       <h2>کارگران مشغول کارند</h2>
-//     </div>
-//   );
-// };
+import "./notification.style.css";
 
-// export default Notification;
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import NotificationCom from "../../components/notification/notification.component";
 
-export default function RecipeReviewCard() {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+const title = ["پرسشنامه ", "پرسشنامه ", "پرسشنامه ", "پرسشنامه ", "پرسشنامه "];
+const subheader = [" اول", " دوم", " سوم", " چهارم", " پنجم"];
+const details = [
+  "پرسشنامه اول",
+  "پرسشنامه دوم",
+  "پرسشنامه سوم",
+  "پرسشنامه چهارم",
+  "پرسشنامه پنجم"
+];
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+const data = [title, subheader, details];
 
-  return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="عنوان اعلان"
-        subheader="فرستاده توسط : مدیریت"
-      />
-    </Card>
-  );
-}
+const Notification = () => {
+  const MyNotification = data.map((value, subheader, detailsParagraph) => (
+    <NotificationCom
+      title={value}
+      subheader={subheader}
+      details={detailsParagraph}
+    />
+  ));
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    width: "100%",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.5,
-    // shadowRadius: 3.84,
-    elevation: 5
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  },
-  avatar: {
-    backgroundColor: red[500],
-    marginLeft: 10
-  }
-}));
+  return <div>{MyNotification}</div>;
+};
+
+export default Notification;

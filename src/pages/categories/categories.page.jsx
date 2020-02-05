@@ -1,6 +1,7 @@
 import React from "react";
 import "./categories.style.css";
 import Categories from "../../containers/categories/categories.container";
+import { Container } from "@material-ui/core";
 const category = [
   "کار",
   "مسکن",

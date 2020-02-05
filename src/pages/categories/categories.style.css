@@ -1,10 +1,10 @@
-.categories-wrapper{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 800px;
-    justify-self: center;
-    align-self: center;
-    overflow: hidden;
-    
+.categories-wrapper {
+  /* display: flex; */
+  justify-content: space-around;
+  align-items: center;
+  max-width: 800px;
+  justify-self: center;
+  align-self: center;
+  overflow: hidden;
+  /* margin-top: 1000; */
 }
