@@ -4,12 +4,9 @@ import Avatar from '../../components/avatar/avatar.component';
 import Fade from 'react-reveal/Fade';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Chip from '@material-ui/core/Chip';
-import Divider from '@material-ui/core/Divider';
 import Field from '../../components/profile-field/profile-field.component';
-
+import { connect, useStore, useDispatch } from 'react-redux';
+import Tab from '../../components/tab-header/tab-header.component';
 const useStyles = makeStyles({
     root: {
 
@@ -33,7 +30,33 @@ const useStyles = makeStyles({
         fontFamily: 'Vazir'
     }
 });
+
+
+const tabs = ['حساب کاربری', 'مشخصات', 'تحصیلات', 'سلامت']
 const ProfilView = () => {
+
+
+    /**
+     * Moshakhas mikone in page be sideList niaz dare ya na!
+     */
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
+        dispatch({ type: 'ADD_SIDE_LIST' });
+
+
+        return () => dispatch({ type: 'REMOVE_SIDE_LIST' });
+    }, [dispatch]);
+
+
+
+
+
+
+
+
+
+
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
@@ -45,11 +68,12 @@ const ProfilView = () => {
             <Fade top>
                 <div className='profile-avatar-container'>
                     <Avatar style={{ position: 'relative' }} />
-                    <Chip color="primary" classes={{ root: classes.root }} label={'تغییر تصویر'} />
+                    {/* <Chip color="primary" classes={{ root: classes.root }} label={'تغییر تصویر'} /> */}
                 </div>
             </Fade>
+            {window.screen.width < 421 ? <Tab /> : null}
             <Paper className={classes.paper}>
-                <Tabs
+                {/* <Tabs
                     value={value}
                     onChange={handleChange}
                     indicatorColor="primary"
@@ -60,11 +84,13 @@ const ProfilView = () => {
                     <Tab className={classes.tab} label="مشخصات" />
                     <Tab className={classes.tab} label="تحصیلات" />
                     <Tab className={classes.tab} label="سلامت" />
-                </Tabs>
+                </Tabs> */}
 
 
             </Paper>
 
+            <Field />
+            <Field />
             <Field />
 
         </>
@@ -74,8 +100,16 @@ const ProfilView = () => {
 
 }
 
+const mapStatetoProps = (store) => {
+    return (
+        {
+            current_tab: store.current_tab,
+            tabs_title: store.current_tab,
+        }
+    )
+}
 
-export default ProfilView;
+export default connect(mapStatetoProps)(ProfilView);
 
 
 
