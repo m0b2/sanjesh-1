@@ -68,7 +68,7 @@ function IconLabelTabs({ history }) {
                 onClick={() => setOpen({ right: true })}
                 style={{ marginBottom: '60px', position: 'absolute', right: '0%' }}
             >
-                <MenuIcon style={{ color: 'red' }} />
+                <MenuIcon style={{ color: '#b71c1c', fontSize:'36px' }} />
             </IconButton>
             <div style={{ marginBottom: '60px', position: 'absolute', right: '3%', marginRight: '16px' }}>
                 <Logo size={28} red />
