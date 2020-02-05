@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 const useStyles = makeStyles(theme => ({
   root: {
     // display: "flex",
@@ -51,7 +52,24 @@ export default function Sign_inComponent() {
   };
 
   return (
-    <div className={(classes.root, classes.center)}>
+    <div
+      className={(classes.root, classes.center)}
+      style={{
+        flexDirection: "column",
+        paddingLeft: "20%",
+        paddingRight: "20%"
+      }}
+    >
+      <div
+        style={{ width: "100%", marginTop: 30 }}
+        className={clsx(classes.center)}
+      >
+        <img
+          src="https://qsf.fs.quoracdn.net/-3-images.new_grid.profile_pic_default.png-26-345032f7d91f49f2.png"
+          alt="no-image"
+          style={{ width: "80%", height: 100 }}
+        />
+      </div>
       <div>
         <FormControl className={clsx(classes.textField, classes.center)}>
           <InputLabel
@@ -95,6 +113,36 @@ export default function Sign_inComponent() {
         >
           ورود
         </Button>
+
+        <div>
+          <Link
+            component="button"
+            variant="body2"
+            onClick={() => {
+              console.info("forget pass");
+            }}
+            style={{ marginTop: 10 }}
+          >
+            رمز عبور خود را فراموش کرده اید؟
+          </Link>
+        </div>
+
+        <div style={{ marginTop: 50 }}>
+          <p>
+            آیا هنوز ثبت نام نکرده اید؟
+            <span>
+              <Link
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("register");
+                }}
+              >
+                ثبت نام کنید
+              </Link>
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );
