@@ -12,21 +12,21 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import Button from "@material-ui/core/Button";
 const useStyles = makeStyles(theme => ({
   root: {
     // display: "flex",
-    flex: 1,
+
     backgroundColor: "red"
   },
-  margin: {
-    margin: theme.spacing(1)
-  },
+  center: { display: "flex", justifyContent: "center", alignItems: "center" },
   withoutLabel: {
     marginTop: theme.spacing(3)
   },
   textField: {
-    width: 200
+    width: 200,
+    direction: "rtl",
+    textAlign: "right"
   }
 }));
 
@@ -51,19 +51,25 @@ export default function Sign_inComponent() {
   };
 
   return (
-    <div className={classes.root}>
-      <div style={{ backgroundColor: "yellow" }}>
-        <div
-          style={{
-            backgroundColor: "orange",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <TextField id="standard-search" label="نام کاربری" type="text" />
-        </div>
-        <FormControl className={clsx(classes.margin, classes.textField)}>
-          <InputLabel htmlFor="standard-adornment-password">رمزعبور</InputLabel>
+    <div className={(classes.root, classes.center)}>
+      <div>
+        <FormControl className={clsx(classes.textField, classes.center)}>
+          <InputLabel
+            htmlFor="standard-adornment-password"
+            className={clsx(classes.textField)}
+          >
+            نام کاربری
+          </InputLabel>
+          <Input id="standard-adornment-password" type="text" />
+        </FormControl>
+
+        <FormControl className={clsx(classes.textField, classes.center)}>
+          <InputLabel
+            htmlFor="standard-adornment-password"
+            className={clsx(classes.textField)}
+          >
+            رمزعبور
+          </InputLabel>
           <Input
             id="standard-adornment-password"
             type={values.showPassword ? "text" : "password"}
@@ -82,6 +88,13 @@ export default function Sign_inComponent() {
             }
           />
         </FormControl>
+        <Button
+          variant="outlined"
+          color="secondary"
+          style={{ width: "100%", marginTop: 30 }}
+        >
+          ورود
+        </Button>
       </div>
     </div>
   );
