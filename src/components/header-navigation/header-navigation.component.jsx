@@ -70,10 +70,10 @@ function IconLabelTabs({ history }) {
             >
                 <MenuIcon style={{ color: 'red' }} />
             </IconButton>
-            <div style={{ marginBottom: '60px', position: 'absolute', right: '3%', marginRight:'16px' }}>
+            <div style={{ marginBottom: '60px', position: 'absolute', right: '3%', marginRight: '16px' }}>
                 <Logo size={28} red />
             </div>
-            <div style={{ marginBottom: '60px', position: 'absolute', left: '1%',  }}>
+            <div style={{ marginBottom: '60px', position: 'absolute', left: '1%', }}>
                 {/* <ProfileMenu /> */}
             </div>
             <div className='header-tab-container'>
