@@ -1,7 +1,6 @@
 import React from 'react';
 import './option.style.css';
 
-
 const Answer = ({ options, setUserChooseSomething }) => {
 
 
@@ -15,7 +14,15 @@ const Answer = ({ options, setUserChooseSomething }) => {
                 onClick={() => setUserChooseSomething(true)}
             >
                 <input id={"radioV1" + index} name="radioV1" type="radio" />
-                <label htmlFor={"radioV1" + (index)}>{opt}</label>
+                <label htmlFor={"radioV1" + (index)}>
+
+                    {opt}
+                    
+
+
+
+
+                </label>
             </div>
 
         )
