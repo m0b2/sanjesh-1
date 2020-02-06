@@ -34,6 +34,8 @@
     transition: color 200ms ease-in;
     overflow: hidden;
     background-color: rgb(241, 241, 241);
+    padding-right: 16px;
+
 
 
 }
@@ -48,7 +50,6 @@
     position: absolute;
     left: 50%;
     top: 50%;
-
     transform: translate(-50%, -50%) scale3d(1, 1, 1);
     transition: all 460ms cubic-bezier(0.4, 0.0, 0.2, 1);
     opacity: 0;
@@ -67,11 +68,12 @@
     border-radius: 50%;
     z-index: 2;
     position: absolute;
-    right: 30px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     transition: all 200ms ease-in;
+
 }
 
 .inputGroup input:checked~label {
@@ -130,12 +132,13 @@
 
     .inputGroup {
 
-        width: 320px;
+        width: 324px;
 
     }
 
     .inputGroup label {
-        font-size: 10px;
+        font-size: 9px;
+        width: 100%;
     }
 
 
@@ -144,6 +147,8 @@
         transition: all 360ms cubic-bezier(0, 0.0, 0.2, 1);
 
     }
+
+   
 
 
 
@@ -210,7 +215,7 @@
     }
 
     .inputGroup label {
-        font-size: 18px;
+        font-size: 14px;
     }
 
 

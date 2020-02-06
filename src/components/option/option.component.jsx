@@ -2,7 +2,7 @@ import React from 'react';
 import './option.style.css';
 
 
-const Answer = ({ options }) => {
+const Answer = ({ options, setUserChooseSomething }) => {
 
 
 
@@ -11,7 +11,9 @@ const Answer = ({ options }) => {
 
         return (
 
-            <div className="inputGroup" key={"V1input" + index}>
+            <div className="inputGroup" key={"V1input" + opt}
+                onClick={() => setUserChooseSomething(true)}
+            >
                 <input id={"radioV1" + index} name="radioV1" type="radio" />
                 <label htmlFor={"radioV1" + (index)}>{opt}</label>
             </div>
