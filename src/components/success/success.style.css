@@ -1,0 +1,114 @@
+.success-container svg {
+    margin-top: 16px;;
+    margin-right: 10px;;
+    width: 176px;
+    height: 176px;
+}
+
+
+.success-message-title{
+    font-family: 'B Titr';
+    font-size: 24px;
+    text-align: center;
+}
+.success-message-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.path {
+    stroke-linecap: round;
+    stroke-dasharray: 27;
+    stroke-dashoffset: -23;
+    animation: dash 1000ms ease forwards;
+    animation-delay: 1s;
+
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.circle__box {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.circle__wrapper {
+    width: 100px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+
+.circle__wrapper--right {
+    right: 0;
+}
+
+.circle__wrapper--left {
+    left: 0;
+}
+
+.circle__whole {
+    width: 160px;
+    height: 160px;
+    border: 20px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+.circle__right {
+    border-top: 20px solid #00c853;
+    border-right: 20px solid #00c853;
+    right: 1px;
+    animation: circleRight 800ms linear forwards;
+}
+
+.circle__left {
+    border-bottom: 20px solid #00c853;
+    border-left: 20px solid #00c853;
+    left: 1px;
+    animation: circleLeft 800ms linear forwards;
+}
+
+@keyframes circleRight {
+    0% {
+        transform: rotate(-135deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes circleLeft {
+
+    0%,
+    50% {
+        transform: rotate(-135deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}

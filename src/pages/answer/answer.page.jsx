@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import Success from '../../components/success/success.component';
 import { makeStyles } from '@material-ui/core/styles';
 import { useStore } from 'react-redux';
 const inputs = [
@@ -62,43 +63,48 @@ const Answer = () => {
 
             </div>
             <Divider variant="middle" />
-            <div className='question-content-container'>
-                <span>
+            {(currentQuestion >= size) ? <Success /> : (
+                <>
+                    <div className='question-content-container'>
+                        <span>
 
-                    {question[currentQuestion]}
-                </span>
-            </div>
+                            {question[currentQuestion]}
+                        </span>
+                    </div>
 
-            <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
+                    <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
 
-            <div className='answer-buttons-container'>
+                    <div className='answer-buttons-container'>
 
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<NavigateNextIcon />}
-                    className={classes.button}
-                    onClick={() => {
-                        setCurrentQuestion((oldState) => (oldState + 1 === size ? oldState : oldState + 1))
-                        currentQuestion + 1 !== size && setUserChooseSomething(false);
-                    }
-                    }
-                    disabled={!userChooseSomething}
-                >
-                    بعدی
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            startIcon={<NavigateNextIcon />}
+                            className={classes.button}
+                            onClick={() => {
+                                setCurrentQuestion((oldState) => (oldState + 1))
+                                currentQuestion + 1 !== size && setUserChooseSomething(false);
+                            }
+                            }
+                            disabled={!userChooseSomething}
+                        >
+                            بعدی
                 </Button>
 
-                <Button
-                    variant="contained"
-                    color="primary"
-                    endIcon={<NavigateBeforeIcon />}
-                    className={classes.button}
-                    onClick={() => setCurrentQuestion((oldState) => (oldState > 0 ? oldState - 1 : oldState))}
-                >
-                    قبلی
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            endIcon={<NavigateBeforeIcon />}
+                            className={classes.button}
+                            onClick={() => setCurrentQuestion((oldState) => (oldState > 0 ? oldState - 1 : oldState))}
+                        >
+                            قبلی
                 </Button>
 
-            </div>
+                    </div>
+                </>
+
+            )}
         </div>
     )
 }
