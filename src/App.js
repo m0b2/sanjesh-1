@@ -28,7 +28,7 @@ function App({ sideTab }) {
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
-        {window.screen.width < 421 ? <Footer /> : <Header />}
+        {window.screen.width < 421 ? null : <Header />}
         <div className="main-app-and-list-wrapper">
           {sideTab.isVisible && window.screen.width > 421 ? <SideList /> : null}
           <div className="main-app">
@@ -57,7 +57,7 @@ function App({ sideTab }) {
           </div>
         </div>
       </SidebarContext.Provider>
-      {window.screen.width < 421 ? <Footer /> : null}
+      {/* {window.screen.width < 421 ? <Footer /> : null} */}
     </div>
   );
 }

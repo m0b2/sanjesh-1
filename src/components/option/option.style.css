@@ -127,8 +127,10 @@
 
 }
 
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
 
     .inputGroup {
 
@@ -137,7 +139,7 @@
     }
 
     .inputGroup label {
-        font-size: 9px;
+        font-size: 10px;
         width: 100%;
     }
 
@@ -148,25 +150,15 @@
 
     }
 
-   
+    .inputGroup label:after {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #D1D7DC;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        right: 4px;
 
-
-
-}
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
-    .inputGroup {
-
-        width: 360px;
-
+    
     }
-
-    .inputGroup label {
-        font-size: 12px;
-
-    }
-
 
 
 

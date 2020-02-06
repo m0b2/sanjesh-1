@@ -6,7 +6,6 @@ import Divider from '@material-ui/core/Divider';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { makeStyles } from '@material-ui/core/styles';
-import TextyAnim from 'rc-texty';
 
 const inputs = [
     ['گزینه اول', 'گزینه دوم', 'گزینه سوم', 'گزینه چهارم', 'گزینه پنجم'],
@@ -61,40 +60,12 @@ const Answer = () => {
             <div className='question-content-container'>
                 <span>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     {question[currentQuestion]}
-
-
-
-
-
-
-
-
-
                 </span>
             </div>
-            <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
+            
+                <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
+            
             <div className='answer-buttons-container'>
 
                 <Button
