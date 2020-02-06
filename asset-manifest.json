@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "/sanjesh/static/css/main.d4efac92.chunk.css",
-    "main.js": "/sanjesh/static/js/main.6f4a2648.chunk.js",
-    "main.js.map": "/sanjesh/static/js/main.6f4a2648.chunk.js.map",
-    "runtime-main.js": "/sanjesh/static/js/runtime-main.687c3594.js",
-    "runtime-main.js.map": "/sanjesh/static/js/runtime-main.687c3594.js.map",
+    "main.css": "/sanjesh/static/css/main.e98200a3.chunk.css",
+    "main.js": "/sanjesh/static/js/main.2f18fa4d.chunk.js",
+    "main.js.map": "/sanjesh/static/js/main.2f18fa4d.chunk.js.map",
+    "runtime-main.js": "/sanjesh/static/js/runtime-main.a9af057d.js",
+    "runtime-main.js.map": "/sanjesh/static/js/runtime-main.a9af057d.js.map",
     "static/css/2.533d620f.chunk.css": "/sanjesh/static/css/2.533d620f.chunk.css",
-    "static/js/2.bfbc8ab7.chunk.js": "/sanjesh/static/js/2.bfbc8ab7.chunk.js",
-    "static/js/2.bfbc8ab7.chunk.js.map": "/sanjesh/static/js/2.bfbc8ab7.chunk.js.map",
+    "static/js/2.0752744c.chunk.js": "/sanjesh/static/js/2.0752744c.chunk.js",
+    "static/js/2.0752744c.chunk.js.map": "/sanjesh/static/js/2.0752744c.chunk.js.map",
     "index.html": "/sanjesh/index.html",
-    "precache-manifest.2c13a025d1ba44ed0f1f3bd336a8a18c.js": "/sanjesh/precache-manifest.2c13a025d1ba44ed0f1f3bd336a8a18c.js",
+    "precache-manifest.11eaaca13695084224d176bfd6566345.js": "/sanjesh/precache-manifest.11eaaca13695084224d176bfd6566345.js",
     "service-worker.js": "/sanjesh/service-worker.js",
     "static/css/2.533d620f.chunk.css.map": "/sanjesh/static/css/2.533d620f.chunk.css.map",
-    "static/css/main.d4efac92.chunk.css.map": "/sanjesh/static/css/main.d4efac92.chunk.css.map",
-    "static/js/2.bfbc8ab7.chunk.js.LICENSE": "/sanjesh/static/js/2.bfbc8ab7.chunk.js.LICENSE",
+    "static/css/main.e98200a3.chunk.css.map": "/sanjesh/static/css/main.e98200a3.chunk.css.map",
+    "static/js/2.0752744c.chunk.js.LICENSE": "/sanjesh/static/js/2.0752744c.chunk.js.LICENSE",
+    "static/media/Vazir.ttf": "/sanjesh/static/media/Vazir.8c8aa2d3.ttf",
     "static/media/compare.svg": "/sanjesh/static/media/compare.992c999d.svg",
     "static/media/comparevector300.png": "/sanjesh/static/media/comparevector300.83dc8fc8.png",
     "static/media/talk.svg": "/sanjesh/static/media/talk.2b27a83e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.687c3594.js",
+    "static/js/runtime-main.a9af057d.js",
     "static/css/2.533d620f.chunk.css",
-    "static/js/2.bfbc8ab7.chunk.js",
-    "static/css/main.d4efac92.chunk.css",
-    "static/js/main.6f4a2648.chunk.js"
+    "static/js/2.0752744c.chunk.js",
+    "static/css/main.e98200a3.chunk.css",
+    "static/js/main.2f18fa4d.chunk.js"
   ]
 }
