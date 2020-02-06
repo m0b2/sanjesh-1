@@ -57,7 +57,9 @@ const Category = ({
 
     // )
 
-    <Card className={classes.card} style={{ width: "100%" }}>
+    <Card className={classes.card} style={{ width: "100%" }}
+      onClick={() => history.push(`/question/${index}/`)}
+    >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

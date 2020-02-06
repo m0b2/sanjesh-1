@@ -37,13 +37,14 @@ const useStyles = makeStyles({
     position: 'absolute',
     right: '22px',
     top: '12px',
-    fontFamily: 'B Yekan'
+    fontFamily: 'B Yekan',
+    color:'white'
 
 
   },
   topList: {
     height: '42px',
-    backgroundColor: '#fafafa'
+    backgroundColor: '#b71c1c'
   },
   text: {
     fontFamily: 'Vazir',
@@ -111,24 +112,25 @@ export default function SwipeableTemporaryDrawer() {
         onClose={toggleDrawer('right', false)}
         onOpen={toggleDrawer('right', true)}
       >
-        <ListItem style={{ direction: 'rtl' }} key={`list-side${'sdasd'}`} className={classes.topList}>
-          <ListItemIcon>
-            <IconButton className={classes.iconClose} aria-label="delete"
-              onClick={() => setOpen({ right: false })}
-            >
-              <CloseIcon />
+       
+          <ListItem style={{ direction: 'rtl' }} key={`list-side${'sdasd'}`} className={classes.topList}>
+            <ListItemIcon>
+              <IconButton className={classes.iconClose} aria-label="delete"
+                onClick={() => setOpen({ right: false })}
+              >
+                <CloseIcon style={{color:'white'}}/>
 
-            </IconButton>
-          </ListItemIcon>
-          <ListItemText classes={{ primary: classes.listText }} primary={'حساب کاربری'} />
-        </ListItem>
-        <Divider />
-
-
-        <Avatar />
+              </IconButton>
+            </ListItemIcon>
+            <ListItemText classes={{ primary: classes.listText }} primary={'حساب کاربری'} />
+          </ListItem>
+          <Divider />
 
 
+          <Avatar />
 
+
+        
         <Divider />
 
         {sideList('right')}

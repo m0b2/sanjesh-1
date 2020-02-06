@@ -34,6 +34,8 @@
     transition: color 200ms ease-in;
     overflow: hidden;
     background-color: rgb(241, 241, 241);
+    padding-right: 16px;
+
 
 
 }
@@ -48,7 +50,6 @@
     position: absolute;
     left: 50%;
     top: 50%;
-
     transform: translate(-50%, -50%) scale3d(1, 1, 1);
     transition: all 460ms cubic-bezier(0.4, 0.0, 0.2, 1);
     opacity: 0;
@@ -67,11 +68,12 @@
     border-radius: 50%;
     z-index: 2;
     position: absolute;
-    right: 30px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     transition: all 200ms ease-in;
+
 }
 
 .inputGroup input:checked~label {
@@ -125,17 +127,20 @@
 
 }
 
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
 
     .inputGroup {
 
-        width: 320px;
+        width: 324px;
 
     }
 
     .inputGroup label {
         font-size: 10px;
+        width: 100%;
     }
 
 
@@ -145,23 +150,15 @@
 
     }
 
+    .inputGroup label:after {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #D1D7DC;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        right: 4px;
 
-
-}
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
-    .inputGroup {
-
-        width: 360px;
-
+    
     }
-
-    .inputGroup label {
-        font-size: 12px;
-
-    }
-
 
 
 
@@ -210,7 +207,7 @@
     }
 
     .inputGroup label {
-        font-size: 18px;
+        font-size: 14px;
     }
 
 

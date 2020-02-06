@@ -2,12 +2,16 @@ import React from 'react';
 import './question-review.style.css';
 
 import Category from '../../components/category/category.component';
-import store from '../../redux/store';
+import { useStore } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import NumberStatic from '../../components/number-static/number-static.component';
 
-const Question_Review = ({ match }) => {
-
+const Question_Review = ({ match, history }) => {
+    const store = useStore();
+    React.useEffect(() => {
+        store.dispatch({ type: 'REMOVE_FOOTER' });
+        return () => store.dispatch({ type: 'ADD_FOOTER' });
+    }, [])
     const { index } = match.params;
     const questions = store.getState().question;
     const current = store.getState().question_type;
@@ -25,7 +29,7 @@ const Question_Review = ({ match }) => {
                 <NumberStatic total={14} current={6} title={'تلاقی'} />
             </div>
 
-            <h2>شروع سوالات</h2>
+            <h2 onClick={() => history.push(`answer`)}>شروع سوالات</h2>
 
         </div>
     )

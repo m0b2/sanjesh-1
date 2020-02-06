@@ -2,12 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
-  overflow: auto;
   direction: rtl;
   height: 96vh;
   width: 99vw;
   background-color: #fafafa;
+  overflow: hidden;
 }
 
 .main-app {
@@ -34,7 +33,6 @@
   -webkit-box-flex: 1;
   flex-grow: 1;
   justify-content: stretch;
-  overflow: hidden;
   width: 100%;
   -webkit-box-direction: normal;
   max-width: 935px;

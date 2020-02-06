@@ -1,8 +1,8 @@
 import React from 'react';
 import './option.style.css';
+import Fade from 'react-reveal/Fade';
 
-
-const Answer = ({ options }) => {
+const Answer = ({ options, setUserChooseSomething }) => {
 
 
 
@@ -10,12 +10,24 @@ const Answer = ({ options }) => {
     const inputs = options.map((opt, index) => {
 
         return (
+            <Fade right opposite delay={100*(index+1)} duration={500}>
+                <div className="inputGroup" key={"V1input" + opt}
+                    onClick={() => setUserChooseSomething(true)}
+                >
 
-            <div className="inputGroup" key={"V1input" + index}>
-                <input id={"radioV1" + index} name="radioV1" type="radio" />
-                <label htmlFor={"radioV1" + (index)}>{opt}</label>
-            </div>
+                    <input id={"radioV1" + index} name="radioV1" type="radio" />
+                    <label htmlFor={"radioV1" + (index)}>
 
+                        {opt}
+
+
+
+
+
+                    </label>
+
+                </div>
+            </Fade>
         )
     }
 
