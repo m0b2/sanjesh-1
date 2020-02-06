@@ -21,7 +21,7 @@ import Sign_Up_Page from "./pages/signUp/sign_up.page";
 // rnpm baraye fron
 // add address font
 
-function App({ sideTab }) {
+function App({ sideTab, isFooterNeeded }) {
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
 
@@ -48,7 +48,7 @@ function App({ sideTab }) {
               <Route exact path="/compare" component={ComparePage} />
               <Route exact path="/notification" component={Notification} />
               <Route exact path="/profile" component={ProfileView} />
-              <Route exact path="/answer" component={AnswerPage} />
+              <Route exact path="/question/:index/answer" component={AnswerPage} />
               <Route exact path="/signin" component={Sign_In_Page} />
               <Route exact path="/signup" component={Sign_Up_Page} />
 
@@ -57,14 +57,15 @@ function App({ sideTab }) {
           </div>
         </div>
       </SidebarContext.Provider>
-      {/* {window.screen.width < 421 ? <Footer /> : null} */}
+      {isFooterNeeded && window.screen.width < 421 ? <Footer /> : null}
     </div>
   );
 }
 
 const mapStateToProps = store => {
   return {
-    sideTab: store.SideTab
+    sideTab: store.SideTab,
+    isFooterNeeded: store.FooterReducer
   };
 };
 

@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useStore } from 'react-redux';
 const inputs = [
     ['گزینه اول', 'گزینه دوم', 'گزینه سوم', 'گزینه چهارم', 'گزینه پنجم'],
     ['همیشه', 'غالبا', 'گاهی', 'به ندرت', 'هرگز'],
@@ -37,6 +37,11 @@ const useStyles = makeStyles(theme => ({
 
 
 const Answer = () => {
+    const store = useStore()
+    React.useEffect(() => {
+        store.dispatch({ type: 'REMOVE_FOOTER' });
+        return () => store.dispatch({ type: 'ADD_FOOTER' });
+    }, [])
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [userChooseSomething, setUserChooseSomething] = React.useState(false);
     const size = question.length;
@@ -63,9 +68,9 @@ const Answer = () => {
                     {question[currentQuestion]}
                 </span>
             </div>
-            
-                <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
-            
+
+            <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
+
             <div className='answer-buttons-container'>
 
                 <Button

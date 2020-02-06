@@ -3,13 +3,15 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import './appbar.style.css';
 import IconButton from '@material-ui/core/IconButton';
 import Fade from 'react-reveal/Fade';
+import Spin from 'react-reveal/Spin';
+
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
 import { SidebarContext } from '../../context/sidebar.context';
 import Logo from '../logo/Logo.component';
-
-const Appbar = ({ location }) => {
+import { connect } from 'react-redux';
+const Appbar = ({ location, history, isFooterNeeded }) => {
     const { isOpen, setOpen } = React.useContext(SidebarContext);
     let { pathname } = location;
     // console.log(pathname)
@@ -20,36 +22,40 @@ const Appbar = ({ location }) => {
             <div className={'Appbar'}
             >
                 <IconButton edge="start" color="inherit" aria-label="menu"
-                onClick={() => setOpen({right:true})}
+                    onClick={() => setOpen({ right: true })}
                 >
-                    <MenuIcon style={{color:'white'}}/>
+                    <MenuIcon style={{ color: 'white' }} />
                 </IconButton>
                 {/* <Avatar aria-label="recipe" className={classes.avatar}>
 
                 </Avatar> */}
 
-                <Logo size={20}/>
+                <Logo size={20} />
 
 
-                <IconButton className={classes.icon} aria-label="delete" 
-                >
-
-                    <ArrowBackIcon style={{color:'white'}}/>
-                </IconButton>
+                {(isFooterNeeded) ? null :
+                    <IconButton className={classes.icon} aria-label="delete"
+                        onClick={() => { history.goBack() }}
+                    >
+                        <Spin duration={460}>
+                         <ArrowBackIcon style={{ color: 'white' }} />
+                         </Spin>
+                    </IconButton>
+                }
             </div>
         </Fade>
     );
 
 }
-
-export default withRouter(Appbar);
+const mapStatetoProps = store => { return ({ isFooterNeeded: store.FooterReducer }) }
+export default withRouter(connect(mapStatetoProps)(Appbar));
 
 
 const useStyles = makeStyles(theme => ({
     icon: {
         position: 'absolute',
         left: 0,
-        marginTop:'6px'
+        marginTop: '6px'
     },
     strong: {
         display: 'flex',
