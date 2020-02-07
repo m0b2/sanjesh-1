@@ -13,7 +13,7 @@ code {
 @font-face {
   font-family: 'Vazir';
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   src:
     local('Vazir'),
     url('%PUBLIC_URL%/fonts/Vazir.ttf') format('ttf'),
