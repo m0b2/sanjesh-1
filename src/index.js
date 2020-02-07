@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
+import './assets/fonts/Vazir.ttf'
 
 ReactDOM.render(
     <Provider store={store} >

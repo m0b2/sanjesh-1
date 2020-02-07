@@ -19,8 +19,8 @@ const Footer = ({ location, history }) => {
             className={classes.root + ' main-footer'}
         >
             <BottomNavigationAction classes={styles} label={"صفحه‌اصلی"} value="home" icon={<HomeIcon style={{ fontSize: 30 }} />} />
-            <BottomNavigationAction classes={styles} label={"قیاس"} value="compare" icon={<CompareArrowsIcon style={{ fontSize: 30 }} />} />
             <BottomNavigationAction classes={styles} label={"سوالات"} value="question" icon={<HelpOutlineIcon style={{ fontSize: 30 }} />} />
+            <BottomNavigationAction classes={styles} label={"قیاس"} value="compare" icon={<CompareArrowsIcon style={{ fontSize: 30 }} />} />
             <BottomNavigationAction classes={styles} label={"اعلان ها"} value="notification" icon={<NotificationsIcon style={{ fontSize: 30 }} />} />
         </BottomNavigation>
     )
@@ -43,8 +43,8 @@ const handleChange = (event, newValue, setValue, history) => {
 
 const useStyles = makeStyles({
     root: {
-        height:'60px',
-        color:'gray'
+        height: '60px',
+        color: 'gray'
     },
     label: {
         fontFamily: 'Vazir',
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 
     },
     iconOnly: {
-        color:'gray'
+        color: 'gray'
     },
     selected: {
         color: '#b71c1c',
