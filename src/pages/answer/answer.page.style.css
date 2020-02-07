@@ -9,7 +9,6 @@
 .question-content-container {
     display: flex;
     justify-self: center;
-    
     width: 98%;
     justify-content: center;
     align-items: center;
@@ -32,6 +31,7 @@
     align-items: center;
     height: 100%;
     box-sizing: border-box;
+    min-height: 80vh;
 
 }
 

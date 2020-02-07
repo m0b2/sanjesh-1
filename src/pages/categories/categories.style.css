@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   max-width: 800px;
-  justify-self: center;
+  justify-self: flex-start;
   align-self: center;
   overflow: hidden;
   /* margin-top: 1000; */
