@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sanjesh/static/css/main.c66cd05b.chunk.css",
+    "main.css": "/sanjesh/static/css/main.55136c9f.chunk.css",
     "main.js": "/sanjesh/static/js/main.7921f4a5.chunk.js",
     "main.js.map": "/sanjesh/static/js/main.7921f4a5.chunk.js.map",
     "runtime-main.js": "/sanjesh/static/js/runtime-main.a9af057d.js",
@@ -9,10 +9,10 @@
     "static/js/2.1c681b06.chunk.js": "/sanjesh/static/js/2.1c681b06.chunk.js",
     "static/js/2.1c681b06.chunk.js.map": "/sanjesh/static/js/2.1c681b06.chunk.js.map",
     "index.html": "/sanjesh/index.html",
-    "precache-manifest.4d39b57d66c3587f498a2f240df68211.js": "/sanjesh/precache-manifest.4d39b57d66c3587f498a2f240df68211.js",
+    "precache-manifest.64ac5af8ab2a3a63439824fca5e17a73.js": "/sanjesh/precache-manifest.64ac5af8ab2a3a63439824fca5e17a73.js",
     "service-worker.js": "/sanjesh/service-worker.js",
     "static/css/2.533d620f.chunk.css.map": "/sanjesh/static/css/2.533d620f.chunk.css.map",
-    "static/css/main.c66cd05b.chunk.css.map": "/sanjesh/static/css/main.c66cd05b.chunk.css.map",
+    "static/css/main.55136c9f.chunk.css.map": "/sanjesh/static/css/main.55136c9f.chunk.css.map",
     "static/js/2.1c681b06.chunk.js.LICENSE": "/sanjesh/static/js/2.1c681b06.chunk.js.LICENSE",
     "static/media/index.css": "/sanjesh/static/media/Vazir.56630562.woff2",
     "static/media/compare.svg": "/sanjesh/static/media/compare.992c999d.svg",
@@ -23,7 +23,7 @@
     "static/js/runtime-main.a9af057d.js",
     "static/css/2.533d620f.chunk.css",
     "static/js/2.1c681b06.chunk.js",
-    "static/css/main.c66cd05b.chunk.css",
+    "static/css/main.55136c9f.chunk.css",
     "static/js/main.7921f4a5.chunk.js"
   ]
 }
