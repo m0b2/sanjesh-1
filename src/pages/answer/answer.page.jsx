@@ -55,8 +55,8 @@ const Answer = () => {
 
 
     return (
-        <div className='question-container'>
-            <div className='static-number'>
+        <div className='answer-container'>
+            <div className='static-number' style={{paddingTop:'0%', marginTop:'0', height:'fit-contetnt'}}>
 
                 <div className='static-total'>{size + '/'}</div>
                 <div className='static-current' style={{ color: "#b71c1c" }}>{currentQuestion + 1}</div>
