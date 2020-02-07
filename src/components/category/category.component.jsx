@@ -1,7 +1,7 @@
 // import React from 'react';
 // import './category.style.css';
 import { withRouter } from "react-router-dom";
-
+import Number from '../number/number.component';
 import Fade from "react-reveal/Fade";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -71,12 +71,12 @@ const Category = ({
           </Avatar>
         }
         action={
-          <p>
-            <span>3</span>/<span>4</span>
-          </p>
+          <Number total={25} current={8} currentStyle={{ fontSize: '26px' }} />
         }
         title={title}
         subheader="توضیحات مربوط به سوال"
+        style={{ fontFamily: 'Vazir' }}
+        classes={{ title: classes.title, subheader:classes.subheader }}
       />
     </Card>
   );
@@ -92,11 +92,13 @@ export default withRouter(Category);
 // }
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345
+    fontFamily: 'Vazir',
+    width:'100%'
   },
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%",// 16:9
+    fontFamily: 'Vazir'
   },
   expand: {
     transform: "rotate(0deg)",
@@ -110,6 +112,13 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     backgroundColor: red[500],
-    marginLeft: 10
+    marginLeft: 10,
+    fontFamily: 'Vazir'
+  },
+  title: {
+    fontFamily: 'Vazir'
+  },
+  subheader:{
+    fontFamily: 'Vazir'
   }
 }));

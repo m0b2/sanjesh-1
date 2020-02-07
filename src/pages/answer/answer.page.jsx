@@ -6,6 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Success from '../../components/success/success.component';
+import Number from '../../components/number/number.component'
+
 import { makeStyles } from '@material-ui/core/styles';
 import { useStore } from 'react-redux';
 const inputs = [
@@ -56,12 +58,8 @@ const Answer = () => {
 
     return (
         <div className='answer-container'>
-            <div className='static-number' style={{paddingTop:'0%', marginTop:'0', height:'fit-contetnt'}}>
+        <Number current={currentQuestion + 1} total={size} style={{paddingTop:'0%', marginTop:'0', height:'fit-contetnt'}}/>
 
-                <div className='static-total'>{size + '/'}</div>
-                <div className='static-current' style={{ color: "#b71c1c" }}>{currentQuestion + 1}</div>
-
-            </div>
             <Divider variant="middle" />
             {(currentQuestion >= size) ? <Success /> : (
                 <>
