@@ -10,11 +10,14 @@ code {
 
 }
 
+
+
 @font-face {
   font-family: 'Vazir';
   font-style: normal;
-  font-weight: normal;
-  src:
-    local('Vazir'),
-    url('%PUBLIC_URL%/fonts/Vazir.ttf') format('ttf'),
+  font-weight: 400;
+  font-display: swap;
+  src: local('Vazir'), local('Vazir'), url(./assets/fonts/Vazir.woff2) format('woff2'),
+    url(./assets/fonts/Vazir.woff) format('woff'),
+    url(./assets/fonts/Vazir.ttf) format('ttf'),
 }

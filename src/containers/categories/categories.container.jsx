@@ -16,8 +16,8 @@ const Categories = props => {
   const offset = current_tab === 0 ? 1 : 29;
   const MyCategories = data[sideTab.current].map((value, index) => (
     <Category
-      title={value}
-      icon={`https://sanjesh.love/amar/img/${index + offset}.gif`}
+      title={value.name}
+      icon={value.icon}
       current={Math.floor(Math.random() * 50)}
       total={Math.floor(Math.random() * 50) + 50}
       index={index}
