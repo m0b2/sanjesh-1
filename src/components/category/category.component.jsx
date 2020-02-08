@@ -78,6 +78,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     fontFamily: 'Vazir',
     width: '100%',
+    cursor:'pointer'
 
   },
   media: {

@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Field from '../../components/profile-field/profile-field.component';
 import { connect, useStore, useDispatch } from 'react-redux';
 import Tab from '../../components/tab-header/tab-header.component';
+import MaterialTab from '../../components/material-tab/material-tab.component';;
 const useStyles = makeStyles({
     root: {
 
@@ -62,7 +63,11 @@ const ProfilView = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    const content = [
+        'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
+        'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
+        'اطلاعات این قسمت در حال تکمیل می باشد.'
+    ]
     return (
         <>
             <Fade top>
@@ -71,7 +76,7 @@ const ProfilView = () => {
                     {/* <Chip color="primary" classes={{ root: classes.root }} label={'تغییر تصویر'} /> */}
                 </div>
             </Fade>
-            {window.screen.width < 421 ? <Tab /> : null}
+            {window.screen.width < 421 ? <MaterialTab data={{ tabs: ['مشاوره اجمالی', 'مطلب علمی', 'فایل مشاوره'], content:content }} /> : null}
             <Paper className={classes.paper}>
                 {/* <Tabs
                     value={value}
@@ -88,10 +93,10 @@ const ProfilView = () => {
 
 
             </Paper>
-
+            {/* 
             <Field />
             <Field />
-            <Field />
+            <Field /> */}
 
         </>
 
