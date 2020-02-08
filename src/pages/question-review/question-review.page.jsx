@@ -1,7 +1,6 @@
 import React from 'react';
 import './question-review.style.css';
 import Icon from '@material-ui/core/Icon';
-import { loadCSS } from 'fg-loadcss';
 import Fade from 'react-reveal/Fade'
 import Category from '../../components/category/category.component';
 import { useStore } from 'react-redux';
@@ -13,10 +12,7 @@ const Question_Review = ({ match, history }) => {
 
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
-        loadCSS(
-            'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
-            document.querySelector('#font-awesome-css'),
-        );
+        
         return () => store.dispatch({ type: 'ADD_FOOTER' });
     }, [])
     const { index } = match.params;

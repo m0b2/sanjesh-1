@@ -7,7 +7,6 @@ import { green } from '@material-ui/core/colors';
 // import Fade from "react-reveal/Fade";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { loadCSS } from 'fg-loadcss';
 import Icon from '@material-ui/core/Icon';
 
 import Card from "@material-ui/core/Card";
@@ -35,12 +34,7 @@ const Category = ({
   location,
   tuchable
 }) => {
-  React.useEffect(() => {
-    loadCSS(
-      'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
-      document.querySelector('#font-awesome-css'),
-    );
-  }, []);
+
 
   const { pathname } = location;
   const classes = useStyles();
