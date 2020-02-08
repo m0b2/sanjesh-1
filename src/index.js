@@ -6,7 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
+import font from './assets/fonts/Vazir.ttf';
 
+const new_font = new FontFace('Vazir', font)
+new_font.load().then(function (loaded_face) {
+    // use font here
+    document.fonts.add(loaded_face)
+}).catch(function (error) {
+
+});
 ReactDOM.render(
     <Provider store={store} >
         <HashRouter >

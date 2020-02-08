@@ -17,12 +17,22 @@ import { connect } from "react-redux";
 import AnswerPage from "./pages/answer/answer.page";
 import Sign_In_Page from "./pages/sign_in/sign_in.page";
 import Sign_Up_Page from "./pages/signUp/sign_up.page";
+
 import User_Info_Page from "./pages/user-info/user_info.page";
+
+import { loadCSS } from "fg-loadcss";
+
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
+  React.useEffect(() => {
+    loadCSS(
+      "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
+      document.querySelector("#font-awesome-css")
+    );
+  }, []);
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
 
@@ -49,7 +59,11 @@ function App({ sideTab, isFooterNeeded }) {
               <Route exact path="/compare" component={ComparePage} />
               <Route exact path="/notification" component={Notification} />
               <Route exact path="/profile" component={ProfileView} />
-              <Route exact path="/question/:index/answer" component={AnswerPage} />
+              <Route
+                exact
+                path="/question/:index/answer"
+                component={AnswerPage}
+              />
               <Route exact path="/signin" component={Sign_In_Page} />
               <Route exact path="/signup" component={Sign_Up_Page} />
               <Route exact path="/userInfo" component={User_Info_Page} />

@@ -32,7 +32,7 @@ const Success = ({history}) => {
             </div>
             <div className='success-message-container'>
                 <span className='success-message-title'>سوالات روانشناسی با موفقیت کامل شد</span>
-                <Button style={{fontFamily:'Vazir', marginTop:'26px'}}
+                <Button style={{fontFamily:'Vazir', marginTop:'26px', position:'absolute',bottom:'1%'}}
                 onClick={()=>history.replace('/question')}
                 >
                 بازگشت به صفحه سوالات

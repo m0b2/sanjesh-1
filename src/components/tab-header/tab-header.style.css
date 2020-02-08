@@ -4,14 +4,13 @@
     grid: 1;
     width: fit-content;
     min-width: 380px;
-
-
     height: 42px;
     background-color: white;
-    position: -webkit-sticky;
-    top: 0;
     border-bottom: 1px rgb(209, 227, 233) solid;
     z-index: 100;
     justify-content: center;
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-self: flex-start;
 
 }
