@@ -1,29 +1,13 @@
-// import React from 'react';
-// import './category.style.css';
+
 import { withRouter } from "react-router-dom";
 import Number from '../number/number.component';
-import { green } from '@material-ui/core/colors';
-
-// import Fade from "react-reveal/Fade";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from '@material-ui/core/Icon';
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-// import CardMedia from "@material-ui/core/CardMedia";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardActions from "@material-ui/core/CardActions";
-// import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-// import IconButton from "@material-ui/core/IconButton";
-// import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
-// import Badge from "@material-ui/core/Badge";
+
 const Category = ({
   title,
   icon,
@@ -67,7 +51,7 @@ const Category = ({
     >
       <CardHeader
         avatar={
-                        <Icon className={icon+' fa-fw'} style={{ color: '#b71c1c', fontSize: '32px',background:'cover',marginRight:'-36%' }} />
+          <Icon className={icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '32px', background: 'cover', marginRight: '-36%' }} />
 
         }
         action={
@@ -118,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'white',
     marginLeft: 10,
     fontFamily: 'Vazir',
-    borderColor:'transparent',
+    borderColor: 'transparent',
 
   },
   title: {

@@ -7,11 +7,7 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
 import font from './assets/fonts/Vazir.ttf';
-import { loadCSS } from 'fg-loadcss';
-loadCSS(
-    'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
-    document.querySelector('#font-awesome-css'),
-);
+
 const new_font = new FontFace('Vazir', font)
 new_font.load().then(function (loaded_face) {
     // use font here
