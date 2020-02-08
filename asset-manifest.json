@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/sanjesh/static/css/main.f5fd8d0e.chunk.css",
-    "main.js": "/sanjesh/static/js/main.cce40409.chunk.js",
-    "main.js.map": "/sanjesh/static/js/main.cce40409.chunk.js.map",
+    "main.css": "/sanjesh/static/css/main.d9593a7b.chunk.css",
+    "main.js": "/sanjesh/static/js/main.ff5f3a7a.chunk.js",
+    "main.js.map": "/sanjesh/static/js/main.ff5f3a7a.chunk.js.map",
     "runtime-main.js": "/sanjesh/static/js/runtime-main.a9af057d.js",
     "runtime-main.js.map": "/sanjesh/static/js/runtime-main.a9af057d.js.map",
     "static/css/2.533d620f.chunk.css": "/sanjesh/static/css/2.533d620f.chunk.css",
-    "static/js/2.105e8488.chunk.js": "/sanjesh/static/js/2.105e8488.chunk.js",
-    "static/js/2.105e8488.chunk.js.map": "/sanjesh/static/js/2.105e8488.chunk.js.map",
+    "static/js/2.ae99fd2d.chunk.js": "/sanjesh/static/js/2.ae99fd2d.chunk.js",
+    "static/js/2.ae99fd2d.chunk.js.map": "/sanjesh/static/js/2.ae99fd2d.chunk.js.map",
     "index.html": "/sanjesh/index.html",
-    "precache-manifest.c4430609c62a1475d5d730ac47a73ca1.js": "/sanjesh/precache-manifest.c4430609c62a1475d5d730ac47a73ca1.js",
+    "precache-manifest.67f8e5c668358397af2c1bf3a395d21f.js": "/sanjesh/precache-manifest.67f8e5c668358397af2c1bf3a395d21f.js",
     "service-worker.js": "/sanjesh/service-worker.js",
     "static/css/2.533d620f.chunk.css.map": "/sanjesh/static/css/2.533d620f.chunk.css.map",
-    "static/css/main.f5fd8d0e.chunk.css.map": "/sanjesh/static/css/main.f5fd8d0e.chunk.css.map",
-    "static/js/2.105e8488.chunk.js.LICENSE": "/sanjesh/static/js/2.105e8488.chunk.js.LICENSE",
+    "static/css/main.d9593a7b.chunk.css.map": "/sanjesh/static/css/main.d9593a7b.chunk.css.map",
+    "static/js/2.ae99fd2d.chunk.js.LICENSE": "/sanjesh/static/js/2.ae99fd2d.chunk.js.LICENSE",
     "static/media/index.css": "/sanjesh/static/media/Vazir.8c8aa2d3.ttf",
     "static/media/compare.svg": "/sanjesh/static/media/compare.992c999d.svg",
     "static/media/comparevector300.png": "/sanjesh/static/media/comparevector300.83dc8fc8.png",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.a9af057d.js",
     "static/css/2.533d620f.chunk.css",
-    "static/js/2.105e8488.chunk.js",
-    "static/css/main.f5fd8d0e.chunk.css",
-    "static/js/main.cce40409.chunk.js"
+    "static/js/2.ae99fd2d.chunk.js",
+    "static/css/main.d9593a7b.chunk.css",
+    "static/js/main.ff5f3a7a.chunk.js"
   ]
 }
