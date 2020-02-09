@@ -46,7 +46,7 @@ const Question_Analyze = ({ match, history }) => {
                 <h3 style={{ fontFamily: 'Vazir' }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h3>
             </div>
             <Divider />
-            <Fade >
+            <Fade spy={currentQuestion} duration={300}  >
 
                 <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
                     {` آنالیز سوال ${currentQuestion + 1}: `}
@@ -65,7 +65,7 @@ const Question_Analyze = ({ match, history }) => {
                 </span>
 
             </Fade>
-            <div style={{ width: '100%' }}>
+            <div style={{ width: '100%',minHeight:'180px' }}>
 
                 <MaterialTab data={{ tabs: tabs, content: content }} />
             </div>
