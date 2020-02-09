@@ -26,7 +26,8 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: 'auto',
-    fontFamily: 'B Homa'
+    fontFamily: 'Samim',
+        fontWeight:'900',
   },
   iconClose: {
     position: 'absolute',

@@ -43,7 +43,7 @@ const Question_Analyze = ({ match, history }) => {
                     <Icon className={questions[current][index].icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
                 </Fade>
                 <Divider />
-                <h3 style={{ fontFamily: 'Vazir' }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h3>
+                <h4 style={{ fontFamily: 'Vazir' }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h4>
             </div>
             <Divider />
             <Fade spy={currentQuestion} duration={300}  >
@@ -52,7 +52,7 @@ const Question_Analyze = ({ match, history }) => {
                     {` آنالیز سوال ${currentQuestion + 1}: `}
 
                 </span>
-                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a', height: '16vh' }}>
+                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a', height: '82px' }}>
                     {question[currentQuestion]}
                 </span>
                 <br />
@@ -64,11 +64,12 @@ const Question_Analyze = ({ match, history }) => {
                     {inputs[2][1]}
                 </span>
 
-            </Fade>
+            
             <div style={{ width: '100%',minHeight:'180px' }}>
 
                 <MaterialTab data={{ tabs: tabs, content: content }} />
             </div>
+            </Fade>
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
                 chooseState={{ userChooseSomething, setUserChooseSomething }}
                 question={question} />

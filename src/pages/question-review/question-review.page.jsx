@@ -28,7 +28,7 @@ const Question_Review = ({ match, history }) => {
                 <Icon className={questions[current][index].icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '100px', paddingTop: '20px' }} />
             </Fade>
             <Divider />
-            <h3 style={{ fontFamily: 'Vazir' }}> {questions[current][index].name} </h3>
+            <h3 style={{ fontFamily: 'Samim' }}> {questions[current][index].name} </h3>
             <Divider />
 
             <div>
@@ -37,8 +37,8 @@ const Question_Review = ({ match, history }) => {
                     <NumberStatic total={14} current={6} title={'تلاقی'} />
                 </div>
             </div>
-            <h2 style={{ fontFamily: 'Vazir'}} onClick={() => history.push(`answer`)}>شروع سوالات</h2>
-
+            <h2 style={{ fontFamily: 'Samim'}} onClick={() => history.push(`answer`)}>شروع سوالات</h2>
+            <h2 style={{ fontFamily: 'Samim'}} onClick={() => history.push(`analyze`)}>آنالیز</h2>
         </div>
     )
 }

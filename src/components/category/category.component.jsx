@@ -76,7 +76,7 @@ export default withRouter(Category);
 // }
 const useStyles = makeStyles(theme => ({
   card: {
-    fontFamily: 'Vazir',
+    fontFamily: 'Samim',
     width: '100%',
     cursor:'pointer'
 
@@ -84,7 +84,7 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: "56.25%",// 16:9
-    fontFamily: 'Vazir',
+    fontFamily: 'Samim',
 
   },
   expand: {
@@ -102,16 +102,17 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: 'white',
     marginLeft: 10,
-    fontFamily: 'Vazir',
+    fontFamily: 'Samim',
     borderColor: 'transparent',
 
   },
   title: {
-    fontFamily: 'Vazir',
+    fontFamily: 'Samim',
+    fontWeight:'900'
 
   },
   subheader: {
-    fontFamily: 'Vazir',
+    fontFamily: 'Samim',
 
   }
 }));

@@ -47,7 +47,8 @@ const useStyles = makeStyles({
         color: 'gray'
     },
     label: {
-        fontFamily: 'Vazir',
+        fontFamily: 'Samim',
+        fontWeight:'900',
         color: '#b71c1c',
 
     },

@@ -18,7 +18,9 @@
 
 .question-content-container span {
     font-size: 18px;
-    font-family: 'Vazir';
+    font-family: 'Samim';
+    font-weight: 500;
+    
     direction: rtl;
     text-align: center;
     height: 64px;
