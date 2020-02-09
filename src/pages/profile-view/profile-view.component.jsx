@@ -76,7 +76,7 @@ const ProfilView = () => {
                     {/* <Chip color="primary" classes={{ root: classes.root }} label={'تغییر تصویر'} /> */}
                 </div>
             </Fade>
-            {window.screen.width < 421 ? <MaterialTab data={{ tabs: ['مشاوره اجمالی', 'مطلب علمی', 'فایل مشاوره'], content:content }} /> : null}
+            {window.screen.width < 421 ? <MaterialTab data={{ tabs: ['مشخصات', 'تحصیلات', 'سلامت'], content:content }} /> : null}
             <Paper className={classes.paper}>
                 {/* <Tabs
                     value={value}

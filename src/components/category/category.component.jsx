@@ -59,7 +59,7 @@ const Category = ({
         }
         title={title}
         subheader="توضیحات مربوط به سوال"
-        style={{ fontFamily: 'Vazir' }}
+        style={{ fontFamily: 'Samim' }}
         classes={{ title: classes.title, subheader: classes.subheader }}
       />
     </Card>
