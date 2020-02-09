@@ -15,7 +15,8 @@ const NextBackButtons = ({ currentState, chooseState, question }) => {
     const useStyles = makeStyles(theme => ({
         button: {
             '& > *': {
-                fontFamily: 'Vazir',
+                fontFamily: 'Samim',
+                fontWeight: '500'
             },
         }
 
@@ -33,7 +34,7 @@ const NextBackButtons = ({ currentState, chooseState, question }) => {
                 startIcon={<NavigateNextIcon />}
                 className={classes.button}
                 onClick={() => {
-                    setCurrentQuestion((oldState) => (currentQuestion  !== size ? oldState + 1 : oldState))
+                    setCurrentQuestion((oldState) => (currentQuestion !== size ? oldState + 1 : oldState))
                     currentQuestion + 1 !== size && setUserChooseSomething(false);
                 }
                 }

@@ -17,7 +17,7 @@ const Logo = ({ size, red }) => {
             fontSize: `${size}px`
         }} >
             Sanjesh.
-                <div style={{ color: (red ? '#b71c1c' : '#fafafa') }}>Love</div>
+                <div style={{ color: (red ? '#b71c1c' : '#fafafa'), fontFamily: 'Pattaya', }}>Love</div>
         </div>
     )
 }

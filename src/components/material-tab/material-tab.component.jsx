@@ -61,7 +61,8 @@ const useStyles = makeStyles(theme => ({
     },
     tabRoot: {
         backgroundColor: 'white',
-        fontFamily: 'Vazir'
+        fontFamily: 'Samim',
+         fontWeight:'500'
     },
     indicator: {
         backgroundColor: '#b71c1c'

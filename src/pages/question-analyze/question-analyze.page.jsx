@@ -43,32 +43,32 @@ const Question_Analyze = ({ match, history }) => {
                     <Icon className={questions[current][index].icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
                 </Fade>
                 <Divider />
-                <h4 style={{ fontFamily: 'Vazir' }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h4>
+                <h4 style={{ fontFamily: 'Samim', fontWeight:'500', }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h4>
             </div>
             <Divider />
             <Fade spy={currentQuestion} duration={300}  >
 
-                <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight:'500', color: '#b71c1c' }}>
                     {` آنالیز سوال ${currentQuestion + 1}: `}
 
                 </span>
-                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a', height: '82px' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a', height: '82px' }}>
                     {question[currentQuestion]}
                 </span>
                 <br />
-                <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight:'500', color: '#b71c1c' }}>
                     {` پاسخ شما به این سوال گزینه: ${current + 1} `}
 
                 </span>
-                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a' }}>
                     {inputs[2][1]}
                 </span>
 
-            
-            <div style={{ width: '100%',minHeight:'180px' }}>
 
-                <MaterialTab data={{ tabs: tabs, content: content }} />
-            </div>
+                <div style={{ width: '100%', minHeight: '180px' }}>
+
+                    <MaterialTab data={{ tabs: tabs, content: content }} />
+                </div>
             </Fade>
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
                 chooseState={{ userChooseSomething, setUserChooseSomething }}
