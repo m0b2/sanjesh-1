@@ -1,14 +1,10 @@
 import React from 'react';
 import './answer.page.style.css';
 import Options from '../../components/option/option.component';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Success from '../../components/success/success.component';
 import Number from '../../components/number/number.component'
-
-import { makeStyles } from '@material-ui/core/styles';
+import NextBackButtons from '../../components/next-back-buttons/next-back-buttons.component';
 import { useStore } from 'react-redux';
 const inputs = [
     ['گزینه اول', 'گزینه دوم', 'گزینه سوم', 'گزینه چهارم', 'گزینه پنجم'],
@@ -23,21 +19,6 @@ const question =
 
 
 
-const useStyles = makeStyles(theme => ({
-    button: {
-        '& > *': {
-            fontFamily: 'Vazir',
-
-
-
-        },
-
-    }
-
-
-}));
-
-
 
 const Answer = () => {
     const store = useStore()
@@ -48,7 +29,6 @@ const Answer = () => {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [userChooseSomething, setUserChooseSomething] = React.useState(false);
     const size = question.length;
-    const classes = useStyles();
 
 
 
@@ -58,7 +38,7 @@ const Answer = () => {
 
     return (
         <div className='answer-container'>
-        <Number current={currentQuestion + 1} total={size} style={{paddingTop:'0%', marginTop:'0', height:'fit-contetnt'}}/>
+            <Number current={currentQuestion + 1} total={size} style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
 
             <Divider variant="middle" />
             {(currentQuestion >= size) ? <Success /> : (
@@ -72,34 +52,9 @@ const Answer = () => {
 
                     <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
 
-                    <div className='answer-buttons-container'>
-
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<NavigateNextIcon />}
-                            className={classes.button}
-                            onClick={() => {
-                                setCurrentQuestion((oldState) => (oldState + 1))
-                                currentQuestion + 1 !== size && setUserChooseSomething(false);
-                            }
-                            }
-                            disabled={!userChooseSomething}
-                        >
-                            بعدی
-                </Button>
-
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            endIcon={<NavigateBeforeIcon />}
-                            className={classes.button}
-                            onClick={() => setCurrentQuestion((oldState) => (oldState > 0 ? oldState - 1 : oldState))}
-                        >
-                            قبلی
-                </Button>
-
-                    </div>
+                    <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
+                        chooseState={{ userChooseSomething, setUserChooseSomething }}
+                        question={question} />
                 </>
 
             )}
