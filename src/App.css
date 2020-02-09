@@ -21,12 +21,10 @@
   background-color: white;
   margin-top: 60px;
   position: relative;
-  
-
 }
 
-.main-app-and-list-wrapper{
-  
+.main-app-and-list-wrapper {
+
   display: flex;
   flex-direction: row;
   -webkit-box-orient: horizontal;
@@ -55,19 +53,15 @@
   .app {
     height: auto;
     width: auto;
-    
+
   }
 
   .main-app {
     width: 100%;
     height: 100%;
     margin-top: 0;
-    
-    
 
   }
-
-
 }
 
 

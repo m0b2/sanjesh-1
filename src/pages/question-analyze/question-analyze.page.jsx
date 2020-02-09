@@ -25,7 +25,7 @@ const Question_Analyze = ({ match, history }) => {
     const current = store.getState().question_type;
 
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const setUserChooseSomething = ()=>{}
+    const setUserChooseSomething = () => { }
     const userChooseSomething = true;
     const size = question.length;
 
@@ -37,6 +37,7 @@ const Question_Analyze = ({ match, history }) => {
 
     return (
         <div className='question-review-wrapper'>
+
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Fade top>
                     <Icon className={questions[current][index].icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
@@ -45,28 +46,33 @@ const Question_Analyze = ({ match, history }) => {
                 <h3 style={{ fontFamily: 'Vazir' }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h3>
             </div>
             <Divider />
-            <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
-                {` آنالیز سوال ${current + 1}: `}
+            <Fade >
 
-            </span>
-            <span style={{ fontFamily: 'Vazir', textAlign: 'center',color:'#26a69a' }}>
-                {question[currentQuestion]}
-            </span>
-            <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
-                {` پاسخ شما به این سوال گزینه: ${current + 1} `}
+                <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
+                    {` آنالیز سوال ${currentQuestion + 1}: `}
 
-            </span>
-            <span style={{ fontFamily: 'Vazir', textAlign: 'center',color:'#26a69a' }}>
-                {inputs[2][1]}
-            </span>
+                </span>
+                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a', height: '16vh' }}>
+                    {question[currentQuestion]}
+                </span>
+                <br />
+                <span style={{ fontFamily: 'Vazir', color: '#b71c1c' }}>
+                    {` پاسخ شما به این سوال گزینه: ${current + 1} `}
+
+                </span>
+                <span style={{ fontFamily: 'Vazir', textAlign: 'center', color: '#26a69a' }}>
+                    {inputs[2][1]}
+                </span>
+
+            </Fade>
             <div style={{ width: '100%' }}>
 
                 <MaterialTab data={{ tabs: tabs, content: content }} />
             </div>
-
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
                 chooseState={{ userChooseSomething, setUserChooseSomething }}
                 question={question} />
+
         </div>
     )
 }
