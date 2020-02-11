@@ -1,17 +1,65 @@
-.form-container{
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   margin-top: 16px;
+/*Don't forget to add Font Awesome CSS : "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"*/
+input[type="text"],input[type="number"]  {
+   width: 100%;
+   border: 1px solid #aaa;
+   border-radius: 4px;
+   margin: 8px 0;
+   outline: none;
+   padding: 8px;
+   box-sizing: border-box;
+   transition: 0.3s;
    font-family: 'Samim';
-}
+   font-weight: 400;
+   text-align: right;
+   direction: rtl;
+ }
+ 
+ input[type="text" ]:focus, input[type="number" ]:focus {
+   border-color: #b71c1c;
+   box-shadow: 0 0 8px 0 #b71c1c;
+ }
+
+ .inputWithIcon input[type="text"], .inputWithIcon input[type="number"]{
+   padding-right: 40px;
+ }
+ 
+ .inputWithIcon {
+   position: relative;
+ }
+ 
+ .inputWithIcon i {
+   position: absolute;
+   right: 0;
+   top: 8px;
+   padding: 9px 8px;
+   color: #aaa;
+   transition: 0.3s;
+ }
+ 
+ .inputWithIcon input[type="text"]:focus + i , .inputWithIcon input[type="number"]:focus + i {
+   color: #b71c1c;
+ }
+ 
+ .inputWithIcon.inputIconBg i {
+   background-color: #aaa;
+   color: #fff;
+   padding: 9px 4px;
+   border-radius: 4px 0 0 4px;
+ }
+ 
+ .inputWithIcon.inputIconBg input[type="text"]:focus + i, .inputWithIcon.inputIconBg input[type="number"]:focus + i {
+   color: #fff;
+   background-color: #b71c1c;
+ }
+ 
 
 
-.form-content{
-   display: flex;
-   font-family: 'Samim';
-   align-items: center;
-   justify-content: center;
-   
-   
-}
+
+
+
+
+
+ body {
+   /* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+ }
+ 
