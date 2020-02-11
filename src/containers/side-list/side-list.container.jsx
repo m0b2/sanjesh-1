@@ -17,8 +17,6 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'right',
         border: '1px solid rgb(214, 214, 214)',
         borderLeftColor: 'white'
-
-
     },
     primary: {
         fontFamily: 'Vazir',
@@ -40,7 +38,7 @@ const SideList = ({ sideTab }) => {
     const classes = useStyles();
     const list_item = sideTab.title.map((value, index) =>
         <ListItem button className={classes.item} classes={{ root: classes.itemroot }}
-        onClick={()=>store.dispatch({ type: 'SET_CURRENT_TAB', payload: index })}
+            onClick={() => store.dispatch({ type: 'SET_CURRENT_TAB', payload: index })}
         >
 
             <ListItemText classes={{ primary: classes.primary }} primary={value} />

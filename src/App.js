@@ -39,13 +39,13 @@ function App({ sideTab, isFooterNeeded }) {
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
-        {window.screen.width < 421 ? null : <Header />}
+        {window.screen.width < 800 ? null : <Header />}
         <div className="main-app-and-list-wrapper">
-          {sideTab.isVisible && window.screen.width > 421 ? <SideList /> : null}
+          {sideTab.isVisible && window.screen.width > 800 ? <SideList /> : null}
           <div className="main-app">
             <Sidebar />
 
-            {window.screen.width < 421 ? <Appbar /> : null}
+            {window.screen.width < 800 ? <Appbar /> : null}
             {/* {window.screen.width < 421 ? <Sidebar /> : null} */}
 
             <Switch>
@@ -74,7 +74,8 @@ function App({ sideTab, isFooterNeeded }) {
           </div>
         </div>
       </SidebarContext.Provider>
-      {isFooterNeeded && window.screen.width < 421 ? <Footer /> : null}
+      
+      {isFooterNeeded && window.screen.width < 800 ? <Footer /> : null}
     </div>
   );
 }

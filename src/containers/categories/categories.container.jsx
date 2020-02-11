@@ -13,22 +13,20 @@ const Categories = props => {
 
 
 
-  const offset = current_tab === 0 ? 1 : 29;
   const MyCategories = data[sideTab.current].map((value, index) => (
     <Category
       title={value.name}
       icon={value.icon}
-      current={Math.floor(Math.random() * 50)}
-      total={Math.floor(Math.random() * 50) + 50}
+
       index={index}
-      key={`category${index}`}
+      key={`category${value.name}`}
       tuchable
     />
   ));
 
   return (
     <div className="categories">
-      {window.screen.width < 421 ? <Tab /> : null}
+      {window.screen.width < 800 ? <Tab /> : null}
       {MyCategories}
     </div>
   );

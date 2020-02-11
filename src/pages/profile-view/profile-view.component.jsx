@@ -7,7 +7,8 @@ import Paper from '@material-ui/core/Paper';
 import Field from '../../components/profile-field/profile-field.component';
 import { connect, useStore, useDispatch } from 'react-redux';
 import Tab from '../../components/tab-header/tab-header.component';
-import MaterialTab from '../../components/material-tab/material-tab.component';;
+import MaterialTab from '../../components/material-tab/material-tab.component';
+import Form from '../../components/form/form.component';
 const useStyles = makeStyles({
     root: {
 
@@ -17,7 +18,8 @@ const useStyles = makeStyles({
     },
     paper: {
         width: '100%',
-        fontFamily: 'Vazir'
+        fontFamily: 'Samim',
+        borderColor: 'transparent'
     },
     tabs: {
         display: 'flex',
@@ -35,7 +37,14 @@ const useStyles = makeStyles({
 
 const tabs = ['حساب کاربری', 'مشخصات', 'تحصیلات', 'سلامت']
 const ProfilView = () => {
-
+    const [state, setState] = React.useState({
+        firstName: '',
+        lastName: '',
+        ssn:'',
+        birthDay: '',
+        state: '',
+        city: ''
+    })
 
     /**
      * Moshakhas mikone in page be sideList niaz dare ya na!
@@ -50,21 +59,13 @@ const ProfilView = () => {
     }, [dispatch]);
 
 
-
-
-
-
-
-
-
-
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
     const content = [
-        'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
+        '',
         'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
         'اطلاعات این قسمت در حال تکمیل می باشد.'
     ]
@@ -75,28 +76,19 @@ const ProfilView = () => {
                     <Avatar style={{ position: 'relative' }} />
                     {/* <Chip color="primary" classes={{ root: classes.root }} label={'تغییر تصویر'} /> */}
                 </div>
+
             </Fade>
-            {window.screen.width < 421 ? <MaterialTab data={{ tabs: ['مشخصات', 'تحصیلات', 'سلامت'], content:content }} /> : null}
-            <Paper className={classes.paper}>
-                {/* <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    centered
-                    className={classes.tabs}
-                >
-                    <Tab className={classes.tab} label="مشخصات" />
-                    <Tab className={classes.tab} label="تحصیلات" />
-                    <Tab className={classes.tab} label="سلامت" />
-                </Tabs> */}
 
 
-            </Paper>
-            {/* 
-            <Field />
-            <Field />
-            <Field /> */}
+
+            {window.screen.width < 701 ? <MaterialTab data={{
+                tabs: ['مشخصات', 'تحصیلات', 'سلامت'],
+                content: content,
+            }} insideComponent={[<Form />]} >
+            </MaterialTab> : null}
+
+
+
 
         </>
 

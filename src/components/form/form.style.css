@@ -1,0 +1,17 @@
+.form-container{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   margin-top: 16px;
+   font-family: 'Samim';
+}
+
+
+.form-content{
+   display: flex;
+   font-family: 'Samim';
+   align-items: center;
+   justify-content: center;
+   
+   
+}

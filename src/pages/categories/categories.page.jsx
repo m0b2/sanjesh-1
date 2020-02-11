@@ -10,7 +10,7 @@ const category = [
   { name: "جنسی", icon: "fas fa-venus-mars" },
   { name: "سلامت", icon: "fas fa-heartbeat" },
   { name: "ظاهر", icon: "fas fa-user" },
-  // { name: "پدر و مادر", icon: "fas fa-restroom" },
+  // { name: "پدر و مادر", icon: "fas fa-user" },
   { name: "خانواده های گسترده", icon: "fas fa-users" },
   { name: "دوستان", icon: "fas fa-user-friends" },
   // { name: "حیوانات خانگی", icon: "fas fa-cat" },

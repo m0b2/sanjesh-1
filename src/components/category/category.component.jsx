@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     fontFamily: 'Samim',
     width: '100%',
-    cursor:'pointer'
+    cursor:'pointer',
 
   },
   media: {

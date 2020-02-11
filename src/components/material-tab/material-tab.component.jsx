@@ -57,19 +57,19 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: 'white',
-        textAlign:'center'
+        textAlign: 'center'
     },
     tabRoot: {
         backgroundColor: 'white',
         fontFamily: 'Samim',
-         fontWeight:'500'
+        fontWeight: '500'
     },
     indicator: {
         backgroundColor: '#b71c1c'
     },
     tabsRoot: {
         width: '100%',
-        minWidth:'100%'
+        minWidth: '100%'
     }
 }));
 
@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function FullWidthTabs({ data }) {
+export default function FullWidthTabs({ data, insideComponent }) {
     const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
@@ -87,9 +87,11 @@ export default function FullWidthTabs({ data }) {
 
     let myTabs = data.tabs.map((value, index) => <Tab classes={{ root: classes.tabRoot }} label={value} {...a11yProps(index)} />)
     let dataContent = data.content.map((title, index) => <TabPanel value={value} index={index} dir={'rtl'}>
+        {insideComponent&&insideComponent[index]}
         <span style={{
             fontFamily: 'Vazir', textAlign: 'center'
         }}>{title}</span>
+
     </TabPanel>)
 
     const handleChange = (event, newValue) => {
