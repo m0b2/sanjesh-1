@@ -19,7 +19,7 @@ import Sign_In_Page from "./pages/sign_in/sign_in.page";
 import Sign_Up_Page from "./pages/signUp/sign_up.page";
 import Question_Analyze from './pages/question-analyze/question-analyze.page';
 import User_Info_Page from "./pages/user-info/user_info.page";
-
+import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
 
 // man amade am vay vay
@@ -64,7 +64,9 @@ function App({ sideTab, isFooterNeeded }) {
                 path="/question/:index/answer"
                 component={AnswerPage}
               />
+              
               <Route exact path="/question/:index/analyze" component={Question_Analyze} />
+              <Route exact path="/aboutus" component={About_Us_Page} />
               <Route exact path="/signin" component={Sign_In_Page} />
               <Route exact path="/signup" component={Sign_Up_Page} />
               <Route exact path="/userInfo" component={User_Info_Page} />

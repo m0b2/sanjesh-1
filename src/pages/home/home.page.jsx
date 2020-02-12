@@ -14,13 +14,13 @@ export default () => {
 
     return (
         <div className="home-page-wrapper">
-            
-            
-                <Avatar/>
 
-                <HomePage />
+            <div >
+                <Avatar />
+            </div>
+            <HomePage />
 
-            
+
         </div>
     )
 }

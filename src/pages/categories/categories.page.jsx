@@ -49,8 +49,8 @@ export default () => {
    */
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
-    dispatch({ type: 'ADD_SIDE_LIST' });
+    // dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
+    // dispatch({ type: 'ADD_SIDE_LIST' });
 
 
     return () => dispatch({ type: 'REMOVE_SIDE_LIST' });

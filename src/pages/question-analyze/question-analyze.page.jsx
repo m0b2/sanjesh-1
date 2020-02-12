@@ -2,14 +2,13 @@ import React from 'react';
 import './question-analyze.style.css';
 import Icon from '@material-ui/core/Icon';
 import Fade from 'react-reveal/Fade'
-import Category from '../../components/category/category.component';
 import { useStore } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import NumberStatic from '../../components/number-static/number-static.component';
 import Divider from '@material-ui/core/Divider';
 import MaterialTab from '../../components/material-tab/material-tab.component';
 import NextBackButtons from '../../components/next-back-buttons/next-back-buttons.component';
-
+import Circleprogress from '../../components/circleprogress/cricleprogress.component';
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
 
@@ -28,7 +27,14 @@ const Question_Analyze = ({ match, history }) => {
     const setUserChooseSomething = () => { }
     const userChooseSomething = true;
     const size = question.length;
-
+    const Amar = <div style={{display:'flex',flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
+        <Circleprogress percent={38} width={64} />
+        <div>
+            <span style={{fontFamily:'Samim', fontWeight:'400'}}>درصد افرادی که دراین مورد با شما هم نظرند</span>
+        </div>
+        
+      </div>
+    const insideComponent = ['',Amar,''];
 
 
 
@@ -65,9 +71,9 @@ const Question_Analyze = ({ match, history }) => {
                 </span>
 
 
-                <div style={{ width: '100%', minHeight: '180px' }}>
-
-                    <MaterialTab data={{ tabs: tabs, content: content }} />
+                <div style={{ width: '100%', minHeight: '186px' }}>
+                
+                    <MaterialTab data={{ tabs: tabs, content: content }}  insideComponent={insideComponent}/>
                 </div>
             </Fade>
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
@@ -90,11 +96,11 @@ export default withRouter(Question_Analyze);
 
 
 
-const tabs = ['مشاوره اجمالی', 'مطلب علمی', 'فایل مشاوره'];
+const tabs = ['مشاوره اجمالی', 'آمار', 'فایل مشاوره'];
 
 const content = [
     'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
-    'اطلاعات ورودی شما در نوبت آنالیز قرارگرفته است که پس از تکمیل مراحل بررسی، در این قسمت درج خواهد شد.',
+    '',
     'اطلاعات این قسمت در حال تکمیل می باشد.'
 ]
 const inputs = [

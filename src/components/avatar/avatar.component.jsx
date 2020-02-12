@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     p: {
         textAlign: 'right',
         width: '100%',
-        marginTop: '-10%',
+        marginTop: '-12%',
         fontFamily: 'B Yekan',
         fontSize: '22px'
     },
@@ -33,7 +33,8 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
         justifySelf: 'center',
         alignSelf: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        
 
     }
 });

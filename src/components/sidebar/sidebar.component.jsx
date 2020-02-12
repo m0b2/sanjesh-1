@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -17,7 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import { SidebarContext } from '../../context/sidebar.context';
 import Avatar from '../avatar/avatar.component';
-
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -57,9 +56,8 @@ const useStyles = makeStyles({
 
 const menu_items = [
   { title: 'پنل کاربری', icon: PermIdentityIcon, pushValue: '' },
-  { title: 'تغییر مشخصات', icon: EditIcon, pushValue: '' },
-  { title: 'آمار', icon: EqualizerIcon, pushValue: '' },
-  { title: 'درباره ما', icon: InfoIcon, pushValue: '' },
+  { title: 'تغییر مشخصات', icon: EditIcon, pushValue: '/profile' },
+  { title: 'درباره ما', icon: InfoIcon, pushValue: '/aboutus' },
   { title: 'خروج', icon: ExitToAppIcon, pushValue: '' }];
 
 export default function SwipeableTemporaryDrawer() {
@@ -84,13 +82,15 @@ export default function SwipeableTemporaryDrawer() {
 
       {<List style={{ direction: 'rtl' }}>
         {menu_items.map((value, index) => (
-          <><ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}>
+          <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+          
+          <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}>
             <ListItemIcon>{<value.icon />}</ListItemIcon>
             <ListItemText style={{ fontFamily: 'B Homa' }}
               classes={{ primary: classes.text }}
               className={classes.text} primary={value.title} />
           </ListItem>
-          </>
+          </Link>
         ))}
 
       </List>}

@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     transition: 300ms ease-out;
-    
+
     
     
 
@@ -22,12 +22,13 @@
     flex-wrap: wrap;
     position: relative;
     background-color: white;
+    padding-bottom: 80px;
 }
 
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .progresss-div {
-        margin-top: 10px;
+        
     }
 }

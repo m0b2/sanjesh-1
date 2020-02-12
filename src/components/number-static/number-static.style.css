@@ -8,7 +8,7 @@
     border: 1px antiquewhite solid;
     box-shadow: 1px 1px 2px 2px aliceblue;
     background-color:#fafafa;
-    margin-top: 40px;
+    
     padding-top: 40px;
     margin-right: 20px;
     border-radius: 10px;
@@ -63,8 +63,8 @@
     text-align: center;
     font-size: small;
     width: 100%;
-    font-family: 'Vazir';
-    padding-top: 10px;
+    font-family: 'Samim';
+    padding-top: 6px;
 }
 
 
@@ -87,10 +87,10 @@
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .number-static {
-        width: 148px;
+        width: 142px;
         justify-content: flex-start;
         align-items: center;
-        height: 160px;
+        height: 154px;
         margin: 8px;
         
         

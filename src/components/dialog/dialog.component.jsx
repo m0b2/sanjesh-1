@@ -34,7 +34,8 @@ function ConfirmationDialogRaw(props) {
     const useStyles = makeStyles(theme => ({
         radioGroupRoot: {
             direction: 'rtl',
-            fontFamily: 'Samim'
+            fontFamily: 'Samim',
+            minWidth:'200px'
         },
         formControlLabelLabel: {
             fontFamily: 'Samim',
@@ -81,6 +82,7 @@ function ConfirmationDialogRaw(props) {
             disableBackdropClick
             disableEscapeKeyDown
             maxWidth="xs"
+            
             onEntering={handleEntering}
             aria-labelledby="confirmation-dialog-title"
             open={open}

@@ -26,7 +26,7 @@ const Categories = props => {
 
   return (
     <div className="categories">
-      {window.screen.width < 800 ? <Tab /> : null}
+      {/* {window.screen.width < 800 ? <Tab /> : null} */}
       {MyCategories}
     </div>
   );

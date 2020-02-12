@@ -25,11 +25,13 @@ const ProfilView = () => {
         dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
         dispatch({ type: 'ADD_SIDE_LIST' });
         dispatch({ type: 'REMOVE_FOOTER' });
+        dispatch({ type: 'EDIT_PAGE' });
 
 
         return () => {
             dispatch({ type: 'REMOVE_SIDE_LIST' })
             dispatch({ type: 'ADD_FOOTER' });
+            dispatch({ type: 'EDIT_PAGE_DONE' });
         };
     }, [dispatch]);
     const content = [
