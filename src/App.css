@@ -40,21 +40,35 @@
 @media (min-width: 1200px) {
   .main-app {
   
-    /* margin-top: 500px; */
+    padding-top: 60px;
+    height: 100%;
   }
 }
 
 /* Landscape tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .main-app {
+  
+    padding-top: 60px;
+    height: 100%;
+  }
+}
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
+  .main-app {
+  
+    padding-top: 60px;
+    height: 100%;
+  }
   
 
 }
 
 /* Landscape phones and portrait tablets */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+
+}
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {

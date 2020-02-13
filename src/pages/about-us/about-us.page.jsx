@@ -1,8 +1,21 @@
 import React from 'react';
 import './about-us.style.css';
 import CCard from '../../components/contact-card/contact-card.component';
+import { useStore } from 'react-redux';
+
 
 const AboutUs = () => {
+
+    const store = useStore();
+    React.useEffect(() => {
+        store.dispatch({ type: 'REMOVE_FOOTER' });
+        return () => store.dispatch({ type: 'ADD_FOOTER' });
+    }, [])
+
+
+
+
+
     const Teams = team.map((value, index) => <CCard key={`teamm${index}`}
         name={value.name} title={value.title} image={value.image} />)
 

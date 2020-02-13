@@ -6,14 +6,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    position: absolute;
-    top: -0;
+    position: fixed;
+    top: 0;
     right: 0;
     background-color: white;
     border: 1px rgb(238, 238, 238) solid;
     height: 50px;
     overflow: hidden;
     z-index: 6;
+    
+    
 
 
 }

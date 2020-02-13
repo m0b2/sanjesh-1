@@ -21,12 +21,14 @@ import Question_Analyze from './pages/question-analyze/question-analyze.page';
 import User_Info_Page from "./pages/user-info/user_info.page";
 import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
+import SinginPage from './pages/sign_in/sign_in.page';
 
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
+  return(<SinginPage/>)
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
@@ -39,8 +41,9 @@ function App({ sideTab, isFooterNeeded }) {
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
-        {window.screen.width < 800 ? null : <Header />}
+        
         <div className="main-app-and-list-wrapper">
+        {window.screen.width < 800 ? null : <Header />}
           {sideTab.isVisible && window.screen.width > 800 ? <SideList /> : null}
           <div className="main-app">
             <Sidebar />

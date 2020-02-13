@@ -5,8 +5,8 @@ import MaterialTab from '../../components/material-tab/material-tab.component';
 import FormProfile from '../../components/form/form.component';
 import StudentProfile from '../../components/student-profile/student-profile.component';
 
-const tabs = ['حساب کاربری', 'مشخصات', 'تحصیلات', 'سلامت']
-const ProfilView = () => {
+const tabs = ['مشخصات', 'ویژه دانشجویان']
+const ProfilView = ({ SideTab }) => {
     const [state, setState] = React.useState({
         firstName: '',
         lastName: '',
@@ -38,24 +38,25 @@ const ProfilView = () => {
         '',
         ''
     ]
+    const tabComponent = [<FormProfile />, <StudentProfile />]
     const SwipeContianer = <MaterialTab data={{
         tabs: ['مشخصات', 'ویژه دانشجویان'],
         content: content,
-    }} insideComponent={[<FormProfile />, <StudentProfile />]} >
+    }} insideComponent={tabComponent} >
     </MaterialTab>;
 
     return (
-        <>
+        <div >
 
 
 
 
-            {window.screen.width < 701 ? SwipeContianer : null}
+            {window.screen.width < 800 ? SwipeContianer : tabComponent[SideTab.current]}
 
 
 
 
-        </>
+        </div>
 
     )
 
@@ -65,8 +66,8 @@ const ProfilView = () => {
 const mapStatetoProps = (store) => {
     return (
         {
-            current_tab: store.current_tab,
-            tabs_title: store.current_tab,
+            SideTab: store.SideTab,
+
         }
     )
 }
