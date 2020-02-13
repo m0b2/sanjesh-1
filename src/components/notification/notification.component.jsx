@@ -10,12 +10,13 @@ import Avatar from '@material-ui/core/Avatar'
 import compare from '../../assets/notif-compare.svg';
 import mail from '../../assets/mail.svg';
 import analyze from '../../assets/analyze.svg';
-const Category = ({ title, content, isChecked, type }) => {
+const Category = ({ title, content, isChecked, type, onClick }) => {
   const classes = useStyles();
   const mySrc = type === 'message' ? mail : type === 'request' ? compare : analyze;
   return (
 
     <Card className={classes.card} style={{ width: "100%" }}
+    onClick={onClick}
 
     >
       <CardHeader

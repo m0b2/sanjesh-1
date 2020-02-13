@@ -6,3 +6,11 @@
   align-items: center;
   direction: rtl;
 }
+.dialog-span-content{
+  width: 100%;
+  text-align: center;
+  font-family: 'Samim';
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+}

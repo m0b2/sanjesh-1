@@ -1,5 +1,5 @@
 import "./notification.style.css";
-
+import Dialog from '../../components/full-screen-dialog/full-screen-dialog.component';
 import React from "react";
 import NotificationCom from "../../components/notification/notification.component";
 
@@ -23,16 +23,29 @@ const notification = [
 const data = [title, subheader, details];
 
 const Notification = () => {
+  const [open, setOpen] = React.useState(false);
+  const [title, setTitle] = React.useState('');
+  const [component, setComponent] = React.useState('');
   const MyNotification = notification.map((value, index) => (
+
     <NotificationCom
       title={value.title}
       subheader={value.content}
       key={`notif${index}`}
       type={value.type}
+      onClick={() => {
+        setTitle(value.title);
+        setComponent(<span className={'dialog-span-content'}>{value.content}</span>);
+        setOpen(true);
+      }}
     />
+
   ));
 
-  return <div>{MyNotification}</div>;
+  return <div>
+    {MyNotification}
+    <Dialog component={component} title={title} open={open} setOpen={setOpen} />
+  </div>;
 };
 
 export default Notification;
