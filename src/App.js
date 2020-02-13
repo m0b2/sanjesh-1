@@ -28,7 +28,7 @@ import SinginPage from './pages/sign_in/sign_in.page';
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
-  return(<SinginPage/>)
+  // return(<SinginPage/>)
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
@@ -70,7 +70,7 @@ function App({ sideTab, isFooterNeeded }) {
               
               <Route exact path="/question/:index/analyze" component={Question_Analyze} />
               <Route exact path="/aboutus" component={About_Us_Page} />
-              <Route exact path="/signin" component={Sign_In_Page} />
+              {/* <Route exact path="/signin" component={Sign_In_Page} /> */}
               <Route exact path="/signup" component={Sign_Up_Page} />
               <Route exact path="/userInfo" component={User_Info_Page} />
 

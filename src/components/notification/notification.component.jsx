@@ -1,83 +1,98 @@
+import { withRouter } from "react-router-dom";
+import Number from '../number/number.component';
 import React from "react";
-import "./notification.style.css";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+import Icon from '@material-ui/core/Icon';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-
-export default function NotificationCom({ title, subheader, details }) {
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Avatar from '@material-ui/core/Avatar'
+import compare from '../../assets/notif-compare.svg';
+import mail from '../../assets/mail.svg';
+import analyze from '../../assets/analyze.svg';
+const Category = ({ title, content, isChecked, type }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
+  const mySrc = type === 'message' ? mail : type === 'request' ? compare : analyze;
   return (
-    <Card className={(classes.root, "cardNoti")}>
+
+    <Card className={classes.card} style={{ width: "100%" }}
+
+    >
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+          <Avatar src={mySrc} sizes={'80px'} variant={'square'}
+            style={{ color: '#b71c1c', fontSize: '32px', background: 'cover', marginRight: '-36%' }} >
+            {/* <img className='icon-card-img' src={compare} alt={title} style={{width:'28px'}}/> */}
           </Avatar>
+
+
+
+
         }
         action={
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
+          <span style={{
+           
+            fontFamily:'Samim',
+           
+            
+            
+            
+          }}>
+            امروز</span>
         }
         title={title}
-        subheader={subheader}
+        subheader={content}
+        style={{ fontFamily: 'Samim' }}
+        classes={{ title: classes.title, subheader: classes.subheader,action:classes.action }}
       />
-
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>جزئیات اعلان :</Typography>
-          <Typography paragraph>{details}</Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
-}
+};
+export default withRouter(Category);
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    maxWidth: 345
+  card: {
+    fontFamily: 'Samim',
+    width: '100%',
+    cursor: 'pointer',
+
   },
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%",// 16:9
+    fontFamily: 'Samim',
+
   },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest
-    })
+    }),
+
   },
   expandOpen: {
-    transform: "rotate(180deg)"
+    transform: "rotate(180deg)",
+
   },
   avatar: {
-    backgroundColor: red[500]
+    backgroundColor: 'white',
+    marginLeft: 10,
+    fontFamily: 'Samim',
+    borderColor: 'transparent',
+
+  },
+  title: {
+    fontFamily: 'Samim',
+    fontWeight: '900'
+
+  },
+  subheader: {
+    fontFamily: 'Samim',
+
+  },
+  action:{
+
+    marginTop:'5px'
   }
 }));

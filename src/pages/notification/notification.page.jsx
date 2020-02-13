@@ -13,14 +13,22 @@ const details = [
   "پرسشنامه پنجم"
 ];
 
+
+const notification = [
+  { from: 'admin', type: 'message', title: 'پیغام', content: 'به پایگاه سنجش تفاهم خوش آمدید', isChecked: null },
+  { from: 'system', type: 'request', title: 'درخواست قیاس', content: 'درخواست قیاس شما توسط فلانی پذیرفته شد', isChecked: null },
+  { from: 'admin', type: 'analyze', title: 'آنالیز سوالات', content: 'آنالیز سوالات فردی اتمام یافت و اینک در بخش مربوطه در دسترس است ', isChecked: null }
+];
+
 const data = [title, subheader, details];
 
 const Notification = () => {
-  const MyNotification = data.map((value, subheader, detailsParagraph) => (
+  const MyNotification = notification.map((value, index) => (
     <NotificationCom
-      title={value}
-      subheader={subheader}
-      details={detailsParagraph}
+      title={value.title}
+      subheader={value.content}
+      key={`notif${index}`}
+      type={value.type}
     />
   ));
 
