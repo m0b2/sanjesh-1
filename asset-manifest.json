@@ -1,29 +1,32 @@
 {
   "files": {
-    "main.css": "/sanjesh/static/css/main.4aa57286.chunk.css",
-    "main.js": "/sanjesh/static/js/main.8f5b9292.chunk.js",
-    "main.js.map": "/sanjesh/static/js/main.8f5b9292.chunk.js.map",
+    "main.css": "/sanjesh/static/css/main.f4c040fa.chunk.css",
+    "main.js": "/sanjesh/static/js/main.a405b99c.chunk.js",
+    "main.js.map": "/sanjesh/static/js/main.a405b99c.chunk.js.map",
     "runtime-main.js": "/sanjesh/static/js/runtime-main.a9af057d.js",
     "runtime-main.js.map": "/sanjesh/static/js/runtime-main.a9af057d.js.map",
     "static/css/2.533d620f.chunk.css": "/sanjesh/static/css/2.533d620f.chunk.css",
-    "static/js/2.e5ebb975.chunk.js": "/sanjesh/static/js/2.e5ebb975.chunk.js",
-    "static/js/2.e5ebb975.chunk.js.map": "/sanjesh/static/js/2.e5ebb975.chunk.js.map",
+    "static/js/2.b88eba8b.chunk.js": "/sanjesh/static/js/2.b88eba8b.chunk.js",
+    "static/js/2.b88eba8b.chunk.js.map": "/sanjesh/static/js/2.b88eba8b.chunk.js.map",
     "index.html": "/sanjesh/index.html",
-    "precache-manifest.16c133179aaaee91475cda191a058cfa.js": "/sanjesh/precache-manifest.16c133179aaaee91475cda191a058cfa.js",
+    "precache-manifest.407294c3ef64d7286be5a925bc74898e.js": "/sanjesh/precache-manifest.407294c3ef64d7286be5a925bc74898e.js",
     "service-worker.js": "/sanjesh/service-worker.js",
     "static/css/2.533d620f.chunk.css.map": "/sanjesh/static/css/2.533d620f.chunk.css.map",
-    "static/css/main.4aa57286.chunk.css.map": "/sanjesh/static/css/main.4aa57286.chunk.css.map",
-    "static/js/2.e5ebb975.chunk.js.LICENSE": "/sanjesh/static/js/2.e5ebb975.chunk.js.LICENSE",
+    "static/css/main.f4c040fa.chunk.css.map": "/sanjesh/static/css/main.f4c040fa.chunk.css.map",
+    "static/js/2.b88eba8b.chunk.js.LICENSE": "/sanjesh/static/js/2.b88eba8b.chunk.js.LICENSE",
     "static/media/App.css": "/sanjesh/static/media/Vazir.8c8aa2d3.ttf",
+    "static/media/analyze.svg": "/sanjesh/static/media/analyze.f7a74832.svg",
     "static/media/compare.svg": "/sanjesh/static/media/compare.992c999d.svg",
     "static/media/comparevector300.png": "/sanjesh/static/media/comparevector300.83dc8fc8.png",
+    "static/media/mail.svg": "/sanjesh/static/media/mail.10afb501.svg",
+    "static/media/notif-compare.svg": "/sanjesh/static/media/notif-compare.5032ac92.svg",
     "static/media/talk.svg": "/sanjesh/static/media/talk.2b27a83e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a9af057d.js",
     "static/css/2.533d620f.chunk.css",
-    "static/js/2.e5ebb975.chunk.js",
-    "static/css/main.4aa57286.chunk.css",
-    "static/js/main.8f5b9292.chunk.js"
+    "static/js/2.b88eba8b.chunk.js",
+    "static/css/main.f4c040fa.chunk.css",
+    "static/js/main.a405b99c.chunk.js"
   ]
 }
