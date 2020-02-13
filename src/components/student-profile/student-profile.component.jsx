@@ -13,7 +13,7 @@ const state_values = [
     'بوشهر', 'کرمان', 'هرمزگان', 'چهارمحال و بختیاری', 'یزد',
     'سیستان و بلوچستان', 'ایلام', 'کهگلویه و بویراحمد', 'خراسان شمالی', 'خراسان جنوبی',
     'البرز'];
-const Form = () => {
+const Form = ({disabled}) => {
     const [studentNumber, setStudentNumber] = useState('9442365104');
     const [hamsan, setHamsan] = useState('');
     const [collegeCity, setCollegeCity] = useState('');
@@ -28,13 +28,13 @@ const Form = () => {
         <div style={{ direction: 'rtl' }}>
 
 
-            <TextDialog state={studentNumber} setState={setStudentNumber} items={[]} title={'شماره دانشجویی'} />
-            <Dialog state={hamsan} setState={setHamsan} items={hamsanGozini_values} title={'همسان گزینی'} />
-            <Dialog state={collegeCity} setState={setCollegeCity} items={state_values} title={'دانشگاه محل تحصیل'} />
-            <Dialog state={education} setState={setEducation} items={education_values} title={'مقطع تحصیلی'} />
-            <TextDialog state={enterYear} setState={setEnterYear} items={[]} title={'سال ورود'} />
-            <TextDialog state={placeofIssue} setState={setPlaceofIssue} items={[]} title={'محل صدور'} />
-            <Dialog state={isargari} setState={setIsargari} items={isargari_values} title={'وضعیت ایثارگری'} />
+            <TextDialog state={studentNumber} setState={setStudentNumber} items={[]} title={'شماره دانشجویی'} disabled={disabled} />
+            <Dialog state={hamsan} setState={setHamsan} items={hamsanGozini_values} title={'همسان گزینی'} disabled={disabled} />
+            <Dialog state={collegeCity} setState={setCollegeCity} items={state_values} title={'دانشگاه محل تحصیل'} disabled={disabled} />
+            <Dialog state={education} setState={setEducation} items={education_values} title={'مقطع تحصیلی'} disabled={disabled} />
+            <TextDialog state={enterYear} setState={setEnterYear} items={[]} title={'سال ورود'} disabled={disabled} />
+            <TextDialog state={placeofIssue} setState={setPlaceofIssue} items={[]} title={'محل صدور'} disabled={disabled} />
+            <Dialog state={isargari} setState={setIsargari} items={isargari_values} title={'وضعیت ایثارگری'} disabled={disabled} />
             
 
 

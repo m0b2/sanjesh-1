@@ -12,7 +12,8 @@ import Slide from '@material-ui/core/Slide';
 const useStyles = makeStyles(theme => ({
     appBar: {
         position: 'relative',
-        backgroundColor:'#b71c1c'
+        backgroundColor:'#b71c1c',
+        
     },
     title: {
         right: '2%',

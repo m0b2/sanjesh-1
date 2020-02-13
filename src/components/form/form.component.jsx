@@ -16,7 +16,7 @@ const state_values = [
     'بوشهر', 'کرمان', 'هرمزگان', 'چهارمحال و بختیاری', 'یزد',
     'سیستان و بلوچستان', 'ایلام', 'کهگلویه و بویراحمد', 'خراسان شمالی', 'خراسان جنوبی',
     'البرز'];
-const Form = () => {
+const Form = ({disabled}) => {
     const [name, setName] = useState('اکبر عبدی');
     const [gender, setGender] = useState('مرد');
     const [married, setMarried] = useState('متاهل');
@@ -28,23 +28,23 @@ const Form = () => {
     const [height, setHeight] = useState('175');
     const [weight, setWeight] = useState('95');
     const city = useStore().getState().CityReducer;
-    console.log('form render!')
+    // console.log('form render!')
     return (
 
 
         <div style={{ direction: 'rtl' }}>
 
 
-            <TextDialog state={name} setState={setName} items={[]} title={'نام و نام خانوادگی'} />
-            <Dialog state={gender} setState={setGender} items={gender_values} title={'جنسیت'} />
-            <Dialog state={blood} setState={setBlood} items={blood_type} title={'گروه خونی'} />
-            <Dialog state={state} setState={setState} items={state_values} title={'استان'} />
-            <Dialog state={cities} setState={setCities} items={city[state] ? city[state] : []} title={'شهرستان'} />
-            <Dialog state={married} setState={setMarried} items={married_values} title={'وضعیت تاهل'} />
-            <Dialog state={education} setState={setEducation} items={education_values} title={'تحصیلات'} />
-            <TextDialog state={height} setState={setHeight} items={[]} title={'قد'} />
-            <TextDialog state={weight} setState={setWeight} items={[]} title={'وزن'} />
-            <TextDialog state={age} setState={setAge} items={[]} title={'سال تولد'} />
+            <TextDialog state={name} setState={setName} items={[]} title={'نام و نام خانوادگی'} disabled={disabled} />
+            <Dialog state={gender} setState={setGender} items={gender_values} title={'جنسیت'}  disabled={disabled} />
+            <Dialog state={blood} setState={setBlood} items={blood_type} title={'گروه خونی'}  disabled={disabled} />
+            <Dialog state={state} setState={setState} items={state_values} title={'استان'}  disabled={disabled} />
+            <Dialog state={cities} setState={setCities} items={city[state] ? city[state] : []} title={'شهرستان'}  disabled={disabled} />
+            <Dialog state={married} setState={setMarried} items={married_values} title={'وضعیت تاهل'}  disabled={disabled} />
+            <Dialog state={education} setState={setEducation} items={education_values} title={'تحصیلات'}  disabled={disabled} />
+            <TextDialog state={height} setState={setHeight} items={[]} title={'قد'}  disabled={disabled} />
+            <TextDialog state={weight} setState={setWeight} items={[]} title={'وزن'}  disabled={disabled} />
+            <TextDialog state={age} setState={setAge} items={[]} title={'سال تولد'}  disabled={disabled} />
 
 
 

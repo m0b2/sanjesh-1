@@ -15,7 +15,7 @@ import ProfileView from "./pages/profile-view/profile-view.component";
 import SideList from "./containers/side-list/side-list.container";
 import { connect } from "react-redux";
 import AnswerPage from "./pages/answer/answer.page";
-import Sign_In_Page from "./pages/sign_in/sign_in.page";
+import Edit_Profile_Page from "./pages/profile-edit/profile-edit.component";
 import Sign_Up_Page from "./pages/signUp/sign_up.page";
 import Question_Analyze from './pages/question-analyze/question-analyze.page';
 import User_Info_Page from "./pages/user-info/user_info.page";
@@ -68,6 +68,7 @@ function App({ sideTab, isFooterNeeded }) {
                 component={AnswerPage}
               />
               
+              <Route exact path="/edit" component={Edit_Profile_Page} />
               <Route exact path="/question/:index/analyze" component={Question_Analyze} />
               <Route exact path="/aboutus" component={About_Us_Page} />
               {/* <Route exact path="/signin" component={Sign_In_Page} /> */}

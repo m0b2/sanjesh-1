@@ -1,5 +1,5 @@
 import React from 'react';
-import './profile-view.style.css';
+import './profile-edit.style.css';
 import { connect, useDispatch } from 'react-redux';
 import MaterialTab from '../../components/material-tab/material-tab.component';
 import FormProfile from '../../components/form/form.component';
@@ -25,7 +25,7 @@ const ProfilView = ({ SideTab }) => {
         dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
         dispatch({ type: 'ADD_SIDE_LIST' });
         dispatch({ type: 'REMOVE_FOOTER' });
-        // dispatch({ type: 'EDIT_PAGE' });
+        dispatch({ type: 'EDIT_PAGE' });
 
 
         return () => {
@@ -38,7 +38,7 @@ const ProfilView = ({ SideTab }) => {
         '',
         ''
     ]
-    const tabComponent = [<FormProfile disabled={true} />, <StudentProfile disabled={true}  />]
+    const tabComponent = [<FormProfile disabled={false} />, <StudentProfile disabled={false} />]
     const SwipeContianer = <MaterialTab data={{
         tabs: ['مشخصات', 'ویژه دانشجویان'],
         content: content,

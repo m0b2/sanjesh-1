@@ -147,7 +147,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items, }) {
+export default function ConfirmationDialog({ state, setState, title, items,disabled }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     options = items;
@@ -176,6 +176,7 @@ export default function ConfirmationDialog({ state, setState, title, items, }) {
                     onClick={handleClickListItem}
                     role="listitem"
                     alignItems="center"
+                    disabled={disabled}
                 >
                     <ListItemText primary={title} secondary={state}
                         classes={{ primary: classes.listItemTextRoot, secondary: classes.listItemTextRoot }} />

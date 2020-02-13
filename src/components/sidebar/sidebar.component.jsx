@@ -55,8 +55,8 @@ const useStyles = makeStyles({
 });
 
 const menu_items = [
-  { title: 'پنل کاربری', icon: PermIdentityIcon, pushValue: '' },
-  { title: 'تغییر مشخصات', icon: EditIcon, pushValue: '/profile' },
+  { title: 'پنل کاربری', icon: PermIdentityIcon, pushValue: '/profile' },
+  { title: 'تغییر مشخصات', icon: EditIcon, pushValue: '/edit' },
   { title: 'درباره ما', icon: InfoIcon, pushValue: '/aboutus' },
   { title: 'خروج', icon: ExitToAppIcon, pushValue: '' }];
 
