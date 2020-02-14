@@ -39,7 +39,7 @@ const FirstInformation = () => {
 
 
     const stepComponent = [
-        <><p className="login-copy">درصورت تمایل اطلاعات زیر را وارد نمایید</p>
+        <>
             <TextDialog state={name} setState={setName} items={[]} title={'نام و نام خانوادگی'} />
             <TextDialog state={number} setState={setNumber} items={[]} title={'شماره همراه'} />
             <p className="login-copy" style={{ color: '#b71c1c', cursor: 'pointer' }}
@@ -49,7 +49,7 @@ const FirstInformation = () => {
 
 
         <>
-            <p className="login-copy">محل سکونت خود را وارد نمایید</p>
+            
             <Dialog state={state} setState={setState} items={state_values} title={'استان'} />
             <Dialog state={cities} setState={setCities} items={city[state] ? city[state] : []} title={'شهرستان'} />
             <Dialog state={education} setState={setEducation} items={education_values} title={'تحصیلات'} />
@@ -61,7 +61,7 @@ const FirstInformation = () => {
 
 
         <>
-            <p className="login-copy">لطفا اطلاعات زیر را کامل نمایید</p>
+           
             <Dialog state={gender} setState={setGender} items={gender_values} title={'جنسیت'} />
             <Dialog state={married} setState={setMarried} items={married_values} title={'وضعیت تاهل'} />
 
@@ -72,7 +72,7 @@ const FirstInformation = () => {
         </>,
 
         <>
-            <p className="login-copy">لطفا اطلاعات زیر را کامل نمایید</p>
+            
             <Dialog state={blood} setState={setBlood} items={blood_type} title={'گروه خونی'} />
             <TextDialog state={height} setState={setHeight} items={[]} title={'قد'} />
             <TextDialog state={weight} setState={setWeight} items={[]} title={'وزن'} />
@@ -95,6 +95,7 @@ const FirstInformation = () => {
                         مشخصات</h3>
                 </div>
                 <div style={{ minHeight: '320px' }}>
+                <p className="login-copy">لطفا اطلاعات زیر را کامل نمایید</p>
                     <Fade spy={step} duration={400}>
                         {stepComponent[step]}
                     </Fade>

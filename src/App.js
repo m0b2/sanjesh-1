@@ -23,13 +23,14 @@ import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
 import SinginPage from './pages/sign_in/sign_in.page';
 import Recepit from './components/pay-receipt/pay-receipt.component';
-import FirstMate from './components/first-information/first-information.component'
+import FirstMate from './components/first-information/first-information.component';
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
-  return(<FirstMate/>)
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
@@ -42,9 +43,9 @@ function App({ sideTab, isFooterNeeded }) {
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
-        
+
         <div className="main-app-and-list-wrapper">
-        {window.screen.width < 800 ? null : <Header />}
+          {window.screen.width < 800 ? null : <Header />}
           {sideTab.isVisible && window.screen.width > 800 ? <SideList /> : null}
           <div className="main-app">
             <Sidebar />
@@ -68,7 +69,7 @@ function App({ sideTab, isFooterNeeded }) {
                 path="/question/:index/answer"
                 component={AnswerPage}
               />
-              
+
               <Route exact path="/edit" component={Edit_Profile_Page} />
               <Route exact path="/question/:index/analyze" component={Question_Analyze} />
               <Route exact path="/aboutus" component={About_Us_Page} />
@@ -81,7 +82,7 @@ function App({ sideTab, isFooterNeeded }) {
           </div>
         </div>
       </SidebarContext.Provider>
-      
+
       {isFooterNeeded && window.screen.width < 800 ? <Footer /> : null}
     </div>
   );
