@@ -22,13 +22,14 @@ import User_Info_Page from "./pages/user-info/user_info.page";
 import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
 import SinginPage from './pages/sign_in/sign_in.page';
+import Recepit from './components/pay-receipt/pay-receipt.component';
 
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
-  // return(<SinginPage/>)
+  // return(<Recepit/>)
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",

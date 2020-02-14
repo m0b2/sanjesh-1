@@ -86,7 +86,7 @@ export default function SwipeableTemporaryDrawer() {
           
           <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}>
             <ListItemIcon>{<value.icon />}</ListItemIcon>
-            <ListItemText style={{ fontFamily: 'B Homa' }}
+            <ListItemText style={{ fontFamily: 'IranSans' }}
               classes={{ primary: classes.text }}
               className={classes.text} primary={value.title} />
           </ListItem>

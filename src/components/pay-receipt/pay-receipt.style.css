@@ -1,0 +1,160 @@
+.receipt-container{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
+
+}
+
+
+.receipt-header{
+    
+}
+
+.receipt-title{
+    width: 100%;
+    color: #fafafa;
+    font-family: 'Samim';
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+
+.login-heading-container{
+    
+    width: 100%;
+    color: #fafafa;
+    font-weight: bolder;
+}
+
+
+
+
+
+
+#receipt {
+    font-family: helvetica;
+    color: #333;
+    
+  }
+  
+  #receipt * {
+    box-sizing: border-box;
+  }
+  #receipt .login-heading {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    
+  }
+  #receipt .login-copy {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Samim';
+    font-weight: 900;
+  }
+  #receipt .login-form {
+    margin: 60px auto;
+    display: block;
+    padding: 20px 30px 30px 30px;
+    max-width: 480px;
+    background: #69f0ae;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  }
+  #receipt .login-form .field-container {
+    position: relative;
+    display: block;
+    margin: 10px 0;
+    height: 54px;
+    width: 100%;
+    background: white;
+    border: #f0f;
+    border-radius: 3px;
+  }
+
+  
+  #receipt .login-form button {
+    display: block;
+    margin: 18px 0;
+    height: 54px;
+    width: 100%;
+    background: #33cc77;
+    border: 1px solid #3c7;
+    border-top-color: transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-family: 'Samim';
+    font-weight: 900;
+    
+  }
+  
+  #receipt .login-form button:hover {
+    background: #5cd692;
+    cursor: pointer;
+  }
+
+
+  .receipt {
+    background: linear-gradient(135deg, transparent 5.68px, white 5.69px) top left, linear-gradient(45deg, white 2.8px, transparent 2.81px) top left, linear-gradient(135deg, white 2.8px, transparent 2.81px) bottom left, linear-gradient(45deg, transparent 5.68px, white 5.69px) bottom left;
+    background-repeat: repeat-x;
+    background-size: 8px 4px;
+    padding: 4px 0;
+  }
+  .receipt-list {
+    background-color: white;
+    
+  }
+  html {
+    background: #eee;
+    
+    
+  }
+  .receipt {
+    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
+    max-width: 320px;
+    margin: 0 auto;
+    
+  }
+  .receipt-list {
+    background-color: #fff;
+    padding: 30px;
+  }
+  .receipt-item {
+    border-bottom: 0.5px dashed #ccc;
+    line-height: 1;
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 16px;
+    
+  }
+  .receipt-item:not(:first-child) {
+    margin-top: 1rem;
+  }
+  .receipt-label {
+    float: right;
+    font-family: 'Samim';
+    z-index: 101;
+    direction: rtl;
+    padding: 4px;
+    
+  }
+  .receipt-value {
+    float: left;
+    direction: rtl;
+    
+    font-family: 'VazirFD';
+    z-index: 101;
+    padding: 4px;
+  }
+
