@@ -12,29 +12,22 @@ code {
 
 
 
-@font-face {
-  font-family: 'Vazir';
-  font-display: auto;
-  src: local('Vazir'), local('Vazir'), url(./assets/fonts/Vazir.woff2) format('woff2'),
-    url(./assets/fonts/Vazir.woff) format('woff'),
-    url(./assets/fonts/Vazir.ttf) format('ttf'),
-}
 
 
 @font-face {
-  font-family: VazirFD;
-  src: url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-FD.eot');
-  src: url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-FD.eot?#iefix') format('embedded-opentype'),
-    url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-FD.woff') format('woff'),
-    url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-FD.ttf') format('truetype');
+  font-family: Vazir;
+  src: url('./assets/fonts/Vazir-FD.eot');
+  src: url('./assets/fonts/Vazir-FD.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Vazir-FD.woff') format('woff'),
+    url('./assets/fonts/Vazir-FD.ttf') format('truetype');
   font-weight: normal;
 }
-
 @font-face {
-  font-family: VazirFD;
-  src: url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-Bold-FD.eot');
-  src: url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-Bold-FD.eot?#iefix') format('embedded-opentype'),
-    url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-Bold-FD.woff') format('woff'),
-    url('http://mincdn.ir/font/Vazir/Farsi-Digits/Vazir-Bold-FD.ttf') format('truetype');
-  font-weight: bold;
+  font-family: Vazir;
+  src: url('./assets/fonts/Vazir-Bold-FD.eot');
+  src: url('./assets/fonts/Vazir-Bold-FD.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Vazir-Bold-FD.woff') format('woff'),
+    url('./assets/fonts/Vazir-Bold-FD.ttf') format('truetype');
+    font-weight: bold;
 }
+

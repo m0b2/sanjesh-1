@@ -97,7 +97,7 @@ function ConfirmationDialogRaw(props) {
             </DialogTitle>
             <DialogContent dividers>
             <div className="inputWithIcon">
-                <input style={{fontFamily:'VazirFD'}} type="text" placeholder={labelTitle} onChange={handleChange} value={value} />
+                <input style={{fontFamily:'Vazir'}} type="text" placeholder={labelTitle} onChange={handleChange} value={value} />
                 <i className="fa fa-user fa-lg fa-fw" aria-hidden="true" />
             </div>
             
@@ -147,7 +147,7 @@ const useStyles = makeStyles(theme => ({
     },
     secondarylistItemTextRoot: {
         
-        fontFamily: 'VazirFD',
+        fontFamily: 'Vazir',
         fontWeight: '500'
     },
 }));

@@ -153,7 +153,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: '500'
     },
     secondarylistItemTextRoot:{
-        fontFamily: 'VazirFD',
+        fontFamily: 'Vazir',
         fontWeight: '500',
     }
 }));

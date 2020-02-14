@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
     },
     button: {
-        fontFamily: 'VazirFD'
+        fontFamily: 'Vazir'
     }
 });
 
