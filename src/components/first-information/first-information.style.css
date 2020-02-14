@@ -1,0 +1,118 @@
+#first-information {
+    font-family: helvetica;
+    color: #333;
+    padding: 0 15px;
+  }
+  
+  #first-information * {
+    box-sizing: border-box;
+  }
+  #first-information .login-heading {
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    
+  }
+  #first-information .login-copy {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Samim';
+    font-weight: 900;
+  }
+  #first-information .login-form {
+    margin: 60px auto;
+    display: block;
+    padding: 20px 30px 30px 30px;
+    max-width: 480px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+    /* min-height: 500px; */
+  }
+  #first-information .login-form .field-container {
+    position: relative;
+    display: block;
+    margin: 10px 0;
+    height: 54px;
+    width: 100%;
+    background: white;
+    border: #f0f;
+    border-radius: 3px;
+  }
+  #first-information .login-form .field-container.-focused label {
+    font-size: 11px;
+    line-height: 12px;
+    color: #888;
+    bottom: auto;
+    top: 8px;
+    font-weight: bold;
+  }
+  #first-information .login-form .field-container.-focused input {
+    line-height: 62px;
+  }
+  #first-information .login-form label {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    left: 10px;
+    z-index: 1;
+    line-height: 54px;
+    display: block;
+    color: #666;
+    font-size: 16px;
+    transition: font-size 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), line-height 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), font-weight 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), top 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), bottom 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  #first-information .login-form input:focus, #first-information .login-form input:active {
+    outline: none;
+    border-color: #ededed;
+  }
+  
+
+  
+ 
+
+  #first-information .login-form .create-account-link {
+    color: #085DA9;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-family: 'Samim';
+    font-weight: 900;
+  }
+  #first-information .login-form .create-account-link:hover {
+    color: #0094CC;
+  }
+  .end-form-button{
+    display: block;
+    margin: 18px 0;
+    height: 54px;
+    width: 100%;
+    background: #33cc77;
+    border: 1px solid #3c7;
+    border-top-color: transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-family: 'Samim';
+    font-weight: 900;
+    
+  }
+
+
+
+
+
+
+
+  .step-container{
+      
+  }

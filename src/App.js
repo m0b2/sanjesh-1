@@ -23,13 +23,13 @@ import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
 import SinginPage from './pages/sign_in/sign_in.page';
 import Recepit from './components/pay-receipt/pay-receipt.component';
-
+import FirstMate from './components/first-information/first-information.component'
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
-  // return(<Recepit/>)
+  return(<FirstMate/>)
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
