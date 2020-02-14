@@ -148,9 +148,13 @@ const useStyles = makeStyles(theme => ({
 
     },
     listItemTextRoot: {
-
+        
         fontFamily: 'Samim',
         fontWeight: '500'
+    },
+    secondarylistItemTextRoot:{
+        fontFamily: 'VazirFD',
+        fontWeight: '500',
     }
 }));
 
@@ -186,7 +190,8 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
                     disabled={disabled}
                 >
                     <ListItemText primary={title} secondary={state}
-                        classes={{ primary: classes.listItemTextRoot, secondary: classes.listItemTextRoot }} />
+                        classes={{ primary: classes.listItemTextRoot,
+                         secondary: classes.listItemTextRoot }} />
                 </ListItem>
 
                 <ConfirmationDialogRaw
