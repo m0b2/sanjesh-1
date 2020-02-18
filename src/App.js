@@ -26,12 +26,17 @@ import Recepit from './components/pay-receipt/pay-receipt.component';
 import FirstMate from './components/first-information/first-information.component';
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import NProgress from 'nprogress'
+
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded }) {
+return<SinginPage/>
   React.useEffect(() => {
+    NProgress.start();
+    NProgress.inc();
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
       document.querySelector("#font-awesome-css")
