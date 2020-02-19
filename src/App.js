@@ -26,25 +26,27 @@ import Recepit from './components/pay-receipt/pay-receipt.component';
 import FirstMate from './components/first-information/first-information.component';
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import NProgress from 'nprogress'
+import NProgress from 'nprogress';
 
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
-function App({ sideTab, isFooterNeeded }) {
-return<SinginPage/>
+function App({ sideTab, isFooterNeeded, user }) {
+  
   React.useEffect(() => {
-    NProgress.start();
-    NProgress.inc();
+
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
       document.querySelector("#font-awesome-css")
     );
   }, []);
+  
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
-
+  if (!user.isLoggedIn) {
+    return <SinginPage />
+  }
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
@@ -96,7 +98,8 @@ return<SinginPage/>
 const mapStateToProps = store => {
   return {
     sideTab: store.SideTab,
-    isFooterNeeded: store.FooterReducer
+    isFooterNeeded: store.FooterReducer,
+    user: store.user
   };
 };
 

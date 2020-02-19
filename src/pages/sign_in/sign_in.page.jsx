@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import './sign_in.style.css';
 import axios from 'axios';
 import NProgress from 'nprogress';
+import { useDispatch, useStore } from 'react-redux';
 export default function Sign_in() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [username, setUsername] = useState('client');
   const [password, setPassword] = useState('1234');
   const [disable, setDisable] = useState(false);
@@ -59,8 +63,13 @@ export default function Sign_in() {
             NProgress.inc();
             console.log(response);
             NProgress.done();
-            // NProgress.remove();
+            
             setDisable(false);
+            setTimeout(()=>{
+              NProgress.remove();
+              history.push('/home');
+              dispatch({type:'USER_LOGGED_IN',payload:response.data.data})
+            },256)
           })
 
       })
@@ -70,20 +79,12 @@ export default function Sign_in() {
         setDisable(false);
         NProgress.done();
         NProgress.remove();
-        
+
       })
 
   }
 
-
-
-
-
-
-
-
-
-  const disabledStyle = { opacity: '0.5', pointerEvents: 'none' }
+  const disabledStyle = { opacity: '0.45', pointerEvents: 'none' }
   return (
     <div id="log-in">
       <div className="login-form" id="khoda" style={disable ? disabledStyle : null}>
@@ -106,7 +107,7 @@ export default function Sign_in() {
         <button className="log-in-button"
           style={{ background: '#0094CC' }} >خرید اشتراک</button>
         <a className="create-account-link" href>بازگردانی کلمه عبور</a>
-        
+
       </div>
     </div>
   );

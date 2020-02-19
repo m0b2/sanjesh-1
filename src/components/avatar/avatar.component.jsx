@@ -4,7 +4,6 @@ import './avatar.style.css';
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from 'react-router-dom';
 
-
 const useStyles = makeStyles({
 
     avatar: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles({
         height: '100%'
     },
     p: {
-        textAlign: 'right',
+        textAlign: 'center',
         width: '100%',
         marginTop: '-12%',
         fontFamily: 'B Yekan',
@@ -34,14 +33,14 @@ const useStyles = makeStyles({
         justifySelf: 'center',
         alignSelf: 'center',
         cursor: 'pointer',
-        
+
 
     }
 });
 
 
-export default function ProfileAvatar({ style }) {
-
+export default function ProfileAvatar({ style, name }) {
+    
     const classes = useStyles();
 
 
@@ -50,12 +49,12 @@ export default function ProfileAvatar({ style }) {
     return (
         <div className='sidebar-avatar-container'>
             <div className={classes.avatardiv}>
-            <Link to={'/profile'}>
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                    <img className={classes.img} src={'https://qsf.fs.quoracdn.net/-3-images.new_grid.profile_pic_default.png-26-345032f7d91f49f2.png'} alt='avatar' />
-                </Avatar>
+                <Link to={'/profile'}>
+                    <Avatar aria-label="recipe" className={classes.avatar}>
+                        <img className={classes.img} src={'https://qsf.fs.quoracdn.net/-3-images.new_grid.profile_pic_default.png-26-345032f7d91f49f2.png'} alt='avatar' />
+                    </Avatar>
                 </Link>
-                <p className={classes.p}>نام کاربری</p>
+                <p className={classes.p}>{name}</p>
             </div>
 
         </div>
