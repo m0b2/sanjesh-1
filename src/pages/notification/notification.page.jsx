@@ -77,7 +77,7 @@ const Notification = ({ loading, notification }) => {
         setTitle(value.title);
         setComponent(<span className={'dialog-span-content'}>{value.content}</span>);
         setOpen(true);
-        history.push(`/notification/#/${index}`)
+        history.push(`/notification/#/${index}`);
       }}
     />
 
@@ -85,7 +85,9 @@ const Notification = ({ loading, notification }) => {
 
   return <div style={{ minHeight: '90vh' }}>
     {MyNotification}
-    <Dialog component={component} title={title} open={open} setOpen={setOpen} onClose={()=>history.goBack()} />
+    <Dialog component={component} title={title} open={open} setOpen={setOpen}
+     onClose={()=>{history.goBack();}}
+      />
   </div>;
 };
 
