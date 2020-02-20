@@ -3,7 +3,7 @@ import "./categories.style.css";
 import Categories from "../../containers/categories/categories.container";
 import axios from 'axios';
 import { useDispatch, useStore, connect } from 'react-redux';
-import CircularProgress from '@material-ui/core/CircularProgress'; 
+import CircularProgress from '@material-ui/core/CircularProgress';
 // const category = [
 //   // { name: "کار", icon: "fas fa-running" },
 //   { name: "مسکن", icon: "far fa-building" },
@@ -54,12 +54,18 @@ const CategoriesPage = ({ loading, categories }) => {
       store.dispatch({ type: 'SET_LOADING', payload: { categories: true } });
 
 
-      const config = {
-        headers: { 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
-      };
+      const
+    headers =  {
+      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Vary': 'Authorization',
+      
+      
+    }
       const url = 'http://185.55.226.171/api/categories';
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      axios.get(proxyurl+ url, config)
+      axios.get(proxyurl+url, {headers: headers})
         .then((response) => {
           if (response.data.status === 200) {
             const filtered = response.data.data.map(
@@ -99,8 +105,8 @@ const CategoriesPage = ({ loading, categories }) => {
 
 
 
-  if (!categories ||loading.categories) {
-    return <div style={{ minHeight: '90vh', display:'flex', justifyContent:'center', alignItems:'center' }}>
+  if (!categories || loading.categories) {
+    return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <CircularProgress color="secondary" style={{ margin: '24px' }} />
     </div>
   }
@@ -116,10 +122,10 @@ const CategoriesPage = ({ loading, categories }) => {
   // console.log(categories)
   return (
     <div className="categories-wrapper" style={{ minHeight: '90vh' }}>
-    
-       
-        <Categories data={[categories,[]]} />
-      
+
+
+      <Categories data={[categories, []]} />
+
     </div>
   );
 };

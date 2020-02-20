@@ -37,7 +37,8 @@ export default function Sign_in() {
     const headers = {
       'Content-Type': 'application/json',
       'Vary': 'Authorization',
-      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`
+      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+      
 
     }
     const data = {
@@ -49,7 +50,7 @@ export default function Sign_in() {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post(url, data, {
+    axios.post(proxyurl+url, data, {
       headers: headers
     })
       .then((response) => {

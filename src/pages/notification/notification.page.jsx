@@ -5,7 +5,7 @@ import NotificationCom from "../../components/notification/notification.componen
 import axios from 'axios';
 import { useStore, connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const notification = [
   { from: 'admin', type: 'message', title: 'پیغام', content: 'به پایگاه سنجش تفاهم خوش آمدید', isChecked: null },
@@ -60,7 +60,7 @@ const Notification = ({ loading, notification }) => {
 
 
   if (!notification || loading.notification) {
-    return <div style={{ minHeight: '90vh', display:'flex', justifyContent:'center', alignItems:'center' }}>
+    return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <CircularProgress color="secondary" style={{ margin: '24px' }} />
     </div>
   }
@@ -85,7 +85,7 @@ const Notification = ({ loading, notification }) => {
 
   return <div style={{ minHeight: '90vh' }}>
     {MyNotification}
-    <Dialog component={component} title={title} open={open} setOpen={setOpen} />
+    <Dialog component={component} title={title} open={open} setOpen={setOpen} onClose={()=>history.goBack()} />
   </div>;
 };
 
@@ -134,12 +134,18 @@ const fetchNotification = async (store, page) => {
 
 
 
-  const config = {
-    headers: { 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
-  };
+  const
+    headers =  {
+      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Vary': 'Authorization',
+      
+    }
+  
   const url = `http://185.55.226.171/api/notifications?page=${page}`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  axios.get(proxyurl + url, config)
+  axios.get(proxyurl+url, {headers: headers})
     .then((response) => {
       if (response.data.status === 200) {
 
