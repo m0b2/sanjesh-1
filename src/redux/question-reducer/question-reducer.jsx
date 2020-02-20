@@ -39,8 +39,8 @@ const category = [
 const QuestionReducer = (state = [category, category2], action) => {
 
     switch (action.type) {
-        case 'SET_QUESTION': return {
-            ...state,
+        case 'SET_CATEGORIES': return {
+            
             currentUser: action.payload
         }
         default: return state;

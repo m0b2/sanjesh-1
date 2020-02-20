@@ -21,20 +21,20 @@ const Question_Review = ({ match, history }) => {
         return () => store.dispatch({ type: 'ADD_FOOTER' });
     }, [])
     const { index } = match.params;
-    const questions = store.getState().question;
+    const questions = store.getState().Categories;
     const current = store.getState().question_type;
 
 
     return (
         <div className='question-review-wrapper'>
             <Fade top>
-                <Icon className={questions[current][index].icon + ' fa-fw'}
+                <Icon className={questions[index].icon + ' fa-fw'}
                     style={{ color: '#b71c1c', fontSize: '100px', paddingTop: '20px' }}
                 />
             </Fade>
 
             <h3 style={{ fontFamily: 'Samim' }}
-            > {questions[current][index].name}
+            > {questions[index].name}
             </h3>
 
 

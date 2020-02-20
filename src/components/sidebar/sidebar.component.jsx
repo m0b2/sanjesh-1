@@ -16,7 +16,8 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import { SidebarContext } from '../../context/sidebar.context';
 import Avatar from '../avatar/avatar.component';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles({
   list: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
     fontFamily: 'Samim',
-        fontWeight:'900',
+    fontWeight: '900',
   },
   iconClose: {
     position: 'absolute',
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
     right: '22px',
     top: '12px',
     fontFamily: 'B Yekan',
-    color:'white'
+    color: 'white'
 
 
   },
@@ -58,9 +59,11 @@ const menu_items = [
   { title: 'پنل کاربری', icon: PermIdentityIcon, pushValue: '/profile' },
   { title: 'تغییر مشخصات', icon: EditIcon, pushValue: '/edit' },
   { title: 'درباره ما', icon: InfoIcon, pushValue: '/aboutus' },
-  { title: 'خروج', icon: ExitToAppIcon, pushValue: '' }];
+  { title: 'خروج', icon: ExitToAppIcon, pushValue: '' }
+];
 
 export default function SwipeableTemporaryDrawer() {
+  const dispatch = useDispatch();
   const { isOpen, setOpen } = React.useContext(SidebarContext);
   const classes = useStyles();
   const toggleDrawer = (side, open) => event => {
@@ -83,13 +86,18 @@ export default function SwipeableTemporaryDrawer() {
       {<List style={{ direction: 'rtl' }}>
         {menu_items.map((value, index) => (
           <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
-          
-          <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}>
-            <ListItemIcon>{<value.icon />}</ListItemIcon>
-            <ListItemText style={{ fontFamily: 'IranSans' }}
-              classes={{ primary: classes.text }}
-              className={classes.text} primary={value.title} />
-          </ListItem>
+
+            <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`} 
+            onClick={()=>{
+                if(value.title==='خروج'){
+                  dispatch({type:'USER_LOGGED_OUT'})
+                }
+            }}>
+              <ListItemIcon>{<value.icon />}</ListItemIcon>
+              <ListItemText style={{ fontFamily: 'IranSans' }}
+                classes={{ primary: classes.text }}
+                className={classes.text} primary={value.title} />
+            </ListItem>
           </Link>
         ))}
 
@@ -113,25 +121,25 @@ export default function SwipeableTemporaryDrawer() {
         onClose={toggleDrawer('right', false)}
         onOpen={toggleDrawer('right', true)}
       >
-       
-          <ListItem style={{ direction: 'rtl' }} key={`list-side${'sdasd'}`} className={classes.topList}>
-            <ListItemIcon>
-              <IconButton className={classes.iconClose} aria-label="delete"
-                onClick={() => setOpen({ right: false })}
-              >
-                <CloseIcon style={{color:'white'}}/>
 
-              </IconButton>
-            </ListItemIcon>
-            <ListItemText classes={{ primary: classes.listText }} primary={'حساب کاربری'} />
-          </ListItem>
-          <Divider />
+        <ListItem style={{ direction: 'rtl' }} key={`list-side${'sdasd'}`} className={classes.topList}>
+          <ListItemIcon>
+            <IconButton className={classes.iconClose} aria-label="delete"
+              onClick={() => setOpen({ right: false })}
+            >
+              <CloseIcon style={{ color: 'white' }} />
 
-
-          <Avatar />
+            </IconButton>
+          </ListItemIcon>
+          <ListItemText classes={{ primary: classes.listText }} primary={'حساب کاربری'} />
+        </ListItem>
+        <Divider />
 
 
-        
+        <Avatar />
+
+
+
         <Divider />
 
         {sideList('right')}

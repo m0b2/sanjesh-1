@@ -27,24 +27,57 @@ import FirstMate from './components/first-information/first-information.componen
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import NProgress from 'nprogress';
+import axios from 'axios';
 
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
 
 function App({ sideTab, isFooterNeeded, user }) {
-  
+
   React.useEffect(() => {
 
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
       document.querySelector("#font-awesome-css")
     );
+
+
+
+
+
+
+
+
+    // fetchCategories();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }, []);
-  
+
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
-  if (!user.isLoggedIn) {
+  if (!user || !user.isLoggedIn) {
     return <SinginPage />
   }
   return (
@@ -104,3 +137,55 @@ const mapStateToProps = store => {
 };
 
 export default connect(mapStateToProps)(App);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const fetchCategories = () => {
+
+
+
+
+
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Vary': 'Authorization',
+    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`
+
+
+  }
+
+
+  const url = 'http://185.55.226.171/api/categories';
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+  axios.post(proxyurl + url, 'data', {
+    headers: headers
+  })
+    .then((response) => {
+
+      const url2 = 'http://185.55.226.171/api/profile';
+
+
+
+    })
+    .catch((error) => {
+      console.log(error);
+
+
+    })
+
+
+
+}

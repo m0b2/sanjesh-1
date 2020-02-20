@@ -16,7 +16,8 @@ const Category = ({
   index,
   history,
   location,
-  tuchable
+  tuchable,
+  description
 }) => {
 
 
@@ -58,7 +59,7 @@ const Category = ({
           <Number total={25} current={8} currentStyle={{ fontSize: '26px' }} />
         }
         title={title}
-        subheader="توضیحات مربوط به سوال"
+        subheader={description}
         style={{ fontFamily: 'Samim' }}
         classes={{ title: classes.title, subheader: classes.subheader }}
       />

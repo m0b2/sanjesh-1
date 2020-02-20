@@ -6,6 +6,8 @@ import SideTab from './tab-reducer/tab-reducer';
 import FooterReducer from './footer-reducer/footer.reducer';
 import CityReducer from './city-reducer/city-reducer';
 import EditPageAppbar from './appbar-reducer/appbar-reducer';
+import Categories from './categories-reducer/categories-reducer';
+import loading from './loading-reducer/loading-reducer';
 export default combineReducers({
     user: UserReducer,
     question_type: Question_Type,
@@ -13,5 +15,7 @@ export default combineReducers({
     SideTab,
     FooterReducer,
     CityReducer,
-    isEditPage:EditPageAppbar
+    isEditPage:EditPageAppbar,
+    Categories,
+    loading
 })

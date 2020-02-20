@@ -17,9 +17,9 @@ const Categories = props => {
     <Category
       title={value.name}
       icon={value.icon}
-
+      description={value.description}
       index={index}
-      key={`category${value.name}`}
+      key={`category${index}`}
       tuchable
     />
   ));

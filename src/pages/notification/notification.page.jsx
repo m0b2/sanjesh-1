@@ -2,16 +2,8 @@ import "./notification.style.css";
 import Dialog from '../../components/full-screen-dialog/full-screen-dialog.component';
 import React from "react";
 import NotificationCom from "../../components/notification/notification.component";
-
-const title = ["پرسشنامه ", "پرسشنامه ", "پرسشنامه ", "پرسشنامه ", "پرسشنامه "];
-const subheader = [" اول", " دوم", " سوم", " چهارم", " پنجم"];
-const details = [
-  "پرسشنامه اول",
-  "پرسشنامه دوم",
-  "پرسشنامه سوم",
-  "پرسشنامه چهارم",
-  "پرسشنامه پنجم"
-];
+import axios from 'axios';
+import { useDispatch, useStore, connect } from 'react-redux';
 
 
 const notification = [
@@ -20,7 +12,7 @@ const notification = [
   { from: 'admin', type: 'analyze', title: 'آنالیز سوالات', content: 'آنالیز سوالات فردی اتمام یافت و اینک در بخش مربوطه در دسترس است ', isChecked: null }
 ];
 
-const data = [title, subheader, details];
+
 
 const Notification = () => {
   const [open, setOpen] = React.useState(false);
@@ -47,5 +39,18 @@ const Notification = () => {
     <Dialog component={component} title={title} open={open} setOpen={setOpen} />
   </div>;
 };
+
+
+
+
+
+
+const mapStateToProps = store => {
+  return {
+    loading: store.loading,
+    categories: store.Categories
+  };
+};
+
 
 export default Notification;
