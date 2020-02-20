@@ -58,24 +58,31 @@ export default function Sign_in() {
 
         const url2 = 'http://185.55.226.171/api/profile';
         setShow(false);
+        NProgress.inc();
+        NProgress.done();
+        NProgress.remove();
+        setDisable(false);
+        setTimeout(() => {
+                NProgress.remove();
+                history.push('/home');
+                dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
+              }, 256)
+        // axios.post(proxyurl+url2, null, {
+        //   headers: {...headers,Authorization:`Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
+        // })
+        //   .then((response) => {
+        //     NProgress.inc();
+        //     console.log(response);
+        //     NProgress.done();
 
+        //     setDisable(false);
 
-        axios.post(proxyurl+url2, null, {
-          headers: {...headers,Authorization:`Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
-        })
-          .then((response) => {
-            NProgress.inc();
-            console.log(response);
-            NProgress.done();
-
-            setDisable(false);
-
-            setTimeout(() => {
-              NProgress.remove();
-              history.push('/home');
-              dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
-            }, 256)
-          })
+        //     setTimeout(() => {
+        //       NProgress.remove();
+        //       history.push('/home');
+        //       dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
+        //     }, 256)
+        //   })
 
 
 

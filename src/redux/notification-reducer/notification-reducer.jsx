@@ -1,10 +1,10 @@
 
 
-const LoadingReducer = (state = null, action) => {
+const NotificationReducer = (state = null, action) => {
 
     switch (action.type) {
 
-        case 'SET_NOTIFICATION': return { ...state, ...action.payload };
+        case 'SET_NOTIFICATION': return [  ...action.payload ];
 
 
 
@@ -16,4 +16,4 @@ const LoadingReducer = (state = null, action) => {
 };
 
 
-export default LoadingReducer;
+export default NotificationReducer;

@@ -8,6 +8,7 @@ import CityReducer from './city-reducer/city-reducer';
 import EditPageAppbar from './appbar-reducer/appbar-reducer';
 import Categories from './categories-reducer/categories-reducer';
 import loading from './loading-reducer/loading-reducer';
+import Notification from './notification-reducer/notification-reducer';
 export default combineReducers({
     user: UserReducer,
     question_type: Question_Type,
@@ -17,5 +18,6 @@ export default combineReducers({
     CityReducer,
     isEditPage:EditPageAppbar,
     Categories,
-    loading
+    loading,
+    Notification
 })

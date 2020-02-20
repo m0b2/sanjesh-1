@@ -3,7 +3,7 @@ import "./categories.style.css";
 import Categories from "../../containers/categories/categories.container";
 import axios from 'axios';
 import { useDispatch, useStore, connect } from 'react-redux';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'; 
 // const category = [
 //   // { name: "کار", icon: "fas fa-running" },
 //   { name: "مسکن", icon: "far fa-building" },
@@ -59,11 +59,11 @@ const CategoriesPage = ({ loading, categories }) => {
       };
       const url = 'http://185.55.226.171/api/categories';
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      axios.get(proxyurl + url, config)
+      axios.get(proxyurl+ url, config)
         .then((response) => {
           if (response.data.status === 200) {
             const filtered = response.data.data.map(
-              (value, index) => ({ name: value.title, icon: value.icon, id: value.id, description: value.description, index: index }))
+              (value, index) => ({ name: value.title, icon: "fas fa-question", id: value.id, description: value.description, index: index }))
             store.dispatch({ type: 'SET_CATEGORIES', payload: filtered });
             store.dispatch({ type: 'SET_LOADING', payload: { categories: false } });
             // console.log(response.data)
@@ -99,7 +99,11 @@ const CategoriesPage = ({ loading, categories }) => {
 
 
 
-
+  if (!categories ||loading.categories) {
+    return <div style={{ minHeight: '90vh', display:'flex', justifyContent:'center', alignItems:'center' }}>
+      <CircularProgress color="secondary" style={{ margin: '24px' }} />
+    </div>
+  }
 
 
 
@@ -109,17 +113,13 @@ const CategoriesPage = ({ loading, categories }) => {
   //   (value, index) => ({ name: value.title, icon: value.icon, id: value.id, description: value.description }))
 
   // dispatch({type:'SET_CATEGORIES', payload:filtered})
-  console.log(categories)
+  // console.log(categories)
   return (
     <div className="categories-wrapper" style={{ minHeight: '90vh' }}>
-      {loading.categories || !categories ?
-
-        <CircularProgress color="secondary" style={{ margin: '24px' }} />
-
-
-        :
+    
+       
         <Categories data={[categories,[]]} />
-      }
+      
     </div>
   );
 };
