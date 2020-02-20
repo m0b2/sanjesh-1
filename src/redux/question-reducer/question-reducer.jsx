@@ -1,5 +1,5 @@
 
-const InitialState = { 'current': 0 };
+const InitialState = { current: 0 };
 const QuestionReducer = (state = InitialState, action) => {
 
   switch (action.type) {

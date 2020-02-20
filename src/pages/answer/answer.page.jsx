@@ -20,19 +20,23 @@ const question =
 
 
 
-const Answer = ({index}) => {
-    const store = useStore()
+const Answer = ({ index }) => {
+    const store = useStore();
+    const question = store.getState().question;
+    const currentCategory = question.current;
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
         return () => store.dispatch({ type: 'ADD_FOOTER' });
     }, [])
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory]));
     const [userChooseSomething, setUserChooseSomething] = React.useState(false);
-    const size = question.length;
+    const [choise, setChoise] = React.useState(question[currentCategory][currentQuestion].client_answer);
+    const size = question[currentCategory].length;
 
 
 
-
+    console.log(userAnswer[currentQuestion], 'THIS IS SPARTA')
 
 
 
@@ -46,15 +50,24 @@ const Answer = ({index}) => {
                     <div className='question-content-container'>
                         <span>
 
-                            {question[currentQuestion]}
+                            {question[currentCategory][currentQuestion].title}
                         </span>
                     </div>
 
-                    <Options options={inputs[currentQuestion]} setUserChooseSomething={setUserChooseSomething} />
+                    <Options
+                        options={question[currentCategory][currentQuestion]}
+                        setUserChooseSomething={setUserChooseSomething}
+                        userAnswer={userAnswer} setUserAnswer={setUserAnswer}
+                        current={currentQuestion} />
 
                     <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
-                        chooseState={{ userChooseSomething, setUserChooseSomething }}
-                        question={question} />
+                        nextActive={userAnswer[currentQuestion]}
+                        size={size}
+                        nextChoise={(size !== currentQuestion + 1) ?
+                            question[currentCategory][currentQuestion + 1].client_answer
+                            :
+                            null
+                        } />
                 </>
 
             )}
@@ -67,3 +80,15 @@ const Answer = ({index}) => {
 
 
 export default Answer;
+
+
+
+
+const getAllAnswer = (question) => {
+    let arr = {};
+    question.map((value, index)=>{
+        arr = {...arr, [index]:value.client_answer}
+    })
+
+    return arr;
+}

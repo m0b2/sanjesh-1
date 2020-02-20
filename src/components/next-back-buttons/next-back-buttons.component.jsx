@@ -7,11 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-const NextBackButtons = ({ currentState, chooseState, question }) => {
+const NextBackButtons = ({ currentState, nextActive, size }) => {
     const { currentQuestion, setCurrentQuestion } = currentState;
-    const { userChooseSomething, setUserChooseSomething } = chooseState;
 
-    const size = question.length;
+
+
     const useStyles = makeStyles(theme => ({
         button: {
             '& > *': {
@@ -35,10 +35,10 @@ const NextBackButtons = ({ currentState, chooseState, question }) => {
                 className={classes.button}
                 onClick={() => {
                     setCurrentQuestion((oldState) => (currentQuestion !== size ? oldState + 1 : oldState))
-                    currentQuestion + 1 !== size && setUserChooseSomething(false);
+                    // currentQuestion + 1 !== size && setChoise(false);
                 }
                 }
-                disabled={!userChooseSomething}
+                disabled={!(nextActive || nextActive === 0) || size === currentQuestion + 1}
             >
                 بعدی
                 </Button>

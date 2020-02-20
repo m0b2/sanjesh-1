@@ -50,7 +50,7 @@ const Category = ({
 
     <Card className={classes.card} style={{ width: "100%" }}
       onClick={() => {history.push(`/question/${index}/`)
-      dispatch({type:'SET_CURRENT_QUESTIONS',index})
+      dispatch({type:'SET_CURRENT_QUESTIONS',payload:index})
       }
       
       
