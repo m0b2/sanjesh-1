@@ -4,7 +4,7 @@ import Number from '../number/number.component';
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from '@material-ui/core/Icon';
-
+import {useDispatch} from 'react-redux';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 
@@ -24,6 +24,7 @@ const Category = ({
   const { pathname } = location;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -48,7 +49,12 @@ const Category = ({
     // )
 
     <Card className={classes.card} style={{ width: "100%" }}
-      onClick={() => history.push(`/question/${index}/`)}
+      onClick={() => {history.push(`/question/${index}/`)
+      dispatch({type:'SET_CURRENT_QUESTIONS',index})
+      }
+      
+      
+      }
     >
       <CardHeader
         avatar={

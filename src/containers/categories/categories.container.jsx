@@ -11,14 +11,15 @@ const Categories = props => {
   const { data, current_tab, sideTab } = props;
 
 
-
-
-  const MyCategories = data[sideTab.current].map((value, index) => (
+  
+  const subject = data[sideTab.current];
+  // console.log(subject)
+  const MyCategories = Object.keys(subject).map((keyName, index) => (
     <Category
-      title={value.name}
-      icon={value.icon}
-      description={value.description}
-      index={index}
+      title={subject[keyName].name}
+      icon={subject[keyName].icon}
+      description={subject[keyName].description}
+      index={subject[keyName].id}
       key={`category${index}`}
       tuchable
     />

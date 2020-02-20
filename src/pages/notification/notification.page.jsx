@@ -86,8 +86,8 @@ const Notification = ({ loading, notification }) => {
   return <div style={{ minHeight: '90vh' }}>
     {MyNotification}
     <Dialog component={component} title={title} open={open} setOpen={setOpen}
-     onClose={()=>{history.goBack();}}
-      />
+      onClose={() => { history.goBack(); }}
+    />
   </div>;
 };
 
@@ -137,17 +137,18 @@ const fetchNotification = async (store, page) => {
 
 
   const
-    headers =  {
+    headers = {
       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Vary': 'Authorization',
-      
+      'Access-Control-Allow-Origin':'*'
+
     }
-  
+
   const url = `http://185.55.226.171/api/notifications?page=${page}`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  axios.get(proxyurl+url, {headers: headers})
+  axios.get( proxyurl+url, { headers: headers })
     .then((response) => {
       if (response.data.status === 200) {
 

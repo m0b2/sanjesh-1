@@ -47,87 +47,98 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const CategoriesPage = ({ loading, categories }) => {
 
   useEffect(() => {
-
+    let obj = {};
     // dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
     // dispatch({ type: 'ADD_SIDE_LIST' });
     if (!categories) {
       store.dispatch({ type: 'SET_LOADING', payload: { categories: true } });
 
-
+      
       const
-    headers =  {
-      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Vary': 'Authorization',
-      
-      
-    }
+        headers = {
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Vary': 'Authorization',
+
+
+        }
       const url = 'http://185.55.226.171/api/categories';
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      axios.get(proxyurl+url, {headers: headers})
+      axios.get(proxyurl + url, { headers: headers })
         .then((response) => {
           if (response.data.status === 200) {
-            const filtered = response.data.data.map(
-              (value, index) => ({ name: value.title, icon: "fas fa-question", id: value.id, description: value.description, index: index }))
-            store.dispatch({ type: 'SET_CATEGORIES', payload: filtered });
-            store.dispatch({ type: 'SET_LOADING', payload: { categories: false } });
-            // console.log(response.data)
-          }
+             obj = {};
+            response.data.data.map(
+              (value, index) => {
 
-        }).catch((error) => {
-          if (error && error.response && error.response.status === 401) {
-            // console.log('Singed out!!!')
-            store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
-          } else {
-            // console.log('there is an problem')
-            store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
-          }
+                obj = {
+                  ...obj,
+                  [value.id]: { name: value.title, icon: "fas fa-question", id: value.id, description: value.description, index: index }
+                }
+              }
+            )
+            
 
-        })
+    }
+    store.dispatch({ type: 'SET_CATEGORIES', payload: obj });
+    store.dispatch({ type: 'SET_LOADING', payload: { categories: false } });
+    // console.log(response.data)
+  }
+
+        ).catch ((error) => {
+  if (error && error.response && error.response.status === 401) {
+    // console.log('Singed out!!!')
+    store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
+  } else {
+    // console.log('there is an problem')
+    store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
+  }
+
+})
 
 
 
 
     }
 
-    return () => dispatch({ type: 'REMOVE_SIDE_LIST' });
+return () => dispatch({ type: 'REMOVE_SIDE_LIST' });
   }, []);
 
-  const store = useStore();
+const store = useStore();
 
 
-  /**
-   * Moshakhas mikone in page be sideList niaz dare ya na!
-   */
-  const dispatch = useDispatch();
-
-
-
-
-  if (!categories || loading.categories) {
-    return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <CircularProgress color="secondary" style={{ margin: '24px' }} />
-    </div>
-  }
+/**
+ * Moshakhas mikone in page be sideList niaz dare ya na!
+ */
+const dispatch = useDispatch();
 
 
 
-  // const mycategory = JSON.parse(localStorage.getItem('myBelovedCategories'));
 
-  // const filtered = mycategory.map(
-  //   (value, index) => ({ name: value.title, icon: value.icon, id: value.id, description: value.description }))
-
-  // dispatch({type:'SET_CATEGORIES', payload:filtered})
-  // console.log(categories)
-  return (
-    <div className="categories-wrapper" style={{ minHeight: '90vh' }}>
+if (!categories || loading.categories) {
+  return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <CircularProgress color="secondary" style={{ margin: '24px' }} />
+  </div>
+}
 
 
-      <Categories data={[categories, []]} />
 
-    </div>
-  );
+// const mycategory = JSON.parse(localStorage.getItem('myBelovedCategories'));
+
+// const filtered = mycategory.map(
+//   (value, index) => ({ name: value.title, icon: value.icon, id: value.id, description: value.description }))
+
+// dispatch({type:'SET_CATEGORIES', payload:filtered})
+// console.log(categories)
+return (
+  <div className="categories-wrapper" style={{ minHeight: '90vh' }}>
+
+
+    <Categories data={[categories, []]} />
+
+  </div>
+);
 };
 
 

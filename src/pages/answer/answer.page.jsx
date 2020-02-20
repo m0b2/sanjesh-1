@@ -20,7 +20,7 @@ const question =
 
 
 
-const Answer = () => {
+const Answer = ({index}) => {
     const store = useStore()
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
