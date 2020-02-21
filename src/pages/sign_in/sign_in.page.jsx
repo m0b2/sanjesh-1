@@ -5,6 +5,8 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 import { useDispatch, useStore } from 'react-redux';
 import Fade from 'react-reveal/Fade';
+
+
 export default function Sign_in() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,7 +40,7 @@ export default function Sign_in() {
       'Content-Type': 'application/json',
       'Vary': 'Authorization',
       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
-      
+
 
     }
     const data = {
@@ -50,7 +52,7 @@ export default function Sign_in() {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post(proxyurl+url, data, {
+    axios.post(proxyurl + url, data, {
       headers: headers
     })
       .then((response) => {
@@ -64,10 +66,10 @@ export default function Sign_in() {
         NProgress.remove();
         setDisable(false);
         setTimeout(() => {
-                NProgress.remove();
-                history.push('/home');
-                dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
-              }, 256)
+          NProgress.remove();
+          history.push('/home');
+          dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
+        }, 256)
         // axios.post(proxyurl+url2, null, {
         //   headers: {...headers,Authorization:`Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
         // })
@@ -125,7 +127,14 @@ export default function Sign_in() {
           <button className="log-in-button"
             onClick={() => Request()}>وارد شوید</button>
           <button className="log-in-button"
-            style={{ background: '#0094CC' }} >خرید اشتراک</button>
+            style={{ background: '#0094CC' }}
+            onClick={() => {
+              paymentStuff(history)
+            }}
+
+
+
+          >خرید اشتراک</button>
           <a className="create-account-link" href>بازگردانی کلمه عبور</a>
 
         </div>
@@ -138,6 +147,21 @@ export default function Sign_in() {
 
 
 
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
+async function paymentStuff(history) {
+
+  const url = 'http://185.55.226.171/api/register';
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  NProgress.inc();
+  axios.post(proxyurl + url, null, null)
+    .then((response) => {
+      // history.push()
+      window.location.assign(`${response.data.data.url}`);
+
+    })
+    .catch((error) => {
+
+
+
+
+    })
 }
