@@ -10,7 +10,15 @@ import { useStore } from 'react-redux'
 
 const NextBackButtons = (props) => {
 
-    const { currentState, nextActive, size, currentAnswer, oldAnswer, setOldAnswer, question_id, oldVersion } = props
+    const {
+        currentState, nextActive, size,
+        currentAnswer, oldAnswer, setOldAnswer,
+        question_id, oldVersion, userDescription,
+        setOldUserDescription, oldUserDescription
+    } = props;
+
+
+
     const { currentQuestion, setCurrentQuestion } = currentState;
     const store = useStore();
 
@@ -73,7 +81,7 @@ const NextBackButtons = (props) => {
 
 
 
-
+    // NEW VERSION
 
 
 
@@ -105,11 +113,33 @@ const NextBackButtons = (props) => {
                             ,
                             current_question: currentQuestion,
                             client_answer: currentAnswer,
-                            category_id: category_id
+                            category_id: category_id,
+                            description: userDescription
 
 
                         })
-                        sendAnswer(category_id, question_id, currentAnswer);
+                        sendAnswer(category_id, question_id, currentAnswer, userDescription);
+
+
+                    } else if (oldUserDescription !== userDescription) {
+                        const category_id = store.getState().userAnswer.category_id
+                        setOldUserDescription((state) => {
+                            const newOld = state.slice();
+                            newOld[currentQuestion] = userDescription;
+                            return newOld;
+                        });
+
+                        store.dispatch({
+                            type: 'SET_CHANGE_ANSWER'
+                            ,
+                            current_question: currentQuestion,
+                            client_answer: currentAnswer,
+                            category_id: category_id,
+                            description: userDescription
+
+
+                        })
+                        sendAnswer(category_id, question_id, currentAnswer, userDescription);
 
 
                     }
@@ -149,9 +179,9 @@ export default NextBackButtons;
 
 
 
-const sendAnswer = (category_id, questions_id, answer_id) => {
+const sendAnswer = (category_id, questions_id, answer_id, userDescription) => {
 
-
+    let comment = userDescription ? userDescription : ''
     const headers = {
         'Content-Type': 'application/json',
         'Vary': 'Authorization',
@@ -164,7 +194,7 @@ const sendAnswer = (category_id, questions_id, answer_id) => {
     }
 
 
-    const url = `http://185.55.226.171/api/answers/${category_id}?questions[0][id]=${questions_id}&questions[0][answer]=${answer_id}&questions[0][description]=ytytyt`
+    const url = `http://185.55.226.171/api/answers/${category_id}?questions[0][id]=${questions_id}&questions[0][answer]=${answer_id}&questions[0][description]=${comment}`
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     axios.post(proxyurl + url, data, {
         headers: headers
@@ -172,7 +202,7 @@ const sendAnswer = (category_id, questions_id, answer_id) => {
         .then((response) => {
 
 
-            console.log(response);
+            // console.log(response);
 
 
         })

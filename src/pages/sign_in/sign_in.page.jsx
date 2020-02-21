@@ -129,7 +129,7 @@ export default function Sign_in() {
           <button className="log-in-button"
             style={{ background: '#0094CC' }}
             onClick={() => {
-              paymentStuff(history)
+              paymentStuff(history,setDisable,)
             }}
 
 
@@ -147,19 +147,21 @@ export default function Sign_in() {
 
 
 
-async function paymentStuff(history) {
-
+async function paymentStuff(history,setDisable) {
+  setDisable(true)
   const url = 'http://185.55.226.171/api/register';
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   NProgress.inc();
   axios.post(proxyurl + url, null, null)
     .then((response) => {
       // history.push()
+      NProgress.set(0.6)
+      
       window.location.assign(`${response.data.data.url}`);
 
     })
     .catch((error) => {
-
+      setDisable(false)
 
 
 
