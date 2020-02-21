@@ -10,6 +10,7 @@ import Categories from './categories-reducer/categories-reducer';
 import loading from './loading-reducer/loading-reducer';
 import Notification from './notification-reducer/notification-reducer';
 import OldAnswer from './old-answer-reducer/old-answer-reducer';
+import globalFunction from './global-function/global-function'
 export default combineReducers({
     user: UserReducer,
     question_type: Question_Type,
@@ -21,6 +22,7 @@ export default combineReducers({
     Categories,
     loading,
     Notification,
-    oldAnswer:OldAnswer
+    oldAnswer:OldAnswer,
+    globalFunction
 
 })

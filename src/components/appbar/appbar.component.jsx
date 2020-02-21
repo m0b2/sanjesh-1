@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { SidebarContext } from '../../context/sidebar.context';
 import Logo from '../logo/Logo.component';
 import { connect } from 'react-redux';
-const Appbar = ({ location, history, isFooterNeeded,isEditPage }) => {
+const Appbar = ({ location, history, isFooterNeeded, isEditPage, globalFunction }) => {
     const { isOpen, setOpen } = React.useContext(SidebarContext);
     let { pathname } = location;
     // console.log(pathname)
@@ -21,30 +21,31 @@ const Appbar = ({ location, history, isFooterNeeded,isEditPage }) => {
         <Fade top opposite >
             <div className={'Appbar'}
             >
-            {!isEditPage?<>
-                <IconButton edge="start" color="inherit" aria-label="menu"
-                    onClick={() => setOpen({ right: true })}
-                >
-                    <MenuIcon style={{ color: 'white' }} />
-                </IconButton>
+                {!isEditPage ? <>
+                    <IconButton edge="start" color="inherit" aria-label="menu"
+                        onClick={() => setOpen({ right: true })}
+                    >
+                        <MenuIcon style={{ color: 'white' }} />
+                    </IconButton>
 
-                <Logo size={20} />
+                    <Logo size={20} />
                 </>
-                :
-                <IconButton className={classes.iconRight} aria-label="delete"
-                        onClick={() => { 
+                    :
+                    <IconButton className={classes.iconRight} aria-label="delete"
+                        onClick={() => {
                             // check if data is changed
                             // if true send it to server
+                            globalFunction();
                             history.goBack()
-                             }}
+                        }}
                     >
-                        
-                         <CheckIcon style={{ color: 'white' }} />
-                         
+
+                        <CheckIcon style={{ color: 'white' }} />
+
                     </IconButton>
-                
-            }
-                
+
+                }
+
 
 
                 {(isFooterNeeded) ? null :
@@ -52,8 +53,8 @@ const Appbar = ({ location, history, isFooterNeeded,isEditPage }) => {
                         onClick={() => { history.goBack() }}
                     >
                         <Spin duration={460}>
-                         <ArrowBackIcon style={{ color: 'white' }} />
-                         </Spin>
+                            <ArrowBackIcon style={{ color: 'white' }} />
+                        </Spin>
                     </IconButton>
                 }
             </div>
@@ -61,10 +62,13 @@ const Appbar = ({ location, history, isFooterNeeded,isEditPage }) => {
     );
 
 }
-const mapStatetoProps = store => { return ({
-     isFooterNeeded: store.FooterReducer,
-     isEditPage:store.isEditPage
-     }) }
+const mapStatetoProps = store => {
+    return ({
+        isFooterNeeded: store.FooterReducer,
+        isEditPage: store.isEditPage,
+        globalFunction: store.globalFunction
+    })
+}
 export default withRouter(connect(mapStatetoProps)(Appbar));
 
 

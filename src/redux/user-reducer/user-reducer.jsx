@@ -1,16 +1,3 @@
-// const Initial_State = {
-//     id: '',
-//     type: '',
-//     username: '',
-//     full_name: '',
-//     email: null,
-//     email_verified_at: null,
-//     role: null,
-//     "created_at": "",
-//     "updated_at": "",
-//     isLoggedIn:false
-
-// };
 
 const Initial_State = JSON.parse(localStorage.getItem('myBelovedUser'));
 

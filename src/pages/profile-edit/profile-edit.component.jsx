@@ -1,31 +1,57 @@
 import React from 'react';
 import './profile-edit.style.css';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useStore } from 'react-redux';
 import MaterialTab from '../../components/material-tab/material-tab.component';
 import FormProfile from '../../components/form/form.component';
 import StudentProfile from '../../components/student-profile/student-profile.component';
+import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const tabs = ['مشخصات', 'ویژه دانشجویان']
-const ProfilView = ({ SideTab }) => {
-    const [state, setState] = React.useState({
-        firstName: '',
-        lastName: '',
-        ssn: '',
-        birthDay: '',
-        state: '',
-        city: ''
-    });
+const ProfilView = ({ SideTab, user }) => {
 
 
     /**
      * Moshakhas mikone in page be sideList niaz dare ya na!
      */
+    const store = useStore();
     const dispatch = useDispatch();
+    const city = user.city;
     React.useEffect(() => {
         dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
         dispatch({ type: 'ADD_SIDE_LIST' });
         dispatch({ type: 'REMOVE_FOOTER' });
         dispatch({ type: 'EDIT_PAGE' });
+        
+        if(!city){
+
+
+
+
+
+            getProfileInformation(store)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         return () => {
@@ -38,12 +64,35 @@ const ProfilView = ({ SideTab }) => {
         '',
         ''
     ]
-    const tabComponent = [<FormProfile disabled={false} />, <StudentProfile disabled={false} />]
+
+
+
+
+
+
+
+    if(!city){
+        return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <CircularProgress color="secondary" style={{ margin: '24px' }} />
+    </div>
+
+    }
+
+
+
+
+
+
+    const tabComponent = [<FormProfile disabled={false} user={user} />, <StudentProfile disabled={false} />]
     const SwipeContianer = <MaterialTab data={{
         tabs: ['مشخصات', 'ویژه دانشجویان'],
         content: content,
     }} insideComponent={tabComponent} >
     </MaterialTab>;
+
+
+
+
 
     return (
         <div >
@@ -67,6 +116,7 @@ const mapStatetoProps = (store) => {
     return (
         {
             SideTab: store.SideTab,
+            user:store.user
 
         }
     )
@@ -82,7 +132,61 @@ export default connect(mapStatetoProps)(ProfilView);
 
 
 
+   const getProfileInformation = (store, )=>{
 
+    store.dispatch({ type: 'SET_LOADING', payload: { profile: true } });
+
+
+
+
+
+    const headers = {
+      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Vary': 'Authorization',
+      'Access-Control-Allow-Origin':'*'
+
+    }
+
+  const url = `http://185.55.226.171/api/user`;
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  axios.get( proxyurl+url, { headers: headers })
+    .then((response) => {
+      if (response.data.status === 200) {
+
+        
+        store.dispatch({ type: 'SET_CURRENT_USER', payload: response.data.data });
+        store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
+        // console.log(response.data)
+
+      }
+
+    }).catch((error) => {
+      if (error && error.response && error.response.status === 401) {
+        // console.log('Singed out!!!')
+        store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
+      } else {
+        // console.log('there is an problem')
+        store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
+      }
+
+      console.log(error)
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
