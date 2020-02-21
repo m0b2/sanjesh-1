@@ -15,12 +15,12 @@ const Answer = ({ options, setUserAnswer, userAnswer, current }) => {
                     onClick={() => {
                         // setUserChooseSomething(true);
                         
-                        setUserAnswer((oldState)=>({...oldState, [current]:index}))
+                        setUserAnswer((oldState)=>({...oldState, [current]:opt.id}))
     
                         }}
                         >
                     <input id={"radioV1" + index} name="radioV1" type="radio"
-                     checked={index === userAnswer[current] ? "checked" : null} 
+                     checked={opt.id === userAnswer[current] ? "checked" : null} 
 
                      />
                     <label htmlFor={"radioV1" + (index)}>

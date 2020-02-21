@@ -43,6 +43,7 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
         history.push('/question');
         return<div></div>;
     }
+    store.dispatch({ type: 'SET_USER_FINAL_ANSWER', payload:{category_id:index} });
     return (
         <div className='question-review-wrapper'>
             <Fade top>
@@ -100,7 +101,8 @@ const mapStateToProps = store => {
     return {
         loading: store.loading,
         question: store.question,
-        categories: store.Categories
+        categories: store.Categories,
+        
     };
 };
 

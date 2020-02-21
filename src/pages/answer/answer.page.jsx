@@ -6,38 +6,34 @@ import Success from '../../components/success/success.component';
 import Number from '../../components/number/number.component'
 import NextBackButtons from '../../components/next-back-buttons/next-back-buttons.component';
 import { useStore, connect } from 'react-redux';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Answer = ({ }) => {
     const history = useHistory();
     const store = useStore();
     const question = store.getState().question;
     const currentCategory = question.current;
-    
-    
+
+
 
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
 
         return () => store.dispatch({ type: 'ADD_FOOTER' });
     }, [])
-    
+
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory], store,(!question || !currentCategory) ));
+    const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory], store, (!question || !currentCategory)));
     const [oldAnswer, setOldAnswer] = React.useState(getAllAnswer(question[currentCategory], store), (!question || !currentCategory));
-    if(!question || !currentCategory || !question[currentCategory]){
+    if (!question || !currentCategory || !question[currentCategory]) {
         history.push('/question');
-        return<div></div>;
+        return <div></div>;
     }
-    
+
 
     const size = question[currentCategory].length;
 
 
-
-    console.log(userAnswer[currentQuestion], 'THIS IS SPARTA')
-
-    
 
     return (
         <div className='answer-container'>
@@ -57,7 +53,9 @@ const Answer = ({ }) => {
                     <Options
                         options={question[currentCategory][currentQuestion]}
                         userAnswer={userAnswer} setUserAnswer={setUserAnswer}
-                        current={currentQuestion} />
+                        current={currentQuestion}
+                        question_id={question[currentCategory][currentQuestion].id}
+                    />
 
                     <NextBackButtons
                         currentState={{ currentQuestion, setCurrentQuestion }}
@@ -66,7 +64,9 @@ const Answer = ({ }) => {
                         currentAnswer={userAnswer[currentQuestion]}
                         oldAnswer={oldAnswer[currentQuestion]}
                         setOldAnswer={setOldAnswer}
-                        
+                        question_id={question[currentCategory][currentQuestion].id}
+                        category_id={question[currentCategory]}
+
                     />
                 </>
 
@@ -97,13 +97,12 @@ export default (Answer);
 
 
 const getAllAnswer = (question, store, act) => {
-    if( question){
-        let arr = {};
-        question.map((value, index) => {
-            arr = { ...arr, [index]: value.client_answer }
-        })
+    let arr = [];
+    if (question) {
+         arr =  question.map((value, index) => ((value.client_answer)? value.client_answer.answer: null))
+    }
+        
         // store.dispatch({ type: 'SET_USER_OLD_ANSWER', payload: arr })
         return arr;
     }
-    
-}
+
