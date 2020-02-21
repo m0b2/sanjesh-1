@@ -21,12 +21,27 @@ const Question_Analyze = ({ match, history }) => {
 
     const { index } = match.params;
     const questions = store.getState().question;
-    const current = store.getState().question_type;
+    const categories = store.getState().Categories;
+    const current = questions.current;
 
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const setUserChooseSomething = () => { }
     const userChooseSomething = true;
-    const size = question.length;
+    
+
+    if (!questions || !categories || !questions[current] || !questions[current][currentQuestion]) {
+        history.push('/question');
+        return <div></div>;
+    }
+
+
+
+
+
+
+
+
+
     const Amar = <div style={{display:'flex',flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
         <Circleprogress percent={38} width={64} />
         <div>
@@ -37,19 +52,17 @@ const Question_Analyze = ({ match, history }) => {
     const insideComponent = ['',Amar,''];
 
 
-
-
-
-
+    const userAnswerID = questions[current][currentQuestion].client_answer.answer;
+    const userAnswerToThisQuestion = questions[current][currentQuestion].answers.map((value,index)=>(value.id===userAnswerID)?value.answer : '')
     return (
         <div className='question-review-wrapper'>
 
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Fade top>
-                    <Icon className={questions[current][index].icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
+                    <Icon className={'fas fa-question ' + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
                 </Fade>
                 <Divider />
-                <h4 style={{ fontFamily: 'Samim', fontWeight:'500', }}> {'آنالیز شخصیتی مربوط به مبحث ' + questions[current][index].name} </h4>
+                <h4 style={{ fontFamily: 'Samim', fontWeight:'500', }}> {'آنالیز شخصیتی مربوط به مبحث ' + categories[current].name} </h4>
             </div>
             <Divider />
             <Fade spy={currentQuestion} duration={300}  >
@@ -59,15 +72,15 @@ const Question_Analyze = ({ match, history }) => {
 
                 </span>
                 <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a', height: '82px' }}>
-                    {question[currentQuestion]}
+                    {questions[current][currentQuestion].title}
                 </span>
                 <br />
                 <span style={{ fontFamily: 'Samim', fontWeight:'500', color: '#b71c1c' }}>
-                    {` پاسخ شما به این سوال گزینه: ${current + 1} `}
+                    {` پاسخ شما به این سوال : `}
 
                 </span>
                 <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a' }}>
-                    {inputs[2][1]}
+                    {userAnswerToThisQuestion}
                 </span>
 
 
@@ -78,7 +91,9 @@ const Question_Analyze = ({ match, history }) => {
             </Fade>
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
                 chooseState={{ userChooseSomething, setUserChooseSomething }}
-                question={question} />
+                question={question}
+                oldVersion={true}
+                size={questions[current].length} />
 
         </div>
     )

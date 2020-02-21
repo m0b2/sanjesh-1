@@ -171,7 +171,6 @@ const fetchQuestions = (index, store) => {
             if (response.data.status === 200) {
                 store.dispatch({ type: 'SET_QUESTIONS', payload: { [`${index}`]: response.data.data } });
                 store.dispatch({ type: 'SET_LOADING', payload: { categories_review: false } });
-                console.log(response.data)
             }
 
         }).catch((error) => {

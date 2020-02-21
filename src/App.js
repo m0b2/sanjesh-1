@@ -33,7 +33,7 @@ import axios from 'axios';
 // rnpm baraye fron
 // add address font
 
-function App({ sideTab, isFooterNeeded, user }) {
+function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
   React.useEffect(() => {
 
@@ -90,7 +90,7 @@ function App({ sideTab, isFooterNeeded, user }) {
           <div className="main-app">
             <Sidebar />
 
-            {window.screen.width < 800 ? <Appbar /> : null}
+            {window.screen.width < 800 && isNeededReducer.appbar ? <Appbar /> : null}
             {/* {window.screen.width < 421 ? <Sidebar /> : null} */}
 
             <Switch>
@@ -132,7 +132,8 @@ const mapStateToProps = store => {
   return {
     sideTab: store.SideTab,
     isFooterNeeded: store.FooterReducer,
-    user: store.user
+    user: store.user,
+    isNeededReducer:store.isNeededReducer
   };
 };
 

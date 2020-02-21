@@ -10,7 +10,7 @@ import { useStore } from 'react-redux'
 
 const NextBackButtons = (props) => {
 
-    const { currentState, nextActive, size, currentAnswer, oldAnswer, setOldAnswer, question_id } = props
+    const { currentState, nextActive, size, currentAnswer, oldAnswer, setOldAnswer, question_id, oldVersion } = props
     const { currentQuestion, setCurrentQuestion } = currentState;
     const store = useStore();
 
@@ -26,6 +26,64 @@ const NextBackButtons = (props) => {
     const classes = useStyles();
 
 
+
+
+
+    if (oldVersion) {
+        return (
+            <div className='answer-buttons-container'>
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<NavigateNextIcon />}
+                    className={classes.button}
+                    onClick={() => {
+                        setCurrentQuestion((oldState) => (currentQuestion + 1 !== size ? oldState + 1 : oldState))
+
+                    }
+                    }
+
+                >
+                    بعدی
+                </Button>
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    endIcon={<NavigateBeforeIcon />}
+                    className={classes.button}
+                    onClick={() => setCurrentQuestion((oldState) => (oldState > 0 ? oldState - 1 : oldState))}
+                >
+                    قبلی
+                </Button>
+
+            </div>
+        )
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
 
         <div className='answer-buttons-container'>
@@ -36,7 +94,7 @@ const NextBackButtons = (props) => {
                 startIcon={<NavigateNextIcon />}
                 className={classes.button}
                 onClick={() => {
-                    setCurrentQuestion((oldState) => (currentQuestion+2 !== size ? oldState + 1 : oldState+1))
+                    setCurrentQuestion((oldState) => (currentQuestion + 2 !== size ? oldState + 1 : oldState + 1))
                     // currentQuestion + 1 !== size && setChoise(false);
                     // console.log(currentAnswer, oldAnswer)
                     if (currentAnswer !== oldAnswer || (currentAnswer === 0 && currentAnswer !== oldAnswer)) {
@@ -57,10 +115,10 @@ const NextBackButtons = (props) => {
                     }
                 }
                 }
-                disabled={!(nextActive || nextActive === 0) }
+                disabled={!(nextActive || nextActive === 0)}
             >
-                {(size === currentQuestion + 1)?'پایان':'بعدی'}
-                </Button>
+                {(size === currentQuestion + 1) ? 'پایان' : 'بعدی'}
+            </Button>
 
             <Button
                 variant="contained"
