@@ -36,19 +36,20 @@ const NextBackButtons = (props) => {
                 startIcon={<NavigateNextIcon />}
                 className={classes.button}
                 onClick={() => {
-                    setCurrentQuestion((oldState) => (currentQuestion !== size ? oldState + 1 : oldState))
+                    setCurrentQuestion((oldState) => (currentQuestion+2 !== size ? oldState + 1 : oldState+1))
                     // currentQuestion + 1 !== size && setChoise(false);
                     // console.log(currentAnswer, oldAnswer)
                     if (currentAnswer !== oldAnswer || (currentAnswer === 0 && currentAnswer !== oldAnswer)) {
                         const category_id = store.getState().userAnswer.category_id
                         setOldAnswer((oldState) => ({ ...oldState, [currentQuestion]: currentAnswer }))
-                        store.dispatch({type:'SET_CHANGE_ANSWER'
-                        ,
-                        current_question:currentQuestion,
-                        client_answer:currentAnswer,
-                        category_id:category_id
-                        
-                        
+                        store.dispatch({
+                            type: 'SET_CHANGE_ANSWER'
+                            ,
+                            current_question: currentQuestion,
+                            client_answer: currentAnswer,
+                            category_id: category_id
+
+
                         })
                         sendAnswer(category_id, question_id, currentAnswer);
 
@@ -56,9 +57,9 @@ const NextBackButtons = (props) => {
                     }
                 }
                 }
-                disabled={!(nextActive || nextActive === 0) || size === currentQuestion + 1}
+                disabled={!(nextActive || nextActive === 0) }
             >
-                بعدی
+                {(size === currentQuestion + 1)?'پایان':'بعدی'}
                 </Button>
 
             <Button

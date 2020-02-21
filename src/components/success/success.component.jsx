@@ -1,9 +1,9 @@
 import React from 'react';
 import './success.style.css';
 import Button from '@material-ui/core/Button';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Success = ({history}) => {
+const Success = ({ history }) => {
 
 
 
@@ -32,10 +32,10 @@ const Success = ({history}) => {
             </div>
             <div className='success-message-container'>
                 <span className='success-message-title'>سوالات روانشناسی با موفقیت کامل شد</span>
-                <Button style={{fontFamily:'Vazir', marginTop:'26px', position:'absolute',bottom:'1%'}}
-                onClick={()=>history.replace('/question')}
+                <Button style={{ fontFamily: 'Vazir', marginTop: '26px', position: 'absolute', bottom: '8%' }}
+                    onClick={() => history.replace('/question')}
                 >
-                بازگشت به صفحه سوالات
+                    بازگشت به صفحه سوالات
                 </Button>
 
             </div>

@@ -37,7 +37,7 @@ const Answer = ({ }) => {
 
     return (
         <div className='answer-container'>
-            <Number current={currentQuestion + 1} total={size}
+            <Number current={(currentQuestion + 1)<=size?(currentQuestion + 1):currentQuestion} total={size}
                 style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
 
             <Divider variant="middle" />
