@@ -30,7 +30,8 @@ const Form = ({ disabled, user }) => {
     const [height, setHeight] = useState(user.height);
     const [weight, setWeight] = useState(user.weight);
     const [mobile, setMobile] = useState(user.mobile);
-    const city = useStore().getState().CityReducer;
+    const store = useStore();
+    const city = store.getState().CityReducer;
 
 
 
@@ -47,33 +48,36 @@ const Form = ({ disabled, user }) => {
 
         const headers = {
             'Content-Type': 'application/json',
-            'Vary': 'Authorization',
+            
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
 
 
         }
         const data = {
-            "full_name": name,
-            "sex": gender,
-            "city": cities,
-            "province": state,
-            "married": married,
-            "education": education,
-            "height": height,
-            "weight": weight,
-            "blood": blood,
-            "birthday": user.birthday,
-            "mobile": mobile
+            full_name: name,
+            sex: gender,
+            city: cities,
+            province: state,
+            married: married,
+            education: education,
+            height: height,
+            weight: weight,
+            blood: blood,
+            birthday: user.birthday,
+            mobile: mobile
         }
 
 
-        const url = 'http://185.55.226.171/api/login';
+        const url = 'http://185.55.226.171/api/profile';
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
         axios.post(proxyurl + url, data, {
             headers: headers
         }).then((response) => {
-            console.log('data profile poster succesuflly')
+            store.dispatch({type:'SET_CURRENT_USER',payload:data})
+        })
+        .catch((error)=>{
+            console.log(error.response)
         })
 
 

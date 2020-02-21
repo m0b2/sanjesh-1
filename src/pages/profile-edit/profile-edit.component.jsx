@@ -172,6 +172,7 @@ export default connect(mapStatetoProps)(ProfilView);
       }
 
       console.log(error)
+      console.log(error.response)
 
     })
 
