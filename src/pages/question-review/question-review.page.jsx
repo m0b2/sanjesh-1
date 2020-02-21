@@ -166,7 +166,7 @@ const fetchQuestions = (index, store) => {
     const url = `http://185.55.226.171/api/questions/${index}`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const path = `${index}`
-    axios.get(proxyurl + url, { headers: headers })
+    axios.get( url, { headers: headers })
         .then((response) => {
             if (response.data.status === 200) {
                 store.dispatch({ type: 'SET_QUESTIONS', payload: { [`${index}`]: response.data.data } });

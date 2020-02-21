@@ -171,7 +171,7 @@ const fetchCategories = () => {
   const url = 'http://185.55.226.171/api/categories';
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-  axios.post(proxyurl + url, 'data', {
+  axios.post(url, 'data', {
     headers: headers
   })
     .then((response) => {

@@ -52,7 +52,7 @@ export default function Sign_in() {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post(proxyurl + url, data, {
+    axios.post( url, data, {
       headers: headers
     })
       .then((response) => {
@@ -152,7 +152,7 @@ async function paymentStuff(history,setDisable) {
   const url = 'http://185.55.226.171/api/register';
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   NProgress.inc();
-  axios.post(proxyurl + url, null, null)
+  axios.post(url, null, null)
     .then((response) => {
       // history.push()
       NProgress.set(0.6)

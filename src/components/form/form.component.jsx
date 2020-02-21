@@ -71,7 +71,7 @@ const Form = ({ disabled, user }) => {
         const url = 'http://185.55.226.171/api/profile';
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-        axios.post(proxyurl + url, data, {
+        axios.post( url, data, {
             headers: headers
         }).then((response) => {
             store.dispatch({type:'SET_CURRENT_USER',payload:data})
