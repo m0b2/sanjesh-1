@@ -2,7 +2,7 @@ import React from 'react';
 import './option.style.css';
 import Fade from 'react-reveal/Fade';
 
-const Answer = ({ options, setUserChooseSomething, setUserAnswer, userAnswer, current }) => {
+const Answer = ({ options, setUserAnswer, userAnswer, current }) => {
 
 
 
@@ -13,7 +13,7 @@ const Answer = ({ options, setUserChooseSomething, setUserAnswer, userAnswer, cu
             <Fade right opposite delay={100 * (index + 1)} duration={500}>
                 <div className="inputGroup" key={"V1input" + opt.id}
                     onClick={() => {
-                        setUserChooseSomething(true);
+                        // setUserChooseSomething(true);
                         
                         setUserAnswer((oldState)=>({...oldState, [current]:index}))
     

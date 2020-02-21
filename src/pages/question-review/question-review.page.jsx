@@ -11,6 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import axios from 'axios';
 const Question_Review = ({ match, history, question, loading, categories }) => {
+
     const store = useStore();
     // if(!question.current){
     //     history.push('/question')
@@ -27,8 +28,8 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
     const questions = store.getState().Categories;
     const current = store.getState().question_type;
     if (!question || !question[index]) {
-        console.log(loading)
-        console.log(question)
+        // console.log(loading)
+        // console.log(question)
         if (!loading.categories_review) {
             fetchQuestions(index, store);
         }
@@ -37,7 +38,11 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
         </div>)
     }
 
-    console.log(question[index])
+    // console.log(question[index])
+    if(!categories||!categories[index]){
+        history.push('/question');
+        return<div></div>;
+    }
     return (
         <div className='question-review-wrapper'>
             <Fade top>

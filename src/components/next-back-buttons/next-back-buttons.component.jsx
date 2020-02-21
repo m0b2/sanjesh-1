@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-const NextBackButtons = ({ currentState, nextActive, size }) => {
+const NextBackButtons = ({ currentState, nextActive, size, currentAnswer, oldAnswer, setOldAnswer }) => {
     const { currentQuestion, setCurrentQuestion } = currentState;
 
 
@@ -36,6 +36,12 @@ const NextBackButtons = ({ currentState, nextActive, size }) => {
                 onClick={() => {
                     setCurrentQuestion((oldState) => (currentQuestion !== size ? oldState + 1 : oldState))
                     // currentQuestion + 1 !== size && setChoise(false);
+                    // console.log(currentAnswer, oldAnswer)
+                    if(currentAnswer!==oldAnswer || (currentAnswer===0 && currentAnswer!==oldAnswer)){
+                        setOldAnswer((oldState)=>({...oldState, [currentQuestion]:currentAnswer}))
+                        console.log('new answer DETECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
+                    }
                 }
                 }
                 disabled={!(nextActive || nextActive === 0) || size === currentQuestion + 1}

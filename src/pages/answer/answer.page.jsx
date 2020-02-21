@@ -5,44 +5,44 @@ import Divider from '@material-ui/core/Divider';
 import Success from '../../components/success/success.component';
 import Number from '../../components/number/number.component'
 import NextBackButtons from '../../components/next-back-buttons/next-back-buttons.component';
-import { useStore } from 'react-redux';
-const inputs = [
-    ['گزینه اول', 'گزینه دوم', 'گزینه سوم', 'گزینه چهارم', 'گزینه پنجم'],
-    ['همیشه', 'غالبا', 'گاهی', 'به ندرت', 'هرگز'],
-    ['تفاوت در نگرش های سیاسی را مساوی طلاق میدانم', 'تفاوت در نگرش های سیاسی می تواند زندگی ما را نابود کند', 'شاید تأثیر داشته باشد شاید خیر', 'تفاوت در نگرش های سیاسی خیلی کم باعث شکست زندگی میشود', 'تفاوت در نگرش های سیاسی هرگز باعث شکست زندگی نمیشود'],
-];
-const question =
-    [
-        'اگر همسرتان به دلیلی مثل مشکلات مالی یا هر چیز دیگری مدتی طولانی (مثلاً ده سال) به زندان بیفتد تا چه میزان حاضر هستید به خاطر او صبر کنید؟',
-        'چند وقت یک بار مسواک میزنید؟',
-        'به نظر شما تفاوت در نگرش های سیاسی شما و همسرتان تا چه میزان می تواند باعث شکست زندگی زناشویی شما شود؟ (آیا تفاوت در نگرش سیاسی آنقدر اهمیت دارد که موجب نابودی زندگی شما شود؟)']
+import { useStore, connect } from 'react-redux';
+import { useHistory} from 'react-router-dom';
 
-
-
-
-const Answer = ({ index }) => {
+const Answer = ({ }) => {
+    const history = useHistory();
     const store = useStore();
     const question = store.getState().question;
     const currentCategory = question.current;
+    
+    
+
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
+
         return () => store.dispatch({ type: 'ADD_FOOTER' });
     }, [])
+    
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory]));
-    const [userChooseSomething, setUserChooseSomething] = React.useState(false);
-    const [choise, setChoise] = React.useState(question[currentCategory][currentQuestion].client_answer);
+    const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory], store,(!question || !currentCategory) ));
+    const [oldAnswer, setOldAnswer] = React.useState(getAllAnswer(question[currentCategory], store), (!question || !currentCategory));
+    if(!question || !currentCategory || !question[currentCategory]){
+        history.push('/question');
+        return<div></div>;
+    }
+    
+
     const size = question[currentCategory].length;
 
 
 
     console.log(userAnswer[currentQuestion], 'THIS IS SPARTA')
 
-
+    
 
     return (
         <div className='answer-container'>
-            <Number current={currentQuestion + 1} total={size} style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
+            <Number current={currentQuestion + 1} total={size}
+                style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
 
             <Divider variant="middle" />
             {(currentQuestion >= size) ? <Success /> : (
@@ -56,18 +56,18 @@ const Answer = ({ index }) => {
 
                     <Options
                         options={question[currentCategory][currentQuestion]}
-                        setUserChooseSomething={setUserChooseSomething}
                         userAnswer={userAnswer} setUserAnswer={setUserAnswer}
                         current={currentQuestion} />
 
-                    <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
+                    <NextBackButtons
+                        currentState={{ currentQuestion, setCurrentQuestion }}
                         nextActive={userAnswer[currentQuestion]}
                         size={size}
-                        nextChoise={(size !== currentQuestion + 1) ?
-                            question[currentCategory][currentQuestion + 1].client_answer
-                            :
-                            null
-                        } />
+                        currentAnswer={userAnswer[currentQuestion]}
+                        oldAnswer={oldAnswer[currentQuestion]}
+                        setOldAnswer={setOldAnswer}
+                        
+                    />
                 </>
 
             )}
@@ -79,16 +79,31 @@ const Answer = ({ index }) => {
 
 
 
-export default Answer;
+const mapStateToProps = store => {
+    return {
+        oldAnswer: store.oldAnswer,
+
+    };
+};
+
+
+
+export default (Answer);
 
 
 
 
-const getAllAnswer = (question) => {
-    let arr = {};
-    question.map((value, index)=>{
-        arr = {...arr, [index]:value.client_answer}
-    })
 
-    return arr;
+
+
+const getAllAnswer = (question, store, act) => {
+    if( question){
+        let arr = {};
+        question.map((value, index) => {
+            arr = { ...arr, [index]: value.client_answer }
+        })
+        // store.dispatch({ type: 'SET_USER_OLD_ANSWER', payload: arr })
+        return arr;
+    }
+    
 }

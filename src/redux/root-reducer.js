@@ -9,6 +9,7 @@ import EditPageAppbar from './appbar-reducer/appbar-reducer';
 import Categories from './categories-reducer/categories-reducer';
 import loading from './loading-reducer/loading-reducer';
 import Notification from './notification-reducer/notification-reducer';
+import OldAnswer from './old-answer-reducer/old-answer-reducer';
 export default combineReducers({
     user: UserReducer,
     question_type: Question_Type,
@@ -19,5 +20,7 @@ export default combineReducers({
     isEditPage:EditPageAppbar,
     Categories,
     loading,
-    Notification
+    Notification,
+    oldAnswer:OldAnswer
+
 })
