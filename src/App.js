@@ -32,6 +32,9 @@ import AdminSideBar from './components/admin-sidebar/admin-sidebar.component';
 import AdminCategoryPage from './pages/admin-view-categories/admin-view-categories';
 import CategoryEdit from './pages/admin-category-questions/admin-category-questions';
 import AdminAddCategory from './pages/admin-add-category/admin-add-category.component';
+import AdminQuestions from './pages/admin-manage-questions/admin-manage-questions';
+import AdminEditQuestion from './pages/admin-question-edit/admin-question-edit';
+import AdminAddQuestion from './pages/admin-add-question/admin-add-question';
 
 // man amade am vay vay
 // rnpm baraye fron
@@ -140,12 +143,19 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
                   <Route exact path="/home" component={Home} />
                   <Route exact path="/category" component={AdminCategoryPage} />
                   <Route exact path="/addcategory" component={AdminAddCategory} />
+                  <Route exact path="/questions" component={AdminQuestions} />
+                  <Route exact
+                    path="/question/:index"
+                    component={AdminEditQuestion}/>
                   <Route
                     exact
                     path="/category/:index"
                     component={CategoryEdit}
                   />
-                  
+                  <Route exact
+                    path="/addQuestion/:index"
+                    component={AdminAddQuestion}/>
+
 
                 </Switch>
 

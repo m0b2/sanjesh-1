@@ -1,4 +1,5 @@
 import React from 'react';
+import './admin-add-question.style.css';
 import TextDialog from '../../components/textInput-dialog/textInput-dialog.component';
 import { useStore } from 'react-redux';
 import { withRouter } from "react-router-dom";
@@ -8,12 +9,14 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
     const { index } = match.params;
+    const [question, setQuestion] = React.useState((store.getState().admin.categories) ? (store.getState().admin.categories[index]) : null);
+
+    const [title, setTitle] = React.useState('');
+    const [option, setOptions] = React.useState(['', '', '', '', '']);
     const classes = useStyles();
-    const [question, setQuestion] = React.useState({title:'', description:''});
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
 
@@ -46,7 +49,9 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (deleted.deleted) {
         setTimeout(() => {
+
             history.push('/category')
+            window.location.reload();
         }, 2000)
         return (<div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <span>دسته با موفقیت حذف شد</span>
@@ -60,12 +65,11 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (changed.changed) {
         setTimeout(() => {
-            
-            history.push('/category')
-            // window.location.reload();
+            history.goBack();
+
         }, 2000)
         return (<div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <span>دسته با موفقیت اضافه شد</span>
+            <span>سوال با موفقیت افزوده شد</span>
         </div>)
     }
 
@@ -75,23 +79,55 @@ const Question_Analyze = ({ match, history }) => {
 
     return (
         <>
-            <TextDialog state={question.title} setState={(value) => {
-                setQuestion((oldstate) => ({ ...oldstate, title: value }))
-            }} items={[]} title={'عنوان دسته'} />
-            <TextDialog state={question.description} setState={(value) => {
-                setQuestion((oldstate) => ({ ...oldstate, description: value }))
-            }} items={[]} title={'توضیحات دسته'} />
+
+
+            <TextDialog state={title} setState={(value) => {
+                setTitle(value)
+            }} items={[]} title={'متن سوال'} />
+
+            <TextDialog state={option[0]} setState={(value) => {
+                const temp = option.slice();
+                temp[0] = value;
+                setOptions(temp)
+            }} items={[]} title={'گزینه اول'} />
+
+            <TextDialog state={option[1]} setState={(value) => {
+                const temp = option.slice();
+                temp[1] = value;
+                setOptions(temp)
+            }} items={[]} title={'گزینه دوم'} />
+
+            <TextDialog state={option[2]} setState={(value) => {
+                const temp = option.slice();
+                temp[2] = value;
+                setOptions(temp)
+            }} items={[]} title={'گزینه سوم'} />
+
+            <TextDialog state={option[3]} setState={(value) => {
+                const temp = option.slice();
+                temp[3] = value;
+                setOptions(temp)
+            }} items={[]} title={'گزینه چهارم'} />
+
+            <TextDialog state={option[4]} setState={(value) => {
+                const temp = option.slice();
+                temp[4] = value;
+                setOptions(temp)
+            }} items={[]} title={'گزینه پنجم'} />
 
 
 
-            <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
+
+
+
+            <div className='start-analyze-button-container' style={{ minHeight: '50vh', marginTop: '-96px' }}>
 
                 <Button
                     style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
                     className={classes.root}
                     variant="outlined"
                     color="primary"
-                    startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
+                    startIcon={<Icon className={'fas fa-plus fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
                         setChanged((oldState) => {
@@ -103,12 +139,12 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
-                        sendEditState(index, setChanged, question.title, question.description, store);
-                    }}> افزودن دسته
+                        sendEditState(index, setChanged, title, option);
+                    }}> افزودن سوال
                 </Button>
 
 
-              
+
 
 
             </div>
@@ -126,7 +162,7 @@ export default withRouter(Question_Analyze);
 
 
 
-const sendEditState = (question_id, setDeleted, title, description,store) => {
+const sendEditState = (category_id, setDeleted, title, answers) => {
 
     const headers = {
         "Content-Type": "application/json",
@@ -137,16 +173,17 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
     };
 
     const data = {
-        
+
+        category: category_id,
         title,
-        description
+        answers
 
 
 
     }
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url2 = `http://185.55.226.171/api/categories`;
+    const url2 = `http://185.55.226.171/api/questions`;
 
     axios
         .post(
@@ -159,7 +196,6 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
         )
         .then(response => {
             console.log(response)
-            store.dispatch({type:'ADMIN_ADD_CATEGORY',payload:response.data.data})
             setDeleted((oldState) => {
 
                 return (

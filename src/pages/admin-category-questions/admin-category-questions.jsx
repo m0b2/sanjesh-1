@@ -92,7 +92,7 @@ const Question_Analyze = ({ match, history }) => {
                     className={classes.root}
                     variant="outlined"
                     color="primary"
-                    startIcon={<Icon className={'fas fa-play fa-fw'} style={{ marginRight: '-32px' }} />}
+                    startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
                         setChanged((oldState) => {
@@ -114,7 +114,7 @@ const Question_Analyze = ({ match, history }) => {
                     className={classes.root}
                     variant="outlined"
                     color="primary"
-                    startIcon={<Icon className={'fas fa-chart-pie fa-fw'} style={{ marginRight: '-32px' }} />}
+                    startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
 
@@ -133,7 +133,19 @@ const Question_Analyze = ({ match, history }) => {
                 </Button>
 
 
+                <Button
+                    style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                    className={classes.root}
+                    variant="outlined"
+                    color="primary"
+                    startIcon={<Icon className={'fas fa-plus fa-fw'} style={{ marginRight: '-32px' }} />}
+                    onClick={() => {
+                       history.push(`/addQuestion/${index}`)
+                    }}> افزودن سوال
+                </Button>
+
             </div>
+            
         </>
 
     )

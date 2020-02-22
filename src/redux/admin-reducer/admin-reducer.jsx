@@ -12,15 +12,19 @@ const AppbarReducer = (state = {}, action) => {
             arr.push(action.payload)
             return {
                 ...state,
-                categories: { ...state.categories, [action.payload.id]: { ...action.payload }, array:arr }
+                categories: { ...state.categories, [action.payload.id]: { ...action.payload }, array: arr }
             }
+        }
+        case 'ADMIN_SET_QUESTIONS': return {
+            ...state,
+            questions:action.payload
         }
 
         default: return state;
     }
 
 
-
+    
 };
 
 

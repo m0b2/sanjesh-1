@@ -4,7 +4,7 @@ import Number from '../number/number.component';
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from '@material-ui/core/Icon';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 
@@ -17,7 +17,9 @@ const Category = ({
   history,
   location,
   tuchable,
-  description
+  description,
+  category_id,
+  questionMode
 }) => {
 
 
@@ -29,6 +31,74 @@ const Category = ({
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
+
+
+
+
+  if (questionMode) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return (
+
+
+      <Card className={classes.card} style={{ width: "100%" }}
+        onClick={() => {
+          history.push(`/question/${index}/`)
+          dispatch({ type: 'SET_CURRENT_QUESTIONS', payload: index })
+        }
+
+
+        }
+      >
+        <CardHeader
+          avatar={
+            <Icon className={icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '32px', background: 'cover', marginRight: '-36%' }} />
+
+          }
+          action={
+            <Number total={''} current={category_id} currentStyle={{ fontSize: '26px' }} questionMode/>
+          }
+          title={title}
+          subheader={description}
+          style={{ fontFamily: 'Samim' }}
+          classes={{ title: classes.title, subheader: classes.subheader }}
+        />
+      </Card>
+
+
+
+    )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     //         <div>
     //             <div className='category'
@@ -49,11 +119,12 @@ const Category = ({
     // )
 
     <Card className={classes.card} style={{ width: "100%" }}
-      onClick={() => {history.push(`/question/${index}/`)
-      dispatch({type:'SET_CURRENT_QUESTIONS',payload:index})
+      onClick={() => {
+        history.push(`/question/${index}/`)
+        dispatch({ type: 'SET_CURRENT_QUESTIONS', payload: index })
       }
-      
-      
+
+
       }
     >
       <CardHeader
@@ -85,7 +156,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     fontFamily: 'Samim',
     width: '100%',
-    cursor:'pointer',
+    cursor: 'pointer',
 
   },
   media: {
@@ -115,7 +186,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontFamily: 'Samim',
-    fontWeight:'900'
+    fontWeight: '900'
 
   },
   subheader: {

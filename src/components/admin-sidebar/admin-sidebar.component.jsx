@@ -64,11 +64,12 @@ const useStyles = makeStyles({
 const categories_Sub = [
     { title: 'مشاهده ', icon: InfoIcon, pushValue: '/category', isDropable: false },
     { title: 'افزودن ', icon: ExitToAppIcon, pushValue: '/addcategory', isDropable: false }];
-
+    
 const menu_items = [
     { title: 'خانه', icon: PermIdentityIcon, pushValue: '/profile', isDropable: false },
     { title: 'دسته بندی', icon: PermIdentityIcon, pushValue: '/profile', isDropable: true, subList: categories_Sub },
     { title: 'کاربران', icon: EditIcon, pushValue: '/edit', isDropable: false },
+    { title: 'سوالات', icon: EditIcon, pushValue: '/questions', isDropable: false },
     { title: 'اعلان ها', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
     { title: 'مدیریت دسترسی‌ها', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
     { title: 'تنظیمات', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
@@ -112,6 +113,7 @@ export default function SwipeableTemporaryDrawer() {
                                 classes={{ primary: classes.text }}
                                 className={classes.text} primary={value.title} />
                         </ListItem>
+                        <Divider />
                     </Link>
                     :
 

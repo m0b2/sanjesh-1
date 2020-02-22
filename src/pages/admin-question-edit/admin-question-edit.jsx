@@ -8,15 +8,17 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
     const { index } = match.params;
     const classes = useStyles();
-    const [question, setQuestion] = React.useState({title:'', description:''});
+    const options = (store.getState().admin.questions && store.getState().admin.questions[index]) ? (store.getState().admin.questions[index].answers) : null
+    const [question, setQuestion] = React.useState((store.getState().admin.questions) ? (store.getState().admin.questions[index]) : null);
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
-
+    const [option, setOption] = React.useState((options ? [options[0].answer, options[1].answer, options[2].answer,
+    options[3].answer, options[4].answer
+    ] : []));
     const temp = {
         title: '',
         option1: '',
@@ -33,9 +35,8 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
-
     if (!question) {
-        history.push('/category')
+        history.push('/questions')
         return <div></div>;
     }
 
@@ -46,7 +47,9 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (deleted.deleted) {
         setTimeout(() => {
-            history.push('/category')
+
+            history.push('/questions')
+            window.location.reload();
         }, 2000)
         return (<div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <span>دسته با موفقیت حذف شد</span>
@@ -60,31 +63,54 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (changed.changed) {
         setTimeout(() => {
-            
-            history.push('/category')
-            // window.location.reload();
+            history.push('/questions');
+            window.location.reload();
         }, 2000)
         return (<div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <span>دسته با موفقیت اضافه شد</span>
+            <span>دسته با موفقیت تغییر یافت شد</span>
         </div>)
     }
-
-
-
 
 
     return (
         <>
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
-            }} items={[]} title={'عنوان دسته'} />
-            <TextDialog state={question.description} setState={(value) => {
-                setQuestion((oldstate) => ({ ...oldstate, description: value }))
-            }} items={[]} title={'توضیحات دسته'} />
+            }} items={[]} title={'متن سوال'} />
+
+            <TextDialog state={option[0]} setState={(value) => {
+                const temp = option.slice();
+                temp[0] = value;
+                setOption(temp)
+            }} items={[]} title={'گزینه اول'} />
+
+            <TextDialog state={option[1]} setState={(value) => {
+                const temp = option.slice();
+                temp[1] = value;
+                setOption(temp)
+            }} items={[]} title={'گزینه دوم'} />
+
+            <TextDialog state={option[2]} setState={(value) => {
+                const temp = option.slice();
+                temp[2] = value;
+                setOption(temp)
+            }} items={[]} title={'گزینه سوم'} />
+
+            <TextDialog state={option[3]} setState={(value) => {
+                const temp = option.slice();
+                temp[3] = value;
+                setOption(temp)
+            }} items={[]} title={'گزینه چهارم'} />
+
+            <TextDialog state={option[4]} setState={(value) => {
+                const temp = option.slice();
+                temp[4] = value;
+                setOption(temp)
+            }} items={[]} title={'گزینه پنجم'} />
 
 
 
-            <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
+            <div className='start-analyze-button-container' style={{ minHeight: '10vh' }}>
 
                 <Button
                     style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
@@ -101,14 +127,35 @@ const Question_Analyze = ({ match, history }) => {
                             )
                         })
 
+                        
 
-
-                        sendEditState(index, setChanged, question.title, question.description, store);
-                    }}> افزودن دسته
+                        sendEditState(index, setChanged, question.title, option, question.category_id);
+                    }}> ثبت تغییرات
                 </Button>
 
 
-              
+                <Button
+                    style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                    className={classes.root}
+                    variant="outlined"
+                    color="primary"
+                    startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
+                    onClick={() => {
+                        //send data to server
+
+                        setDeleted((oldState) => {
+
+                            return (
+                                { ...oldState, deleting: true }
+                            )
+                        })
+
+
+
+                        sendDeleteState(index, setDeleted, question.category_id);
+
+                    }}>حذف سوال
+                </Button>
 
 
             </div>
@@ -126,7 +173,7 @@ export default withRouter(Question_Analyze);
 
 
 
-const sendEditState = (question_id, setDeleted, title, description,store) => {
+const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
     const headers = {
         "Content-Type": "application/json",
@@ -137,16 +184,18 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
     };
 
     const data = {
-        
+        _method: 'PUT',
+        category:category_id,
         title,
-        description
+        answers:option
+ 
 
 
 
     }
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url2 = `http://185.55.226.171/api/categories`;
+    const url2 = `http://185.55.226.171/api/questions/${question_id}`;
 
     axios
         .post(
@@ -159,7 +208,6 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
         )
         .then(response => {
             console.log(response)
-            store.dispatch({type:'ADMIN_ADD_CATEGORY',payload:response.data.data})
             setDeleted((oldState) => {
 
                 return (
@@ -198,7 +246,7 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
 
 
 
-const sendDeleteState = (question_id, setDeleted) => {
+const sendDeleteState = (question_id, setDeleted, category_id) => {
 
 
     const headers = {
@@ -212,7 +260,7 @@ const sendDeleteState = (question_id, setDeleted) => {
     const data = { _method: 'DELETE' }
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url2 = `http://185.55.226.171/api/categories/${question_id}`;
+    const url2 = `http://185.55.226.171/api/questions/${question_id}`;
 
     axios
         .post(
