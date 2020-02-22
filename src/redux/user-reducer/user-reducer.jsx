@@ -14,7 +14,8 @@ const UserReducer = (state = Initial_State, action) => {
             localStorage.setItem('myBelovedUser', JSON.stringify({
                 ...state,
                 ...action.payload,
-                isLoggedIn: true
+                isLoggedIn: true,
+                
             }));
             return {
                 ...state,

@@ -1,0 +1,48 @@
+#rootQuCard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  #mainCard {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  #cateName {
+    font-family: "MyYekan";
+    font-size: 14pt;
+    font-weight: bold;
+    /* color: #b71c1c; */
+    color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  #gridAvatarQuestion {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  #gridNameQuestion {
+  }
+  #titleDialog {
+    font-weight: bold;
+    font-family: "MyYekan";
+    font-size: 18pt;
+    margin-right: 10px;
+  }
+  .appBar {
+    position: relative;
+  }
+  .title {
+    margin-left: 10px;
+    flex: 1;
+  }
+  

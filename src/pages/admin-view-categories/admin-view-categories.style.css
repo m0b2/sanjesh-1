@@ -1,0 +1,9 @@
+.root-admin-categories {
+    flex-grow: 1;
+    background-color: #fafafa;
+    display: flex;
+    direction: rtl;
+    min-height: 370px;
+    /* margin: -30px 10px 0 10px; */
+  }
+  

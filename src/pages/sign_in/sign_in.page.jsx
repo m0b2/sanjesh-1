@@ -58,7 +58,7 @@ export default function Sign_in() {
       .then((response) => {
         NProgress.set(0.6)
         localStorage.setItem('myBeLovedToken', JSON.stringify(response.data.data.token));
-
+        // console.log(response.data.data)
         const url2 = 'http://185.55.226.171/api/profile';
         setShow(false);
         NProgress.inc();
@@ -68,7 +68,7 @@ export default function Sign_in() {
         setTimeout(() => {
           NProgress.remove();
           history.push('/home');
-          dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
+          dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data, })
         }, 256)
         // axios.post(proxyurl+url2, null, {
         //   headers: {...headers,Authorization:`Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }

@@ -13,6 +13,7 @@ import OldAnswer from './old-answer-reducer/old-answer-reducer';
 import globalFunction from './global-function/global-function';
 import userAnswer from './userAnswer-reducer/userAnswer-reducer'
 import isNeededReducer from './isNeeded/isNeeded-reducer';
+import AdminReducer from './admin-reducer/admin-reducer';
 export default combineReducers({
     user: UserReducer,
     question_type: Question_Type,
@@ -27,6 +28,7 @@ export default combineReducers({
     oldAnswer:OldAnswer,
     globalFunction,
     userAnswer,
-    isNeededReducer
+    isNeededReducer,
+    admin:AdminReducer
 
 })

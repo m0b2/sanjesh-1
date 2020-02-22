@@ -28,6 +28,10 @@ import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import NProgress from 'nprogress';
 import axios from 'axios';
+import AdminSideBar from './components/admin-sidebar/admin-sidebar.component';
+import AdminCategoryPage from './pages/admin-view-categories/admin-view-categories';
+import CategoryEdit from './pages/admin-category-questions/admin-category-questions';
+import AdminAddCategory from './pages/admin-add-category/admin-add-category.component';
 
 // man amade am vay vay
 // rnpm baraye fron
@@ -88,42 +92,79 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
           {window.screen.width < 800 ? null : <Header />}
           {sideTab.isVisible && window.screen.width > 800 ? <SideList /> : null}
           <div className="main-app">
-            <Sidebar />
+            {user.admin ? <AdminSideBar /> : <Sidebar />}
 
             {window.screen.width < 800 && isNeededReducer.appbar ? <Appbar /> : null}
             {/* {window.screen.width < 421 ? <Sidebar /> : null} */}
 
-            <Switch>
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/question" component={Categories} />
-              <Route
-                exact
-                path="/question/:index"
-                component={Question_review}
-              />
-              <Route exact path="/compare" component={ComparePage} />
-              <Route exact path="/notification" component={Notification} />
-              <Route exact path="/profile" component={ProfileView} />
-              <Route
-                exact
-                path="/question/:index/answer"
-                component={AnswerPage}
-              />
 
-              <Route exact path="/edit" component={Edit_Profile_Page} />
-              <Route exact path="/question/:index/analyze" component={Question_Analyze} />
-              <Route exact path="/aboutus" component={About_Us_Page} />
-              {/* <Route exact path="/signin" component={Sign_In_Page} /> */}
-              <Route exact path="/signup" component={Sign_Up_Page} />
-              <Route exact path="/userInfo" component={User_Info_Page} />
 
-              {/* <Redirect to="/home" /> */}
-            </Switch>
+
+            {user.client ?
+              <Switch>
+                <Route exact path="/home" component={Home} />
+                <Route exact path="/question" component={Categories} />
+                <Route
+                  exact
+                  path="/question/:index"
+                  component={Question_review}
+                />
+                <Route exact path="/compare" component={ComparePage} />
+                <Route exact path="/notification" component={Notification} />
+                <Route exact path="/profile" component={ProfileView} />
+                <Route
+                  exact
+                  path="/question/:index/answer"
+                  component={AnswerPage}
+                />
+                <Route exact path="/edit" component={Edit_Profile_Page} />
+                <Route exact path="/question/:index/analyze" component={Question_Analyze} />
+                <Route exact path="/aboutus" component={About_Us_Page} />
+                {/* <Route exact path="/signin" component={Sign_In_Page} /> */}
+                <Route exact path="/signup" component={Sign_Up_Page} />
+                <Route exact path="/userInfo" component={User_Info_Page} />
+                <Route exact path="/userInfo" component={User_Info_Page} />
+
+                {/* <Redirect to="/home" /> */}
+              </Switch>
+
+
+              :
+
+
+
+              (user.admin) ?
+
+
+                <Switch>
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/category" component={AdminCategoryPage} />
+                  <Route exact path="/addcategory" component={AdminAddCategory} />
+                  <Route
+                    exact
+                    path="/category/:index"
+                    component={CategoryEdit}
+                  />
+                  
+
+                </Switch>
+
+
+
+                :
+
+                null
+
+
+
+
+            }
+
           </div>
         </div>
       </SidebarContext.Provider>
 
-      {isFooterNeeded && window.screen.width < 800 ? <Footer /> : null}
+      {isFooterNeeded && window.screen.width < 800 && user.client ? <Footer /> : null}
     </div>
   );
 }
@@ -133,7 +174,7 @@ const mapStateToProps = store => {
     sideTab: store.SideTab,
     isFooterNeeded: store.FooterReducer,
     user: store.user,
-    isNeededReducer:store.isNeededReducer
+    isNeededReducer: store.isNeededReducer
   };
 };
 

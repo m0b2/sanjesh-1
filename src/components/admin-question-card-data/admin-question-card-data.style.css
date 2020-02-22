@@ -1,0 +1,48 @@
+#rootCardMess {
+  width: 100%;
+  direction: rtl;
+  padding: 5px 30px;
+}
+
+.expand {
+  transform: rotate(0deg);
+  margin-left: auto;
+  /* transition: theme.transitions.create(
+    transform,
+    {duration: theme.transitions.duration.shortest}
+  ); */
+}
+
+.expandOpen {
+  transform: rotate(180deg);
+}
+#CardHeader {
+  /* font-family: "MyYekan" !important ; */
+}
+.avatar {
+  background-color: #b71c1c !important;
+  margin-left: 10px;
+}
+#titleCard {
+  font-family: "MyYekan" !important ;
+  font-weight: 550;
+  font-size: 14pt;
+}
+#footerCard {
+  font-family: "MyYekan" !important ;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.paragraph1,
+.paragraph2 {
+  font-family: "MyYekan" !important ;
+  font-weight: 600 !important;
+  font-size: 11pt !important;
+}
+.paragraph1 {
+  color: #5cb85c;
+}
+.paragraph2 {
+  color: #b71c1c;
+}
