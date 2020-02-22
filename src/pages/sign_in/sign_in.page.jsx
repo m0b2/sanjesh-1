@@ -52,7 +52,7 @@ export default function Sign_in() {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post( url, data, {
+    axios.post(proxyurl+ url, data, {
       headers: headers
     })
       .then((response) => {
