@@ -37,7 +37,8 @@ import AdminEditQuestion from './pages/admin-question-edit/admin-question-edit';
 import AdminAddQuestion from './pages/admin-add-question/admin-add-question';
 import AdminNotifications from './pages/admin-notifications/admin-notifications';
 import AdminNotifactionsEdit from './pages/admin-notification-edit/admin-notification-edit';
-import AdminAddNotification from './pages/admin-add-notification/admin-add-notification'
+import AdminAddNotification from './pages/admin-add-notification/admin-add-notification';
+import AdminUsersList from './pages/admin-user-list/admin-user-list'
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
@@ -148,6 +149,8 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
                   <Route exact path="/questions" component={AdminQuestions} />
                   <Route exact path="/notifications" component={AdminNotifications} />
                   <Route exact path="/addnotifications" component={AdminAddNotification} />
+                  <Route exact path="/users" component={AdminUsersList} />
+                  
                   <Route exact
                     path="/question/:index"
                     component={AdminEditQuestion} />

@@ -15,6 +15,15 @@ const AppbarReducer = (state = {}, action) => {
                 notifications: action.payload
             }
         }
+        case 'ADMIN_SET_USERS': {
+
+            return {
+                ...state,
+                users: action.payload
+            }
+        }
+
+        
         case 'ADMIN_ADD_QUESTION': {
 
             return {

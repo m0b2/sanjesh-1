@@ -21,6 +21,7 @@
   align-self: center;
   background-color: white;
   position: relative;
+  min-height: 98vh;
 }
 
 .main-app-and-list-wrapper {

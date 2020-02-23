@@ -20,7 +20,8 @@ const Category = ({
   description,
   category_id,
   questionMode,
-  notificationMode
+  notificationMode,
+  adminUserMode
 }) => {
 
 
@@ -32,6 +33,47 @@ const Category = ({
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
+  if (adminUserMode) {
+
+    return (
+
+
+      <Card className={classes.card} style={{ width: "100%" }}
+        onClick={() => {
+          // history.push(`/notification/${index}/`)
+          // dispatch({ type: 'SET_CURRENT_QUESTIONS', payload: index })
+        }
+
+
+        }
+      >
+        <CardHeader
+          avatar={
+            <Icon className={icon + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '32px', background: 'cover', marginRight: '-36%' }} />
+
+          }
+          action={
+            <Number total={''} current={category_id} currentStyle={{ fontSize: '26px' }} questionMode/>
+          }
+          title={title}
+          subheader={description}
+          style={{ fontFamily: 'Samim' }}
+          classes={{ title: classes.title, subheader: classes.subheader }}
+        />
+      </Card>
+
+
+
+    )
+  }
+
+
+
+
+
+
 
 
   if (notificationMode) {

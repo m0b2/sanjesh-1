@@ -7,18 +7,23 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
 import axios from 'axios';
-
-// const new_font = new FontFace('Vazir', font)
-// new_font.load().then(function (loaded_face) {
-//     // use font here
-//     document.fonts.add(loaded_face)
-// }).catch(function (error) {
-
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// Or Create your Own theme:
+const theme = createMuiTheme({
+    palette: {
+      secondary: {
+          main: '#b71c1c'
+        }
+      }
+    },
+  )
 
 ReactDOM.render(
     <Provider store={store} >
         <HashRouter >
+        <MuiThemeProvider theme={theme}>
             <App />
+            </MuiThemeProvider>
         </HashRouter>
 
     </Provider>

@@ -1,0 +1,10 @@
+#standard-multiline-static{
+    font-family: 'Vazir';
+    
+}
+
+.MuiInputBase-input {
+    background: red;
+    color:red;
+    border-color: red;
+}

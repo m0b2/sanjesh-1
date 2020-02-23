@@ -22,8 +22,8 @@ const Form = ({ disabled, user }) => {
     const [name, setName] = useState(user.full_name);
     const [gender, setGender] = useState(user.sex);
     const [married, setMarried] = useState(user.married);
-    const [state, setState] = useState(user.province);
-    const [cities, setCities] = useState(user.city);
+    const [state, setState] = useState(user.province.title);
+    const [cities, setCities] = useState(user.city.title);
     const [education, setEducation] = useState(user.education);
     const [age, setAge] = useState('21');//user.???
     const [blood, setBlood] = useState(user.blood);
