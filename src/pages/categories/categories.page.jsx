@@ -65,7 +65,7 @@ const CategoriesPage = ({ loading, categories }) => {
         }
       const url = 'http://185.55.226.171/api/categories';
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      axios.get(url, { headers: headers })
+      axios.get(proxyurl+url, { headers: headers })
         .then((response) => {
           if (response.data.status === 200) {
             obj = {};
