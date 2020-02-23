@@ -112,7 +112,7 @@ const NextBackButtons = (props) => {
                             type: 'SET_CHANGE_ANSWER'
                             ,
                             current_question: currentQuestion,
-                            client_answer: currentAnswer,
+                            answers: currentAnswer,
                             category_id: category_id,
                             description: userDescription
 
@@ -133,7 +133,7 @@ const NextBackButtons = (props) => {
                             type: 'SET_CHANGE_ANSWER'
                             ,
                             current_question: currentQuestion,
-                            client_answer: currentAnswer,
+                            answers: currentAnswer,
                             category_id: category_id,
                             description: userDescription
 

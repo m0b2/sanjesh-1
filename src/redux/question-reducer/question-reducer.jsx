@@ -9,7 +9,7 @@ const QuestionReducer = (state = InitialState, action) => {
       const target = state[action.category_id]
       const newState = target.map((value, index) =>
         index === action.current_question
-          ? { ...value, client_answer: { ...value.client_answer, answer: action.client_answer,
+          ? { ...value, answers: { ...value.answers, answer: action.answers,
             description:action.description } }
           : value
       );
