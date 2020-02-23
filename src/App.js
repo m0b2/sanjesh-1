@@ -35,7 +35,9 @@ import AdminAddCategory from './pages/admin-add-category/admin-add-category.comp
 import AdminQuestions from './pages/admin-manage-questions/admin-manage-questions';
 import AdminEditQuestion from './pages/admin-question-edit/admin-question-edit';
 import AdminAddQuestion from './pages/admin-add-question/admin-add-question';
-
+import AdminNotifications from './pages/admin-notifications/admin-notifications';
+import AdminNotifactionsEdit from './pages/admin-notification-edit/admin-notification-edit';
+import AdminAddNotification from './pages/admin-add-notification/admin-add-notification'
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
@@ -144,18 +146,23 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
                   <Route exact path="/category" component={AdminCategoryPage} />
                   <Route exact path="/addcategory" component={AdminAddCategory} />
                   <Route exact path="/questions" component={AdminQuestions} />
+                  <Route exact path="/notifications" component={AdminNotifications} />
+                  <Route exact path="/addnotifications" component={AdminAddNotification} />
                   <Route exact
                     path="/question/:index"
-                    component={AdminEditQuestion}/>
+                    component={AdminEditQuestion} />
                   <Route
                     exact
                     path="/category/:index"
                     component={CategoryEdit}
                   />
+                  
+                  <Route exact
+                    path="/notification/:index"
+                    component={AdminNotifactionsEdit} />
                   <Route exact
                     path="/addQuestion/:index"
-                    component={AdminAddQuestion}/>
-
+                    component={AdminAddQuestion} />
 
                 </Switch>
 

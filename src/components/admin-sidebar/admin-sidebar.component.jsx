@@ -64,13 +64,17 @@ const useStyles = makeStyles({
 const categories_Sub = [
     { title: 'مشاهده ', icon: InfoIcon, pushValue: '/category', isDropable: false },
     { title: 'افزودن ', icon: ExitToAppIcon, pushValue: '/addcategory', isDropable: false }];
-    
+
+const notifications_Sub = [
+    { title: 'مشاهده ', icon: InfoIcon, pushValue: '/notifications', isDropable: false },
+    { title: 'افزودن ', icon: ExitToAppIcon, pushValue: '/addnotifications', isDropable: false }];
+
 const menu_items = [
     { title: 'خانه', icon: PermIdentityIcon, pushValue: '/profile', isDropable: false },
     { title: 'دسته بندی', icon: PermIdentityIcon, pushValue: '/profile', isDropable: true, subList: categories_Sub },
     { title: 'کاربران', icon: EditIcon, pushValue: '/edit', isDropable: false },
     { title: 'سوالات', icon: EditIcon, pushValue: '/questions', isDropable: false },
-    { title: 'اعلان ها', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
+    { title: 'اعلان ها', icon: InfoIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
     { title: 'مدیریت دسترسی‌ها', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
     { title: 'تنظیمات', icon: InfoIcon, pushValue: '/aboutus', isDropable: false },
     { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
@@ -80,6 +84,7 @@ export default function SwipeableTemporaryDrawer() {
     const dispatch = useDispatch();
     const { isOpen, setOpen } = React.useContext(SidebarContext);
     const [sideOpen, setSideOpen] = React.useState(false);
+    const [notificationsSideOpen, setNotificationsSideOpen] = React.useState(false);
     const classes = useStyles();
     const toggleDrawer = (side, open) => event => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -100,13 +105,17 @@ export default function SwipeableTemporaryDrawer() {
 
             {<List style={{ direction: 'rtl' }}>
                 {menu_items.map((value, index) => ((!value.isDropable) ?
-                    <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                    <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}
+                        onClick={() => setOpen({ ...isOpen, [side]: false })}
+                    >
 
                         <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}
                             onClick={() => {
                                 if (value.title === 'خروج') {
                                     dispatch({ type: 'USER_LOGGED_OUT' })
                                 }
+
+
                             }}>
                             <ListItemIcon>{<value.icon />}</ListItemIcon>
                             <ListItemText style={{ fontFamily: 'IranSans' }}
@@ -124,7 +133,13 @@ export default function SwipeableTemporaryDrawer() {
                                 if (value.title === 'خروج') {
                                     dispatch({ type: 'USER_LOGGED_OUT' })
                                 } else {
-                                    setSideOpen((oldState) => !oldState)
+                                    if (value.title === 'اعلان ها') {
+
+                                        setNotificationsSideOpen((oldState) => !oldState)
+                                    } else {
+                                        setSideOpen((oldState) => !oldState)
+                                    }
+
                                 }
 
 
@@ -133,13 +148,20 @@ export default function SwipeableTemporaryDrawer() {
                             <ListItemText style={{ fontFamily: 'IranSans' }}
                                 classes={{ primary: classes.text }}
                                 className={classes.text} primary={value.title} />
-                            {sideOpen ? <ExpandLess /> : <ExpandMore />}
+                            {((value.title==='اعلان ها')?notificationsSideOpen:sideOpen) ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
-                        <Collapse in={sideOpen} timeout="auto" unmountOnExit>
+                        <Divider />
+                        <Collapse in={(value.title==='اعلان ها')?notificationsSideOpen:sideOpen} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
 
                                 {value.subList.map((value, index) => (
-                                    <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                    <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}
+                                        onClick={() => {
+                                            setSideOpen(false)
+                                            setNotificationsSideOpen(false)
+                                            setOpen({ ...isOpen, [side]: false })
+                                        }}
+                                    >
 
                                         <ListItem className={classes.nested} style={{ direction: 'rtl' }} button key={`list-side${index}`}
                                             onClick={() => {
