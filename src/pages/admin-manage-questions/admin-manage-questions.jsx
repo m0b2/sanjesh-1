@@ -12,7 +12,7 @@ const CategoriesPage = ({ admin }) => {
         let obj = {};
         // dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
         // dispatch({ type: 'ADD_SIDE_LIST' });
-        if (!admin.questions) {
+        if (!admin.questions ) {
 
 
 
@@ -87,7 +87,7 @@ const CategoriesPage = ({ admin }) => {
 
 
 
-    if (!admin.questions) {
+    if (!admin.questions ) {
         return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <CircularProgress color="secondary" style={{ margin: '24px' }} />
         </div>

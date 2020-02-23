@@ -138,8 +138,8 @@ const Question_Analyze = ({ match, history }) => {
                         })
 
 
-
-                        sendEditState(index, setChanged, title, option);
+                        console.log(index, title, option,)
+                        sendEditState(index, setChanged, title, option, store);
                     }}> افزودن سوال
                 </Button>
 
@@ -162,7 +162,7 @@ export default withRouter(Question_Analyze);
 
 
 
-const sendEditState = (category_id, setDeleted, title, answers) => {
+const sendEditState = (category_id, setDeleted, title, answers, store) => {
 
     const headers = {
         "Content-Type": "application/json",
@@ -195,7 +195,8 @@ const sendEditState = (category_id, setDeleted, title, answers) => {
 
         )
         .then(response => {
-            console.log(response)
+            console.log(response.data)
+            store.dispatch({type:'ADMIN_ADD_QUESTION',payload:response.data.data})
             setDeleted((oldState) => {
 
                 return (
