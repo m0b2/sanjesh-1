@@ -27,7 +27,7 @@ const Question_Analyze = ({ match, history }) => {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const setUserChooseSomething = () => { }
     const userChooseSomething = true;
-    
+
 
     if (!questions || !categories || !questions[current] || !questions[current][currentQuestion]) {
         history.push('/question');
@@ -42,20 +42,20 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
-    const Amar = <div style={{display:'flex',flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
+    const Amar = <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <Circleprogress percent={38} width={64} />
         <div>
-            <span style={{fontFamily:'Samim', fontWeight:'400'}}>درصد افرادی که دراین مورد با شما هم نظرند</span>
+            <span style={{ fontFamily: 'Samim', fontWeight: '400' }}>درصد افرادی که دراین مورد با شما هم نظرند</span>
         </div>
-        
-      </div>
-    const insideComponent = ['',Amar,''];
 
-    
+    </div>
+    const insideComponent = ['', Amar, ''];
+
+
     const userAnswerID = questions[current][currentQuestion].answers.answer;
 
     // const userAnswerID = questions[current][currentQuestion].client_answer.answer;
-    const userAnswerToThisQuestion = questions[current][currentQuestion].answers.map((value,index)=>(value.id===userAnswerID)?value.answer : '')
+    const userAnswerToThisQuestion = questions[current][currentQuestion].answers.map((value, index) => (value.id === userAnswerID) ? value.answer : '')
     return (
         <div className='question-review-wrapper'>
 
@@ -64,31 +64,31 @@ const Question_Analyze = ({ match, history }) => {
                     <Icon className={'fas fa-question ' + ' fa-fw'} style={{ color: '#b71c1c', fontSize: '42px', paddingTop: '16px' }} />
                 </Fade>
                 <Divider />
-                <h4 style={{ fontFamily: 'Samim', fontWeight:'500', }}> {'آنالیز شخصیتی مربوط به مبحث ' + categories[current].name} </h4>
+                <h4 style={{ fontFamily: 'Samim', fontWeight: '500', }}> {'آنالیز شخصیتی مربوط به مبحث ' + categories[current].name} </h4>
             </div>
             <Divider />
             <Fade spy={currentQuestion} duration={300}  >
 
-                <span style={{ fontFamily: 'Samim', fontWeight:'500', color: '#b71c1c' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight: '500', color: '#b71c1c' }}>
                     {` آنالیز سوال ${currentQuestion + 1}: `}
 
                 </span>
-                <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a', height: '82px' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight: '500', textAlign: 'center', color: '#26a69a', height: '82px' }}>
                     {questions[current][currentQuestion].title}
                 </span>
                 <br />
-                <span style={{ fontFamily: 'Samim', fontWeight:'500', color: '#b71c1c' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight: '500', color: '#b71c1c' }}>
                     {` پاسخ شما به این سوال : `}
 
                 </span>
-                <span style={{ fontFamily: 'Samim', fontWeight:'500', textAlign: 'center', color: '#26a69a' }}>
+                <span style={{ fontFamily: 'Samim', fontWeight: '500', textAlign: 'center', color: '#26a69a' }}>
                     {userAnswerToThisQuestion}
                 </span>
 
 
                 <div style={{ width: '100%', minHeight: '186px' }}>
-                
-                    <MaterialTab data={{ tabs: tabs, content: content }}  insideComponent={insideComponent}/>
+
+                    <MaterialTab data={{ tabs: tabs, content: content }} insideComponent={insideComponent} />
                 </div>
             </Fade>
             <NextBackButtons currentState={{ currentQuestion, setCurrentQuestion }}
