@@ -78,13 +78,13 @@ const notifications_Sub = [
     { title: 'افزودن ', icon: AddIcon, pushValue: '/addnotifications', isDropable: false }];
 
 const menu_items = [
-    { title: 'خانه', icon: HomeIcon, pushValue: '/profile', isDropable: false },
+    { title: 'خانه', icon: HomeIcon, pushValue: '/home', isDropable: false },
     { title: 'دسته بندی', icon: CategoryIcon, pushValue: '/profile', isDropable: true, subList: categories_Sub },
     { title: 'کاربران', icon: PersonIcon, pushValue: '/users', isDropable: false },
     { title: 'سوالات', icon: HelpIcon, pushValue: '/questions', isDropable: false },
     { title: 'اعلان ها', icon: NotificationsIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
     { title: 'مدیریت دسترسی‌ها', icon: SecurityIcon, pushValue: '/aboutus', isDropable: false },
-    { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/aboutus', isDropable: false },
+    { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/setting', isDropable: false },
     { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
 ];
 

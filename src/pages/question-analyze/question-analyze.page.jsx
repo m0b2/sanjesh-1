@@ -51,8 +51,10 @@ const Question_Analyze = ({ match, history }) => {
       </div>
     const insideComponent = ['',Amar,''];
 
+    
+    const userAnswerID = questions[current][currentQuestion].answers.answer;
 
-    const userAnswerID = questions[current][currentQuestion].client_answer.answer;
+    // const userAnswerID = questions[current][currentQuestion].client_answer.answer;
     const userAnswerToThisQuestion = questions[current][currentQuestion].answers.map((value,index)=>(value.id===userAnswerID)?value.answer : '')
     return (
         <div className='question-review-wrapper'>
