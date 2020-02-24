@@ -40,10 +40,10 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
-
-
+    const q =questions[current][currentQuestion];
+    const userStringAnswer = q.answers.map((value=>q.client_answer.answer===value.id?value.answer:''))
     const Amar = <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Circleprogress percent={38} width={64} />
+        <Circleprogress percent={questions[current][currentQuestion].chart.percent} width={64} />
         <div>
             <span style={{ fontFamily: 'Samim', fontWeight: '400' }}>درصد افرادی که دراین مورد با شما هم نظرند</span>
         </div>
@@ -78,7 +78,7 @@ const Question_Analyze = ({ match, history }) => {
                 </span>
                 <br />
                 <span style={{ fontFamily: 'Samim', fontWeight: '500', color: '#b71c1c' }}>
-                    {` پاسخ شما به این سوال : `}
+                    {` پاسخ شما به این سوال : ${userStringAnswer}`}
 
                 </span>
                 <span style={{ fontFamily: 'Samim', fontWeight: '500', textAlign: 'center', color: '#26a69a' }}>

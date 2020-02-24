@@ -81,13 +81,16 @@ const Question_Page = props => {
         <Grid container spacing={3}>
           {categories.map(data => {
             return (
-              <Grid item xs={6} s={6} md={2}>
+              <Grid item xs={6} s={6} md={2}
+              key={`admin-category-Grid${data.id}`}
+              >
                 <QuestionCard
                   // message={data.message}
                   catName={data.title}
                   id={data.id}
                   // avatar={data.src}
                   icon={"far fa-question-circle"}
+                  key={`admin-category-QuestionCard${data.id}`}
                 />
               </Grid>
             );
