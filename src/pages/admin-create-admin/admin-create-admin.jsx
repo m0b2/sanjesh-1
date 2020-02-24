@@ -206,7 +206,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
     };
 
     const data = {
-        full_name, username, password, role
+        full_name, username, password, role: role_id
     }
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -227,7 +227,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
 
         })
         .catch(error => {
-            
+
             console.log(error);
         });
 

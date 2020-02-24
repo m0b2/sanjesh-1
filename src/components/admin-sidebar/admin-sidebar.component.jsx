@@ -30,6 +30,7 @@ import SecurityIcon from '@material-ui/icons/Security';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AddIcon from '@material-ui/icons/Add';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 const useStyles = makeStyles({
     list: {
         width: 250,
@@ -84,6 +85,7 @@ const menu_items = [
     { title: 'سوالات', icon: HelpIcon, pushValue: '/questions', isDropable: false },
     { title: 'اعلان ها', icon: NotificationsIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
     { title: 'ایجاد نقش', icon: SecurityIcon, pushValue: '/roles', isDropable: false },
+    { title: 'افزودن مدیر', icon: PersonAddIcon, pushValue: '/createadmin', isDropable: false },
     { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/setting', isDropable: false },
     { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
 ];
