@@ -83,7 +83,7 @@ const menu_items = [
     { title: 'کاربران', icon: PersonIcon, pushValue: '/users', isDropable: false },
     { title: 'سوالات', icon: HelpIcon, pushValue: '/questions', isDropable: false },
     { title: 'اعلان ها', icon: NotificationsIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
-    { title: 'مدیریت دسترسی‌ها', icon: SecurityIcon, pushValue: '/aboutus', isDropable: false },
+    { title: 'ایجاد نقش', icon: SecurityIcon, pushValue: '/roles', isDropable: false },
     { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/setting', isDropable: false },
     { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
 ];

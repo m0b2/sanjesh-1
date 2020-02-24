@@ -183,7 +183,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items, disabled, baseState, setNum, num }) {
+export default function ConfirmationDialog({ state, setState, title, items, disabled, baseState }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     options = items;
@@ -193,7 +193,7 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
     };
 
     const handleClose = newValue => {
-        setNum((old)=>old+1)
+        
         setOpen(false);
         if (newValue) {
             setState(newValue);
@@ -233,8 +233,7 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
                     baseState={[...baseState]}
                     items={[...items]}
                     labelTitle={title}
-                    setNum={setNum}
-                    num={num}
+                    
                 />
             </List>
         </div>

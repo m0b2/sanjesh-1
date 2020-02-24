@@ -59,7 +59,7 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
 
             <div>
                 <div className='progresss-div' style={{ marginTop: '0', paddingTop: '0' }}>
-                    <NumberStatic total={29} current={18} title={'پاسخ داده شده'} />
+                    <NumberStatic total={categories[index].questionCount} current={categories[index].answeredCount} title={'پاسخ داده شده'} />
                     <NumberStatic total={14} current={6} title={'تلاقی'} />
                 </div>
             </div>

@@ -21,6 +21,9 @@ const Categories = props => {
       description={subject[keyName].description}
       index={subject[keyName].id}
       key={`category${index}`}
+      answeredCount={subject[keyName].answeredCount}
+      questionCount={subject[keyName].questionCount}
+
       tuchable
     />
   ));

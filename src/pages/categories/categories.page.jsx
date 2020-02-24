@@ -65,7 +65,7 @@ const CategoriesPage = ({ loading, categories }) => {
         }
       const url = 'http://185.55.226.171/api/categories';
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      axios.get(proxyurl+url, { headers: headers })
+      axios.get(proxyurl + url, { headers: headers })
         .then((response) => {
           if (response.data.status === 200) {
             obj = {};
@@ -74,7 +74,14 @@ const CategoriesPage = ({ loading, categories }) => {
 
                 obj = {
                   ...obj,
-                  [value.id]: { name: value.title, icon: "fas fa-question", id: value.id, description: value.description, index: index }
+                  [value.id]: { name: value.title,
+                     icon: "fas fa-question",
+                      id: value.id,
+                       description: value.description,
+                        index: index,
+                        questionCount:value.chart.questionCount,
+                        answeredCount:value.chart.answeredCount,
+                      }
                 }
               }
             )

@@ -21,7 +21,9 @@ const Category = ({
   category_id,
   questionMode,
   notificationMode,
-  adminUserMode
+  adminUserMode,
+  answeredCount,
+  questionCount
 }) => {
 
 
@@ -197,7 +199,7 @@ const Category = ({
 
         }
         action={
-          <Number total={25} current={8} currentStyle={{ fontSize: '26px' }} />
+          <Number total={questionCount} current={answeredCount} currentStyle={{ fontSize: '26px' }} />
         }
         title={title}
         subheader={description}
