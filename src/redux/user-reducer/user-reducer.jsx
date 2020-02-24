@@ -2,13 +2,18 @@
 const Initial_State = JSON.parse(localStorage.getItem('myBelovedUser'));
 
 
+
 const UserReducer = (state = Initial_State, action) => {
 
     switch (action.type) {
-        case 'SET_CURRENT_USER': return {
+        case 'SET_CURRENT_USER': {
+            
+            localStorage.setItem('myBeLovedToken', JSON.stringify((action.payload.token)));
+            
+            return {
             ...state,
             ...action.payload
-        }
+        }}
         case 'USER_LOGGED_IN': {
 
             localStorage.setItem('myBelovedUser', JSON.stringify({

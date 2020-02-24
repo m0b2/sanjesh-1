@@ -113,7 +113,7 @@ export default (Answer);
 const getAllAnswer = (question, store, act) => {
     let arr = [];
     if (question) {
-        arr = question.map((value, index) => ((value.answers) ? value.answers.answer : null))
+        arr = question.map((value, index) => ((value.answers) ? value.client_answer.answer : null))
     }
 
     // store.dispatch({ type: 'SET_USER_OLD_ANSWER', payload: arr })
@@ -125,7 +125,7 @@ const getAllAnswer = (question, store, act) => {
 const getAllDescription = (question, store, act) => {
     let arr = [];
     if (question) {
-        arr = question.map((value, index) => ((value.answers) ? value.answers.description : null))
+        arr = question.map((value, index) => ((value.answers) ? value.client_answer.description : null))
     }
 
     // store.dispatch({ type: 'SET_USER_OLD_ANSWER', payload: arr })

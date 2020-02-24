@@ -109,13 +109,13 @@ const NextBackButtons = (props) => {
                         const category_id = store.getState().userAnswer.category_id
                         setOldAnswer((oldState) => ({ ...oldState, [currentQuestion]: currentAnswer }))
                         store.dispatch({
-                            type: 'SET_CHANGE_ANSWER'
-                            ,
-                            current_question: currentQuestion,
-                            answers: currentAnswer,
-                            category_id: category_id,
-                            description: userDescription
-
+                            type: 'SET_CHANGE_ANSWER',
+                            client_answer: {
+                                    answer: currentAnswer,
+                                    description: userDescription,
+                                },
+                            category_id:category_id,
+                            question_id:currentQuestion,
 
                         })
                         sendAnswer(category_id, question_id, currentAnswer, userDescription);
@@ -128,15 +128,17 @@ const NextBackButtons = (props) => {
                             newOld[currentQuestion] = userDescription;
                             return newOld;
                         });
+                        
+
 
                         store.dispatch({
-                            type: 'SET_CHANGE_ANSWER'
-                            ,
-                            current_question: currentQuestion,
-                            answers: currentAnswer,
-                            category_id: category_id,
-                            description: userDescription
-
+                            type: 'SET_CHANGE_ANSWER',
+                            client_answer: {
+                                    answer: currentAnswer,
+                                    description: userDescription,
+                                },
+                            category_id:category_id,
+                            question_id:currentQuestion,
 
                         })
                         sendAnswer(category_id, question_id, currentAnswer, userDescription);
@@ -195,14 +197,15 @@ const sendAnswer = (category_id, questions_id, answer_id, userDescription) => {
 
 
     const url = `http://185.55.226.171/api/answers/${category_id}?questions[0][id]=${questions_id}&questions[0][answer]=${answer_id}&questions[0][description]=${comment}`
+    console.log(url)
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.post( proxyurl+url, data, {
+    axios.post(proxyurl + url, data, {
         headers: headers
     })
         .then((response) => {
 
 
-            // console.log(response);
+            console.log(response);
 
 
         })
