@@ -27,7 +27,7 @@ const CategoriesPage = ({ admin }) => {
                 }
             const url = 'http://185.55.226.171/api/questions/';
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            axios.get(proxyurl + url, { headers: headers })
+            axios.get( url, { headers: headers })
                 .then((response) => {
                     console.log(response.data.data.data)
                     if (response.data.status === 200) {

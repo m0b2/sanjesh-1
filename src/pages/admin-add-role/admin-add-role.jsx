@@ -170,7 +170,7 @@ const getRoles = (store, setRoles, setIsLoading) => {
 
     const url = `http://185.55.226.171/api/roles/`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.get(proxyurl + url, { headers })
+    axios.get( url, { headers })
         .then((response) => {
 
             if (response.data.status === 200) {
@@ -256,7 +256,7 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
 
     const url = `http://185.55.226.171/api/roles?` + s + `title=${roleName}`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.post(proxyurl + url, null, { headers })
+    axios.post( url, null, { headers })
         .then((response) => {
             console.log(response)
             setisCreated(true)

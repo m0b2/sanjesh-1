@@ -53,7 +53,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post(proxyurl + url, data, {
+    axios.post( url, data, {
       headers: headers
     })
       .then((response) => {
@@ -70,7 +70,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
           history.push('/home');
           dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data, })
         }, 256)
-        axios.get(proxyurl + url2, {
+        axios.get( url2, {
           headers:
             { ...headers, Authorization: `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
         })

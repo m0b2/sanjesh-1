@@ -173,7 +173,7 @@ const sendEditState = (question_id, setDeleted, title, text) => {
 
     axios
         .post(
-            proxyurl + url2,
+             url2,
             data,
             {
                 headers: headers
@@ -238,7 +238,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     axios
         .post(
-            proxyurl + url2,
+             url2,
             data,
             {
                 headers: headers

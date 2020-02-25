@@ -146,7 +146,7 @@ const getRoles = (setRoles, store, setSaveRoles) => {
 
     axios
         .get(
-            proxyurl + url2,
+             url2,
             { headers }
 
         )
@@ -214,7 +214,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
 
     axios
         .post(
-            proxyurl + url2,
+             url2,
             data,
             {
                 headers: headers

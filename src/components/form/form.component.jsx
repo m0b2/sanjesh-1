@@ -76,7 +76,7 @@ const Form = ({ disabled, user, city }) => {
         const url = 'http://185.55.226.171/api/profile';
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-        axios.post(proxyurl + url, data, {
+        axios.post( url, data, {
             headers: headers
         }).then((response) => {
             store.dispatch({ type: 'SET_CURRENT_USER', payload: data })
@@ -183,7 +183,7 @@ const getShahrestan = (index, setSharestan) => {
 
     const url = `http://185.55.226.171/api/cities/${index}`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.get(proxyurl + url, { headers: headers })
+    axios.get( url, { headers: headers })
         .then((response) => {
             if (response.data.status === 200) {
                 // console.log(response.data)
@@ -220,7 +220,7 @@ const getcity = (store) => {
 
     const url = `http://185.55.226.171/api/provinces`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.get(proxyurl + url, { headers: headers })
+    axios.get( url, { headers: headers })
         .then((response) => {
             if (response.data.status === 200) {
                 // console.log(response.data)

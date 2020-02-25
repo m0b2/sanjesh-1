@@ -149,7 +149,7 @@ const getProfileInformation = (store, ) => {
 
   const url = `http://185.55.226.171/api/user`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  axios.get(proxyurl + url, { headers: headers })
+  axios.get(url, { headers: headers })
     .then((response) => {
       if (response.data.status === 200) {
 
@@ -204,7 +204,7 @@ const getcity = (store) => {
 
   const url = `http://185.55.226.171/api/provinces`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  axios.get(proxyurl + url, { headers: headers })
+  axios.get( url, { headers: headers })
     .then((response) => {
       if (response.data.status === 200) {
         // console.log(response.data)

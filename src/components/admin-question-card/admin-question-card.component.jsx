@@ -52,7 +52,7 @@ const Question_Page = props => {
 
           axios
             .get(
-              proxyurl + url2,
+               url2,
               {
                 headers: {
                   "Content-Type": "application/json",

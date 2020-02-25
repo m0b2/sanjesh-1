@@ -33,7 +33,7 @@ const VerticalTabs = ({ admin }) => {
 
         axios
             .get(
-                proxyurl + url2,
+                url2,
                 {
                     headers: headers
                 },

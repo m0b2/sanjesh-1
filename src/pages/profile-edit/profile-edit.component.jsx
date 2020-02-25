@@ -151,7 +151,7 @@ export default connect(mapStatetoProps)(ProfilView);
 
   const url = `http://185.55.226.171/api/user`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  axios.get(proxyurl+url, { headers: headers })
+  axios.get(url, { headers: headers })
     .then((response) => {
       if (response.data.status === 200) {
 
