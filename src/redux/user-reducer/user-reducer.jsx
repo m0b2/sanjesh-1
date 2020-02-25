@@ -1,5 +1,5 @@
 
-const Initial_State = {...JSON.parse(localStorage.getItem('myBelovedUser')),first_time:false};
+const Initial_State = { ...JSON.parse(localStorage.getItem('myBelovedUser')), first_time: false, error: false };
 
 
 
@@ -7,20 +7,24 @@ const UserReducer = (state = Initial_State, action) => {
 
     switch (action.type) {
         case 'SET_CURRENT_USER': {
-            
+
             localStorage.setItem('myBeLovedToken', JSON.stringify((action.payload.token)));
-            
+
             return {
-            ...state,
-            ...action.payload
-        }}
+                ...state,
+                ...action.payload
+            }
+        }
+        case 'ERORR': return {
+            ...state, error: true, erorr_message:action.payload
+        }
         case 'USER_LOGGED_IN': {
 
             localStorage.setItem('myBelovedUser', JSON.stringify({
                 ...state,
                 ...action.payload,
                 isLoggedIn: true,
-                
+
             }));
             localStorage.setItem('myBeLovedToken', JSON.stringify((action.payload.token)));
             return {
@@ -34,12 +38,12 @@ const UserReducer = (state = Initial_State, action) => {
             return null;
         }
         case 'USER_FIRST_TIME': {
-            
-            return {...state, first_time:true};
+
+            return { ...state, first_time: true };
         }
         case 'USER_END_FIRST_TIME': {
-            
-            return {...state, first_time:false};
+
+            return { ...state, first_time: false };
         }
         default: return state;
     }

@@ -138,7 +138,7 @@ const Question_Analyze = ({ match, history }) => {
                         })
 
 
-                        console.log(index, title, option,)
+                         //console.log(index, title, option,)
                         sendEditState(index, setChanged, title, option, store);
                     }}> افزودن سوال
                 </Button>
@@ -195,7 +195,7 @@ const sendEditState = (category_id, setDeleted, title, answers, store) => {
 
         )
         .then(response => {
-            console.log(response.data)
+             //console.log(response.data)
             store.dispatch({type:'ADMIN_ADD_QUESTION',payload:response.data.data})
             setDeleted((oldState) => {
 
@@ -212,7 +212,7 @@ const sendEditState = (category_id, setDeleted, title, answers, store) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-            console.log(error);
+             
         });
 
 
@@ -261,7 +261,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
         )
         .then(response => {
-            console.log(response)
+             //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -277,7 +277,7 @@ const sendDeleteState = (question_id, setDeleted) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-            console.log(error);
+             
         });
 
 }

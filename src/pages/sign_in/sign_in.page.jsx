@@ -32,7 +32,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
     }
 
     // localStorage.setItem('khoda', 'response.data.data.token');
-    // console.log(localStorage.getItem('khoda'))
+    //  //console.log(localStorage.getItem('khoda'))
 
 
 
@@ -59,7 +59,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
       .then((response) => {
         NProgress.set(0.6)
         localStorage.setItem('myBeLovedToken', JSON.stringify(response.data.data.token));
-        // console.log(response.data.data)
+        //  //console.log(response.data.data)
         const url2 = 'http://185.55.226.171/api/user';
         setShow(false);
         NProgress.set(60);
@@ -76,7 +76,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
         })
           .then((response) => {
             NProgress.inc();
-            console.log(response);
+             //console.log(response);
             NProgress.done();
 
             setDisable(false);
@@ -98,7 +98,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
 
       })
       .catch((error) => {
-        console.log(error);
+         
         setWrong(true);
         setDisable(false);
         NProgress.done();

@@ -192,7 +192,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
 
         )
         .then(response => {
-            console.log(response)
+             //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -208,7 +208,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-            console.log(error);
+             
         });
 
 
@@ -257,7 +257,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
         )
         .then(response => {
-            console.log(response)
+             //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -273,7 +273,7 @@ const sendDeleteState = (question_id, setDeleted) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-            console.log(error);
+             
         });
 
 }

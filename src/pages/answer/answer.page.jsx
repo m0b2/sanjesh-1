@@ -14,7 +14,7 @@ const Answer = ({ }) => {
     const store = useStore();
     const question = store.getState().question;
     const currentCategory = question.current;
-
+    
 
 
     React.useEffect(() => {
@@ -38,14 +38,14 @@ const Answer = ({ }) => {
 
 
     const size = question[currentCategory].length;
-
+    const catName = store.getState().Categories[currentCategory].name;
     return (
         <div className='answer-container'>
             <Number current={(currentQuestion + 1) <= size ? (currentQuestion + 1) : currentQuestion} total={size}
                 style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
 
             <Divider variant="middle" />
-            {(currentQuestion >= size) ? <Success /> : (
+            {(currentQuestion >= size) ? <Success title={`${catName}`} /> : (
                 <>
                     <div className='question-content-container'>
                         <span>

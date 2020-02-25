@@ -9,7 +9,7 @@ const CategoriesReducer = (state = null, action) => {
         case 'SET_CATEGORIES': {
 
             localStorage.setItem('myBelovedCategories', JSON.stringify(action.payload));
-            // console.log(...action.payload)
+            //  //console.log(...action.payload)
             return action.payload
         }
 

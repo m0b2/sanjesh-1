@@ -13,7 +13,7 @@ const Categories = props => {
 
   
   const subject = data[sideTab.current];
-  // console.log(subject)
+  //  //console.log(subject)
   const MyCategories = Object.keys(subject).map((keyName, index) => (
     <Category
       title={subject[keyName].name}

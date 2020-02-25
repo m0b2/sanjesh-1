@@ -90,15 +90,15 @@ const CategoriesPage = ({ loading, categories }) => {
           }
           store.dispatch({ type: 'SET_CATEGORIES', payload: obj });
           store.dispatch({ type: 'SET_LOADING', payload: { categories: false } });
-          // console.log(response.data)
+          //  //console.log(response.data)
         }
 
         ).catch((error) => {
           if (error && error.response && error.response.status === 401) {
-            // console.log('Singed out!!!')
+            //  //console.log('Singed out!!!')
             store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
           } else {
-            // console.log('there is an problem')
+            //  //console.log('there is an problem')
             store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
           }
 
@@ -137,7 +137,7 @@ const CategoriesPage = ({ loading, categories }) => {
   //   (value, index) => ({ name: value.title, icon: value.icon, id: value.id, description: value.description }))
 
   // dispatch({type:'SET_CATEGORIES', payload:filtered})
-  // console.log(categories)
+  //  //console.log(categories)
   return (
     <div className="categories-wrapper" style={{ minHeight: '90vh' }}>
 

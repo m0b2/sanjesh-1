@@ -71,7 +71,7 @@ export default function FullScreenDialog({ component, title, open, setOpen, onCl
     };
 
     window.addEventListener('beforeunload', function (e) {
-        console.log('back button pressed')
+         //console.log('back button pressed')
         // Chrome requires returnValue to be set
         setOpen(false);
     });

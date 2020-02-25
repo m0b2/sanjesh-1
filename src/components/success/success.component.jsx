@@ -3,7 +3,7 @@ import './success.style.css';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
 
-const Success = ({ history }) => {
+const Success = ({ history, title }) => {
 
 
 
@@ -31,7 +31,11 @@ const Success = ({ history }) => {
                 </div>
             </div>
             <div className='success-message-container'>
-                <span className='success-message-title'>سوالات روانشناسی با موفقیت کامل شد</span>
+                <span className='success-message-title'
+                >
+                
+                {`سوالات ${title} با موفقیت کامل شد`}
+                </span>
                 <Button style={{ fontFamily: 'Vazir', marginTop: '26px', position: 'absolute', bottom: '8%' }}
                     onClick={() => history.replace('/question')}
                 >

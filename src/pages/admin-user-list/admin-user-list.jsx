@@ -44,7 +44,7 @@ const searchHandleChange = (e)=>setSearch(e.target.value)
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
             axios.get( url, { headers: headers })
                 .then((response) => {
-                    console.log(response.data.data)
+                     //console.log(response.data.data)
                     if (response.data.status === 200) {
                         obj = {};
                         response.data.data.data.map(
@@ -65,15 +65,15 @@ const searchHandleChange = (e)=>setSearch(e.target.value)
                     }
                     store.dispatch({ type: 'ADMIN_SET_USERS', payload: obj });
 
-                    // console.log(response.data)
+                    //  //console.log(response.data)
                 }
 
                 ).catch((error) => {
                     if (error && error.response && error.response.status === 401) {
-                        // console.log('Singed out!!!')
+                        //  //console.log('Singed out!!!')
                         store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
                     } else {
-                        console.log(error)
+                         //console.log(error)
                         store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
                     }
 

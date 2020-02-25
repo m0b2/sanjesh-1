@@ -148,15 +148,15 @@ const getProfileInformation = (store, setPrice, setIsLoading) => {
 
         }).catch((error) => {
             if (error && error.response && error.response.status === 401) {
-                // console.log('Singed out!!!')
+                //  //console.log('Singed out!!!')
                 store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
             } else {
-                // console.log('there is an problem')
+                //  //console.log('there is an problem')
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-            console.log(error)
-            console.log(error.response)
+             //console.log(error)
+             //console.log(error.response)
 
         })
 
@@ -217,15 +217,15 @@ const sendData = (price, store, setIsLoading) => {
 
         }).catch((error) => {
             if (error && error.response && error.response.status === 401) {
-                // console.log('Singed out!!!')
+                //  //console.log('Singed out!!!')
                 store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
             } else {
-                // console.log('there is an problem')
+                //  //console.log('there is an problem')
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-            console.log(error)
-            console.log(error.response)
+             //console.log(error)
+             //console.log(error.response)
 
         })
 

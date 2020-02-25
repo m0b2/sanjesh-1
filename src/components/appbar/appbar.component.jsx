@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 const Appbar = ({ location, history, isFooterNeeded, isEditPage, globalFunction }) => {
     const { isOpen, setOpen } = React.useContext(SidebarContext);
     let { pathname } = location;
-    // console.log(pathname)
+    //  //console.log(pathname)
     const classes = useStyles();
     pathname = pathname.substring(1).charAt(0).toUpperCase() + pathname.slice(2);
     return (

@@ -28,8 +28,8 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
     const questions = store.getState().Categories;
     const current = store.getState().question_type;
     if (!question || !question[index]) {
-        // console.log(loading)
-        // console.log(question)
+        //  //console.log(loading)
+        //  //console.log(question)
         if (!loading.categories_review) {
             fetchQuestions(index, store);
         }
@@ -38,7 +38,7 @@ const Question_Review = ({ match, history, question, loading, categories }) => {
         </div>)
     }
 
-    // console.log(question[index])
+    //  //console.log(question[index])
     if(!categories||!categories[index]){
         history.push('/question');
         return<div></div>;
@@ -175,10 +175,10 @@ const fetchQuestions = (index, store) => {
 
         }).catch((error) => {
             if (error && error.response && error.response.status === 401) {
-                // console.log('Singed out!!!')
+                //  //console.log('Singed out!!!')
                 store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
             } else {
-                // console.log('there is an problem')
+                //  //console.log('there is an problem')
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND' })
             }
 

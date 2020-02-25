@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SideList = ({ sideTab }) => {
-    console.log(sideTab)
+     //console.log(sideTab)
     // const store = useStore().getState();
     const classes = useStyles();
     const list_item = sideTab.title.map((value, index) =>

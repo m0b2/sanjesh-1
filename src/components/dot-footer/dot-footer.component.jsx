@@ -27,7 +27,7 @@ export default function DotsMobileStepper({ activeStep, setActiveStep, totalStep
     const handleNext = () => {
         let error = false;
         states[activeStep].map((value, index) => {
-            console.log(value, error)
+             //console.log(value, error)
             error = (value.length < 2) ? true : error
         })
 
@@ -43,7 +43,7 @@ export default function DotsMobileStepper({ activeStep, setActiveStep, totalStep
         setMessage('')
         // let error = false;
         // states[activeStep].map((value, index) => {
-        //     console.log(value, error)
+        //      //console.log(value, error)
         //     error = (value.length < 2) ? true : error
         // })
         // if (!error) {

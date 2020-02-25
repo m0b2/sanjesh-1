@@ -104,7 +104,7 @@ const NextBackButtons = (props) => {
                 onClick={() => {
                     setCurrentQuestion((oldState) => (currentQuestion + 2 !== size ? oldState + 1 : oldState + 1))
                     // currentQuestion + 1 !== size && setChoise(false);
-                    // console.log(currentAnswer, oldAnswer)
+                    //  //console.log(currentAnswer, oldAnswer)
                     if (currentAnswer !== oldAnswer || (currentAnswer === 0 && currentAnswer !== oldAnswer)) {
                         const category_id = store.getState().userAnswer.category_id
                         setOldAnswer((oldState) => ({ ...oldState, [currentQuestion]: currentAnswer }))
@@ -197,7 +197,7 @@ const sendAnswer = (category_id, questions_id, answer_id, userDescription) => {
 
 
     const url = `http://185.55.226.171/api/answers/${category_id}?questions[0][id]=${questions_id}&questions[0][answer]=${answer_id}&questions[0][description]=${comment}`
-    console.log(url)
+     //console.log(url)
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     axios.post( url, data, {
         headers: headers
@@ -205,12 +205,12 @@ const sendAnswer = (category_id, questions_id, answer_id, userDescription) => {
         .then((response) => {
 
 
-            console.log(response);
+             //console.log(response);
 
 
         })
         .catch((error) => {
-            console.log(error);
+             
 
 
         })

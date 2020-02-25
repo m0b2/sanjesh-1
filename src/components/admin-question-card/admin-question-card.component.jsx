@@ -65,7 +65,7 @@ const Question_Page = props => {
               null
             )
             .then(response => {
-              console.log(response);
+               //console.log(response);
               // alert(response.data.data.data);
 
               mydata.title = response.data.data.data.title;
@@ -78,7 +78,7 @@ const Question_Page = props => {
             });
         })
         .catch(error => {
-          console.log(error);
+           
         });
 
 

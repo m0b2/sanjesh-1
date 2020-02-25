@@ -43,6 +43,61 @@ import AdminSetting from './pages/admin-setting/admin-setting';
 import AdminRoles from './pages/admin-add-role/admin-add-role';
 import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin';
 import queryString from 'query-string';
+import resStore from './redux/store';
+const Debug = false;
+
+axios.interceptors.request.use((config) => {
+  /** In dev, intercepts request and logs it into console for dev */
+  if (Debug) { console.info("✉️Succ", config); }
+  // if(config.data)
+  // resStore.dispatch({ type: 'ERORR' })
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+  return { ...config, url: proxyurl + config.url };
+}, (error) => {
+  if (Debug) { console.info("✉️", error); }
+  resStore.dispatch({ type: 'ERORR' })
+  return Promise.reject(error);
+});
+
+
+
+
+axios.interceptors.response.use((response) => {
+  if (Debug) { console.info("✉️Response", response); }
+  return response;
+}, (error) => {
+  if (Debug) {
+    console.info("✉️Error", error.response.statusText);
+    resStore.dispatch({ type: 'ERORR', payload:error.response.statusText })
+    return Promise.reject(error);
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const { status, username, password, message } = queryString.parse(window.location.search);
 // man amade am vay vay
 // rnpm baraye fron
@@ -102,87 +157,115 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
             {window.screen.width < 800 && isNeededReducer.appbar ? <Appbar /> : null}
             {/* {window.screen.width < 421 ? <Sidebar /> : null} */}
 
+            {!user.error ? (
 
 
 
-            {user.client ?
-              <Switch>
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/question" component={Categories} />
-                <Route
-                  exact
-                  path="/question/:index"
-                  component={Question_review}
-                />
-                <Route exact path="/compare" component={ComparePage} />
-                <Route exact path="/notification" component={Notification} />
-                <Route exact path="/profile" component={ProfileView} />
-                <Route
-                  exact
-                  path="/question/:index/answer"
-                  component={AnswerPage}
-                />
-                <Route exact path="/edit" component={Edit_Profile_Page} />
-                <Route exact path="/question/:index/analyze" component={Question_Analyze} />
-                <Route exact path="/aboutus" component={About_Us_Page} />
-                {/* <Route exact path="/signin" component={Sign_In_Page} /> */}
-                <Route exact path="/signup" component={Sign_Up_Page} />
-                <Route exact path="/userInfo" component={User_Info_Page} />
-                <Route exact path="/userInfo" component={User_Info_Page} />
-
-                {/* <Redirect to="/home" /> */}
-              </Switch>
-
-
-              :
-
-
-
-              (user.admin) ?
-
-
+              user.client ?
                 <Switch>
                   <Route exact path="/home" component={Home} />
-                  <Route exact path="/category" component={AdminCategoryPage} />
-                  <Route exact path="/addcategory" component={AdminAddCategory} />
-                  <Route exact path="/questions" component={AdminQuestions} />
-                  <Route exact path="/notifications" component={AdminNotifications} />
-                  <Route exact path="/addnotifications" component={AdminAddNotification} />
-                  <Route exact path="/users" component={AdminUsersList} />
-                  <Route exact path="/roles" component={AdminRoles} />
-                  <Route exact path="/createadmin" component={AdminCreateAdmin} />
-
-                  <Route exact
-                    path="/question/:index"
-                    component={AdminEditQuestion} />
+                  <Route exact path="/question" component={Categories} />
                   <Route
                     exact
-                    path="/category/:index"
-                    component={CategoryEdit}
+                    path="/question/:index"
+                    component={Question_review}
                   />
+                  <Route exact path="/compare" component={ComparePage} />
+                  <Route exact path="/notification" component={Notification} />
+                  <Route exact path="/profile" component={ProfileView} />
+                  <Route
+                    exact
+                    path="/question/:index/answer"
+                    component={AnswerPage}
+                  />
+                  <Route exact path="/edit" component={Edit_Profile_Page} />
+                  <Route exact path="/question/:index/analyze" component={Question_Analyze} />
+                  <Route exact path="/aboutus" component={About_Us_Page} />
+                  {/* <Route exact path="/signin" component={Sign_In_Page} /> */}
+                  <Route exact path="/signup" component={Sign_Up_Page} />
+                  <Route exact path="/userInfo" component={User_Info_Page} />
+                  <Route exact path="/userInfo" component={User_Info_Page} />
 
-                  <Route exact
-                    path="/notification/:index"
-                    component={AdminNotifactionsEdit} />
-                  <Route exact
-                    path="/addQuestion/:index"
-                    component={AdminAddQuestion} />
-                  <Route exact
-                    path="/setting"
-                    component={AdminSetting} />
-
+                  {/* <Redirect to="/home" /> */}
                 </Switch>
-
 
 
                 :
 
-                null
 
+
+                (user.admin) ?
+
+
+                  <Switch>
+                    <Route exact path="/home" component={Home} />
+                    <Route exact path="/category" component={AdminCategoryPage} />
+                    <Route exact path="/addcategory" component={AdminAddCategory} />
+                    <Route exact path="/questions" component={AdminQuestions} />
+                    <Route exact path="/notifications" component={AdminNotifications} />
+                    <Route exact path="/addnotifications" component={AdminAddNotification} />
+                    <Route exact path="/users" component={AdminUsersList} />
+                    <Route exact path="/roles" component={AdminRoles} />
+                    <Route exact path="/createadmin" component={AdminCreateAdmin} />
+
+                    <Route exact
+                      path="/question/:index"
+                      component={AdminEditQuestion} />
+                    <Route
+                      exact
+                      path="/category/:index"
+                      component={CategoryEdit}
+                    />
+
+                    <Route exact
+                      path="/notification/:index"
+                      component={AdminNotifactionsEdit} />
+                    <Route exact
+                      path="/addQuestion/:index"
+                      component={AdminAddQuestion} />
+                    <Route exact
+                      path="/setting"
+                      component={AdminSetting} />
+
+                  </Switch>
+
+
+
+                  :
+
+                  null
+
+
+
+
+
+
+
+
+
+
+
+            )
+
+
+              :
+              <div style={{ height: '50vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <h2>{user.erorr_message}</h2>
+                <h2 style={{ textAlign: 'center' }}>ارتباط با سرور برقرار نشد</h2>
+                <Button variant="contained" onClick={() => {
+                  window.location.reload();
+                }}
+                  style={{ fontFamily: 'Vazir', fontWeight: '900' }}
+                >بارگذاری مجدد</Button>
+
+              </div>
 
 
 
             }
+
+
+
 
           </div>
         </div>
@@ -247,7 +330,7 @@ const fetchCategories = () => {
 
     })
     .catch((error) => {
-      console.log(error);
+
 
 
     })

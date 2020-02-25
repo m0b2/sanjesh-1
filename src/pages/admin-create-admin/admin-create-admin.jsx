@@ -169,7 +169,7 @@ const getRoles = (setRoles, store, setSaveRoles) => {
             //         { ...oldState, deleting: false, deleted: false }
             //     )
             // })
-            console.log(error);
+             
         });
 
 
@@ -195,8 +195,8 @@ const getRoles = (setRoles, store, setSaveRoles) => {
 const sendCreateUser = ({ full_name, username, password, role }, saveRoles, store, setChanged) => {
 
     let role_id = saveRoles.filter(v => v.title === role)
-    role_id = role_id[0].id
-    console.log(role_id)
+    role_id = role_id && role_id[0] ? role_id[0].id : null
+    // role_id[0].id
     const headers = {
         "Content-Type": "application/json",
         Vary: "Authorization",
@@ -228,7 +228,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
         })
         .catch(error => {
 
-            console.log(error);
+             
         });
 
 }

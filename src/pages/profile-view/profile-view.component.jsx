@@ -156,20 +156,20 @@ const getProfileInformation = (store, ) => {
 
         store.dispatch({ type: 'SET_CURRENT_USER', payload: response.data.data });
         store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
-        // console.log(response.data)
+        //  //console.log(response.data)
 
       }
 
     }).catch((error) => {
       if (error && error.response && error.response.status === 401) {
-        // console.log('Singed out!!!')
+        //  //console.log('Singed out!!!')
         store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
       } else {
-        // console.log('there is an problem')
+        //  //console.log('there is an problem')
         store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
       }
 
-      console.log(error)
+       //console.log(error)
 
     })
 
@@ -207,7 +207,7 @@ const getcity = (store) => {
   axios.get( url, { headers: headers })
     .then((response) => {
       if (response.data.status === 200) {
-        // console.log(response.data)
+        //  //console.log(response.data)
         let arr = [];
         Object.entries(response.data.data).forEach(
           ([key, value]) => {
@@ -217,20 +217,20 @@ const getcity = (store) => {
 
         store.dispatch({ type: 'SET_CITY', payload: arr });
         // store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
-        // console.log(response.data)
+        //  //console.log(response.data)
 
       }
 
     }).catch((error) => {
       if (error && error.response && error.response.status === 401) {
-        // console.log('Singed out!!!')
+        //  //console.log('Singed out!!!')
         store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
       } else {
-        // console.log('there is an problem')
+        //  //console.log('there is an problem')
         store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
       }
 
-      console.log(error)
+       //console.log(error)
 
     })
 

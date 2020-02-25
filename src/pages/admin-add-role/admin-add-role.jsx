@@ -196,15 +196,15 @@ const getRoles = (store, setRoles, setIsLoading) => {
 
         }).catch((error) => {
             if (error && error.response && error.response.status === 401) {
-                // console.log('Singed out!!!')
+                //  //console.log('Singed out!!!')
                 store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
             } else {
-                // console.log('there is an problem')
+                //  //console.log('there is an problem')
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-            console.log(error)
-            console.log(error.response)
+             //console.log(error)
+             //console.log(error.response)
 
         })
 
@@ -241,7 +241,7 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
 
         }
     )
-    console.log(s + `title=${roleName}`)
+     //console.log(s + `title=${roleName}`)
 
 
 
@@ -258,7 +258,7 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     axios.post( url, null, { headers })
         .then((response) => {
-            console.log(response)
+             //console.log(response)
             setisCreated(true)
             setIsLoading(false)
             if (response.data.status === 200) {
@@ -269,15 +269,15 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
 
         }).catch((error) => {
             if (error && error.response && error.response.status === 401) {
-                // console.log('Singed out!!!')
+                //  //console.log('Singed out!!!')
                 store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
             } else {
-                // console.log('there is an problem')
+                //  //console.log('there is an problem')
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-            console.log(error)
-            console.log(error.response)
+             //console.log(error)
+             //console.log(error.response)
             
 
         })
@@ -329,15 +329,15 @@ const sendData = (roles, roleName, store) => {
 
     //     }).catch((error) => {
     //         if (error && error.response && error.response.status === 401) {
-    //             // console.log('Singed out!!!')
+    //             //  //console.log('Singed out!!!')
     //             store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
     //         } else {
-    //             // console.log('there is an problem')
+    //             //  //console.log('there is an problem')
     //             store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
     //         }
 
-    //         console.log(error)
-    //         console.log(error.response)
+    //          //console.log(error)
+    //          //console.log(error.response)
 
     //     })
 

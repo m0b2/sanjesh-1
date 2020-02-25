@@ -55,7 +55,7 @@ const VerticalTabs = ({ admin }) => {
                 // alert(this.state.mydata);
             })
             .catch(error => {
-                console.log(error);
+                 
             });
     }
 
