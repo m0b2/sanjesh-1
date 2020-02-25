@@ -55,8 +55,11 @@ axios.interceptors.request.use((config) => {
 
   return { ...config, url: proxyurl + config.url };
 }, (error) => {
-  if (Debug) { console.info("✉️", error); }
   resStore.dispatch({ type: 'ERORR' })
+  if (Debug) {
+    console.info("✉️", error);
+  }
+
   return Promise.reject(error);
 });
 
@@ -69,10 +72,11 @@ axios.interceptors.response.use((response) => {
 }, (error) => {
   if (Debug) {
     console.info("✉️Error", error.response.statusText);
-    resStore.dispatch({ type: 'ERORR', payload:error.response.statusText })
-    return Promise.reject(error);
-
   }
+  resStore.dispatch({ type: 'ERORR', payload: error.response.statusText })
+  return Promise.reject(error);
+
+
 
 });
 
@@ -250,7 +254,7 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
               :
               <div style={{ height: '50vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              <h2>{user.erorr_message}</h2>
+                <h2>{user.erorr_message}</h2>
                 <h2 style={{ textAlign: 'center' }}>ارتباط با سرور برقرار نشد</h2>
                 <Button variant="contained" onClick={() => {
                   window.location.reload();
