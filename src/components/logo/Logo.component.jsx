@@ -13,11 +13,11 @@ const Logo = ({ size, red }) => {
             alignItems: 'center',
             paddingBottom: '3px',
             marginRight: '12px',
-            fontFamily: 'Pattaya',
-            fontSize: `${size}px`
+            fontSize: `${size}px`,
+            fontFamily:'Vazir'
         }} >
-            Sanjesh.
-                <div style={{ color: (red ? '#b71c1c' : '#fafafa'), fontFamily: 'Pattaya', }}>Love</div>
+            ویناس
+                <div style={{ color: (red ? '#b71c1c' : '#fafafa'), fontFamily: 'Pattaya', }}></div>
         </div>
     )
 }
