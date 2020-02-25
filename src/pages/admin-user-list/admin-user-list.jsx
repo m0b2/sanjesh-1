@@ -40,7 +40,7 @@ const searchHandleChange = (e)=>setSearch(e.target.value)
 
 
                 }
-            const url = 'http://185.55.226.171/api/client_users/';
+            const url = 'http://185.55.226.171/api/client_users';
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
             axios.get( url, { headers: headers })
                 .then((response) => {

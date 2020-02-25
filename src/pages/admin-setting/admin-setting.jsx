@@ -131,7 +131,7 @@ const getProfileInformation = (store, setPrice, setIsLoading) => {
 
     }
 
-    const url = `http://185.55.226.171/api/settings/`;
+    const url = `http://185.55.226.171/api/settings`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     axios.get( url, { headers })
         .then((response) => {
