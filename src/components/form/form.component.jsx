@@ -92,7 +92,6 @@ const Form = ({ disabled, user, city }) => {
 
 
     if (city && state.length > 1 && Object.keys(shahrestan).length === 0) {
-        console.log('Yes')
         city.map((v, i) => {
             if (v === state) {
                 index = i + 1;
