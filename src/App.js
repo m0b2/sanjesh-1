@@ -79,7 +79,7 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
 
 
-  if (user.first_time) {
+  if (user.first_time && !user.admin) {
 
     return <FirstMate />
   }
