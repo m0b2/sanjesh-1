@@ -154,7 +154,7 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
       <SidebarContext.Provider value={SidebarOpen}>
 
         <div className="main-app-and-list-wrapper">
-          {window.screen.width < 800 ? null : <Header />}
+          {window.screen.width < 800 ? null : <Header isAdmin={user.admin} />}
           {sideTab.isVisible && window.screen.width > 800 ? <SideList /> : null}
           <div className="main-app">
             {user.admin ? <AdminSideBar /> : <Sidebar />}

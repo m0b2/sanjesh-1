@@ -9,10 +9,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { withRouter } from 'react-router-dom';
-import ProfileMenu from '../profile-menu/profile-menu.component';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { SidebarContext } from '../../context/sidebar.context';
+import SecurityIcon from '@material-ui/icons/Security';
+import SettingsIcon from '@material-ui/icons/Settings';
+
+import PersonIcon from '@material-ui/icons/Person';
 
 
 const menu = [
@@ -22,7 +25,13 @@ const menu = [
     { label: 'اعلان ها', Icon: NotificationsIcon, address: '/notification' }
 ]
 
-
+const menuAdmin = [
+    { label: 'صفحه اصلی', Icon: HomeIcon, address: '/home' },
+    { label: 'کاربران', Icon: PersonIcon, address: '/users' },
+    { label: 'سوالات', Icon: HelpOutlineIcon, address: '/questions' },
+    { label: 'ایجاد نقش', Icon: SecurityIcon, address: '/roles' },
+    { label: 'تنظیمات', Icon: SettingsIcon, address: '/setting' },
+]
 
 
 const useStyles = makeStyles({
@@ -41,7 +50,7 @@ const useStyles = makeStyles({
     }
 });
 
-function IconLabelTabs({ history }) {
+function IconLabelTabs({ history, isAdmin }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const { isOpen, setOpen } = React.useContext(SidebarContext);
@@ -50,9 +59,9 @@ function IconLabelTabs({ history }) {
         setValue(newValue);
     };
 
+    let current_items = isAdmin? menuAdmin : menu;
 
-
-    const items = menu.map((value, index) =>
+    const items = current_items.map((value, index) =>
         <Tab classes={{ fullWidth: classes.label }} icon={<value.Icon />} label={''} key={`header-tab${index}`}
             onClick={() => history.push(value.address)}
             className={classes.tab}
