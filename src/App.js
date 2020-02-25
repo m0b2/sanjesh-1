@@ -44,7 +44,7 @@ import AdminRoles from './pages/admin-add-role/admin-add-role';
 import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin';
 import queryString from 'query-string';
 import resStore from './redux/store';
-const Debug = true;
+const Debug = false;
 
 axios.interceptors.request.use((config) => {
   /** In dev, intercepts request and logs it into console for dev */
@@ -53,7 +53,7 @@ axios.interceptors.request.use((config) => {
   // resStore.dispatch({ type: 'ERORR' })
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-  // if (Debug) return { ...config, url: proxyurl + config.url };
+  if (Debug) return { ...config, url: proxyurl + config.url };
   return config;
 }, (error) => {
   resStore.dispatch({ type: 'ERORR' })
