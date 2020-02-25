@@ -53,7 +53,8 @@ axios.interceptors.request.use((config) => {
   // resStore.dispatch({ type: 'ERORR' })
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-  return { ...config, url: proxyurl + config.url };
+  // return { ...config, url: proxyurl + config.url };
+  return config;
 }, (error) => {
   resStore.dispatch({ type: 'ERORR' })
   if (Debug) {
