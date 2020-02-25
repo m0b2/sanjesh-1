@@ -7,11 +7,12 @@ import { useDispatch, useStore } from 'react-redux';
 import Fade from 'react-reveal/Fade';
 
 
-export default function Sign_in() {
+export default function Sign_in({ user_name, pass_word, status }) {
+  const store = useStore();
   const dispatch = useDispatch();
   const history = useHistory();
-  const [username, setUsername] = useState('client');
-  const [password, setPassword] = useState('1234');
+  const [username, setUsername] = useState(user_name ? user_name : '');
+  const [password, setPassword] = useState(pass_word ? pass_word : '');
   const [disable, setDisable] = useState(false);
   const [wrong, setWrong] = useState(false);
   const [show, setShow] = useState(true);
@@ -52,40 +53,43 @@ export default function Sign_in() {
     const url = 'http://185.55.226.171/api/login';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
-    axios.post(proxyurl+ url, data, {
+    axios.post(proxyurl + url, data, {
       headers: headers
     })
       .then((response) => {
         NProgress.set(0.6)
         localStorage.setItem('myBeLovedToken', JSON.stringify(response.data.data.token));
         // console.log(response.data.data)
-        const url2 = 'http://185.55.226.171/api/profile';
+        const url2 = 'http://185.55.226.171/api/user';
         setShow(false);
-        NProgress.inc();
-        NProgress.done();
-        NProgress.remove();
+        NProgress.set(60);
+        ;
         setDisable(false);
         setTimeout(() => {
           NProgress.remove();
           history.push('/home');
           dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data, })
         }, 256)
-        // axios.post(proxyurl+url2, null, {
-        //   headers: {...headers,Authorization:`Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
-        // })
-        //   .then((response) => {
-        //     NProgress.inc();
-        //     console.log(response);
-        //     NProgress.done();
+        axios.get(proxyurl + url2, {
+          headers:
+            { ...headers, Authorization: `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}` }
+        })
+          .then((response) => {
+            NProgress.inc();
+            console.log(response);
+            NProgress.done();
 
-        //     setDisable(false);
+            setDisable(false);
 
-        //     setTimeout(() => {
-        //       NProgress.remove();
-        //       history.push('/home');
-        //       dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
-        //     }, 256)
-        //   })
+            setTimeout(() => {
+              NProgress.remove();
+              if (!response.data.data.city || !response.data.data.married || !response.data.data.blood || !response.data.data.blood) {
+                dispatch({ type: 'USER_FIRST_TIME' });
+              }
+              history.push('/home');
+              dispatch({ type: 'USER_LOGGED_IN', payload: response.data.data })
+            }, 256)
+          })
 
 
 
@@ -125,17 +129,23 @@ export default function Sign_in() {
             <input type="password" name="demo" value={password} onChange={passwordHandleChange} style={{ direction: 'rtl' }} />
           </div>
           <button className="log-in-button"
-            onClick={() => Request()}>وارد شوید</button>
-          <button className="log-in-button"
+            onClick={() => {
+              if (status) {
+                store.dispatch({ type: 'USER_FIRST_TIME' })
+              }
+              Request()
+            }}>وارد شوید</button>
+          {(!status) ? <button className="log-in-button"
             style={{ background: '#0094CC' }}
             onClick={() => {
-              paymentStuff(history,setDisable,)
+              paymentStuff(history, setDisable)
             }}
 
 
 
-          >خرید اشتراک</button>
-          <a className="create-account-link" href>بازگردانی کلمه عبور</a>
+          >خرید اشتراک</button> : null}
+          {(!status) ? <a className="create-account-link" href>بازگردانی کلمه عبور</a> : null}
+
 
         </div>
       </div>
@@ -147,7 +157,7 @@ export default function Sign_in() {
 
 
 
-async function paymentStuff(history,setDisable) {
+async function paymentStuff(history, setDisable) {
   setDisable(true)
   const url = 'http://185.55.226.171/api/register';
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -156,7 +166,7 @@ async function paymentStuff(history,setDisable) {
     .then((response) => {
       // history.push()
       NProgress.set(0.6)
-      
+
       window.location.assign(`${response.data.data.url}`);
 
     })

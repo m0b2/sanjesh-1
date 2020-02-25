@@ -1,10 +1,25 @@
 import React from 'react';
 import './pay-receipt.style.css';
+import SignIn from '../../pages/sign_in/sign_in.page';
+
+
+
+const PayReceipt = ({ username, password, status }) => {
+
+    const [login, setLogin] = React.useState(false);
 
 
 
 
-const PayReceipt = () => {
+
+
+    if (login) {
+        return <SignIn user_name={username} pass_word={password} status={status} />
+    }
+
+
+
+
 
 
     return (
@@ -21,7 +36,7 @@ const PayReceipt = () => {
 
                 <div class="receipt">
                     <div class="receipt-list">
-                        <div class="receipt-item">
+                        {/* <div class="receipt-item">
                             <div class="receipt-label">شماره پیگیری</div>
                             <div class="receipt-value">941986</div>
                         </div>
@@ -32,19 +47,23 @@ const PayReceipt = () => {
                         <div class="receipt-item">
                             <div class="receipt-label">تاریخ پرداخت</div>
                             <div class="receipt-value">98/11/26</div>
-                        </div>
+                        </div> */}
                         <div class="receipt-item">
                             <div class="receipt-label">نام کاربری</div>
-                            <div class="receipt-value">sadw4d</div>
+                            <div class="receipt-value">{username}</div>
                         </div>
                         <div class="receipt-item">
                             <div class="receipt-label">کلمه عبور</div>
-                            <div class="receipt-value">fSHsdpd#</div>
+                            <div class="receipt-value">{password}</div>
                         </div>
                     </div>
                 </div>
 
-                <button className="log-in-button" style={{ background: '#0094CC' }} >تکمیل اطلاعات</button>
+                <button className="log-in-button" style={{ background: '#0094CC' }}
+                    onClick={() => {
+                        setLogin(true);
+                    }}
+                >صفحه ورود</button>
             </div>
         </div>
 

@@ -10,8 +10,8 @@ const useStyles = makeStyles({
         maxWidth: 400,
         flexGrow: 1,
         background: 'white',
-        
-        bottom:'0'
+
+        bottom: '0'
 
     },
     button: {
@@ -19,17 +19,36 @@ const useStyles = makeStyles({
     }
 });
 
-export default function DotsMobileStepper({activeStep, setActiveStep, totalStep}) {
+export default function DotsMobileStepper({ activeStep, setActiveStep, totalStep, states, setMessage,setEnd }) {
     const classes = useStyles();
     const theme = useTheme();
-    
+
 
     const handleNext = () => {
-        setActiveStep(prevActiveStep => prevActiveStep + 1);
+        let error = false;
+        states[activeStep].map((value, index) => {
+            console.log(value, error)
+            error = (value.length < 2) ? true : error
+        })
+
+        if (!error) {
+            setActiveStep(prevActiveStep => prevActiveStep + 1);
+            setMessage('')
+        }
+        else setMessage('تکمیل کردن تمامی فیلد ها الزامی میباشد')
     };
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
+        setMessage('')
+        // let error = false;
+        // states[activeStep].map((value, index) => {
+        //     console.log(value, error)
+        //     error = (value.length < 2) ? true : error
+        // })
+        // if (!error) {
+
+        // } else setMessage('تکمیل کردن تمامی فیلد ها الزامی میباشد')
     };
 
     return (
@@ -40,11 +59,17 @@ export default function DotsMobileStepper({activeStep, setActiveStep, totalStep}
             activeStep={activeStep}
             className={classes.root}
             nextButton={
-                <Button size="medium" onClick={handleNext} disabled={activeStep === 3}
+                <Button size="medium" onClick={() => {
+                    if (activeStep === 3) {
+                        setEnd(true)
+                    } else {
+                        handleNext()
+                    }
+                }}
                     className={classes.button}
                 >
-                    بعدی
-          {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                    {(activeStep === 3) ? 'پایان' : 'بعدی'}
+                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                 </Button>
             }
             backButton={

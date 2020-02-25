@@ -35,7 +35,7 @@ function ConfirmationDialogRaw(props) {
         radioGroupRoot: {
             direction: 'rtl',
             fontFamily: 'Samim',
-            minWidth:'200px'
+            minWidth: '200px'
         },
         formControlLabelLabel: {
             fontFamily: 'Samim',
@@ -48,7 +48,7 @@ function ConfirmationDialogRaw(props) {
         }
     }));
     const classes = useStyles();
-    const { onClose, value: valueProp, open, items, labelTitle } = props;
+    const { onClose, value: valueProp, open, items, labelTitle, message } = props;
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
     options = items;
@@ -82,12 +82,12 @@ function ConfirmationDialogRaw(props) {
             disableBackdropClick
             disableEscapeKeyDown
             maxWidth="xs"
-            
+
             onEntering={handleEntering}
             aria-labelledby="confirmation-dialog-title"
             open={open}
-            classes={{paper: "makeStyles-paper-186"}}
-            
+            classes={{ paper: "makeStyles-paper-186" }}
+
         >
             <DialogTitle classes={{ root: classes.dialogTitleRoot }}
                 id="confirmation-dialog-title">
@@ -110,13 +110,22 @@ function ConfirmationDialogRaw(props) {
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={handleCancel} color="primary">
-                <span className={classes.dialogTitleRoot}>لغو</span>
-                    
-        </Button>
+                    <span className={classes.dialogTitleRoot}>لغو</span>
+
+                </Button>
                 <Button onClick={handleOk} color="primary">
-                <span className={classes.dialogTitleRoot}>تایید</span>
-        </Button>
+                    <span className={classes.dialogTitleRoot}>تایید</span>
+                </Button>
             </DialogActions>
+
+            <p style={{
+                color: '#b71c1c', cursor: 'pointer', textAlign: 'center', width: '100%',
+                height: '16px',
+                verticalAlign: 'center'
+            }}>
+
+                {message}
+            </p>
         </Dialog>
     );
 }
@@ -130,9 +139,9 @@ ConfirmationDialogRaw.propTypes = {
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-        
+
         backgroundColor: theme.palette.background.paper,
-        
+
     },
     paper: {
         width: '80%',
@@ -148,19 +157,20 @@ const useStyles = makeStyles(theme => ({
 
     },
     listItemTextRoot: {
-        
+
         fontFamily: 'Samim',
         fontWeight: '500'
     },
-    secondarylistItemTextRoot:{
+    secondarylistItemTextRoot: {
         fontFamily: 'Vazir',
         fontWeight: '500',
     }
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items,disabled }) {
+export default function ConfirmationDialog({ state, setState, title, items, disabled }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [message, setMessage] = React.useState('');
     options = items;
 
     const handleClickListItem = () => {
@@ -168,11 +178,29 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
     };
 
     const handleClose = newValue => {
-        setOpen(false);
-
         if (newValue) {
-            setState(newValue);
+            if (newValue.length < 2) {
+                setMessage('کامل کردن این فیلد الزامی است')
+            } else {
+                setMessage('');
+                setOpen(false);
+                setState(newValue);
+                
+            }
+
         }
+
+
+        if (!state || state.length < 2) {
+            setMessage('کامل کردن این فیلد الزامی است')
+        } else {
+            setMessage('');
+            setOpen(false);
+            
+        }
+
+
+
     };
 
     return (
@@ -190,8 +218,10 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
                     disabled={disabled}
                 >
                     <ListItemText primary={title} secondary={state}
-                        classes={{ primary: classes.listItemTextRoot,
-                         secondary: classes.listItemTextRoot }} />
+                        classes={{
+                            primary: classes.listItemTextRoot,
+                            secondary: classes.listItemTextRoot
+                        }} />
                 </ListItem>
 
                 <ConfirmationDialogRaw
@@ -205,6 +235,7 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
                     value={state}
                     items={items}
                     labelTitle={title}
+                    message={message}
                 />
             </List>
         </div>

@@ -22,7 +22,7 @@ import User_Info_Page from "./pages/user-info/user_info.page";
 import About_Us_Page from './pages/about-us/about-us.page';
 import { loadCSS } from "fg-loadcss";
 import SinginPage from './pages/sign_in/sign_in.page';
-import Recepit from './components/pay-receipt/pay-receipt.component';
+import Receipt from './components/pay-receipt/pay-receipt.component';
 import FirstMate from './components/first-information/first-information.component';
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -41,7 +41,9 @@ import AdminAddNotification from './pages/admin-add-notification/admin-add-notif
 import AdminUsersList from './pages/admin-user-list/admin-user-list';
 import AdminSetting from './pages/admin-setting/admin-setting';
 import AdminRoles from './pages/admin-add-role/admin-add-role';
-import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin'
+import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin';
+import queryString from 'query-string';
+const { status, username, password, message } = queryString.parse(window.location.search);
 // man amade am vay vay
 // rnpm baraye fron
 // add address font
@@ -57,32 +59,7 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
 
 
-
-
-
-
-
     // fetchCategories();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,8 +68,27 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
   if (!user || !user.isLoggedIn) {
+    if (status === 'OK') {
+      return <Receipt username={username} password={password} status={status} />
+    }
+    if (status === 'NO') {
+      return <h4 style={{ textAlign: 'center' }}>{message}</h4>
+    }
     return <SinginPage />
   }
+
+
+
+  if (user.first_time) {
+
+    return <FirstMate />
+  }
+
+
+
+
+
+
   return (
     <div className="app">
       <SidebarContext.Provider value={SidebarOpen}>
@@ -155,7 +151,7 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
                   <Route exact path="/users" component={AdminUsersList} />
                   <Route exact path="/roles" component={AdminRoles} />
                   <Route exact path="/createadmin" component={AdminCreateAdmin} />
-                  
+
                   <Route exact
                     path="/question/:index"
                     component={AdminEditQuestion} />
@@ -164,20 +160,20 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
                     path="/category/:index"
                     component={CategoryEdit}
                   />
-                  
+
                   <Route exact
                     path="/notification/:index"
                     component={AdminNotifactionsEdit} />
                   <Route exact
                     path="/addQuestion/:index"
                     component={AdminAddQuestion} />
-                    <Route exact
+                  <Route exact
                     path="/setting"
                     component={AdminSetting} />
 
                 </Switch>
 
-                
+
 
                 :
 

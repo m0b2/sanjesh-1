@@ -48,8 +48,8 @@ function ConfirmationDialogRaw(props) {
         }
     }));
     const classes = useStyles();
-    const { onClose, value: valueProp, open, items, labelTitle,setState,setMasterState,
-        nativeValue,setNativeValue, ...other } = props;
+    const { onClose, value: valueProp, open, items, labelTitle, setState, setMasterState, message,
+        nativeValue, setNativeValue, ...other } = props;
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
     options = items;
@@ -96,20 +96,29 @@ function ConfirmationDialogRaw(props) {
                 <span className={classes.dialogTitleRoot}>{labelTitle}</span>
             </DialogTitle>
             <DialogContent dividers>
-            <div className="inputWithIcon">
-                <input style={{fontFamily:'Vazir'}} type="text" placeholder={labelTitle} onChange={handleChange} value={value} />
-                <i className="fa fa-user fa-lg fa-fw" aria-hidden="true" />
-            </div>
-            
+                <div className="inputWithIcon">
+                    <input style={{ fontFamily: 'Vazir' }} type="text" placeholder={labelTitle} onChange={handleChange} value={value} />
+                    <i className="fa fa-user fa-lg fa-fw" aria-hidden="true" />
+                </div>
+                <p style={{
+                    color: '#b71c1c', cursor: 'pointer', textAlign: 'center', width: '100%',
+                    height: '16px',
+                    verticalAlign: 'center'
+                }}>
+
+                    {message}
+                </p>
+
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={handleCancel} color="primary">
-                <span className={classes.dialogTitleRoot}>لغو</span>
-                    
-        </Button>
+                    <span className={classes.dialogTitleRoot}>لغو</span>
+
+                </Button>
                 <Button onClick={handleOk} color="primary">
-                <span className={classes.dialogTitleRoot}>تایید</span>
-        </Button>
+                    <span className={classes.dialogTitleRoot}>تایید</span>
+                </Button>
+
             </DialogActions>
         </Dialog>
     );
@@ -124,7 +133,7 @@ ConfirmationDialogRaw.propTypes = {
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-        
+
         backgroundColor: theme.palette.background.paper,
     },
     paper: {
@@ -141,20 +150,21 @@ const useStyles = makeStyles(theme => ({
 
     },
     listItemTextRoot: {
-        
+
         fontFamily: 'Samim',
         fontWeight: '500'
     },
     secondarylistItemTextRoot: {
-        
+
         fontFamily: 'Vazir',
         fontWeight: '500'
     },
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items,disabled }) {
+export default function ConfirmationDialog({ state, setState, title, items, disabled, required }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [message, setMessage] = React.useState('');
     options = items;
 
     const handleClickListItem = () => {
@@ -162,11 +172,59 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
     };
 
     const handleClose = newValue => {
-        setOpen(false);
+        if (!required) {
+            setMessage('');
+            setOpen(false);
+            
 
-        if (newValue) {
-            setState(newValue);
+            if (newValue) {
+                setMessage('');
+                setState(newValue);
+
+            }
+        } else {
+
+
+
+            if (newValue) {
+                if (newValue.length < 2) {
+                    setMessage('کامل کردن این فیلد الزامی است')
+                } else {
+                    setOpen(false);
+                    setState(newValue);
+                    setMessage('');
+                }
+
+            }
+
+
+            if (!state || state.length < 2) {
+                setMessage('کامل کردن این فیلد الزامی است')
+            } else {
+                setOpen(false);
+            }
+
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
 
     return (
@@ -199,7 +257,8 @@ export default function ConfirmationDialog({ state, setState, title, items,disab
                     items={items}
                     labelTitle={title}
                     setMasterState={setState}
-                    
+                    message={message}
+
                 />
             </List>
         </div>

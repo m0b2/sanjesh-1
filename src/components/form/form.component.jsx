@@ -1,10 +1,10 @@
 import './form.style.css';
 import React, { useState } from "react";
 import Dialog from '../dialog/dialog.component';
-import { useStore } from 'react-redux'
+import { connect, useStore } from 'react-redux'
 import TextDialog from '../textInput-dialog/textInput-dialog.component';
 import axios from 'axios';
-
+let index = 1;
 const gender_values = ['مرد', 'زن'];
 const married_values = ['متاهل', 'مجرد', 'مطلقه'];
 const blood_type = ['+A', '+B', '+AB', '+O', '-A', '-B', '-AB', '-O'];
@@ -18,7 +18,9 @@ const state_values = [
     'سیستان و بلوچستان', 'ایلام', 'کهگلویه و بویراحمد', 'خراسان شمالی', 'خراسان جنوبی',
     'البرز'];
 
-const Form = ({ disabled, user }) => {
+const Form = ({ disabled, user, city }) => {
+
+
     const [name, setName] = useState(user.full_name);
     const [gender, setGender] = useState(user.sex);
     const [married, setMarried] = useState(user.married);
@@ -31,8 +33,11 @@ const Form = ({ disabled, user }) => {
     const [weight, setWeight] = useState(user.weight);
     const [mobile, setMobile] = useState(user.mobile);
     const store = useStore();
-    const city = store.getState().CityReducer;
+    const [shahrestan, setSharestan] = useState('');
 
+    React.useEffect(() => {
+        getcity(store)
+    }, [])
 
 
 
@@ -48,7 +53,7 @@ const Form = ({ disabled, user }) => {
 
         const headers = {
             'Content-Type': 'application/json',
-            
+
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
 
 
@@ -71,14 +76,14 @@ const Form = ({ disabled, user }) => {
         const url = 'http://185.55.226.171/api/profile';
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-        axios.post( url, data, {
+        axios.post(proxyurl + url, data, {
             headers: headers
         }).then((response) => {
-            store.dispatch({type:'SET_CURRENT_USER',payload:data})
+            store.dispatch({ type: 'SET_CURRENT_USER', payload: data })
         })
-        .catch((error)=>{
-            console.log(error.response)
-        })
+            .catch((error) => {
+                console.log(error.response)
+            })
 
 
 
@@ -86,6 +91,27 @@ const Form = ({ disabled, user }) => {
     }
 
 
+    if (city && state.length > 1 && Object.keys(shahrestan).length === 0) {
+        console.log('Yes')
+        city.map((v, i) => {
+            if (v === state) {
+                index = i + 1;
+            }
+        })
+        getShahrestan(index, setSharestan);
+    }
+
+
+
+    let shahrestan_items = [];
+
+
+
+    Object.entries(shahrestan).forEach(
+        ([key, value]) => {
+            shahrestan_items.push(value)
+        }
+    )
 
 
 
@@ -107,8 +133,14 @@ const Form = ({ disabled, user }) => {
             <TextDialog state={mobile} setState={setMobile} items={[]} title={'شماره موبایل'} disabled={disabled} />
             <Dialog state={gender} setState={setGender} items={gender_values} title={'جنسیت'} disabled={disabled} />
             <Dialog state={blood} setState={setBlood} items={blood_type} title={'گروه خونی'} disabled={disabled} />
-            <Dialog state={state} setState={setState} items={state_values} title={'استان'} disabled={disabled} />
-            <Dialog state={cities} setState={setCities} items={city[state] ? city[state] : []} title={'شهرستان'} disabled={disabled} />
+            <Dialog state={state} setState={(new_city) => {
+                if (new_city !== state) {
+                    setSharestan({});
+                    setState(new_city)
+                    setCities('')
+                }
+            }} items={city ? city : []} title={'استان'} disabled={disabled} />
+            <Dialog state={cities} setState={setCities} items={shahrestan_items} title={'شهرستان'} disabled={disabled} />
             <Dialog state={married} setState={setMarried} items={married_values} title={'وضعیت تاهل'} disabled={disabled} />
             <Dialog state={education} setState={setEducation} items={education_values} title={'تحصیلات'} disabled={disabled} />
             <TextDialog state={height} setState={setHeight} items={[]} title={'قد'} disabled={disabled} />
@@ -124,7 +156,100 @@ const Form = ({ disabled, user }) => {
     )
 }
 
+const mapStatetoProps = (store) => {
+    return (
+        {
 
-export default Form;
+
+            city: store.CityReducer
+
+        }
+    )
+}
+
+export default connect(mapStatetoProps)(Form);
 
 
+
+
+
+
+const getShahrestan = (index, setSharestan) => {
+
+    const headers = {
+
+
+    }
+
+    const url = `http://185.55.226.171/api/cities/${index}`;
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    axios.get(proxyurl + url, { headers: headers })
+        .then((response) => {
+            if (response.data.status === 200) {
+                // console.log(response.data)
+
+                setSharestan(response.data.data)
+                // store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
+                // console.log(response.data)
+
+            }
+
+        }).catch((error) => {
+            if (error && error.response && error.response.status === 401) {
+                // console.log('Singed out!!!')
+            } else {
+                // console.log('there is an problem')
+            }
+
+            console.log(error)
+
+        })
+
+
+}
+
+
+
+const getcity = (store) => {
+
+
+    const headers = {
+
+
+    }
+
+    const url = `http://185.55.226.171/api/provinces`;
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    axios.get(proxyurl + url, { headers: headers })
+        .then((response) => {
+            if (response.data.status === 200) {
+                // console.log(response.data)
+                let arr = [];
+                Object.entries(response.data.data).forEach(
+                    ([key, value]) => {
+                        arr.push(value)
+                    }
+                )
+
+                store.dispatch({ type: 'SET_CITY', payload: arr });
+                // store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
+                // console.log(response.data)
+
+            }
+
+        }).catch((error) => {
+            if (error && error.response && error.response.status === 401) {
+                // console.log('Singed out!!!')
+                store.dispatch({ type: 'NOT_AUTHORISED', payload: '' })
+            } else {
+                // console.log('there is an problem')
+                store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
+            }
+
+            console.log(error)
+
+        })
+
+
+
+}
