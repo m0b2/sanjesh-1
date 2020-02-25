@@ -130,10 +130,14 @@ export default function Sign_in({ user_name, pass_word, status }) {
           </div>
           <button className="log-in-button"
             onClick={() => {
+              if(username.length>3 && password.length>3){
               if (status) {
                 store.dispatch({ type: 'USER_FIRST_TIME' })
               }
-              Request()
+              
+                Request()
+              }
+              
             }}>وارد شوید</button>
           {(!status) ? <button className="log-in-button"
             style={{ background: '#0094CC' }}
