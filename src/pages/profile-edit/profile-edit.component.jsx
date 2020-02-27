@@ -6,10 +6,13 @@ import FormProfile from '../../components/form/form.component';
 import StudentProfile from '../../components/student-profile/student-profile.component';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 const tabs = ['مشخصات', 'ویژه دانشجویان']
-const ProfilView = ({ SideTab, user }) => {
-
+const ProfilView = ({ SideTab, user, globalFunction }) => {
+  const classes = useStyles();
 
   /**
    * Moshakhas mikone in page be sideList niaz dare ya na!
@@ -98,8 +101,30 @@ const ProfilView = ({ SideTab, user }) => {
     <div >
 
 
+{window.screen.width < 800 ? null :
 
+
+
+<div className={classes.div}>
+  <Button
+    style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
+    className={classes.root}
+    variant="outlined"
+    color="primary"
+    startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
+    onClick={() => {
+
+      globalFunction()
+
+    }}> ثبت تغییرات
+        </Button>
+</div>
+
+
+
+}
       {window.screen.width < 800 ? SwipeContianer : tabComponent[SideTab.current]}
+      
 
 
 
@@ -115,7 +140,8 @@ const mapStatetoProps = (store) => {
   return (
     {
       SideTab: store.SideTab,
-      user: store.user
+      user: store.user,
+      globalFunction: store.globalFunction
 
     }
   )
@@ -125,6 +151,28 @@ export default connect(mapStatetoProps)(ProfilView);
 
 
 
+const useStyles = makeStyles(theme => ({
+
+  root: {
+    backgroundColor: '#fafafa',
+    color: '#0277bd',
+    width: '142px',
+    height: '48px',
+    marginTop: '24px',
+    fontFamily: 'Samim',
+    fontWeight: '900',
+    fontSize: '16px'
+
+
+  },
+  div: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  }
+
+}));
 
 
 
