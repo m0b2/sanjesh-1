@@ -12,6 +12,16 @@ const CategoriesReducer = (state = null, action) => {
             //  //console.log(...action.payload)
             return action.payload
         }
+        case 'ANSWER_COUNT_UPDATE': {
+            if (state[action.category_id].answeredCount >= action.currentQuestion + 1) {
+                return state;
+            }
+            return { ...state, [action.category_id]: { ...state[action.category_id], answeredCount: action.currentQuestion + 1 } }
+
+
+            
+        }
+
 
         default: return state;
     }

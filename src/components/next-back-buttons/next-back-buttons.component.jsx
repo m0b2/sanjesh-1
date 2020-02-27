@@ -118,6 +118,12 @@ const NextBackButtons = (props) => {
                             question_id:currentQuestion,
 
                         })
+                        store.dispatch({
+                            type: 'ANSWER_COUNT_UPDATE',
+                            currentQuestion,
+                            category_id
+
+                        })
                         sendAnswer(category_id, question_id, currentAnswer, userDescription);
 
 

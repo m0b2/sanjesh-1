@@ -8,14 +8,16 @@ import NextBackButtons from '../../components/next-back-buttons/next-back-button
 import { useStore, connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TextDialog from '../../components/textInput-dialog/textInput-dialog.component';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const Answer = ({ }) => {
     const history = useHistory();
     const store = useStore();
     const question = store.getState().question;
     const currentCategory = question.current;
-    
-
+    let offset = (store.getState().Categories) ? store.getState().Categories[currentCategory].answeredCount : 0;
+    offset = offset <= 0 ? 0 : offset-1
 
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
@@ -26,7 +28,7 @@ const Answer = ({ }) => {
         }
     }, [])
 
-    const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [currentQuestion, setCurrentQuestion] = React.useState(offset);
     const [userAnswer, setUserAnswer] = React.useState(getAllAnswer(question[currentCategory], store, (!question || !currentCategory)));
     const [userDescription, setUserDescription] = React.useState(getAllDescription(question[currentCategory], store, (!question || !currentCategory)));
     const [oldAnswer, setOldAnswer] = React.useState(getAllAnswer(question[currentCategory], store), (!question || !currentCategory));
@@ -41,6 +43,16 @@ const Answer = ({ }) => {
     const catName = store.getState().Categories[currentCategory].name;
     return (
         <div className='answer-container'>
+            <div style={{ display: 'flex', position: 'absolute', left: '2%', top: '1%' }}>
+                <IconButton  aria-label="delete"
+                    onClick={() => { history.goBack() }}
+                >
+
+                    <ArrowBackIcon style={{ color: '#b71c1c' }} />
+
+                </IconButton>
+            </div>
+
             <Number current={(currentQuestion + 1) <= size ? (currentQuestion + 1) : currentQuestion} total={size}
                 style={{ paddingTop: '0%', marginTop: '0', height: 'fit-contetnt' }} />
 
@@ -80,6 +92,7 @@ const Answer = ({ }) => {
                         userDescription={userDescription[currentQuestion]}
                         oldUserDescription={oldUserDescription[currentQuestion]}
                         setOldUserDescription={setOldUserDescription}
+                        
 
                     />
                 </>

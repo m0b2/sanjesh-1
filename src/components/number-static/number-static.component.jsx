@@ -1,15 +1,14 @@
 import React from 'react';
 import './number-static.style.css';
 import Circleprogress from '../circleprogress/cricleprogress.component';
-import CountUp from 'react-countup';
+
 
 const NumberStatic = ({ current, total, title }) => {
-  const [percent, setPercent] = React.useState(25);
-  
-  return (  
+
+  return (
     <div className='number-static'>
       <div className='progress-container'>
-        <Circleprogress percent={(current!==0)? Math.floor(current/total)*100 : 0} width={86} />
+        <Circleprogress percent={(current !== 0) ? Math.floor(parseFloat(current) / parseFloat(total) * 100) : 0} width={86} />
       </div>
       <div className='static-number'>
 
