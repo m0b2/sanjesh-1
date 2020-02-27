@@ -11,71 +11,25 @@ const tabs = ['مشخصات', 'ویژه دانشجویان']
 const ProfilView = ({ SideTab, user }) => {
 
 
-    /**
-     * Moshakhas mikone in page be sideList niaz dare ya na!
-     */
-    const store = useStore();
-    const dispatch = useDispatch();
-    const city = user.city;
-    React.useEffect(() => {
-        dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
-        dispatch({ type: 'ADD_SIDE_LIST' });
-        dispatch({ type: 'REMOVE_FOOTER' });
-        dispatch({ type: 'EDIT_PAGE' });
-        
-        if(!city){
+  /**
+   * Moshakhas mikone in page be sideList niaz dare ya na!
+   */
+  const store = useStore();
+  const dispatch = useDispatch();
+  const city = user.city;
+  React.useEffect(() => {
+    dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
+    dispatch({ type: 'ADD_SIDE_LIST' });
+    dispatch({ type: 'REMOVE_FOOTER' });
+    dispatch({ type: 'EDIT_PAGE' });
+
+    if (!city) {
 
 
 
 
 
-            getProfileInformation(store)
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return () => {
-            dispatch({ type: 'REMOVE_SIDE_LIST' })
-            dispatch({ type: 'ADD_FOOTER' });
-            dispatch({ type: 'EDIT_PAGE_DONE' });
-        };
-    }, [dispatch]);
-    const content = [
-        '',
-        ''
-    ]
-
-
-
-
-
-
-
-    if(!city){
-        return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <CircularProgress color="secondary" style={{ margin: '24px' }} />
-    </div>
-
+      getProfileInformation(store)
     }
 
 
@@ -83,43 +37,88 @@ const ProfilView = ({ SideTab, user }) => {
 
 
 
-    const tabComponent = [<FormProfile disabled={false} user={user} />, <StudentProfile disabled={false} />]
-    const SwipeContianer = <MaterialTab data={{
-        tabs: ['مشخصات', 'ویژه دانشجویان'],
-        content: content,
-    }} insideComponent={tabComponent} >
-    </MaterialTab>;
 
 
 
 
 
-    return (
-        <div >
 
 
 
 
-            {window.screen.width < 800 ? SwipeContianer : tabComponent[SideTab.current]}
 
 
 
 
-        </div>
 
-    )
+
+
+
+    return () => {
+      dispatch({ type: 'REMOVE_SIDE_LIST' })
+      dispatch({ type: 'ADD_FOOTER' });
+      dispatch({ type: 'EDIT_PAGE_DONE' });
+    };
+  }, [dispatch]);
+  const content = [
+    '',
+    ''
+  ]
+
+
+
+
+
+
+
+  if (!city) {
+    return <div style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <CircularProgress color="secondary" style={{ margin: '24px' }} />
+    </div>
+
+  }
+
+
+
+
+
+
+  const tabComponent = [<FormProfile disabled={false} user={user} />, <StudentProfile disabled={false} />]
+  const SwipeContianer = <MaterialTab data={{
+    tabs: ['مشخصات', 'ویژه دانشجویان'],
+    content: content,
+  }} insideComponent={tabComponent} >
+  </MaterialTab>;
+
+
+
+
+
+  return (
+    <div >
+
+
+
+      {window.screen.width < 800 ? SwipeContianer : tabComponent[SideTab.current]}
+
+
+
+
+    </div>
+
+  )
 
 
 }
 
 const mapStatetoProps = (store) => {
-    return (
-        {
-            SideTab: store.SideTab,
-            user:store.user
+  return (
+    {
+      SideTab: store.SideTab,
+      user: store.user
 
-        }
-    )
+    }
+  )
 }
 
 export default connect(mapStatetoProps)(ProfilView);
@@ -132,22 +131,22 @@ export default connect(mapStatetoProps)(ProfilView);
 
 
 
-   const getProfileInformation = (store, )=>{
+const getProfileInformation = (store, ) => {
 
-    store.dispatch({ type: 'SET_LOADING', payload: { profile: true } });
-
-
+  store.dispatch({ type: 'SET_LOADING', payload: { profile: true } });
 
 
 
-    const headers = {
-      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Vary': 'Authorization',
-      'Access-Control-Allow-Origin':'*'
 
-    }
+
+  const headers = {
+    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('myBeLovedToken'))}`,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Vary': 'Authorization',
+    'Access-Control-Allow-Origin': '*'
+
+  }
 
   const url = `http://185.55.226.171/api/user`;
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -155,7 +154,7 @@ export default connect(mapStatetoProps)(ProfilView);
     .then((response) => {
       if (response.data.status === 200) {
 
-        
+
         store.dispatch({ type: 'SET_CURRENT_USER', payload: response.data.data });
         store.dispatch({ type: 'SET_LOADING', payload: { profile: false } });
         //  //console.log(response.data)
@@ -171,8 +170,8 @@ export default connect(mapStatetoProps)(ProfilView);
         store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
       }
 
-       //console.log(error)
-       //console.log(error.response)
+      //console.log(error)
+      //console.log(error.response)
 
     })
 

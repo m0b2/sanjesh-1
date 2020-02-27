@@ -36,7 +36,7 @@ const Appbar = ({ location, history, isFooterNeeded, isEditPage, globalFunction 
                             // check if data is changed
                             // if true send it to server
                             globalFunction();
-                            history.goBack()
+                            // history.goBack()
                         }}
                     >
 

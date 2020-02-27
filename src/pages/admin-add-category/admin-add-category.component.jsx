@@ -13,9 +13,10 @@ const Question_Analyze = ({ match, history }) => {
     const store = useStore();
     const { index } = match.params;
     const classes = useStyles();
-    const [question, setQuestion] = React.useState({title:'', description:''});
+    const [question, setQuestion] = React.useState({ title: '', description: '' });
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
+    const [message, setMessage] = React.useState('');
 
     const temp = {
         title: '',
@@ -60,7 +61,7 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (changed.changed) {
         setTimeout(() => {
-            
+
             history.push('/category')
             // window.location.reload();
         }, 2000)
@@ -75,6 +76,9 @@ const Question_Analyze = ({ match, history }) => {
 
     return (
         <>
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                {message}
+            </p>
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
             }} items={[]} title={'عنوان دسته'} />
@@ -94,6 +98,36 @@ const Question_Analyze = ({ match, history }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+
+                        if (question.title.length < 4) {
+                            setMessage('عنوان دسته بسیار کوتاه است')
+                            return;
+                        }
+                        if (question.title.length > 40) {
+                            setMessage('عنوان دسته بسیار طولانی است')
+                            return;
+                        }
+                        if (question.description.length > 40) {
+                            setMessage('توضیحات دسته بسیار طولانی است')
+                            return;
+                        }
+                        if (question.description.length < 4) {
+                            setMessage('توضیحات دسته بسیار کوتاه است')
+                            return;
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
                         setChanged((oldState) => {
 
                             return (
@@ -108,7 +142,7 @@ const Question_Analyze = ({ match, history }) => {
                 </Button>
 
 
-              
+
 
 
             </div>
@@ -126,7 +160,7 @@ export default withRouter(Question_Analyze);
 
 
 
-const sendEditState = (question_id, setDeleted, title, description,store) => {
+const sendEditState = (question_id, setDeleted, title, description, store) => {
 
     const headers = {
         "Content-Type": "application/json",
@@ -137,7 +171,7 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
     };
 
     const data = {
-        
+
         title,
         description
 
@@ -150,7 +184,7 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -158,8 +192,8 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
 
         )
         .then(response => {
-             //console.log(response)
-            store.dispatch({type:'ADMIN_ADD_CATEGORY',payload:response.data.data})
+            // console.log(response)
+            store.dispatch({ type: 'ADMIN_ADD_CATEGORY', payload: response.data.data })
             setDeleted((oldState) => {
 
                 return (
@@ -175,7 +209,7 @@ const sendEditState = (question_id, setDeleted, title, description,store) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+            console.log(error);
         });
 
 
@@ -216,7 +250,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -224,7 +258,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
         )
         .then(response => {
-             //console.log(response)
+            console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -240,7 +274,7 @@ const sendDeleteState = (question_id, setDeleted) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+            console.log(error);
         });
 
 }

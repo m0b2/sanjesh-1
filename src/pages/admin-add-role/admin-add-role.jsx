@@ -16,6 +16,8 @@ const ProfilView = ({ SideTab, user }) => {
     const [roleName, setRoleName] = React.useState('');
     const [isLoading, setIsLoading] = React.useState(false);
     const [isCreated, setisCreated] = React.useState(false);
+    const [message, setMessage] = React.useState('');
+
     const [num, setNum] = React.useState(0);
     React.useEffect(() => {
 
@@ -35,7 +37,7 @@ const ProfilView = ({ SideTab, user }) => {
 
 
 
-    if(isCreated){
+    if (isCreated) {
 
         setTimeout(() => {
             window.location.reload();
@@ -106,7 +108,9 @@ const ProfilView = ({ SideTab, user }) => {
                 {arrays}
 
 
-
+                <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                    {message}
+                </p>
             </div>
             <div className='start-analyze-button-container' style={{ minHeight: '10vh' }}>
 
@@ -117,7 +121,16 @@ const ProfilView = ({ SideTab, user }) => {
                     color="primary"
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
-
+                        // MIN
+                        if (roleName.length < 4) {
+                            setMessage('عنوان نقش بسیار کوتاه است')
+                            return;
+                        }
+                        // MAX
+                        if (roleName.length > 40) {
+                            setMessage('عنوان نقش بسیار طولانی است')
+                            return;
+                        }
                         setIsLoading(true)
                         sendRoles(roles, roleName, store, setIsLoading, setisCreated)
                     }}> ایجاد نقش
@@ -170,7 +183,7 @@ const getRoles = (store, setRoles, setIsLoading) => {
 
     const url = `http://185.55.226.171/api/roles/`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.get( url, { headers })
+    axios.get(url, { headers })
         .then((response) => {
 
             if (response.data.status === 200) {
@@ -203,8 +216,8 @@ const getRoles = (store, setRoles, setIsLoading) => {
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-             //console.log(error)
-             //console.log(error.response)
+            //console.log(error)
+            //console.log(error.response)
 
         })
 
@@ -241,7 +254,7 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
 
         }
     )
-     //console.log(s + `title=${roleName}`)
+    //console.log(s + `title=${roleName}`)
 
 
 
@@ -256,9 +269,9 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
 
     const url = `http://185.55.226.171/api/roles?` + s + `title=${roleName}`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    axios.post( url, null, { headers })
+    axios.post(url, null, { headers })
         .then((response) => {
-             //console.log(response)
+            //console.log(response)
             setisCreated(true)
             setIsLoading(false)
             if (response.data.status === 200) {
@@ -276,9 +289,9 @@ const sendRoles = (roles, roleName, store, setIsLoading, setisCreated) => {
                 store.dispatch({ type: 'AUTHORIZATION_NOT_HAPPEND', payload: '' })
             }
 
-             //console.log(error)
-             //console.log(error.response)
-            
+            //console.log(error)
+            //console.log(error.response)
+
 
         })
 

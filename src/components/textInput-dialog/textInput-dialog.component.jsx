@@ -9,26 +9,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-let options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
+
 
 function ConfirmationDialogRaw(props) {
     const useStyles = makeStyles(theme => ({
@@ -48,11 +30,13 @@ function ConfirmationDialogRaw(props) {
         }
     }));
     const classes = useStyles();
-    const { onClose, value: valueProp, open, items, labelTitle, setState, setMasterState, message,
-        nativeValue, setNativeValue, ...other } = props;
+    const {
+        onClose, value: valueProp,
+        open, items, labelTitle, setState,
+        setMasterState, message, number,
+        nativeValue, setNativeValue,
+        ...other } = props;
     const [value, setValue] = React.useState(valueProp);
-    const radioGroupRef = React.useRef(null);
-    options = items;
 
     React.useEffect(() => {
         if (!open) {
@@ -60,11 +44,6 @@ function ConfirmationDialogRaw(props) {
         }
     }, [valueProp, open]);
 
-    const handleEntering = () => {
-        if (radioGroupRef.current != null) {
-            radioGroupRef.current.focus();
-        }
-    };
 
     const handleCancel = () => {
         onClose();
@@ -86,7 +65,6 @@ function ConfirmationDialogRaw(props) {
             disableBackdropClick
             disableEscapeKeyDown
             maxWidth="xs"
-            onEntering={handleEntering}
             aria-labelledby="confirmation-dialog-title"
             open={open}
             {...other}
@@ -97,17 +75,15 @@ function ConfirmationDialogRaw(props) {
             </DialogTitle>
             <DialogContent dividers>
                 <div className="inputWithIcon">
-                    <input style={{ fontFamily: 'Vazir' }} type="text" placeholder={labelTitle} onChange={handleChange} value={value} />
+                    <input style={{ fontFamily: 'Vazir' }}
+                        type={(number) ? "number" : "text"}
+                        placeholder={labelTitle}
+                        onChange={handleChange}
+                        value={value}
+                    />
                     <i className="fa fa-user fa-lg fa-fw" aria-hidden="true" />
                 </div>
-                <p style={{
-                    color: '#b71c1c', cursor: 'pointer', textAlign: 'center', width: '100%',
-                    height: '16px',
-                    verticalAlign: 'center'
-                }}>
 
-                    {message}
-                </p>
 
             </DialogContent>
             <DialogActions>
@@ -161,11 +137,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items, disabled, required }) {
+export default function ConfirmationDialog({ state, setState, title, items, disabled, required, number }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [message, setMessage] = React.useState('');
-    options = items;
 
     const handleClickListItem = () => {
         setOpen(true);
@@ -175,7 +150,7 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
         if (!required) {
             setMessage('');
             setOpen(false);
-            
+
 
             if (newValue) {
                 setMessage('');
@@ -258,6 +233,7 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
                     labelTitle={title}
                     setMasterState={setState}
                     message={message}
+                    number={number}
 
                 />
             </List>

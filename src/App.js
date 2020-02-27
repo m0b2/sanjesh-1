@@ -44,7 +44,7 @@ import AdminRoles from './pages/admin-add-role/admin-add-role';
 import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin';
 import queryString from 'query-string';
 import resStore from './redux/store';
-const Debug = false;
+const Debug = true;
 
 axios.interceptors.request.use((config) => {
   /** In dev, intercepts request and logs it into console for dev */
@@ -127,6 +127,8 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
+  // return <FirstMate />
+
   if (!user || !user.isLoggedIn) {
     if (status === 'OK') {
       return <Receipt username={username} password={password} status={status} />
@@ -138,12 +140,20 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
   }
 
 
+  // GONE ON REFRESH
 
-  if (user.first_time && !user.admin) {
+  if ((user.first_time && !user.admin)) {
 
     return <FirstMate />
   }
+  if (!user.admin && (!user.sex || !user.sex ||
+    !user.province || !user.city || !user.married ||
+    !user.education || !user.height || !user.weight ||
+    !user.blood || !user.birthday
+  )) {
 
+    return <FirstMate />
+  }
 
 
 

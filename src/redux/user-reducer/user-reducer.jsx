@@ -9,14 +9,17 @@ const UserReducer = (state = Initial_State, action) => {
         case 'SET_CURRENT_USER': {
 
             localStorage.setItem('myBeLovedToken', JSON.stringify((action.payload.token)));
-
+            localStorage.setItem('myBelovedUser', JSON.stringify({
+                ...state,
+                ...action.payload
+            }));
             return {
                 ...state,
                 ...action.payload
             }
         }
         case 'ERORR': return {
-            ...state, error: true, erorr_message:action.payload
+            ...state, error: true, erorr_message: action.payload
         }
         case 'USER_LOGGED_IN': {
 

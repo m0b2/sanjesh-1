@@ -87,7 +87,7 @@ export default function FullWidthTabs({ data, insideComponent }) {
 
     let myTabs = data.tabs.map((value, index) => <Tab classes={{ root: classes.tabRoot }} label={value} {...a11yProps(index)} />)
     let dataContent = data.content.map((title, index) => <TabPanel value={value} index={index} dir={'rtl'}>
-        {insideComponent&&insideComponent[index]}
+        {insideComponent && insideComponent[index]}
         <span style={{
             fontFamily: 'Vazir', textAlign: 'center'
         }}>{title}</span>

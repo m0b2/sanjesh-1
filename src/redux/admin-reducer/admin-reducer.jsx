@@ -23,7 +23,7 @@ const AppbarReducer = (state = {}, action) => {
             }
         }
 
-        
+
         case 'ADMIN_ADD_QUESTION': {
 
             return {
@@ -39,7 +39,7 @@ const AppbarReducer = (state = {}, action) => {
         }
 
         case 'ADMIN_ADD_CATEGORY': {
-            const arr = state.categories.array;
+            const arr = (state.categories) ? state.categories.array : [];
             arr.push(action.payload)
             return {
                 ...state,

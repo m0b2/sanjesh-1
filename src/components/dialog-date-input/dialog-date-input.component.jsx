@@ -9,26 +9,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-let options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
+import 'react-modern-calendar-datepicker/lib/DatePicker.css'
+import { Calendar } from "react-modern-calendar-datepicker";
 
 function ConfirmationDialogRaw(props) {
     const useStyles = makeStyles(theme => ({
@@ -45,13 +28,20 @@ function ConfirmationDialogRaw(props) {
             fontFamily: 'Samim',
             fontWeight: '800',
             direction: 'rtl'
+        },
+        dialogRoot: {
+            minWidth: '320px'
+
+        },
+        dialogRealRoot: {
+
         }
     }));
     const classes = useStyles();
-    const { onClose, value: valueProp, open, items, labelTitle } = props;
+    const { onClose, value: valueProp, open, items, labelTitle, message, daySelected } = props;
     const [value, setValue] = React.useState(valueProp);
+    const [selectedDay, setSelectedDay] = React.useState(daySelected);
     // const radioGroupRef = React.useRef(null);
-    options = items;
 
     React.useEffect(() => {
         if (!open) {
@@ -60,9 +50,7 @@ function ConfirmationDialogRaw(props) {
     }, [valueProp, open]);
 
     const handleEntering = () => {
-        // if (radioGroupRef.current != null) {
-        //     radioGroupRef.current.focus();
-        // }
+
     };
 
     const handleCancel = () => {
@@ -70,7 +58,7 @@ function ConfirmationDialogRaw(props) {
     };
 
     const handleOk = () => {
-        onClose(value);
+        onClose(selectedDay);
     };
 
     const handleChange = event => {
@@ -81,33 +69,36 @@ function ConfirmationDialogRaw(props) {
         <Dialog
             disableBackdropClick
             disableEscapeKeyDown
-            maxWidth="xs"
+
 
             onEntering={handleEntering}
             aria-labelledby="confirmation-dialog-title"
             open={open}
-            classes={{ paper: "makeStyles-paper-186" }}
+            classes={{ paper: classes.dialogRoot, root: classes.dialogRealRoot }}
 
         >
             <DialogTitle classes={{ root: classes.dialogTitleRoot }}
                 id="confirmation-dialog-title">
                 <span className={classes.dialogTitleRoot}>{labelTitle}</span>
             </DialogTitle>
-            <DialogContent dividers>
-                <RadioGroup
-                    // ref={radioGroupRef}
-                    aria-label="ringtone"
-                    name="ringtone"
-                    value={value}
-                    onChange={handleChange}
-                    classes={{ root: classes.radioGroupRoot }}
-                >
-                    {options.map(option => (
-                        <FormControlLabel value={option} key={option} control={<Radio />} label={option}
-                            classes={{ label: classes.formControlLabelLabel }} />
-                    ))}
-                </RadioGroup>
+            <DialogContent dividers >
+                <div style={{
+                    display: 'flex', justifyContent: 'center',
+                    alignItems: 'center', marginLeft: '-22px', minWidth: '310px',
+                    minHeight: '320px'
+                }}>
+                    <Calendar
+                        value={selectedDay}
+                        onChange={setSelectedDay}
+                        inputPlaceholder={'انتخاب تاریخ تولد'}
+                        shouldHighlightWeekends
+                        locale="fa" // add this
+                    />
+                </div>
             </DialogContent>
+
+
+
             <DialogActions>
                 <Button autoFocus onClick={handleCancel} color="primary">
                     <span className={classes.dialogTitleRoot}>لغو</span>
@@ -150,7 +141,7 @@ const useStyles = makeStyles(theme => ({
     },
     listItemTextRoot: {
 
-        fontFamily: 'Samim',
+        fontFamily: 'Vazir',
         fontWeight: '500'
     },
     secondarylistItemTextRoot: {
@@ -159,10 +150,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ConfirmationDialog({ state, setState, title, items, disabled }) {
+export default function ConfirmationDialog({ state, setState, title, items, disabled, daySelected }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    options = items;
+    const [message, setMessage] = React.useState('');
 
     const handleClickListItem = () => {
         setOpen(true);
@@ -171,27 +162,10 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
     const handleClose = newValue => {
         if (newValue) {
             setState(newValue);
-            // if (newValue.length < 2) {
-            //     setMessage('کامل کردن این فیلد الزامی است')
-            // } else {
-            //     setMessage('');
-            //     setOpen(false);
-            //     setState(newValue);
-                
-            // }
+
 
         }
-
         setOpen(false);
-
-        // if (!state || state.length < 2) {
-        //     setMessage('کامل کردن این فیلد الزامی است')
-        // } else {
-        //     setMessage('');
-        //     setOpen(false);
-            
-        // }
-
 
 
     };
@@ -211,6 +185,7 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
                     disabled={disabled}
                 >
                     <ListItemText primary={title} secondary={state}
+                        style={{ fontFamily: 'Vazir' }}
                         classes={{
                             primary: classes.listItemTextRoot,
                             secondary: classes.listItemTextRoot
@@ -228,6 +203,8 @@ export default function ConfirmationDialog({ state, setState, title, items, disa
                     value={state}
                     items={items}
                     labelTitle={title}
+                    message={message}
+                    daySelected={daySelected}
                 />
             </List>
         </div>

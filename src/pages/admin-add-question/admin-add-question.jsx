@@ -19,6 +19,7 @@ const Question_Analyze = ({ match, history }) => {
     const classes = useStyles();
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
+    const [message, setMessage] = React.useState('');
 
     const temp = {
         title: '',
@@ -80,7 +81,9 @@ const Question_Analyze = ({ match, history }) => {
     return (
         <>
 
-
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                {message}
+            </p>
             <TextDialog state={title} setState={(value) => {
                 setTitle(value)
             }} items={[]} title={'متن سوال'} />
@@ -130,6 +133,47 @@ const Question_Analyze = ({ match, history }) => {
                     startIcon={<Icon className={'fas fa-plus fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+
+
+
+                        if (title.length < 15) {
+                            setMessage('عنوان دسته بسیار کوتاه است')
+                            return;
+                        }
+                        if (title.length > 300) {
+                            setMessage('عنوان دسته بسیار طولانی است')
+                            return;
+                        }
+                        let err = false;
+                        for (let i = 0; i < option.length; i++) {
+                            if (option[i].length < 3) {
+                                setMessage(`گزینه شماره ${i + 1} بسیار کوتاه است`)
+                                err = true;
+                                return;
+                            }
+                            if (option[i].length > 60) {
+                                setMessage(`گزینه شماره ${i + 1} بسیار طولانی است`)
+                                err = true;
+                                return;
+                            }
+                        }
+
+                        if(err)return;
+                        
+
+                       
+
+
+
+
+
+
+
+
+
+
+
                         setChanged((oldState) => {
 
                             return (
@@ -138,7 +182,7 @@ const Question_Analyze = ({ match, history }) => {
                         })
 
 
-                         //console.log(index, title, option,)
+                        //console.log(index, title, option,)
                         sendEditState(index, setChanged, title, option, store);
                     }}> افزودن سوال
                 </Button>
@@ -195,8 +239,8 @@ const sendEditState = (category_id, setDeleted, title, answers, store) => {
 
         )
         .then(response => {
-             //console.log(response.data)
-            store.dispatch({type:'ADMIN_ADD_QUESTION',payload:response.data.data})
+            //console.log(response.data)
+            store.dispatch({ type: 'ADMIN_ADD_QUESTION', payload: response.data.data })
             setDeleted((oldState) => {
 
                 return (
@@ -212,7 +256,7 @@ const sendEditState = (category_id, setDeleted, title, answers, store) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 
@@ -253,7 +297,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -261,7 +305,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
         )
         .then(response => {
-             //console.log(response)
+            //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -277,7 +321,7 @@ const sendDeleteState = (question_id, setDeleted) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 }

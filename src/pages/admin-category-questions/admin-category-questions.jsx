@@ -16,6 +16,7 @@ const Question_Analyze = ({ match, history }) => {
     const [question, setQuestion] = React.useState((store.getState().admin.categories) ? (store.getState().admin.categories[index]) : null);
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
+    const [message, setMessage] = React.useState('');
 
     const temp = {
         title: '',
@@ -46,7 +47,7 @@ const Question_Analyze = ({ match, history }) => {
     }
     if (deleted.deleted) {
         setTimeout(() => {
-            
+
             history.push('/category')
             window.location.reload();
         }, 2000)
@@ -76,13 +77,16 @@ const Question_Analyze = ({ match, history }) => {
 
     return (
         <>
+
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
             }} items={[]} title={'عنوان دسته'} />
             <TextDialog state={question.description} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, description: value }))
             }} items={[]} title={'توضیحات دسته'} />
-
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                {message}
+            </p>
 
 
             <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
@@ -95,6 +99,47 @@ const Question_Analyze = ({ match, history }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+
+
+
+                        if (question.title.length < 4) {
+                            setMessage('عنوان دسته بسیار کوتاه است')
+                            return;
+                        }
+                        if (question.title.length > 40) {
+                            setMessage('عنوان دسته بسیار طولانی است')
+                            return;
+                        }
+                        if (question.description.length > 40) {
+                            setMessage('توضیحات دسته بسیار طولانی است')
+                            return;
+                        }
+                        if (question.description.length < 4) {
+                            setMessage('توضیحات دسته بسیار کوتاه است')
+                            return;
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         setChanged((oldState) => {
 
                             return (
@@ -140,12 +185,12 @@ const Question_Analyze = ({ match, history }) => {
                     color="primary"
                     startIcon={<Icon className={'fas fa-plus fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
-                       history.push(`/addQuestion/${index}`)
+                        history.push(`/addQuestion/${index}`)
                     }}> افزودن سوال
                 </Button>
 
             </div>
-            
+
         </>
 
     )
@@ -184,7 +229,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -192,7 +237,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
 
         )
         .then(response => {
-             //console.log(response)
+            //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -208,7 +253,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 
@@ -249,7 +294,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -257,7 +302,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
         )
         .then(response => {
-             //console.log(response)
+            //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -273,7 +318,7 @@ const sendDeleteState = (question_id, setDeleted) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 }

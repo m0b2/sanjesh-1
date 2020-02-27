@@ -19,9 +19,10 @@ const useStyles = makeStyles({
     p: {
         textAlign: 'center',
         width: '100%',
-        marginTop: '-12%',
+        marginTop: '-5%',
         fontFamily: 'B Yekan',
-        fontSize: '22px'
+        fontSize: '22px',
+
     },
 
     avatardiv: {
@@ -35,12 +36,13 @@ const useStyles = makeStyles({
         cursor: 'pointer',
 
 
+
     }
 });
 
 
 export default function ProfileAvatar({ style, name }) {
-    
+
     const classes = useStyles();
 
 

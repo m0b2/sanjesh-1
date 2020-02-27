@@ -25,17 +25,18 @@ export default function DotsMobileStepper({ activeStep, setActiveStep, totalStep
 
 
     const handleNext = () => {
-        let error = false;
-        states[activeStep].map((value, index) => {
-             //console.log(value, error)
-            error = (value.length < 2) ? true : error
-        })
+        setActiveStep(prevActiveStep => prevActiveStep + 1);
+        // let error = false;
+        // states[activeStep].map((value, index) => {
+        //      //console.log(value, error)
+        //     error = (value.length < 2) ? true : error
+        // })
 
-        if (!error) {
-            setActiveStep(prevActiveStep => prevActiveStep + 1);
-            setMessage('')
-        }
-        else setMessage('تکمیل کردن تمامی فیلد ها الزامی میباشد')
+        // if (!error) {
+        //     setActiveStep(prevActiveStep => prevActiveStep + 1);
+        //     setMessage('')
+        // }
+        // else setMessage('تکمیل کردن تمامی فیلد ها الزامی میباشد')
     };
 
     const handleBack = () => {
