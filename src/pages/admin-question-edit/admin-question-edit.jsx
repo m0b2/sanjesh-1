@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import DialogButton from '../../components/dialog-button/dialog-button.component';
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
     const { index } = match.params;
@@ -127,35 +127,39 @@ const Question_Analyze = ({ match, history }) => {
                             )
                         })
 
-                        
+
 
                         sendEditState(index, setChanged, question.title, option, question.category_id);
                     }}> ثبت تغییرات
                 </Button>
 
+                <DialogButton deleteFunc={() => {
+                    sendDeleteState(index, setDeleted, question.category_id)
+                    setDeleted((oldState) => {
 
-                <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
-                    className={classes.root}
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
-                    onClick={() => {
-                        //send data to server
-
-                        setDeleted((oldState) => {
-
-                            return (
-                                { ...oldState, deleting: true }
-                            )
-                        })
+                        return (
+                            { ...oldState, deleting: true }
+                        )
+                    })
+                }}>
+                    <Button
+                        style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                        className={classes.root}
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
+                        onClick={() => {
+                            //send data to server
 
 
 
-                        sendDeleteState(index, setDeleted, question.category_id);
 
-                    }}>حذف سوال
+
+
+
+                        }}>حذف سوال
                 </Button>
+                </DialogButton>
 
 
             </div>
@@ -185,10 +189,10 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
     const data = {
         _method: 'PUT',
-        category:category_id,
+        category: category_id,
         title,
-        answers:option
- 
+        answers: option
+
 
 
 
@@ -199,7 +203,7 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -207,7 +211,7 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
         )
         .then(response => {
-             //console.log(response)
+            //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -223,7 +227,7 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 
@@ -264,7 +268,7 @@ const sendDeleteState = (question_id, setDeleted, category_id) => {
 
     axios
         .post(
-           url2,
+            url2,
             data,
             {
                 headers: headers
@@ -272,7 +276,7 @@ const sendDeleteState = (question_id, setDeleted, category_id) => {
 
         )
         .then(response => {
-             //console.log(response)
+            //console.log(response)
             setDeleted((oldState) => {
 
                 return (
@@ -288,7 +292,7 @@ const sendDeleteState = (question_id, setDeleted, category_id) => {
                     { ...oldState, deleting: false, deleted: false }
                 )
             })
-             
+
         });
 
 }

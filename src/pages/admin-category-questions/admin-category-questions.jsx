@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import DialogButton from '../../components/dialog-button/dialog-button.component';
 
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
@@ -153,29 +154,33 @@ const Question_Analyze = ({ match, history }) => {
                     }}> ثبت تغییرات
                 </Button>
 
+                <DialogButton deleteFunc={() => {
+                    setDeleted((oldState) => {
 
-                <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
-                    className={classes.root}
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
-                    onClick={() => {
-                        //send data to server
-
-                        setDeleted((oldState) => {
-
-                            return (
-                                { ...oldState, deleting: true }
-                            )
-                        })
+                        return (
+                            { ...oldState, deleting: true }
+                        )
+                    })
 
 
 
-                        sendDeleteState(index, setDeleted);
+                    sendDeleteState(index, setDeleted);
 
-                    }}>حذف دسته
+
+                }}>
+                    <Button
+                        style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                        className={classes.root}
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
+                        onClick={() => {
+                            //send data to server
+
+
+                        }}>حذف دسته
                 </Button>
+                </DialogButton>
 
 
                 <Button
