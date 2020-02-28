@@ -102,15 +102,15 @@ const ProfilView = ({ SideTab, user }) => {
     return (
         <>
             <div style={{ direction: 'rtl' }}>
-
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                    {message}
+                </p>
                 <TextDialog state={roleName} setState={setRoleName} items={[]} title={'عنوان نقش'} />
 
                 {arrays}
 
 
-                <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                    {message}
-                </p>
+                
             </div>
             <div className='start-analyze-button-container' style={{ minHeight: '10vh' }}>
 
@@ -181,7 +181,7 @@ const getRoles = (store, setRoles, setIsLoading) => {
 
     }
 
-    const url = `http://185.55.226.171/api/roles/`;
+    const url = `http://185.55.226.171/api/roles`;
     // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     axios.get(url, { headers })
         .then((response) => {

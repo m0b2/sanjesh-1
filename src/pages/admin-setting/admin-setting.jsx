@@ -13,6 +13,7 @@ const ProfilView = ({ admin }) => {
 
 
 
+    const [message, setMessage] = React.useState('');
 
     const classes = useStyles();
     /**
@@ -79,6 +80,9 @@ const ProfilView = ({ admin }) => {
 
     return (
         <>
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                {message}
+            </p>
             <div style={{ direction: 'rtl' }}>
 
                 <TextDialog
@@ -105,6 +109,11 @@ const ProfilView = ({ admin }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+                        if (price === '' || parseInt(price) < 1000) {
+                            setMessage('هزینه ثبت نام ورودی مجاز نیست')
+                            return;
+                        }
 
                         setIsLoading(true)
                         sendData(price, store, setIsLoading)

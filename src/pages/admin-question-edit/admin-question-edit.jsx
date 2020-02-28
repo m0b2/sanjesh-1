@@ -11,6 +11,8 @@ import DialogButton from '../../components/dialog-button/dialog-button.component
 const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
     const { index } = match.params;
+    const [message, setMessage] = React.useState('');
+
     const classes = useStyles();
     const options = (store.getState().admin.questions && store.getState().admin.questions[index]) ? (store.getState().admin.questions[index].answers) : null
     const [question, setQuestion] = React.useState((store.getState().admin.questions) ? (store.getState().admin.questions[index]) : null);
@@ -94,6 +96,10 @@ const Question_Analyze = ({ match, history, admin }) => {
 
     return (
         <>
+
+            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+                {message}
+            </p>
             <TextDialog state={question.title}
                 setState={(value) => {
                     setQuestion((oldstate) => ({ ...oldstate, title: value }))
@@ -145,6 +151,57 @@ const Question_Analyze = ({ match, history, admin }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+
+
+
+
+
+                        if (question.title.length < 15) {
+                            setMessage('عنوان دسته بسیار کوتاه است')
+                            return;
+                        }
+                        if (question.title.length > 300) {
+                            setMessage('عنوان دسته بسیار طولانی است')
+                            return;
+                        }
+                        let err = false;
+                        for (let i = 0; i < option.length; i++) {
+                            if (option[i].length < 3) {
+                                setMessage(`گزینه شماره ${i + 1} بسیار کوتاه است`)
+                                err = true;
+                                return;
+                            }
+                            if (option[i].length > 60) {
+                                setMessage(`گزینه شماره ${i + 1} بسیار طولانی است`)
+                                err = true;
+                                return;
+                            }
+                        }
+
+                        if (err) return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         setChanged((oldState) => {
 
                             return (

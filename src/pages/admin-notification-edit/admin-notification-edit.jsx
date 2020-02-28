@@ -16,6 +16,7 @@ const Question_Analyze = ({ match, history, admin }) => {
     const [question, setQuestion] = React.useState((store.getState().admin.notifications) ? (store.getState().admin.notifications[index]) : null);
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
+    const [message, setMessage] = React.useState('');
 
     const temp = {
         title: '',
@@ -87,7 +88,10 @@ const Question_Analyze = ({ match, history, admin }) => {
     // }
 
     return (
-        <>
+        <> 
+        <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
+            {message}
+        </p>
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
             }} items={[]} title={'عنوان اعلان'}
@@ -114,6 +118,39 @@ const Question_Analyze = ({ match, history, admin }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+
+
+                        //MIN
+                        if (question.title.length < 5) {
+                            setMessage('عنوان اعلان بسیار کوتاه است')
+                            return;
+                        }
+                        // MAX
+                        if (question.title.length > 120) {
+                            setMessage('عنوان اعلان بسیار طولانی است')
+                            return;
+                        }
+                        //MIN
+                        if (question.text.length < 15) {
+                            setMessage('توضیحات اعلان بسیار کوتاه است')
+                            return;
+                        }
+                        // MAX
+                        if (question.text.length > 300) {
+                            setMessage('توضیحات اعلان بسیار طولانی است')
+                            return;
+                        }
+
+
+
+
+
+
+
+
+
+
+
                         setChanged((oldState) => {
 
                             return (
