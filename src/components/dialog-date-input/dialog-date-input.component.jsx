@@ -42,7 +42,11 @@ function ConfirmationDialogRaw(props) {
     const [value, setValue] = React.useState(valueProp);
     const [selectedDay, setSelectedDay] = React.useState(daySelected);
     // const radioGroupRef = React.useRef(null);
-
+    const maximumDate = {
+        year: 1384,
+        month: 12,
+        day: 29
+      }
     React.useEffect(() => {
         if (!open) {
             setValue(valueProp);
@@ -91,6 +95,7 @@ function ConfirmationDialogRaw(props) {
                         value={selectedDay}
                         onChange={setSelectedDay}
                         inputPlaceholder={'انتخاب تاریخ تولد'}
+                        maximumDate={maximumDate}
                         shouldHighlightWeekends
                         locale="fa" // add this
                     />

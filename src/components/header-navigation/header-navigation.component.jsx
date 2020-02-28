@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { SidebarContext } from '../../context/sidebar.context';
 import SecurityIcon from '@material-ui/icons/Security';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { connect } from 'react-redux';
 
 import PersonIcon from '@material-ui/icons/Person';
 
@@ -25,32 +26,10 @@ const menu = [
     { label: 'اعلان ها', Icon: NotificationsIcon, address: '/notification' }
 ]
 
-const menuAdmin = [
-    { label: 'صفحه اصلی', Icon: HomeIcon, address: '/home' },
-    { label: 'کاربران', Icon: PersonIcon, address: '/users' },
-    { label: 'سوالات', Icon: HelpOutlineIcon, address: '/questions' },
-    { label: 'ایجاد نقش', Icon: SecurityIcon, address: '/roles' },
-    { label: 'تنظیمات', Icon: SettingsIcon, address: '/setting' },
-]
 
 
-const useStyles = makeStyles({
-    root: {
-        zIndex: '200'
-    },
-    label: {
-        fontFamily: 'Vazir',
-        color: '#b71c1c'
-    },
-    tab: {
-        flex: '1',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
-function IconLabelTabs({ history, isAdmin }) {
+function IconLabelTabs({ history, isAdmin, admin }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const { isOpen, setOpen } = React.useContext(SidebarContext);
@@ -58,15 +37,39 @@ function IconLabelTabs({ history, isAdmin }) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    if (isAdmin && !admin.access) {
+        return <div></div>
+    }
+    let ac = admin.access;
 
-    let current_items = isAdmin? menuAdmin : menu;
+    // let dastrasi = {
+    //     category: { view: null, create: null, update: null, delete: null },
+    //     notification: { view: null, create: null, update: null, delete: null },
+    //     role: { view: null, create: null, update: null, delete: null },
+    //     user: { view: null, create: null, update: null, delete: null },
+    //     setting: { view: null, create: null, update: null, delete: null },
+    //     question: { view: null, create: null, update: null, delete: null },
+    // }
+    const menuAdmin = (ac) ? [
+        { label: 'صفحه اصلی', Icon: HomeIcon, address: '/home' },
+        (ac.user.view) ? { label: 'کاربران', Icon: PersonIcon, address: '/users' } : null,
+        (ac.question.view) ? { label: 'سوالات', Icon: HelpOutlineIcon, address: '/questions' } : null,
+        (ac.user.create) ? { label: 'ایجاد نقش', Icon: SecurityIcon, address: '/roles' } : null,
+        (ac.setting.view) ? { label: 'تنظیمات', Icon: SettingsIcon, address: '/setting' } : null,
+    ] : [];
+
+
+    let current_items = isAdmin ? menuAdmin : menu;
 
     const items = current_items.map((value, index) =>
-        <Tab classes={{ fullWidth: classes.label }} icon={<value.Icon />} label={''} key={`header-tab${index}`}
+        (value) ? <Tab classes={{ fullWidth: classes.label }} icon={<value.Icon />} label={''} key={`header-tab${index}`}
             onClick={() => history.push(value.address)}
             className={classes.tab}
         />
+            :
+            null
     )
+
 
 
 
@@ -77,7 +80,7 @@ function IconLabelTabs({ history, isAdmin }) {
                 onClick={() => setOpen({ right: true })}
                 style={{ marginBottom: '60px', position: 'absolute', right: '0%' }}
             >
-                <MenuIcon style={{ color: '#b71c1c', fontSize:'36px' }} />
+                <MenuIcon style={{ color: '#b71c1c', fontSize: '36px' }} />
             </IconButton>
             <div style={{ marginBottom: '60px', position: 'absolute', right: '3%', marginRight: '16px' }}>
                 <Logo size={28} red />
@@ -102,4 +105,35 @@ function IconLabelTabs({ history, isAdmin }) {
     );
 }
 
-export default withRouter(IconLabelTabs);
+
+
+const mapStateToProps = store => {
+    return {
+
+        admin: store.admin,
+    };
+};
+
+
+
+export default connect(mapStateToProps)(withRouter(IconLabelTabs));
+
+
+
+
+
+const useStyles = makeStyles({
+    root: {
+        zIndex: '200'
+    },
+    label: {
+        fontFamily: 'Vazir',
+        color: '#b71c1c'
+    },
+    tab: {
+        flex: '1',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});

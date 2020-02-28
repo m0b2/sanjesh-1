@@ -45,7 +45,7 @@ import queryString from 'query-string';
 import resStore from './redux/store';
 import AdminChart from './pages/admin-chart/admin-chart';
 import AdminHomePage from './pages/admin-home/admin-home';
-const Debug = true;
+const Debug = false;
 
 axios.interceptors.request.use((config) => {
   /** In dev, intercepts request and logs it into console for dev */
