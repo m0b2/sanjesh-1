@@ -5,10 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import EditIcon from '@material-ui/icons/Edit';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import InfoIcon from '@material-ui/icons/Info';
+
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import './admin-sidebar.style.css';
 import CloseIcon from '@material-ui/icons/Close';
@@ -17,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { SidebarContext } from '../../context/sidebar.context';
 import Avatar from '../avatar/avatar.component';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
@@ -30,72 +27,127 @@ import SecurityIcon from '@material-ui/icons/Security';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AddIcon from '@material-ui/icons/Add';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-const useStyles = makeStyles({
-    list: {
-        width: 250,
-        fontFamily: 'B Homa'
-    },
-    fullList: {
-        width: 'auto',
-        fontFamily: 'Samim',
-        fontWeight: '900',
-    },
-    iconClose: {
-        position: 'absolute',
-        left: '0',
-        top: '0'
-    },
-    listText: {
-        position: 'absolute',
-        right: '22px',
-        top: '12px',
-        fontFamily: 'B Yekan',
-        color: 'white'
 
 
-    },
-    topList: {
-        height: '42px',
-        backgroundColor: '#b71c1c'
-    },
-    text: {
-        fontFamily: 'Vazir',
 
-        textAlign: 'right',
-        marginLeft: '16px'
-    },
-    nested: {
-        paddingRight: '34px',
-    },
-});
+
+
 
 const categories_Sub = [
     { title: 'مشاهده ', icon: ViewListIcon, pushValue: '/category', isDropable: false },
     { title: 'افزودن ', icon: AddIcon, pushValue: '/addcategory', isDropable: false }];
 
+
+
+
+
+
 const notifications_Sub = [
     { title: 'مشاهده ', icon: ViewListIcon, pushValue: '/notifications', isDropable: false },
     { title: 'افزودن ', icon: AddIcon, pushValue: '/addnotifications', isDropable: false }];
 
+
+
+
+
+
+
+
+
+
 const menu_items = [
-    { title: 'خانه', icon: HomeIcon, pushValue: '/home', isDropable: false },
-    { title: 'دسته بندی', icon: CategoryIcon, pushValue: '/profile', isDropable: true, subList: categories_Sub },
+    (2 < 1) ? { title: 'خانه', icon: HomeIcon, pushValue: '/home', isDropable: false } : null,
+    { title: 'دسته بندی', icon: CategoryIcon, pushValue: '/home', isDropable: true, subList: categories_Sub },
     { title: 'کاربران', icon: PersonIcon, pushValue: '/users', isDropable: false },
     { title: 'سوالات', icon: HelpIcon, pushValue: '/questions', isDropable: false },
     { title: 'اعلان ها', icon: NotificationsIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
     { title: 'ایجاد نقش', icon: SecurityIcon, pushValue: '/roles', isDropable: false },
-    { title: 'افزودن مدیر', icon: PersonAddIcon, pushValue: '/createadmin', isDropable: false },
+    // { title: 'افزودن مدیر', icon: PersonAddIcon, pushValue: '/createadmin', isDropable: false },
     { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/setting', isDropable: false },
     { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
 ];
 
-export default function SwipeableTemporaryDrawer() {
+
+
+// let dastrasi = {
+//     category: { view: null, create: null, update: null, delete: null },
+//     notification: { view: null, create: null, update: null, delete: null },
+//     role: { view: null, create: null, update: null, delete: null },
+//     user: { view: null, create: null, update: null, delete: null },
+//     setting: { view: null, create: null, update: null, delete: null },
+//     question: { view: null, create: null, update: null, delete: null },
+// }
+
+
+
+
+
+
+
+
+
+function SwipeableTemporaryDrawer({ admin }) {
     const dispatch = useDispatch();
     const { isOpen, setOpen } = React.useContext(SidebarContext);
     const [sideOpen, setSideOpen] = React.useState(false);
     const [notificationsSideOpen, setNotificationsSideOpen] = React.useState(false);
     const classes = useStyles();
+
+    let ac = admin.access;
+
+    const categories_Sub = [
+        (ac && ac.category.view) ? { title: 'مشاهده ', icon: ViewListIcon, pushValue: '/category', isDropable: false } : null,
+        ac && (ac.category.create) ? { title: 'افزودن ', icon: AddIcon, pushValue: '/addcategory', isDropable: false } : null];
+
+
+
+
+    const notifications_Sub = [
+        (ac && ac.notification.view) ? { title: 'مشاهده ', icon: ViewListIcon, pushValue: '/notifications', isDropable: false } : null,
+        (ac && ac.notification.create) ? { title: 'افزودن ', icon: AddIcon, pushValue: '/addnotifications', isDropable: false } : null];
+
+
+
+
+    const menu_items = [
+        { title: 'خانه', icon: HomeIcon, pushValue: '/home', isDropable: false },
+        { title: 'دسته بندی', icon: CategoryIcon, pushValue: '/home', isDropable: true, subList: categories_Sub },
+        (ac && ac.user.view) ? { title: 'کاربران', icon: PersonIcon, pushValue: '/users', isDropable: false } : null,
+        (ac && ac.question.view) ? { title: 'سوالات', icon: HelpIcon, pushValue: '/questions', isDropable: false } : null,
+        { title: 'اعلان ها', icon: NotificationsIcon, pushValue: '/notifications', isDropable: true, subList: notifications_Sub },
+        (ac && ac.role.create) ? { title: 'ایجاد نقش', icon: SecurityIcon, pushValue: '/roles', isDropable: false } : null,
+        // { title: 'افزودن مدیر', icon: PersonAddIcon, pushValue: '/createadmin', isDropable: false },
+        (ac && ac.setting.view) ? { title: 'تنظیمات', icon: SettingsIcon, pushValue: '/setting', isDropable: false } : null,
+        { title: 'خروج', icon: ExitToAppIcon, pushValue: '', isDropable: false }
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const toggleDrawer = (side, open) => event => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -114,9 +166,10 @@ export default function SwipeableTemporaryDrawer() {
 
 
             {<List style={{ direction: 'rtl' }}>
-                {menu_items.map((value, index) => ((!value.isDropable) ?
+                {menu_items.map((value, index) => ((value && !value.isDropable) ?
                     <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}
                         onClick={() => setOpen({ ...isOpen, [side]: false })}
+                        key={`sideListAdmin${index}`}
                     >
 
                         <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}
@@ -135,62 +188,67 @@ export default function SwipeableTemporaryDrawer() {
                         <Divider />
                     </Link>
                     :
+                    (value) ?
 
-
-                    <>
-                        <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}
-                            onClick={() => {
-                                if (value.title === 'خروج') {
-                                    dispatch({ type: 'USER_LOGGED_OUT' })
-                                } else {
-                                    if (value.title === 'اعلان ها') {
-
-                                        setNotificationsSideOpen((oldState) => !oldState)
+                        <>
+                            <ListItem style={{ direction: 'rtl' }} button key={`list-side${index}`}
+                                onClick={() => {
+                                    if (value.title === 'خروج') {
+                                        dispatch({ type: 'USER_LOGGED_OUT' })
                                     } else {
-                                        setSideOpen((oldState) => !oldState)
+                                        if (value.title === 'اعلان ها') {
+
+                                            setNotificationsSideOpen((oldState) => !oldState)
+                                        } else {
+                                            setSideOpen((oldState) => !oldState)
+                                        }
+
                                     }
 
-                                }
 
+                                }}>
+                                <ListItemIcon>{<value.icon />}</ListItemIcon>
+                                <ListItemText style={{ fontFamily: 'IranSans' }}
+                                    classes={{ primary: classes.text }}
+                                    className={classes.text} primary={value.title} />
+                                {((value.title === 'اعلان ها') ? notificationsSideOpen : sideOpen) ? <ExpandLess /> : <ExpandMore />}
+                            </ListItem>
+                            <Divider />
+                            <Collapse in={(value.title === 'اعلان ها') ? notificationsSideOpen : sideOpen} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
 
-                            }}>
-                            <ListItemIcon>{<value.icon />}</ListItemIcon>
-                            <ListItemText style={{ fontFamily: 'IranSans' }}
-                                classes={{ primary: classes.text }}
-                                className={classes.text} primary={value.title} />
-                            {((value.title==='اعلان ها')?notificationsSideOpen:sideOpen) ? <ExpandLess /> : <ExpandMore />}
-                        </ListItem>
-                        <Divider />
-                        <Collapse in={(value.title==='اعلان ها')?notificationsSideOpen:sideOpen} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding>
-
-                                {value.subList.map((value, index) => (
-                                    <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}
-                                        onClick={() => {
-                                            setSideOpen(false)
-                                            setNotificationsSideOpen(false)
-                                            setOpen({ ...isOpen, [side]: false })
-                                        }}
-                                    >
-
-                                        <ListItem className={classes.nested} style={{ direction: 'rtl' }} button key={`list-side${index}`}
+                                    {value.subList.map((value, index) => (
+                                        (value) ? <Link to={`${value.pushValue}`} style={{ color: 'inherit', textDecoration: 'inherit' }}
                                             onClick={() => {
-                                                if (value.title === 'خروج') {
-                                                    dispatch({ type: 'USER_LOGGED_OUT' })
-                                                }
-                                            }}>
-                                            <ListItemIcon>{<value.icon />}</ListItemIcon>
-                                            <ListItemText style={{ fontFamily: 'IranSans' }}
-                                                classes={{ primary: classes.text }}
-                                                className={classes.text} primary={value.title} />
-                                        </ListItem>
-                                    </Link>))}
+                                                setSideOpen(false)
+                                                setNotificationsSideOpen(false)
+                                                setOpen({ ...isOpen, [side]: false })
+                                            }}
+                                            key={`adminDropIcon${index}`}
+                                        >
+
+                                            <ListItem className={classes.nested} style={{ direction: 'rtl' }} button key={`list-side${index}`}
+                                                onClick={() => {
+                                                    if (value.title === 'خروج') {
+                                                        dispatch({ type: 'USER_LOGGED_OUT' })
+                                                    }
+                                                }}>
+                                                <ListItemIcon>{<value.icon />}</ListItemIcon>
+                                                <ListItemText style={{ fontFamily: 'IranSans' }}
+                                                    classes={{ primary: classes.text }}
+                                                    className={classes.text} primary={value.title} />
+                                            </ListItem>
+                                        </Link>
+                                            :
+                                            null))}
 
 
 
-                            </List>
-                        </Collapse>
-                    </>
+                                </List>
+                            </Collapse>
+                        </>
+                        :
+                        null
 
 
 
@@ -244,3 +302,81 @@ export default function SwipeableTemporaryDrawer() {
         </div>
     );
 }
+
+
+
+const mapStateToProps = store => {
+    return {
+
+        admin: store.admin,
+    };
+};
+
+export default connect(mapStateToProps)(SwipeableTemporaryDrawer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const useStyles = makeStyles({
+    list: {
+        width: 250,
+        fontFamily: 'B Homa'
+    },
+    fullList: {
+        width: 'auto',
+        fontFamily: 'Samim',
+        fontWeight: '900',
+    },
+    iconClose: {
+        position: 'absolute',
+        left: '0',
+        top: '0'
+    },
+    listText: {
+        position: 'absolute',
+        right: '22px',
+        top: '12px',
+        fontFamily: 'B Yekan',
+        color: 'white'
+
+
+    },
+    topList: {
+        height: '42px',
+        backgroundColor: '#b71c1c'
+    },
+    text: {
+        fontFamily: 'Vazir',
+
+        textAlign: 'right',
+        marginLeft: '16px'
+    },
+    nested: {
+        paddingRight: '34px',
+    },
+});

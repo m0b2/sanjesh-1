@@ -141,7 +141,7 @@ const getRoles = (setRoles, store, setSaveRoles) => {
         )}`
     };
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/roles`;
 
     axios
@@ -209,7 +209,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
         full_name, username, password, role: role_id
     }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/users`;
 
     axios

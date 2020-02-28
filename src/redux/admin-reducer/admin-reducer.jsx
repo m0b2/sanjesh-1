@@ -58,6 +58,12 @@ const AppbarReducer = (state = {}, action) => {
             ...state,
             questions: action.payload
         }
+        case 'SET_ADMIN_ACCESS': return {
+            ...state,
+            access: action.payload
+        }
+
+
 
         default: return state;
     }

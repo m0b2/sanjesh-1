@@ -1,7 +1,7 @@
 import React from 'react';
 import './admin-category-questions.style.css';
 import TextDialog from '../../components/textInput-dialog/textInput-dialog.component';
-import { useStore } from 'react-redux';
+import { useStore, connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
 
-const Question_Analyze = ({ match, history }) => {
+const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
     const { index } = match.params;
     const classes = useStyles();
@@ -19,14 +19,6 @@ const Question_Analyze = ({ match, history }) => {
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
     const [message, setMessage] = React.useState('');
 
-    const temp = {
-        title: '',
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
-        option5: ''
-    }
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
         return () => store.dispatch({ type: 'ADD_FOOTER' });
@@ -72,19 +64,30 @@ const Question_Analyze = ({ match, history }) => {
         </div>)
     }
 
+    if (!admin || !admin.access) {
+        return <div></div>
+    }
+    let ac = admin.access;
 
-
-
-
+    // let dastrasi = {
+    //     category: { view: null, create: null, update: null, delete: null },
+    //     notification: { view: null, create: null, update: null, delete: null },
+    //     role: { view: null, create: null, update: null, delete: null },
+    //     user: { view: null, create: null, update: null, delete: null },
+    //     setting: { view: null, create: null, update: null, delete: null },
+    //     question: { view: null, create: null, update: null, delete: null },
+    // }
     return (
         <>
 
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
-            }} items={[]} title={'عنوان دسته'} />
+            }} items={[]} title={'عنوان دسته'}
+                disabled={!ac.category.update}
+            />
             <TextDialog state={question.description} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, description: value }))
-            }} items={[]} title={'توضیحات دسته'} />
+            }} items={[]} title={'توضیحات دسته'} disabled={!ac.category.update} />
             <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
                 {message}
             </p>
@@ -93,7 +96,11 @@ const Question_Analyze = ({ match, history }) => {
             <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
 
                 <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
+                    style={{
+                        fontFamily: 'Samim', width: '140px', marginLeft: '8px',
+                        display: `${(ac.category.update ? null : 'none')}`
+                    }
+                    }
                     className={classes.root}
                     variant="outlined"
                     color="primary"
@@ -124,23 +131,6 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         setChanged((oldState) => {
 
                             return (
@@ -153,6 +143,7 @@ const Question_Analyze = ({ match, history }) => {
                         sendEditState(index, setChanged, question.title, question.description);
                     }}> ثبت تغییرات
                 </Button>
+
 
                 <DialogButton deleteFunc={() => {
                     setDeleted((oldState) => {
@@ -169,7 +160,13 @@ const Question_Analyze = ({ match, history }) => {
 
                 }}>
                     <Button
-                        style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                        style={{
+                            fontFamily: 'Samim',
+                            width: '140px',
+                            marginRight: '8px',
+                            display: `${(ac.category.delete ? null : 'none')}`
+
+                        }}
                         className={classes.root}
                         variant="outlined"
                         color="primary"
@@ -184,7 +181,12 @@ const Question_Analyze = ({ match, history }) => {
 
 
                 <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                    style={{
+                        fontFamily: 'Samim',
+                        width: '140px',
+                        marginRight: '8px',
+                        display: `${(ac.category.create ? null : 'none')}`
+                    }}
                     className={classes.root}
                     variant="outlined"
                     color="primary"
@@ -203,8 +205,19 @@ const Question_Analyze = ({ match, history }) => {
 
 
 }
+const mapStateToProps = store => {
+    return {
 
-export default withRouter(Question_Analyze);
+        admin: store.admin,
+    };
+};
+
+
+
+export default connect(mapStateToProps)(withRouter(Question_Analyze));
+
+
+
 
 
 
@@ -229,7 +242,7 @@ const sendEditState = (question_id, setDeleted, title, description) => {
 
     }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/categories/${question_id}`;
 
     axios
@@ -294,7 +307,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     const data = { _method: 'DELETE' }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/categories/${question_id}`;
 
     axios

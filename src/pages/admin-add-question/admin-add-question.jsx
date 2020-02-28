@@ -226,7 +226,7 @@ const sendEditState = (category_id, setDeleted, title, answers, store) => {
 
     }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/questions`;
 
     axios
@@ -292,7 +292,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     const data = { _method: 'DELETE' }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/categories/${question_id}`;
 
     axios

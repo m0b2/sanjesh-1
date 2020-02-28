@@ -1,6 +1,6 @@
 import React from 'react';
 import TextDialog from '../../components/textInput-dialog/textInput-dialog.component';
-import { useStore } from 'react-redux';
+import { useStore, connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
-const Question_Analyze = ({ match, history }) => {
+const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
     const { index } = match.params;
     const classes = useStyles();
@@ -72,48 +72,73 @@ const Question_Analyze = ({ match, history }) => {
     }
 
 
+    if (!admin || !admin.access) {
+        return <div></div>
+    }
+    let ac = admin.access;
+
+    // let dastrasi = {
+    //     category: { view: null, create: null, update: null, delete: null },
+    //     notification: { view: null, create: null, update: null, delete: null },
+    //     role: { view: null, create: null, update: null, delete: null },
+    //     user: { view: null, create: null, update: null, delete: null },
+    //     setting: { view: null, create: null, update: null, delete: null },
+    //     question: { view: null, create: null, update: null, delete: null },
+    // }
+
+
+
+
+
+
+
     return (
         <>
-            <TextDialog state={question.title} setState={(value) => {
-                setQuestion((oldstate) => ({ ...oldstate, title: value }))
-            }} items={[]} title={'متن سوال'} />
+            <TextDialog state={question.title}
+                setState={(value) => {
+                    setQuestion((oldstate) => ({ ...oldstate, title: value }))
+                }}
+                items={[]} title={'متن سوال'} disabled={!ac.question.update} />
 
             <TextDialog state={option[0]} setState={(value) => {
                 const temp = option.slice();
                 temp[0] = value;
                 setOption(temp)
-            }} items={[]} title={'گزینه اول'} />
+            }} items={[]} title={'گزینه اول'} disabled={!ac.question.update} />
 
             <TextDialog state={option[1]} setState={(value) => {
                 const temp = option.slice();
                 temp[1] = value;
                 setOption(temp)
-            }} items={[]} title={'گزینه دوم'} />
+            }} items={[]} title={'گزینه دوم'} disabled={!ac.question.update} />
 
             <TextDialog state={option[2]} setState={(value) => {
                 const temp = option.slice();
                 temp[2] = value;
                 setOption(temp)
-            }} items={[]} title={'گزینه سوم'} />
+            }} items={[]} title={'گزینه سوم'} disabled={!ac.question.update} />
 
             <TextDialog state={option[3]} setState={(value) => {
                 const temp = option.slice();
                 temp[3] = value;
                 setOption(temp)
-            }} items={[]} title={'گزینه چهارم'} />
+            }} items={[]} title={'گزینه چهارم'} disabled={!ac.question.update} />
 
             <TextDialog state={option[4]} setState={(value) => {
                 const temp = option.slice();
                 temp[4] = value;
                 setOption(temp)
-            }} items={[]} title={'گزینه پنجم'} />
+            }} items={[]} title={'گزینه پنجم'} disabled={!ac.question.update} />
 
 
 
             <div className='start-analyze-button-container' style={{ minHeight: '10vh' }}>
 
                 <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
+                    style={{
+                        fontFamily: 'Samim', width: '140px', marginLeft: '8px'
+                        , display: `${(ac.question.update ? null : 'none')}`
+                    }}
                     className={classes.root}
                     variant="outlined"
                     color="primary"
@@ -143,7 +168,12 @@ const Question_Analyze = ({ match, history }) => {
                     })
                 }}>
                     <Button
-                        style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                        style={{
+                            fontFamily: 'Samim',
+                            width: '140px',
+                            marginRight: '8px',
+                            display: `${(ac.question.delete ? null : 'none')}`
+                        }}
                         className={classes.root}
                         variant="outlined"
                         color="primary"
@@ -171,7 +201,6 @@ const Question_Analyze = ({ match, history }) => {
 
 }
 
-export default withRouter(Question_Analyze);
 
 
 
@@ -198,7 +227,7 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
     }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/questions/${question_id}`;
 
     axios
@@ -237,6 +266,18 @@ const sendEditState = (question_id, setDeleted, title, option, category_id) => {
 
 
 
+const mapStateToProps = store => {
+    return {
+
+        admin: store.admin,
+    };
+};
+
+
+
+export default connect(mapStateToProps)(withRouter(Question_Analyze));
+
+
 
 
 
@@ -263,7 +304,7 @@ const sendDeleteState = (question_id, setDeleted, category_id) => {
 
     const data = { _method: 'DELETE' }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/questions/${question_id}`;
 
     axios

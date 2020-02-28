@@ -1,26 +1,10 @@
 import React from "react";
-//
-// add style external
 import "./admin-category.style.css";
-import IconButton from "@material-ui/core/IconButton";
 import QuestionCard from "../admin-question-card/admin-question-card.component";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import CloseIcon from "@material-ui/icons/Close";
-import Slide from "@material-ui/core/Slide";
-// import QuestionNew from "../questionNew/questionNew.components";
+
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Backdrop from "@material-ui/core/Backdrop";
-import SpeedDial from "@material-ui/lab/SpeedDial";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
-import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
-import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
-import GroupWorkIcon from "@material-ui/icons/GroupWork";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-// import AddCategories from "../../Components/AddCategori/AddCategori.components";
+
 
 /**
  * id
@@ -62,7 +46,6 @@ const useStyles = makeStyles(theme => ({
 const Question_Page = props => {
   const classes = useStyles();
   const { categories } = props;
-  const [open, setOpen] = React.useState(false);
 
   return (
     <div

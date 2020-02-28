@@ -51,7 +51,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
 
 
     const url = 'http://185.55.226.171/api/login';
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     NProgress.inc();
     axios.post( url, data, {
       headers: headers
@@ -166,7 +166,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
 async function paymentStuff(history, setDisable) {
   setDisable(true)
   const url = 'http://185.55.226.171/api/register';
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
   NProgress.inc();
   axios.post(url, null, null)
     .then((response) => {

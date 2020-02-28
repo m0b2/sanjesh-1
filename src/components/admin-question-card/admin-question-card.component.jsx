@@ -36,7 +36,7 @@ const Question_Page = props => {
       };
 
       const url = "http://185.55.226.171/api/login";
-      const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      // const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
       axios
         .post(url, data, {

@@ -1,6 +1,6 @@
 import React from 'react';
 import TextDialog from '../../components/textInput-dialog/textInput-dialog.component';
-import { useStore } from 'react-redux';
+import { useStore, connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +9,7 @@ import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
 
-const Question_Analyze = ({ match, history }) => {
+const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
     const { index } = match.params;
     const classes = useStyles();
@@ -72,23 +72,42 @@ const Question_Analyze = ({ match, history }) => {
 
 
 
+    if (!admin || !admin.access) {
+        return <div></div>
+    }
+    let ac = admin.access;
 
+    // let dastrasi = {
+    //     category: { view: null, create: null, update: null, delete: null },
+    //     notification: { view: null, create: null, update: null, delete: null },
+    //     role: { view: null, create: null, update: null, delete: null },
+    //     user: { view: null, create: null, update: null, delete: null },
+    //     setting: { view: null, create: null, update: null, delete: null },
+    //     question: { view: null, create: null, update: null, delete: null },
+    // }
 
     return (
         <>
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
-            }} items={[]} title={'عنوان اعلان'} />
+            }} items={[]} title={'عنوان اعلان'}
+                disabled={!ac.notification.update}
+            />
             <TextDialog state={question.text} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, text: value }))
-            }} items={[]} title={'توضیحات اعلان'} />
+            }} items={[]} title={'توضیحات اعلان'}
+                disabled={!ac.notification.update}
+            />
 
 
 
             <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
 
                 <Button
-                    style={{ fontFamily: 'Samim', width: '140px', marginLeft: '8px' }}
+                    style={{
+                        fontFamily: 'Samim', width: '140px', marginLeft: '8px',
+                        display: `${(ac.notification.update ? null : 'none')}`
+                    }}
                     className={classes.root}
                     variant="outlined"
                     color="primary"
@@ -108,32 +127,36 @@ const Question_Analyze = ({ match, history }) => {
                     }}> ثبت تغییرات
                 </Button>
 
-                <DialogButton deleteFunc={() => {
-                    setDeleted((oldState) => {
+                {(ac.notification.delete) ?
+                    <DialogButton deleteFunc={() => {
+                        setDeleted((oldState) => {
 
-                        return (
-                            { ...oldState, deleting: true }
-                        )
-                    })
-
-
-                    sendDeleteState(index, setDeleted);
-
-                }}>
-                    <Button
-                        style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
-                        className={classes.root}
-                        variant="outlined"
-                        color="primary"
-                        startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
-                        onClick={() => {
-                            //send data to server
+                            return (
+                                { ...oldState, deleting: true }
+                            )
+                        })
 
 
-                        }}>حذف اعلان
+                        sendDeleteState(index, setDeleted);
+
+                    }}>
+                        <Button
+                            style={{ fontFamily: 'Samim', width: '140px', marginRight: '8px' }}
+                            className={classes.root}
+                            variant="outlined"
+                            color="primary"
+                            startIcon={<Icon className={'far fa-trash-alt fa-fw'} style={{ marginRight: '-32px' }} />}
+                            onClick={() => {
+                                //send data to server
+
+
+                            }}>حذف اعلان
                 </Button>
-                </DialogButton>
+                    </DialogButton>
 
+                    :
+                    null
+                }
 
             </div>
 
@@ -145,8 +168,15 @@ const Question_Analyze = ({ match, history }) => {
 
 }
 
-export default withRouter(Question_Analyze);
+const mapStateToProps = store => {
+    return {
 
+        admin: store.admin,
+    };
+};
+
+
+export default connect(mapStateToProps)(withRouter(Question_Analyze));
 
 
 
@@ -170,7 +200,7 @@ const sendEditState = (question_id, setDeleted, title, text) => {
 
     }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/notifications/${question_id}`;
 
     axios
@@ -235,7 +265,7 @@ const sendDeleteState = (question_id, setDeleted) => {
 
     const data = { _method: 'DELETE' }
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url2 = `http://185.55.226.171/api/notifications/${question_id}`;
 
     axios

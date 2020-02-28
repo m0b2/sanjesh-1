@@ -27,7 +27,7 @@ const VerticalTabs = ({ admin }) => {
             )}`
         };
 
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
         const url2 = "http://185.55.226.171/api/categories";
 

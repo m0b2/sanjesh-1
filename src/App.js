@@ -13,7 +13,7 @@ import Header from "./components/header-navigation/header-navigation.component";
 import ComparePage from "./pages/compare/compare.page";
 import ProfileView from "./pages/profile-view/profile-view.component";
 import SideList from "./containers/side-list/side-list.container";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import AnswerPage from "./pages/answer/answer.page";
 import Edit_Profile_Page from "./pages/profile-edit/profile-edit.component";
 import Sign_Up_Page from "./pages/signUp/sign_up.page";
@@ -25,8 +25,7 @@ import SinginPage from './pages/sign_in/sign_in.page';
 import Receipt from './components/pay-receipt/pay-receipt.component';
 import FirstMate from './components/first-information/first-information.component';
 import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import NProgress from 'nprogress';
+
 import axios from 'axios';
 import AdminSideBar from './components/admin-sidebar/admin-sidebar.component';
 import AdminCategoryPage from './pages/admin-view-categories/admin-view-categories';
@@ -44,7 +43,9 @@ import AdminRoles from './pages/admin-add-role/admin-add-role';
 import AdminCreateAdmin from './pages/admin-create-admin/admin-create-admin';
 import queryString from 'query-string';
 import resStore from './redux/store';
-const Debug = false;
+import AdminChart from './pages/admin-chart/admin-chart';
+import AdminHomePage from './pages/admin-home/admin-home';
+const Debug = true;
 
 axios.interceptors.request.use((config) => {
   /** In dev, intercepts request and logs it into console for dev */
@@ -108,10 +109,12 @@ const { status, username, password, message } = queryString.parse(window.locatio
 // rnpm baraye fron
 // add address font
 
-function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
-
+function App({ sideTab, isFooterNeeded, user, isNeededReducer, admin }) {
+  const dispatch = useDispatch();
   React.useEffect(() => {
-
+    if (user.admin) {
+      CreateAccess(user, dispatch);
+    }
     loadCSS(
       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
       document.querySelector("#font-awesome-css")
@@ -125,10 +128,13 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
   }, []);
 
+
+
+
+
   const [isOpen, setOpen] = React.useState({ right: false });
   const SidebarOpen = React.useMemo(() => ({ isOpen, setOpen }), [isOpen]);
   // return <FirstMate />
-
   if (!user || !user.isLoggedIn) {
     if (status === 'OK') {
       return <Receipt username={username} password={password} status={status} />
@@ -146,14 +152,15 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
     return <FirstMate />
   }
-  if (!user.admin && (!user.sex || !user.sex ||
-    !user.province || !user.city || !user.married ||
-    !user.education || !user.height || !user.weight ||
-    !user.blood || !user.birthday
-  )) {
+
+  if (!user.admin && (!user.height || !user.birthday)) {
 
     return <FirstMate />
   }
+
+
+
+
 
 
 
@@ -209,38 +216,186 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer }) {
 
 
 
-                (user.admin) ?
+                (user.admin && admin.access) ?
 
 
                   <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/category" component={AdminCategoryPage} />
-                    <Route exact path="/addcategory" component={AdminAddCategory} />
-                    <Route exact path="/questions" component={AdminQuestions} />
-                    <Route exact path="/notifications" component={AdminNotifications} />
-                    <Route exact path="/addnotifications" component={AdminAddNotification} />
-                    <Route exact path="/users" component={AdminUsersList} />
-                    <Route exact path="/roles" component={AdminRoles} />
-                    <Route exact path="/createadmin" component={AdminCreateAdmin} />
 
-                    <Route exact
-                      path="/question/:index"
-                      component={AdminEditQuestion} />
+
                     <Route
                       exact
-                      path="/category/:index"
-                      component={CategoryEdit}
+                      path="/home"
+                      component={AdminHomePage}
                     />
 
+
                     <Route exact
-                      path="/notification/:index"
-                      component={AdminNotifactionsEdit} />
-                    <Route exact
-                      path="/addQuestion/:index"
-                      component={AdminAddQuestion} />
-                    <Route exact
-                      path="/setting"
-                      component={AdminSetting} />
+                      path="/chart"
+                      component={AdminChart} />
+
+
+                    {admin.access.category.view
+                      ?
+                      <Route
+                        exact
+                        path="/category"
+                        component={AdminCategoryPage}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.notification.view
+                      ?
+                      <Route
+                        exact
+                        path="/notifications"
+                        component={AdminNotifications}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.role.view
+                      ?
+                      <Route
+                        exact
+                        path="/roles"
+                        component={AdminRoles}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.user.view
+                      ?
+                      <Route
+                        exact
+                        path="/users"
+                        component={AdminUsersList}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.setting.view
+                      ?
+                      <Route
+                        exact
+                        path="/setting"
+                        component={AdminSetting}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.notification.create
+                      ?
+                      <Route
+                        exact
+                        path="/addnotifications"
+                        component={AdminAddNotification}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.user.create
+                      ?
+                      <Route
+                        exact
+                        path="/createadmin"
+                        component={AdminCreateAdmin}
+                      />
+                      :
+                      null
+                    }
+
+
+                    {admin.access.category.create
+                      ?
+                      <Route
+                        exact
+                        path="/addcategory"
+                        component={AdminAddCategory}
+                      />
+
+                      :
+                      null
+                    }
+
+
+                    {admin.access.category.update
+                      ?
+                      <Route
+                        exact
+                        path="/category/:index"
+                        component={CategoryEdit}
+                      />
+
+                      :
+                      null
+                    }
+
+
+                    {admin.access.question.view
+                      ?
+                      <Route
+                        exact
+                        path="/questions"
+                        component={AdminQuestions}
+                      />
+
+                      :
+                      null
+                    }
+
+
+                    {admin.access.question.update
+                      ?
+                      <Route
+                        exact
+                        path="/question/:index"
+                        component={AdminEditQuestion}
+
+                      />
+
+                      :
+                      null
+                    }
+
+
+                    {admin.access.question.create
+                      ?
+                      <Route
+                        exact
+                        path="/addQuestion/:index"
+                        component={AdminAddQuestion} />
+
+                      :
+                      null
+                    }
+
+                    {admin.access.notification.update
+                      ? <Route
+                        exact
+                        path="/notification/:index"
+                        component={AdminNotifactionsEdit}
+                      />
+                      :
+                      null}
+
+
+
+
+
+
 
                   </Switch>
 
@@ -296,7 +451,8 @@ const mapStateToProps = store => {
     sideTab: store.SideTab,
     isFooterNeeded: store.FooterReducer,
     user: store.user,
-    isNeededReducer: store.isNeededReducer
+    isNeededReducer: store.isNeededReducer,
+    admin: store.admin,
   };
 };
 
@@ -351,5 +507,40 @@ const fetchCategories = () => {
     })
 
 
+
+}
+
+
+
+
+
+
+const CreateAccess = (user, dispatch) => {
+  let dastrasi = {
+    category: { view: null, create: null, update: null, delete: null },
+    notification: { view: null, create: null, update: null, delete: null },
+    role: { view: null, create: null, update: null, delete: null },
+    user: { view: null, create: null, update: null, delete: null },
+    setting: { view: null, create: null, update: null, delete: null },
+    question: { view: null, create: null, update: null, delete: null },
+  }
+  if (user && user.roles) {
+
+    Object.entries(user.roles).forEach(
+      ([key, value]) => {
+        value.map(role_type => {
+          dastrasi = { ...dastrasi, [key]: { ...dastrasi[key], [role_type]: true } }
+
+        })
+
+      })
+
+
+
+
+
+  }
+
+  dispatch({ type: 'SET_ADMIN_ACCESS', payload: dastrasi })
 
 }
