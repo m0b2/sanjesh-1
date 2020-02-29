@@ -129,7 +129,7 @@ const Form = ({ disabled, user, city }) => {
             mobile: mobile
         }
 
-        console.log(data)
+        // console.log(data)
 
         const headers = {
             'Content-Type': 'application/json',

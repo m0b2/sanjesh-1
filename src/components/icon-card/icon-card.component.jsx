@@ -7,11 +7,11 @@ const IconCard = ({ title, icon, number, adminCard }) => {
     if (adminCard) {
 
         return (
-            <div className='number-static'  style={{height:'128px'}}>
+            <div className='number-static' style={{ height: '128px' }}>
                 <div>
                     <img className='icon-card-img' src={icon} alt={title} />
                 </div>
-                <div className='icon-card-title' style={{fontWeight:'850', paddingTop:'0'}}>{title}</div>
+                <div className='icon-card-title' style={{ fontWeight: '850', paddingTop: '0' }}>{title}</div>
             </div>)
 
     }
@@ -24,7 +24,9 @@ const IconCard = ({ title, icon, number, adminCard }) => {
             </div>
 
             <div className='icon-card-number'>{number}</div>
-            
+            <div className='icon-card-title' style={{ fontWeight: '850', paddingTop: '0' }}>{title}</div>
+
+
         </div>
     )
 }
