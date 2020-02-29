@@ -9,6 +9,7 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
+import Snackbar from '../../components/snackbar/snackbar.component';
 
 const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
@@ -18,6 +19,7 @@ const Question_Analyze = ({ match, history, admin }) => {
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
     const [message, setMessage] = React.useState('');
+    const [open, setOpen] = React.useState(false);
 
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
@@ -88,10 +90,6 @@ const Question_Analyze = ({ match, history, admin }) => {
             <TextDialog state={question.description} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, description: value }))
             }} items={[]} title={'توضیحات دسته'} disabled={!ac.category.update} />
-            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                {message}
-            </p>
-
 
             <div className='start-analyze-button-container' style={{ minHeight: '50vh' }}>
 
@@ -108,23 +106,28 @@ const Question_Analyze = ({ match, history, admin }) => {
                     onClick={() => {
                         //send data to server
 
-
-
-
                         if (question.title.length < 4) {
                             setMessage('عنوان دسته بسیار کوتاه است')
+                            setOpen(true)
+
                             return;
                         }
                         if (question.title.length > 40) {
                             setMessage('عنوان دسته بسیار طولانی است')
+                            setOpen(true)
+
                             return;
                         }
                         if (question.description.length > 40) {
                             setMessage('توضیحات دسته بسیار طولانی است')
+                            setOpen(true)
+
                             return;
                         }
                         if (question.description.length < 4) {
                             setMessage('توضیحات دسته بسیار کوتاه است')
+                            setOpen(true)
+
                             return;
                         }
 
@@ -197,6 +200,7 @@ const Question_Analyze = ({ match, history, admin }) => {
                 </Button>
 
             </div>
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
 
         </>
 

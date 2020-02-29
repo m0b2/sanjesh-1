@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Dialog from '../../components/dialog/dialog.component';
+import Snackbar from '../../components/snackbar/snackbar.component';
 
 const Question_Analyze = ({ match, history }) => {
     const store = useStore();
@@ -21,15 +22,8 @@ const Question_Analyze = ({ match, history }) => {
     const [username, setusername] = React.useState('');
     const [password, setpassword] = React.useState('');
     const [role, setrole] = React.useState('');
+    const [open, setOpen] = React.useState(false);
 
-    const temp = {
-        title: '',
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
-        option5: ''
-    }
     React.useEffect(() => {
 
         if (!roles) {
@@ -117,6 +111,8 @@ const Question_Analyze = ({ match, history }) => {
 
 
             </div>
+            <Snackbar open={open} setOpen={setOpen} message={'message'} severity={'error'} />
+
         </>
 
     )
@@ -146,7 +142,7 @@ const getRoles = (setRoles, store, setSaveRoles) => {
 
     axios
         .get(
-             url2,
+            url2,
             { headers }
 
         )
@@ -169,7 +165,7 @@ const getRoles = (setRoles, store, setSaveRoles) => {
             //         { ...oldState, deleting: false, deleted: false }
             //     )
             // })
-             
+
         });
 
 
@@ -214,7 +210,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
 
     axios
         .post(
-             url2,
+            url2,
             data,
             {
                 headers: headers
@@ -228,7 +224,7 @@ const sendCreateUser = ({ full_name, username, password, role }, saveRoles, stor
         })
         .catch(error => {
 
-             
+
         });
 
 }

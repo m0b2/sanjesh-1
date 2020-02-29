@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import CheckBoxDialog from '../../components/dialog-check/dialog-check.component';
+import Snackbar from '../../components/snackbar/snackbar.component';
 
 const ProfilView = ({ SideTab, user }) => {
 
@@ -17,6 +18,7 @@ const ProfilView = ({ SideTab, user }) => {
     const [isLoading, setIsLoading] = React.useState(false);
     const [isCreated, setisCreated] = React.useState(false);
     const [message, setMessage] = React.useState('');
+    const [open, setOpen] = React.useState(false);
 
     const [num, setNum] = React.useState(0);
     React.useEffect(() => {
@@ -102,15 +104,13 @@ const ProfilView = ({ SideTab, user }) => {
     return (
         <>
             <div style={{ direction: 'rtl' }}>
-            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                    {message}
-                </p>
+
                 <TextDialog state={roleName} setState={setRoleName} items={[]} title={'عنوان نقش'} />
 
                 {arrays}
 
 
-                
+
             </div>
             <div className='start-analyze-button-container' style={{ minHeight: '10vh' }}>
 
@@ -124,11 +124,15 @@ const ProfilView = ({ SideTab, user }) => {
                         // MIN
                         if (roleName.length < 4) {
                             setMessage('عنوان نقش بسیار کوتاه است')
+                            setOpen(true)
+
                             return;
                         }
                         // MAX
                         if (roleName.length > 40) {
                             setMessage('عنوان نقش بسیار طولانی است')
+                            setOpen(true)
+
                             return;
                         }
                         setIsLoading(true)
@@ -137,6 +141,7 @@ const ProfilView = ({ SideTab, user }) => {
                 </Button>
             </div>
 
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
 
         </>
 

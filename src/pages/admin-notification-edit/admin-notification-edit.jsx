@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
+import Snackbar from '../../components/snackbar/snackbar.component';
 
 const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
@@ -17,15 +18,9 @@ const Question_Analyze = ({ match, history, admin }) => {
     const [deleted, setDeleted] = React.useState({ deleted: false, deleting: false });
     const [changed, setChanged] = React.useState({ changed: false, changing: false });
     const [message, setMessage] = React.useState('');
+    const [open, setOpen] = React.useState(false);
 
-    const temp = {
-        title: '',
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
-        option5: ''
-    }
+
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
         return () => store.dispatch({ type: 'ADD_FOOTER' });
@@ -88,10 +83,8 @@ const Question_Analyze = ({ match, history, admin }) => {
     // }
 
     return (
-        <> 
-        <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-            {message}
-        </p>
+        <>
+
             <TextDialog state={question.title} setState={(value) => {
                 setQuestion((oldstate) => ({ ...oldstate, title: value }))
             }} items={[]} title={'عنوان اعلان'}
@@ -123,21 +116,28 @@ const Question_Analyze = ({ match, history, admin }) => {
                         //MIN
                         if (question.title.length < 5) {
                             setMessage('عنوان اعلان بسیار کوتاه است')
+                            setOpen(true)
                             return;
                         }
                         // MAX
                         if (question.title.length > 120) {
                             setMessage('عنوان اعلان بسیار طولانی است')
+                            setOpen(true)
+
                             return;
                         }
                         //MIN
                         if (question.text.length < 15) {
                             setMessage('توضیحات اعلان بسیار کوتاه است')
+                            setOpen(true)
+
                             return;
                         }
                         // MAX
                         if (question.text.length > 300) {
                             setMessage('توضیحات اعلان بسیار طولانی است')
+                            setOpen(true)
+
                             return;
                         }
 
@@ -196,6 +196,7 @@ const Question_Analyze = ({ match, history, admin }) => {
                 }
 
             </div>
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
 
         </>
 

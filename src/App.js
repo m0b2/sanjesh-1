@@ -154,10 +154,10 @@ function App({ sideTab, isFooterNeeded, user, isNeededReducer, admin }) {
   }
 
   if (!user.admin && (!user.height || !user.birthday)) {
-    setTimeout(()=>{
+    setTimeout(() => {
       return <FirstMate />
-    },1000)
-    
+    }, 1000)
+
   }
 
 

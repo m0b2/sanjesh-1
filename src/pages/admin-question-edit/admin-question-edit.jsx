@@ -8,6 +8,8 @@ import Icon from '@material-ui/core/Icon';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogButton from '../../components/dialog-button/dialog-button.component';
+import Snackbar from '../../components/snackbar/snackbar.component';
+
 const Question_Analyze = ({ match, history, admin }) => {
     const store = useStore();
     const { index } = match.params;
@@ -21,14 +23,9 @@ const Question_Analyze = ({ match, history, admin }) => {
     const [option, setOption] = React.useState((options ? [options[0].answer, options[1].answer, options[2].answer,
     options[3].answer, options[4].answer
     ] : []));
-    const temp = {
-        title: '',
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
-        option5: ''
-    }
+    const [open, setOpen] = React.useState(false);
+
+
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
         return () => store.dispatch({ type: 'ADD_FOOTER' });
@@ -97,9 +94,6 @@ const Question_Analyze = ({ match, history, admin }) => {
     return (
         <>
 
-            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                {message}
-            </p>
             <TextDialog state={question.title}
                 setState={(value) => {
                     setQuestion((oldstate) => ({ ...oldstate, title: value }))
@@ -158,22 +152,26 @@ const Question_Analyze = ({ match, history, admin }) => {
 
 
                         if (question.title.length < 15) {
-                            setMessage('عنوان دسته بسیار کوتاه است')
+                            setMessage('متن سوال بسیار کوتاه است')
+                            setOpen(true)
                             return;
                         }
                         if (question.title.length > 300) {
-                            setMessage('عنوان دسته بسیار طولانی است')
+                            setMessage('متن سوال بسیار طولانی است')
+                            setOpen(true)
                             return;
                         }
                         let err = false;
                         for (let i = 0; i < option.length; i++) {
                             if (option[i].length < 3) {
                                 setMessage(`گزینه شماره ${i + 1} بسیار کوتاه است`)
+                                setOpen(true)
                                 err = true;
                                 return;
                             }
                             if (option[i].length > 60) {
                                 setMessage(`گزینه شماره ${i + 1} بسیار طولانی است`)
+                                setOpen(true)
                                 err = true;
                                 return;
                             }
@@ -250,6 +248,8 @@ const Question_Analyze = ({ match, history, admin }) => {
 
 
             </div>
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
+
         </>
 
     )

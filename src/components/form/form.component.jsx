@@ -8,6 +8,8 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DateDialog from '../dialog-date-input/dialog-date-input.component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
+import Snackbar from '../../components/snackbar/snackbar.component';
+
 let index = 1;
 const gender_values = ['مرد', 'زن'];
 const married_values = ['متاهل', 'مجرد', 'مطلقه'];
@@ -16,6 +18,8 @@ const education_values = ['زیردیپلم', 'دیپلم', 'فوق دیپلم',
 let city_id = 1;
 const Form = ({ disabled, user, city }) => {
     const history = useHistory()
+    const [open, setOpen] = React.useState(false);
+
     const [name, setName] = useState(user.full_name);
     const [gender, setGender] = useState(user.sex);
     const [married, setMarried] = useState(user.married);
@@ -50,47 +54,60 @@ const Form = ({ disabled, user, city }) => {
         // MAX
         if (mobile.length !== 11 || mobile.length === 0) {
             setMessage('شماره موبایل وارد شده صحیح نیست')
+            setOpen(true)
             return;
         }
         if (cities.length === 0) {
             setMessage('لطفا شهرستان محل سکونت خود را وارد کنید')
+            setOpen(true)
+
             return;
         }
 
         //MIN
         if (name.length < 5) {
             setMessage('نام بسیار کوتاه است')
+            setOpen(true)
+
             return;
         }
         // MAX
         if (name.length > 120) {
             setMessage('نام بسیار طولانی است')
+            setOpen(true)
+
             return;
         }
         //MIN
         if (parseInt(weight) < 30) {
             setMessage('وزن انتخابی مجاز نیست، لطفا وزن خود را به صورت کیلوگرم وارد کنید')
+            setOpen(true)
+
             return;
         }
         // MAX
         if (parseInt(weight) > 200) {
             setMessage('وزن انتخابی مجاز نیست، لطفا وزن خود را به صورت کیلوگرم وارد کنید')
+            setOpen(true)
 
             return;
         }
         //MIN
         if (parseInt(height) < 50) {
             setMessage('قد انتخابی مجاز نیست، لطفا قد خود را به صورت سانتی متر وارد کنید')
+            setOpen(true)
             return;
         }
         // MAX
         if (parseInt(height) > 230) {
             setMessage('قد انتخابی مجاز نیست، لطفا قد خود را به صورت سانتی متر وارد کنید')
+            setOpen(true)
 
             return;
         }
         if (bd.length < 1) {
             setMessage('لطفا تاریخ تولد خود را انتخاب کنید')
+            setOpen(true)
 
             return;
         }
@@ -181,7 +198,7 @@ const Form = ({ disabled, user, city }) => {
 
 
 
-    useStore().dispatch({ type: 'SET_GLOBAL_FUNCTION', payload: () => sendProfile(setMessage) })
+    useStore().dispatch({ type: 'SET_GLOBAL_FUNCTION', payload: () => sendProfile() })
 
 
 
@@ -251,105 +268,109 @@ const Form = ({ disabled, user, city }) => {
 
     return (
 
+        <>
+            <Snackbar open={open} setOpen={setOpen}
+                message={message} severity={'error'}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }} />
 
-        <div style={{ direction: 'rtl' }}>
-
-
-            <TextDialog
-                state={name}
-                setState={setName}
-                items={[]}
-                title={'نام و نام خانوادگی'}
-                disabled={disabled}
-                number={false} />
-            <TextDialog
-                state={mobile}
-                setState={setMobile}
-                items={[]}
-                title={'شماره موبایل'}
-                disabled={disabled}
-                number
-            />
-
-            <Dialog
-                state={gender}
-                setState={setGender}
-                items={gender_values}
-                title={'جنسیت'}
-                disabled={disabled} />
-
-            <Dialog
-                state={blood}
-                setState={setBlood}
-                items={blood_type}
-                title={'گروه خونی'}
-                disabled={disabled}
-            />
-            <Dialog
-                state={state}
-                setState={(new_city) => {
-                    if (new_city !== state) {
-                        setSharestan({});
-                        setState(new_city)
-                        setCities('')
-                    }
-                }}
-                items={city ? city : []}
-                title={'استان'}
-                disabled={disabled}
-            />
-            <Dialog
-                state={cities}
-                setState={setCities}
-                items={shahrestan_items}
-                title={'شهرستان'}
-                disabled={disabled}
-            />
-            <Dialog
-                state={married}
-                setState={setMarried}
-                items={married_values}
-                title={'وضعیت تاهل'}
-                disabled={disabled}
-            />
-            <Dialog
-                state={education}
-                setState={setEducation}
-                items={education_values}
-                title={'تحصیلات'}
-                disabled={disabled}
-            />
-            <TextDialog
-                state={height}
-                setState={setHeight}
-                items={[]}
-                title={'قد'}
-                disabled={disabled}
-                number />
-            <TextDialog
-                state={weight}
-                setState={setWeight}
-                items={[]}
-                title={'وزن'}
-                disabled={disabled}
-                number />
-
-            <DateDialog state={bd}
-                daySelected={age}
-                setState={setAge}
-                items={[]}
-                title={'تاریخ تولد'}
-                disabled={disabled} />
+            <div style={{ direction: 'rtl' }}>
 
 
 
-            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                {message}
-            </p>
+
+                <TextDialog
+                    state={name}
+                    setState={setName}
+                    items={[]}
+                    title={'نام و نام خانوادگی'}
+                    disabled={disabled}
+                    number={false} />
+                <TextDialog
+                    state={mobile}
+                    setState={setMobile}
+                    items={[]}
+                    title={'شماره موبایل'}
+                    disabled={disabled}
+                    number
+                />
+
+                <Dialog
+                    state={gender}
+                    setState={setGender}
+                    items={gender_values}
+                    title={'جنسیت'}
+                    disabled={disabled} />
+
+                <Dialog
+                    state={blood}
+                    setState={setBlood}
+                    items={blood_type}
+                    title={'گروه خونی'}
+                    disabled={disabled}
+                />
+                <Dialog
+                    state={state}
+                    setState={(new_city) => {
+                        if (new_city !== state) {
+                            setSharestan({});
+                            setState(new_city)
+                            setCities('')
+                        }
+                    }}
+                    items={city ? city : []}
+                    title={'استان'}
+                    disabled={disabled}
+                />
+                <Dialog
+                    state={cities}
+                    setState={setCities}
+                    items={shahrestan_items}
+                    title={'شهرستان'}
+                    disabled={disabled}
+                />
+                <Dialog
+                    state={married}
+                    setState={setMarried}
+                    items={married_values}
+                    title={'وضعیت تاهل'}
+                    disabled={disabled}
+                />
+                <Dialog
+                    state={education}
+                    setState={setEducation}
+                    items={education_values}
+                    title={'تحصیلات'}
+                    disabled={disabled}
+                />
+                <TextDialog
+                    state={height}
+                    setState={setHeight}
+                    items={[]}
+                    title={'قد'}
+                    disabled={disabled}
+                    number />
+                <TextDialog
+                    state={weight}
+                    setState={setWeight}
+                    items={[]}
+                    title={'وزن'}
+                    disabled={disabled}
+                    number />
+
+                <DateDialog state={bd}
+                    daySelected={age}
+                    setState={setAge}
+                    items={[]}
+                    title={'تاریخ تولد'}
+                    disabled={disabled} />
 
 
-        </div>
 
+
+
+            </div>
+
+        </>
 
     )
 }

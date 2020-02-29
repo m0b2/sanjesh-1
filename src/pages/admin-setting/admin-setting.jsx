@@ -6,6 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
+import Snackbar from '../../components/snackbar/snackbar.component';
 
 const ProfilView = ({ admin }) => {
 
@@ -22,6 +23,8 @@ const ProfilView = ({ admin }) => {
     const store = useStore();
     const [price, setPrice] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+
     React.useEffect(() => {
         // dispatch({ type: 'SET_TAB_VALUE', payload: tabs });
         // dispatch({ type: 'ADD_SIDE_LIST' });
@@ -80,9 +83,7 @@ const ProfilView = ({ admin }) => {
 
     return (
         <>
-            <p className="login-copy" style={{ color: '#b71c1c', textAlign: 'center' }}>
-                {message}
-            </p>
+
             <div style={{ direction: 'rtl' }}>
 
                 <TextDialog
@@ -112,6 +113,8 @@ const ProfilView = ({ admin }) => {
 
                         if (price === '' || parseInt(price) < 1000) {
                             setMessage('هزینه ثبت نام ورودی مجاز نیست')
+                            setOpen(true)
+
                             return;
                         }
 
@@ -123,6 +126,7 @@ const ProfilView = ({ admin }) => {
                 </Button>
             </div>
 
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
 
         </>
 
