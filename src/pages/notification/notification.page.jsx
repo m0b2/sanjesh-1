@@ -73,6 +73,7 @@ const Notification = ({ loading, notification }) => {
       subheader={value.content}
       key={`notif${index}`}
       type={value.type}
+      created_at={value.created_at}
       onClick={() => {
         setTitle(value.title);
         setComponent(<span className={'dialog-span-content'}>{value.content}</span>);

@@ -1,22 +1,34 @@
 import { withRouter } from "react-router-dom";
-import Number from '../number/number.component';
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Icon from '@material-ui/core/Icon';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import SvgIcon from '@material-ui/core/SvgIcon';
 import Avatar from '@material-ui/core/Avatar'
 import compare from '../../assets/notif-compare.svg';
 import mail from '../../assets/mail.svg';
 import analyze from '../../assets/analyze.svg';
-const Category = ({ title, content, isChecked, type, onClick }) => {
+import moment from 'moment';
+
+
+const Category = ({ title, content, isChecked, type, onClick, created_at }) => {
   const classes = useStyles();
   const mySrc = type === 'message' ? mail : type === 'request' ? compare : analyze;
+  let displayDate = "";
+  if (!moment.isMoment(created_at)) {
+    displayDate = getDisplayDate(created_at);
+  }
+
+
+
+
+
+
+
+
   return (
 
     <Card className={classes.card} style={{ width: "100%" }}
-    onClick={onClick}
+      onClick={onClick}
 
     >
       <CardHeader
@@ -32,19 +44,20 @@ const Category = ({ title, content, isChecked, type, onClick }) => {
         }
         action={
           <span style={{
-           
-            fontFamily:'Samim',
-           
-            
-            
-            
+
+            fontFamily: 'Vazir',
+            fontSize:'12px'
+
+
+
+
           }}>
-            امروز</span>
+            {displayDate}</span>
         }
         title={title}
         subheader={content}
         style={{ fontFamily: 'Samim' }}
-        classes={{ title: classes.title, subheader: classes.subheader,action:classes.action }}
+        classes={{ title: classes.title, subheader: classes.subheader, action: classes.action }}
       />
     </Card>
   );
@@ -92,8 +105,38 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Samim',
 
   },
-  action:{
+  action: {
 
-    marginTop:'5px'
+    marginTop: '5px'
   }
 }));
+
+
+const getDisplayDate = (created_at) => {
+  let displayDate = "";
+  let startDate = moment(created_at);
+  let endDate = moment(new Date());
+  let seconds = endDate.diff(startDate, "seconds");
+  let minutes = endDate.diff(startDate, "minutes");
+  let hours = endDate.diff(startDate, "hours");
+  let days = endDate.diff(startDate, "days");
+  let weeks = endDate.diff(startDate, "weeks");
+
+
+  if (seconds < 61) {
+    displayDate = `لحظاتی قبل`
+  }
+  else if (minutes < 61) {
+    displayDate = `${minutes} دقیقه قبل`
+  }
+  else if (hours < 25) {
+    displayDate = `${hours} ساعت قبل`
+  }
+  else if (days < 8) {
+    displayDate = `${days} روز قبل`
+  } else {
+    displayDate = `${weeks} هفته قبل`
+  }
+
+  return displayDate;
+}
