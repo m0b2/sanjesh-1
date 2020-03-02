@@ -7,26 +7,27 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+window.scrollTo(0, 1);
 // Or Create your Own theme:
 const theme = createMuiTheme({
-    palette: {
-      secondary: {
-          main: '#b71c1c'
-        }
-      }
-    },
-  )
+  palette: {
+    secondary: {
+      main: '#b71c1c'
+    }
+  }
+},
+)
 
 ReactDOM.render(
-    <Provider store={store} >
-        <HashRouter >
-        <MuiThemeProvider theme={theme}>
-            <App />
-            </MuiThemeProvider>
-        </HashRouter>
+  <Provider store={store} >
+    <HashRouter >
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
+    </HashRouter>
 
-    </Provider>
-    , document.getElementById('root')
+  </Provider>
+  , document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

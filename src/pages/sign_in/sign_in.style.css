@@ -2,6 +2,7 @@
   font-family: helvetica;
   color: #333;
   padding: 0 15px;
+
 }
 
 #log-in * {
@@ -95,18 +96,18 @@
 #log-in .login-form input:focus,
 #log-in .login-form input:active {
   outline: none;
-  border-color: #ededed;
+  
 }
 
 #log-in .login-form button {
   display: block;
-  margin: 18px 0;
+  margin: 12px 0;
   height: 54px;
   width: 100%;
-  background: #33cc77;
-  border: 1px solid #3c7;
+  background: rgb(52, 200, 182);
+  border: 1px solid rgb(52, 200, 182);
   border-top-color: transparent;
-  border-radius: 3px;
+  border-radius: 50px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
@@ -118,7 +119,7 @@
 }
 
 #log-in .login-form button:hover {
-  background: #5cd692;
+  background: rgb(1, 172, 152);
   cursor: pointer;
 }
 

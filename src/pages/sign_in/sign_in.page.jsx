@@ -142,7 +142,7 @@ export default function Sign_in({ user_name, pass_word, status }) {
               
             }}>وارد شوید</button>
           {(!status) ? <button className="log-in-button"
-            style={{ background: '#0094CC' }}
+            style={{ background: 'rgb(0, 112, 224)' }}
             onClick={() => {
               paymentStuff(history, setDisable)
             }}

@@ -17,7 +17,7 @@ const Answer = ({ }) => {
     const question = store.getState().question;
     const currentCategory = question.current;
     let offset = (store.getState().Categories) ? store.getState().Categories[currentCategory].answeredCount : 0;
-    offset = offset <= 0 ? 0 : offset-1
+    offset = offset <= 0 ? 0 : offset - 1
 
     React.useEffect(() => {
         store.dispatch({ type: 'REMOVE_FOOTER' });
@@ -44,7 +44,7 @@ const Answer = ({ }) => {
     return (
         <div className='answer-container'>
             <div style={{ display: 'flex', position: 'absolute', left: '2%', top: '1%' }}>
-                <IconButton  aria-label="delete"
+                <IconButton aria-label="delete"
                     onClick={() => { history.goBack() }}
                 >
 
@@ -72,13 +72,15 @@ const Answer = ({ }) => {
                         current={currentQuestion}
                         question_id={question[currentCategory][currentQuestion].id}
                     />
-                    <div style={{ marginTop: '-16px' }} >
-                        <TextDialog state={userDescription[currentQuestion]} setState={(newText) => {
-                            let newuserdesc = userDescription.slice();
-                            newuserdesc[currentQuestion] = newText;
-                            setUserDescription(newuserdesc)
+                    <div className={'userdesc-container'} >
+                        <TextDialog
+                            state={userDescription[currentQuestion] }
+                            setState={(newText) => {
+                                let newuserdesc = userDescription.slice();
+                                newuserdesc[currentQuestion] = newText;
+                                setUserDescription(newuserdesc)
 
-                        }} items={[]} title={'توضیحات شما'} />
+                            }} items={[]} title={'توضیحات شما'} />
                     </div>
                     <NextBackButtons
                         currentState={{ currentQuestion, setCurrentQuestion }}
@@ -92,7 +94,7 @@ const Answer = ({ }) => {
                         userDescription={userDescription[currentQuestion]}
                         oldUserDescription={oldUserDescription[currentQuestion]}
                         setOldUserDescription={setOldUserDescription}
-                        
+
 
                     />
                 </>

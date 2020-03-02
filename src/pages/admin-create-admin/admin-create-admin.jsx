@@ -23,6 +23,7 @@ const Question_Analyze = ({ match, history }) => {
     const [password, setpassword] = React.useState('');
     const [role, setrole] = React.useState('');
     const [open, setOpen] = React.useState(false);
+    const [message, setMessage] = React.useState('');
 
     React.useEffect(() => {
 
@@ -96,6 +97,36 @@ const Question_Analyze = ({ match, history }) => {
                     startIcon={<Icon className={'far fa-check-circle fa-fw'} style={{ marginRight: '-32px' }} />}
                     onClick={() => {
                         //send data to server
+                        if (full_name.length < 4) {
+                            setMessage('نام کامل بسیار کوتاه است');
+                            setOpen(true)
+                            return;
+                        }
+                        if (full_name.length > 40) {
+                            setMessage('نام کامل بسیار طولانی است');
+                            setOpen(true)
+                            return;
+                        }
+                        if (username.length < 4) {
+                            setMessage('نام کاربری بسیار کوتاه است');
+                            setOpen(true)
+                            return;
+                        }
+                        if (username.length > 15) {
+                            setMessage('نام کاربری بسیار طولانی است');
+                            setOpen(true)
+                            return;
+                        }
+                        if (password.length < 6) {
+                            setMessage('کلمه عبور بسیار کوتاه است');
+                            setOpen(true)
+                            return;
+                        }
+                        if (role.length < 1) {
+                            setMessage('نقشی انتخاب نشده است');
+                            setOpen(true)
+                            return;
+                        }
                         setChanged({ changed: false, changing: true })
                         sendCreateUser({ full_name, username, password, role }, saveRoles, store, setChanged)
 
@@ -111,7 +142,7 @@ const Question_Analyze = ({ match, history }) => {
 
 
             </div>
-            <Snackbar open={open} setOpen={setOpen} message={'message'} severity={'error'} />
+            <Snackbar open={open} setOpen={setOpen} message={message} severity={'error'} />
 
         </>
 

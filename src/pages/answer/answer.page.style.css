@@ -49,3 +49,10 @@
     }
 
 }
+
+
+.userdesc-container{
+    width: fit-content;
+    height: 100px;
+    margin-top: -24px;
+}
