@@ -45,7 +45,7 @@ import queryString from 'query-string';
 import resStore from './redux/store';
 import AdminChart from './pages/admin-chart/admin-chart';
 import AdminHomePage from './pages/admin-home/admin-home';
-const Debug = true;
+const Debug = false;
 
 axios.interceptors.request.use((config) => {
   /** In dev, intercepts request and logs it into console for dev */
@@ -74,6 +74,11 @@ axios.interceptors.response.use((response) => {
 }, (error) => {
   if (Debug) {
     console.info("✉️Error", error.response);
+  }
+  if (error.response.status === 401) {
+    resStore.dispatch({ type: '401_ERORR' })
+    return Promise.reject(error);
+
   }
   resStore.dispatch({ type: 'ERORR', payload: error.response.statusText })
   return Promise.reject(error);

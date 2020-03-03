@@ -40,6 +40,10 @@ const UserReducer = (state = Initial_State, action) => {
             localStorage.clear();
             return null;
         }
+        case '401_ERORR': {
+            localStorage.clear();
+            return null;
+        }
         case 'USER_FIRST_TIME': {
 
             return { ...state, first_time: true };
